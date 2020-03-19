@@ -2,8 +2,8 @@
 
 from itertools import count
 
-from swtool.process import process
 from swtool.color import Color
+from swtool.process import process
 
 if __name__ == '__main__':
     #起動時の処理

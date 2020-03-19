@@ -8,7 +8,7 @@ def process(arg):
         try:
             eval(f'commands.{arg[0]}()')
         except TypeError as e:
-            #print(f'{type(e)} {e}')
+            print(f'{type(e)} {e}')
             print(f'{Color.YELLOW}引数が足りないよ{Color.YELLOW}')
         except AttributeError as e:
             #print(f'{type(e)} {e}')
@@ -19,7 +19,7 @@ def process(arg):
     else:
         try:
             eval(f'commands.{arg[0]}({arg[1:]})')
-        except IndexError:
+        except TypeError:
             #print(f'{type(e)} {e}')
             print(f'{Color.YELLOW}引数がおかしいよ{Color.YELLOW}')
         except AttributeError:
