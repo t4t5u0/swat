@@ -1,0 +1,180 @@
+[
+    {
+        "name"  : "【ブラント・ウェポン】",
+        "effect": {"物理ダメージ": -4},
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【バイタリティ】",
+        "effect": {"生命抵抗力判定": 2},
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【パラライズ】",
+        "effect": [{"命中力判定": -2}, {"回避力判定": -2}],
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": true
+    },
+    {
+        "name"  : "【ウェポン・マスター】",
+        "effect": [
+            {"戦闘特技付与": "<<かいくぐり>>"},
+            {"戦闘特技付与": "<<ターゲッティング>>"},
+            {"戦闘特技付与": "<<武器習熟A:**>>"},
+            {"戦闘特技付与": "<<両手利き>>"},
+            {"戦闘特技付与": "<<囮攻撃Ⅰ>>"},
+            {"戦闘特技付与": "<<牽制攻撃Ⅰ>>"},
+            {"戦闘特技付与": "<<挑発攻撃Ⅰ>>"},
+            {"戦闘特技付与": "<<全力攻撃Ⅰ>>"},
+            {"戦闘特技付与": "<<必殺攻撃Ⅰ>>"},
+            {"戦闘特技付与": "<<鎧抜き>>"}
+        ],
+        "type" : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": true
+    },
+    {
+        "name"  : "【バイタリティ】",
+        "effect": {"生命抵抗力判定": 2},
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【ウォール・ウォーキング】",
+        "effect": {"付与": "壁や天井を歩くことができる"},
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "⏩△【ブリンク】",
+        "effect": {"付与": "ブリンク"},
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【マジシャン】",
+        "effect":  [
+            {"戦闘特技付与": "<<ターゲッティング>>"},
+            {"戦闘特技付与": "<<魔法収束>>"},
+            {"戦闘特技付与": "<<魔法制御>>"},
+            {"戦闘特技付与": "<<鷹の目>>"},
+            {"戦闘特技付与": "<<バイオレントキャストⅠ>>"},
+            {"戦闘特技付与": "<<MP軽減/**>>"}
+        ],
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": true
+    },
+    {
+        "name"  : "【イレイス・マジック】",
+        "effect": {"付与": "6レベル/ランク以下の魔法行使不可能"},
+        "type"  : "SOR",
+        "round" : 3,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【ブレード・ネット】",
+        "effect": {"付与": "手番終了時k0+魔力点のダメージ"},
+        "type"  : "SOR",
+        "round" : 3,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【レデュース・マジック】",
+        "effect": {"付与": "魔法吸収"},
+        "type"  : "SOR",
+        "round" : -1,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【ウォール・ウォーキング】",
+        "effect": {"付与": "壁や天井を歩くことができる"},
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【スロウ】",
+        "effect": [{"付与": "移動力半分"},{"付与": "主動作制限(if 1d6 -> 1 or 2)"}],
+        "type"  : "SOR",
+        "round" : 6,
+        "2d6"   : false,
+        "1d6"   : true,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【デス・ルーテリィ】",
+        "effect": {"魔法行使判定": -4},
+        "type"  : "SOR",
+        "round" : 3,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【ライトニング・バインド】",
+        "effect": [{"すべての行動判定": -2}, {"付与": "ライトニング・バインド"}],
+        "type"  : "SOR",
+        "round" : 6,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    },
+    {
+        "name"  : "【マジック・リフレクション】",
+        "effect": {"付与": "マジック・リフレクション"},
+        "type"  : "SOR",
+        "round" : 18,
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false
+    }
+]
