@@ -11,5 +11,5 @@ if __name__ == '__main__':
 
     #無限ループ
     for _ in count():
-        txt = list(input(f'{Color.GREEN}>{Color.RESET}').split())
+        txt = list(input(f'{Color.GREEN}> {Color.RESET}').split())
         process(txt)
