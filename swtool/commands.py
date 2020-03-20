@@ -17,6 +17,9 @@ def ls():
 def kill():
     pass
 
+def check():
+    pass
+
 def start():
     pass
 
@@ -53,7 +56,7 @@ f'''コマンド一覧を表示
 {'─'*100}''')
 
 def stop():
-    x = input(f'[Y/n]\n{Color.GREEN}>{Color.RESET}')
+    x = input(f'[Y/n]\n{Color.GREEN}> {Color.RESET}')
     if  x == 'Y' or x == 'y':
         exit()
     else:
