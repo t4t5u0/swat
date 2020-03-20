@@ -1,6 +1,7 @@
 from swtool import commands
 from swtool.color import Color
 
+
 def process(arg):
     if arg == []:
         return
@@ -11,10 +12,10 @@ def process(arg):
             print(f'{type(e)} {e}')
             print(f'{Color.YELLOW}引数が足りないよ{Color.YELLOW}')
         except AttributeError as e:
-            #print(f'{type(e)} {e}')
+            print(f'{type(e)} {e}')
             print(f'{Color.YELLOW}そんな関数ないよ{Color.YELLOW}')
         except SyntaxError as e:
-            #print(f'{type(e)} {e}')
+            print(f'{type(e)} {e}')
             print(f'{Color.YELLOW}その他エラー{Color.YELLOW}')
     else:
         try:
