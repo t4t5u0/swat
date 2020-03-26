@@ -4,6 +4,7 @@ from swtool import subcommands
 import sys
 import inspect
 
+
 def append(char):
     for item in char:
         print(f'add "{item}"')
@@ -26,8 +27,10 @@ def start():
 def end():
     pass
 
-def add():
-    pass
+def add(arg):
+    for item in arg:
+        print(item)
+    return None
 
 def remove():
     pass

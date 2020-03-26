@@ -1,246 +1,395 @@
 [
     {
-        "name"  : "【エンチャント・ウェポン】",
-        "effect": [{"物理ダメージ": 1}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ダーク・ミスト】",
-        "effect": [{"回避力判定": -2}],
-        "type"  : "CON",
-        "round" : 1,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【プロテクション】",
-        "effect": [{"被ダメージ": -1}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【カウンター・マジック】",
-        "effect": [{"精神抵抗力判定": -2}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ファナティシズム】",
-        "effect": [{"命中力判定": 2}, {"回避力判定": -2}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ファイア・ウェポン】",
-        "effect": [{"付与": "炎属性"},{"ダメージ": 2}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【レイジング・アース】",
-        "effect": [{"付与": "手番終了時HP3回復"}],
-        "type"  : "CON",
-        "round" : 3,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【フォビドゥン・マジック】",
-        "effect": [{"付与": "1系統３Lv以下の魔法を禁止する"}],
-        "type"  : "CON",
-        "round" : 3,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ポイズン・クラウド】",
-        "effect": [{"付与": "手番終了時3ダメージ"}],
-        "type"  : "CON",
-        "round" : 6,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ダーク・ミスト】",
-        "effect": [{"回避力判定": -2}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【アース・シールド】",
-        "effect": [{"防護点": 2}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【インテンス・コントロール】",
+        "name": "【エンチャント・ウェポン】",
         "effect": [
-            {"命中力判定": 2},{"回避力判定": 2},{"物理ダメージ": 2},{"被ダメージ": -2}
+            {
+                "物理ダメージ": 1
+            }
         ],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
     },
     {
-        "name"  : "【スペル・エンハンス】",
-        "effect": [{"魔力": 1}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【スタン・クラウド】",
-        "effect": [{"付与": "宣言特技と補助動作禁止"}],
-        "type"  : "CON",
-        "round" : 3,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【マナ・アブソーブ】",
-        "effect": [{"付与": "消費MP2倍"}, {"付与":"MP消費時HP3回復"}],
-        "type"  : "CON",
-        "round" : 3,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【アイシクル・ウェポン】",
-        "effect": [{"付与": "水・氷属性"},{"ダメージ": 3}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【バインド・オペレーション】",
-        "effect": [{"行動判定": -2}, {"付与": "制限移動"}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【プロテクションⅡ】",
-        "effect": [{"被ダメージ": -3}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ダーク・ミスト】",
-        "effect": [{"回避力判定": -2}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ペトロ・クラウド】",
-        "effect": [{"付与": "石化(行使から1分後)"}],
-        "type"  : "CON",
-        "round" : -1,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ヘイスト】",
-        "effect": [{"付与": "移動力+12m"}, {"付与": "主動作追加(if 1d6 -> 5 or 6)"}],
-        "type"  : "CON",
-        "round" : 3,
-        "2d6"   : false,
-        "1d6"   : true,
-        "count" : false,
-        "choice": false
-    },
-    {
-        "name"  : "【ソニック・ウェポン】",
+        "name": "【ダーク・ミスト】",
         "effect": [
-            {"付与": "風属性"}, {"C値": -1}, {"ダメージ": 2}
+            {
+                "回避力判定": -2
+            }
         ],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
+        "type": "CON",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
     },
     {
-        "name"  : "【マナ・シール】",
-        "effect": [{"付与": "1RにMPを11点以上消費できない"}],
-        "type"  : "CON",
-        "round" : 6,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
+        "name": "【プロテクション】",
+        "effect": [
+            {
+                "被ダメージ": -1
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
     },
     {
-        "name"  : "【レイジング・アースⅡ】",
-        "effect": [{"付与": "手番終了時HP10回復"}],
-        "type"  : "CON",
-        "round" : 18,
-        "2d6"   : false,
-        "1d6"   : false,
-        "count" : false,
-        "choice": false
+        "name": "【カウンター・マジック】",
+        "effect": [
+            {
+                "精神抵抗力判定": -2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ファナティシズム】",
+        "effect": [
+            {
+                "命中力判定": 2
+            },
+            {
+                "回避力判定": -2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ファイア・ウェポン】",
+        "effect": [
+            {
+                "付与": "炎属性"
+            },
+            {
+                "ダメージ": 2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【レイジング・アース】",
+        "effect": [
+            {
+                "付与": "手番終了時HP3回復"
+            }
+        ],
+        "type": "CON",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【フォビドゥン・マジック】",
+        "effect": [
+            {
+                "付与": "1系統３Lv以下の魔法を禁止する"
+            }
+        ],
+        "type": "CON",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ポイズン・クラウド】",
+        "effect": [
+            {
+                "付与": "手番終了時3ダメージ"
+            }
+        ],
+        "type": "CON",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ダーク・ミスト】",
+        "effect": [
+            {
+                "回避力判定": -2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【アース・シールド】",
+        "effect": [
+            {
+                "防護点": 2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【インテンス・コントロール】",
+        "effect": [
+            {
+                "命中力判定": 2
+            },
+            {
+                "回避力判定": 2
+            },
+            {
+                "物理ダメージ": 2
+            },
+            {
+                "被ダメージ": -2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【スペル・エンハンス】",
+        "effect": [
+            {
+                "魔力": 1
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【スタン・クラウド】",
+        "effect": [
+            {
+                "付与": "宣言特技と補助動作禁止"
+            }
+        ],
+        "type": "CON",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【マナ・アブソーブ】",
+        "effect": [
+            {
+                "付与": "消費MP2倍"
+            },
+            {
+                "付与": "MP消費時HP3回復"
+            }
+        ],
+        "type": "CON",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【アイシクル・ウェポン】",
+        "effect": [
+            {
+                "付与": "水・氷属性"
+            },
+            {
+                "ダメージ": 3
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【バインド・オペレーション】",
+        "effect": [
+            {
+                "行動判定": -2
+            },
+            {
+                "付与": "制限移動"
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【プロテクションⅡ】",
+        "effect": [
+            {
+                "被ダメージ": -3
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ダーク・ミスト】",
+        "effect": [
+            {
+                "回避力判定": -2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ペトロ・クラウド】",
+        "effect": [
+            {
+                "付与": "石化(行使から1分後)"
+            }
+        ],
+        "type": "CON",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ヘイスト】",
+        "effect": [
+            {
+                "付与": "移動力+12m"
+            },
+            {
+                "付与": "主動作追加(if 1d6 -> 5 or 6)"
+            }
+        ],
+        "type": "CON",
+        "round": 3,
+        "2d6": false,
+        "1d6": true,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【ソニック・ウェポン】",
+        "effect": [
+            {
+                "付与": "風属性"
+            },
+            {
+                "C値": -1
+            },
+            {
+                "ダメージ": 2
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【マナ・シール】",
+        "effect": [
+            {
+                "付与": "1RにMPを11点以上消費できない"
+            }
+        ],
+        "type": "CON",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
+    },
+    {
+        "name": "【レイジング・アースⅡ】",
+        "effect": [
+            {
+                "付与": "手番終了時HP10回復"
+            }
+        ],
+        "type": "CON",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "count": false,
+        "choice": false,
+        "table": -1
     }
 ]

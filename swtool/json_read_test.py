@@ -28,7 +28,8 @@ c.execute(
         '2d6'  Bool,
         '1d6'  Bool,
         count  Bool,
-        choice Bool);
+        choice Bool,
+        result_table  integer);
     ''')
 
 for file_ in file_list:
@@ -36,9 +37,9 @@ for file_ in file_list:
         df = json.load(f)
     for data in df:
         pprint.pprint(data, width=40)
-        c.execute('INSERT INTO ex VALUES(?, ?, ?, ?, ?, ?, ?, ?)',\
+        c.execute('INSERT INTO ex VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',\
             (data['name'], data['effect'],data['type'], data['round'],\
-            data['2d6'], data['1d6'], data['count'], data['choice']))
+            data['2d6'], data['1d6'], data['count'], data['choice'], data['table']))
         conn.commit()
 
 for row in c.execute('select * from ex'):
