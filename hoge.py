@@ -4,10 +4,10 @@ from itertools import count
 try:
     from msvcrt import getch
 except ImportError:
+    import sys
+    import tty
+    import termios
     def getch():
-            import sys
-            import tty
-            import termios
             fd = sys.stdin.fileno()
             old = termios.tcgetattr(fd)
             try:
