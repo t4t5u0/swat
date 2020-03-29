@@ -1,6 +1,5 @@
-import subprocess
-from itertools import count
-
+# inputの代わりに、1文字ずつ入力を受け取る関数を用意。
+# try の中はWindows用、except 野中はLinux用
 try:
     from msvcrt import getch
 except ImportError:
@@ -16,37 +15,34 @@ except ImportError:
             finally:
                 termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
+# Unicode制御文字のエイリアス
 EOT = 3
-CR = 13
-BS = 127
 TAB = 9
-SPACE = 32
+ESC = 27
 
-txt = ''
-space_cnt = 0
-
+# メインループ
 while True:
     key = ord(getch())
     if key == EOT:
         break
+    elif key == TAB:
+        print('keydown TAB')
+    elif key == ESC:
+        key = ord(getch())
+        if key == ord('['):
+            key = ord(getch())
+            if key == ord('A'):
+                print('keydown uparrow')
+                continue
+            elif key == ord('B'):
+                print('keydown downarrow')
+                continue
+            elif key == ord('C'):
+                print('keydown leftarrow')
+                continue
+            elif key == ord('D'):
+                print('keydown rightarrow')
+                continue
     else:
-        if key == CR:
-            print(txt, flush=True)
-            txt = ''
-            space_cnt = 0
-        elif key == BS:
-            txt = txt[:-1]
-        else:
-            if key == SPACE:
-                space_cnt += 1
-            txt += chr(key)
-            print(txt)
-
-        '''
-        message = 'input, {0}'.format(key)
-        print(message)
-        message = 'input, {0}'.format(chr(key))
-        print(message)
-        '''
-       #subprocess.run('clear',shell=True)
-
+        message = f'keydown {chr(key)}'
+        print(message, key)

@@ -1,13 +1,14 @@
-from swtool import commands
+from swtool.commands import Commands
 from swtool.color import Color
 
+command = Commands()
 
 def process(arg):
     if arg == []:
         return
     elif arg[1:] == [] :
         try:
-            eval(f'commands.{arg[0]}()')
+            eval(f'command.{arg[0]}()')
         except TypeError as e:
             print(f'{type(e)} {e}')
             print(f'{Color.YELLOW}引数が足りないよ{Color.RESET}')
@@ -19,7 +20,7 @@ def process(arg):
             print(f'{Color.YELLOW}その他エラー{Color.RESET}')
     else:
         try:
-            eval(f'commands.{arg[0]}({arg[1:]})')
+            eval(f'command.{arg[0]}({arg[1:]})')
         except TypeError:
             #print(f'{type(e)} {e}')
             print(f'{Color.YELLOW}引数がおかしいよ{Color.RESET}')
