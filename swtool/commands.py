@@ -1,8 +1,9 @@
-from swtool.color import Color
-from swtool import subcommands
-
-import sys
 import inspect
+import sys
+import sqlite3
+
+from swtool import subcommands
+from swtool.color import Color
 
 
 def append(char):
@@ -18,8 +19,13 @@ def ls():
 def kill():
     pass
 
-def check():
-    pass
+def check(arg):
+    conn = sqlite3.connect('./db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+    #conn = sqlite3.connect(':memory:', detect_types=sqlite3.PARSE_DECLTYPES)
+    c = conn.cursor()
+    for row in c.execute('SELECT skill_name, skill_effect, round FROM character_list WHERE chara_name == ?;', (arg[0],)):
+        print(row)
+    conn.close()
 
 def start():
     pass
@@ -62,9 +68,11 @@ def stop():
     x = input(f'[Y/n]\n{Color.GREEN}> {Color.RESET}')
     if  x == 'Y' or x == 'y':
         exit()
-    else:
+    elif x == 'N' or x == 'n':
         return
-
+    else:
+        stop()
+'''
 class Commands:
     def __init__(self):
         self.name = ''
@@ -91,3 +99,6 @@ class Commands:
         for x in inspect.getmembers(Commands(), inspect.ismethod):
             print(eval(f'Commands.{x}.name'))
 
+command = Commands()
+command.stop()
+'''

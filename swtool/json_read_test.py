@@ -14,10 +14,11 @@ Bool = bool
 sqlite3.register_adapter(Bool, lambda b: str(b))
 sqlite3.register_converter('Bool', lambda l: bool(eval(l)))
 
-file_list = glob('./json_data/*.json')
+file_list = glob('../json_data/*.json')
 print(file_list)
 
-conn = sqlite3.connect(':memory:', detect_types=sqlite3.PARSE_DECLTYPES)
+conn = sqlite3.connect('../db/example.db', detect_types=sqlite3.PARSE_DECLTYPES)
+#conn = sqlite3.connect(':memory:', detect_types=sqlite3.PARSE_DECLTYPES)
 c = conn.cursor()
 c.execute(
     '''CREATE TABLE if not exists ex(

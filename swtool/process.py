@@ -10,22 +10,22 @@ def process(arg):
             eval(f'commands.{arg[0]}()')
         except TypeError as e:
             print(f'{type(e)} {e}')
-            print(f'{Color.YELLOW}引数が足りないよ{Color.YELLOW}')
+            print(f'{Color.YELLOW}引数が足りないよ{Color.RESET}')
         except AttributeError as e:
             print(f'{type(e)} {e}')
-            print(f'{Color.YELLOW}そんな関数ないよ{Color.YELLOW}')
+            print(f'{Color.YELLOW}そんな関数ないよ{Color.RESET}')
         except SyntaxError as e:
             print(f'{type(e)} {e}')
-            print(f'{Color.YELLOW}その他エラー{Color.YELLOW}')
+            print(f'{Color.YELLOW}その他エラー{Color.RESET}')
     else:
         try:
             eval(f'commands.{arg[0]}({arg[1:]})')
         except TypeError:
             #print(f'{type(e)} {e}')
-            print(f'{Color.YELLOW}引数がおかしいよ{Color.YELLOW}')
+            print(f'{Color.YELLOW}引数がおかしいよ{Color.RESET}')
         except AttributeError:
             #print(f'{type(e)} {e}')
-            print(f'{Color.YELLOW}そんな関数ないよ{Color.YELLOW}')
+            print(f'{Color.YELLOW}そんな関数ないよ{Color.RESET}')
         except SyntaxError as e:
             #print(f'{type(e)} {e}')
-            print(f'{Color.YELLOW}その他エラー{Color.YELLOW}')
+            print(f'{Color.YELLOW}その他エラー{Color.RESET}')
