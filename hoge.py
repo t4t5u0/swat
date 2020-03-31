@@ -7,7 +7,6 @@ except ImportError:
     import tty
     import termios
     def getch():
-
             fd = sys.stdin.fileno()
             old = termios.tcgetattr(fd)
             try:
