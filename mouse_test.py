@@ -36,14 +36,14 @@ curses_mouse_states = {
     curses.BUTTON3_DOUBLE_CLICKED: 'Button 3 Double-Clicked',
     curses.BUTTON3_TRIPLE_CLICKED: 'Button 3 Triple-Clicked',
 
-    curses.BUTTON4_PRESSED: 'Button 4 Pressed', 
-    curses.BUTTON4_RELEASED: 'Button 4 Released', 
+    curses.BUTTON4_PRESSED: 'Button 4 Pressed',
+    curses.BUTTON4_RELEASED: 'Button 4 Released',
     curses.BUTTON4_CLICKED: 'Button 4 Clicked',
     curses.BUTTON4_DOUBLE_CLICKED: 'Button 4 Double-Clicked',
     curses.BUTTON4_TRIPLE_CLICKED: 'Button 4 Triple-Clicked',
 
-    curses.BUTTON_SHIFT: 'Button Shift', 
-    curses.BUTTON_CTRL: 'Button Ctrl', 
+    curses.BUTTON_SHIFT: 'Button Shift',
+    curses.BUTTON_CTRL: 'Button Ctrl',
     curses.BUTTON_ALT: 'Button Alt'
 }
 
@@ -53,8 +53,8 @@ with open_screen() as scr:
         c = scr.getch()
         if c == curses.KEY_MOUSE:
             mouse_state = curses.getmouse()[4]
-            states = '; '.join(state_string for state, state_string 
-                               in curses_mouse_states.items() 
+            states = '; '.join(state_string for state, state_string
+                               in curses_mouse_states.items()
                                if mouse_state & state)
             scr.addstr(0, 0, states)
             scr.clrtoeol()
