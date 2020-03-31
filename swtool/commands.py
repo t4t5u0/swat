@@ -75,7 +75,7 @@ class Commands():
     {'─'*100}''')
 
     def stop(self):
-        x = input(f'[Y/n]\n{Color.GREEN}> {Color.RESET}')
+        x = input(f'[Y/n] ')
         if  x == 'Y' or x == 'y':
             exit()
         elif x == 'N' or x == 'n':
