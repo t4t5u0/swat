@@ -14,7 +14,6 @@ except ImportError:
     import tty
     import termios
     def getch():
-
             fd = sys.stdin.fileno()
             old = termios.tcgetattr(fd)
             try:
@@ -115,10 +114,66 @@ class Screen():
     def input_stream(self):
         '''入力を受け取る関数'''
         for n, _ in enumerate(count()):
-            #key = self.window.getch()
             #key = getch()
             key = self.window.getch()
-            #self.window.addstr(0, 12, f'{(key)}      ')
+
+            # 十字キーは判定が意味不明なので先にやる(多バイトで入ってきた)
+            if key == curses.KEY_UP:
+                self.display('KEY_UP')
+                continue
+            elif key == curses.KEY_DOWN:
+                self.display('KEY_DOWN')
+                continue
+            elif key == curses.KEY_RIGHT:
+                self.cursor_x +=1
+                self.window.move(self.cursor_y, self.cursor_x)
+                continue
+            elif key == curses.KEY_LEFT:
+                self.cursor_x -=1
+                self.window.move(self.cursor_y, self.cursor_x)
+                continue
+            # 日本語だと3バイトだからプールする必要がある。先頭バイトを見て
+            # 残りのバイスと数が確定するからその処理を行う。
+            text_pool = [key]
+            if 0x00 <= key <= 0x7f:
+                # 1B だから何もしなくていい
+                # ascii 互換領域
+                pass
+            elif 0x80 <= key <= 0xbf:
+                # 2文字目以降のはずだから入ってきたらおかしい
+                print(key)
+                exit(1)
+            elif 0xc0 <= key <= 0xdf:
+                # 2B ウムラウト付き文字とか
+                text_pool.append(self.window.getch())
+                # text_pool => [0dAAA, 0dBBB]
+                # 110a aabb 10bb bbbb <= これが text_poolの中身(10進にしたもの)
+                # 0b00000aaa bbbbbbbb を取り出してchar c = (char) (data[i] & 0xff);
+                # 10進数にしてkeyに代入
+                a, b = text_pool
+                tmp = map(lambda x: bin(x)[2:], [0b00011111 & a, 0b00111111 & b])
+                tmp = ''.join(item.zfill(6) for item in tmp)
+                key = int(tmp,2)
+            elif 0xe0 <= key <= 0xef:
+                # 3B 日本語はここ
+                for _ in range(2):
+                    text_pool.append(self.window.getch())
+                a, b, c = text_pool
+                # 0b 1110xxxx 10xxyyyy 10yyyyyy
+                # 0d a        b        c
+                tmp = map(lambda x: bin(x)[2:], [0b00001111 & a, 0b00111111 & b, 0b00111111 & c])
+                tmp = ''.join([item.zfill(6) for item in tmp])
+                key = int(tmp,2)
+            else:
+                # 4B 見たことないけどバグ取り
+                for _ in range(3):
+                    text_pool.append(self.window.getch())
+                a, b, c ,d = text_pool
+                # 11110xxx 10xxyyyy 10yyyyzz 10zzzzzz
+                tmp = map(lambda x: bin(x)[2:], [0b00000111 & a, 0b00111111 & b, 0b00111111 & c, 0b00111111 & d])
+                tmp = ''.join([item.zfill(6) for item in tmp])
+                key = int(tmp,2)
+
             # メインループ
             if key == (curses.ascii.ETX):
             #if key == chr(curses.ascii.ETX):
@@ -146,6 +201,8 @@ class Screen():
                 self.window.delch(self.cursor_y, self.cursor_x)
                 self.window.move(self.cursor_y, self.cursor_x)
                 self.window.refresh()
+            elif key == curses.KEY_UP:
+                display('KEY_UP')
             elif key == curses.KEY_RESIZE:
                 #self.display('RESIZE')
                 #map(self.display, 'RESIZE')
@@ -154,6 +211,7 @@ class Screen():
                 self.window.refresh()
             else:
                 self.display(key)
+                #self.display(key)
 
 
     def scroll(self, direction):
@@ -162,13 +220,13 @@ class Screen():
 
     def linefeed(self):
         '''改行したときの'> 'を出す処理'''
-        self.display(self.cursor_y)
-        self.display(self.height)
+        #self.display(self.cursor_y)
+        #self.display(self.height)
         if self.cursor_y >= self.height-3:
             self.height += 1
             self.window.resize(self.height, self.width)
             self.window.refresh()
-            self.display(str(self.height))
+            #self.display(str(self.height))
             if self.window.scrollok:
                 self.display('SCROLL')
                 #self.window.scroll(-2)
@@ -188,13 +246,14 @@ class Screen():
         self.height, self.width = self.window.getmaxyx()
 
         # 処理
-        self.window.addstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
+        self.window.addstr(self.cursor_y, self.cursor_x, f'{arg }', curses.color_pair(1))
         #self.cursor_x += get_east_asian_count(chr(arg))
-        if self.cursor_x + len(f'{arg}') +1 >= self.width:
+        # カーソルの折り返し処理
+        if self.cursor_x + get_east_asian_count(f'{arg}') +1 >= self.width:
             self.cursor_x = 0
             self.cursor_y += 1
         else:
-            self.cursor_x += len(f'{arg}') +1
+            self.cursor_x += get_east_asian_count(f'{arg} ')
 
         # 表示を更新する
         self.window.refresh()

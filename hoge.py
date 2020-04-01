@@ -23,6 +23,7 @@ ESC = 27
 # メインループ
 while True:
     key = ord(getch())
+    print(key)
     if key == EOT:
         break
     elif key == TAB:
@@ -30,8 +31,10 @@ while True:
     elif key == ESC:
         key = ord(getch())
         if key == ord('['):
+            print(key)
             key = ord(getch())
             if key == ord('A'):
+                print(key)
                 print('keydown uparrow')
                 continue
             elif key == ord('B'):
