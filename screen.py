@@ -4,6 +4,8 @@ import locale
 from curses import wrapper
 from curses import textpad
 from itertools import count
+from collections import deque
+from copy import deepcopy
 
 from swtool.subcommands import get_east_asian_count
 
@@ -28,28 +30,6 @@ class Screen():
     UP = -1
     DOWN = 1
 
-    #EOT = 3
-    DEL = chr(8)
-    TAB = chr(9)
-    #ESC = 27
-    #CR  = 10
-    LF  = chr(13)
-
-    EOT = chr(3)
-    ESC = chr(27)
-    CR = chr(10)
-   # SYMBOLS = {
-   # '\t': 'TAB',
-   # '\r': 'CR',
-   # '\n': 'LF',
-   # }
-    FUNCTIONS = {
-    'A': 'up-arrow',
-    'B': 'down-arrow',
-    'C': 'left-arrow',
-    'D': 'right-arrow',
-    }
-
     def __init__(self):
         '''初期化関数'''
         #super().__init__()
@@ -71,7 +51,10 @@ class Screen():
         self.cursor_x = 2
         self.cursor_y = 2
 
-        self.input_text = ''
+        self.raw_text = []
+        self.command_history = deque()
+
+        self.cnt_up_down = 0
 
     def init_curses(self):
         '''cursesを初期化する関数'''
@@ -82,6 +65,8 @@ class Screen():
         self.window.setscrreg(0, self.height-1)
         self.window.keypad(True)
 
+        self.window.idlok(True)
+
         curses.noecho()
         curses.cbreak()
 
@@ -91,7 +76,7 @@ class Screen():
         curses.init_pair(3, curses.COLOR_GREEN, curses.COLOR_BLACK)
         curses.init_pair(4, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 
-       #self.current = curses.color_pair(2)
+        # self.current = curses.color_pair(2)
 
         # self.height, self.width = self.window.getmaxyx()
 
@@ -102,7 +87,7 @@ class Screen():
         self.window.refresh()
 
     def run(self):
-        """起動用メソッド"""
+        '''起動用メソッド'''
         try:
             self.input_stream()
         except KeyboardInterrupt:
@@ -113,25 +98,12 @@ class Screen():
 
     def input_stream(self):
         '''入力を受け取る関数'''
+
         for n, _ in enumerate(count()):
             #key = getch()
             key = self.window.getch()
 
-            # 十字キーは判定が意味不明なので先にやる(多バイトで入ってきた)
-            if key == curses.KEY_UP:
-                self.display('KEY_UP')
-                continue
-            elif key == curses.KEY_DOWN:
-                self.display('KEY_DOWN')
-                continue
-            elif key == curses.KEY_RIGHT:
-                self.cursor_x +=1
-                self.window.move(self.cursor_y, self.cursor_x)
-                continue
-            elif key == curses.KEY_LEFT:
-                self.cursor_x -=1
-                self.window.move(self.cursor_y, self.cursor_x)
-                continue
+            # マルチバイト文字の加工
             # 日本語だと3バイトだからプールする必要がある。先頭バイトを見て
             # 残りのバイスと数が確定するからその処理を行う。
             text_pool = [key]
@@ -164,7 +136,7 @@ class Screen():
                 tmp = map(lambda x: bin(x)[2:], [0b00001111 & a, 0b00111111 & b, 0b00111111 & c])
                 tmp = ''.join([item.zfill(6) for item in tmp])
                 key = int(tmp,2)
-            else:
+            elif 0xf0 <= key <= 0xff:
                 # 4B 見たことないけどバグ取り
                 for _ in range(3):
                     text_pool.append(self.window.getch())
@@ -173,8 +145,11 @@ class Screen():
                 tmp = map(lambda x: bin(x)[2:], [0b00000111 & a, 0b00111111 & b, 0b00111111 & c, 0b00111111 & d])
                 tmp = ''.join([item.zfill(6) for item in tmp])
                 key = int(tmp,2)
+            else:
+                #特殊キー
+                pass
 
-            # メインループ
+            # キーの判定など
             if key == (curses.ascii.ETX):
             #if key == chr(curses.ascii.ETX):
                 exit(0)
@@ -188,7 +163,7 @@ class Screen():
                 #pre_ch = self.window.getstr(self.cursor_y, self.cursor_x)
                 '''
                 if curses.ascii.isascii(pre_ch):
-                    # ascii の外なら2文字分消す
+                    # 全角文字なら2文字分消す
                     self.window.delch(self.cursor_y, self.cursor_x)
                     self.cursor_x = max(2, self.cursor_x - 1)
                     self.window.refresh()
@@ -201,8 +176,46 @@ class Screen():
                 self.window.delch(self.cursor_y, self.cursor_x)
                 self.window.move(self.cursor_y, self.cursor_x)
                 self.window.refresh()
+            # 十字キーの処理
             elif key == curses.KEY_UP:
-                display('KEY_UP')
+                #一行消すコマンド
+                if len(self.command_history) != 0:
+                    self.cursor_x = 2
+                    self.window.move(self.cursor_y, self.cursor_x)
+                    self.window.clrtoeol()
+                    self.window.refresh()
+                    self.raw_text = []
+                    self.raw_text = deepcopy(self.command_history[self.cnt_up_down])
+                    self.window.addstr(self.cursor_y, self.cursor_x, f'{"".join(self.raw_text)}')
+                    self.window.refresh()
+                    self.cnt_up_down = min(self.cnt_up_down + 1, len(self.command_history)-1)
+                    #self.display('KEY_UP')
+                    #消えないのと追加できてないこと
+                continue
+
+            elif key == curses.KEY_DOWN:
+                self.display('KEY_DOWN')
+                if len(self.command_history) != 0:
+                    self.cursor_x = 2
+                    self.window.move(self.cursor_y, self.cursor_x)
+                    self.window.clrtoeol()
+                    self.window.refresh()
+                    self.raw_text = []
+                    self.raw_text = deepcopy(self.command_history[self.cnt_up_down])
+                    self.window.addstr(self.cursor_y, self.cursor_x, f'{"".join(self.raw_text)}')
+                    self.window.refresh()
+                    self.cnt_up_down = max(self.cnt_up_down - 1, 0)
+                continue
+            elif key == curses.KEY_RIGHT:
+                self.cursor_x += 1
+                #TODO 文字列が折り返していたら、次の段にいく。そうでなければ文字列長まで
+                self.window.move(self.cursor_y, self.cursor_x)
+                continue
+            elif key == curses.KEY_LEFT:
+                self.cursor_x = max(2, self.cursor_x-1)
+                self.window.move(self.cursor_y, self.cursor_x)
+                continue
+
             elif key == curses.KEY_RESIZE:
                 #self.display('RESIZE')
                 #map(self.display, 'RESIZE')
@@ -210,6 +223,7 @@ class Screen():
                 self.window.resize(self.height, self.width)
                 self.window.refresh()
             else:
+                self.raw_text.append(chr(key))
                 self.display(key)
                 #self.display(key)
 
@@ -219,41 +233,50 @@ class Screen():
         pass
 
     def linefeed(self):
-        '''改行したときの'> 'を出す処理'''
+        '''改行したときの処理'''
         #self.display(self.cursor_y)
         #self.display(self.height)
-        if self.cursor_y >= self.height-3:
+        if self.cursor_y >= self.height-1:
+            if self.window.scrollok:
+                self.window.scroll(1)
+
+            '''
             self.height += 1
             self.window.resize(self.height, self.width)
             self.window.refresh()
             #self.display(str(self.height))
             if self.window.scrollok:
                 self.display('SCROLL')
-                #self.window.scroll(-2)
+                #self.window.scroll(1)
+            '''
         self.cursor_y += 1
         self.cursor_x = 2
         self.window.addstr(self.cursor_y, 0, '>', curses.color_pair(3))
         self.window.addstr(self.cursor_y, 1, ' ', curses.color_pair(1))
         self.window.refresh()
         self.window.move(self.cursor_y, self.cursor_x)
-        self.input_text = ''
 
+        self.command_history.appendleft(self.raw_text)
+        self.raw_text = []
+        self.cnt_up_down = 0
+        self.cnt_down = 0
 
     def display(self, arg):
         '''表示用関数'''
-
+        if type(arg) is int:
+            arg = chr(arg)
         # Windowの幅と高さを更新する
         self.height, self.width = self.window.getmaxyx()
 
         # 処理
-        self.window.addstr(self.cursor_y, self.cursor_x, f'{arg }', curses.color_pair(1))
+        self.window.addstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
         #self.cursor_x += get_east_asian_count(chr(arg))
         # カーソルの折り返し処理
         if self.cursor_x + get_east_asian_count(f'{arg}') +1 >= self.width:
             self.cursor_x = 0
             self.cursor_y += 1
         else:
-            self.cursor_x += get_east_asian_count(f'{arg} ')
+            self.cursor_x += get_east_asian_count(f'{arg}')
 
         # 表示を更新する
         self.window.refresh()
