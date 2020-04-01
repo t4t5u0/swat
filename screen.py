@@ -59,13 +59,11 @@ class Screen():
     def init_curses(self):
         '''cursesを初期化する関数'''
         self.window = curses.initscr()
-
         self.height, self.width = self.window.getmaxyx()
-
         self.window.setscrreg(0, self.height-1)
         self.window.keypad(True)
-
         self.window.idlok(True)
+        self.window.scrollok(True)
 
         curses.noecho()
         curses.cbreak()
@@ -159,23 +157,10 @@ class Screen():
             #elif key in map(chr,(curses.ascii.STX, curses.ascii.BS, curses.KEY_BACKSPACE, curses.ascii.DEL)):
             elif key in (curses.ascii.STX, curses.ascii.BS, curses.KEY_BACKSPACE, curses.ascii.DEL):
                 #TODO 日本語を消せるようにする
-
-                #pre_ch = self.window.getstr(self.cursor_y, self.cursor_x)
-                '''
-                if curses.ascii.isascii(pre_ch):
-                    # 全角文字なら2文字分消す
-                    self.window.delch(self.cursor_y, self.cursor_x)
-                    self.cursor_x = max(2, self.cursor_x - 1)
+                if self.cursor_x != 2:
+                    self.window.delch(self.cursor_y, self.cursor_x-1)
                     self.window.refresh()
-                '''
-
-                #self.window.addstr(0, 30, f'pre_ch: {pre_ch}   ')
-                #self.window.refresh()
-                #self.cursor_x = max(2, self.cursor_x - get_east_asian_count(pre_ch))
-                self.cursor_x = max(2, self.cursor_x - 1)
-                self.window.delch(self.cursor_y, self.cursor_x)
-                self.window.move(self.cursor_y, self.cursor_x)
-                self.window.refresh()
+                self.cursor_x = max(2, self.cursor_x-1)
             # 十字キーの処理
             elif key == curses.KEY_UP:
                 #一行消すコマンド
@@ -236,27 +221,22 @@ class Screen():
         '''改行したときの処理'''
         #self.display(self.cursor_y)
         #self.display(self.height)
+        #self.cursor_y += 1
         if self.cursor_y >= self.height-1:
-            if self.window.scrollok:
-                self.window.scroll(1)
-
-            '''
-            self.height += 1
-            self.window.resize(self.height, self.width)
+            self.window.resize(self.height+1, self.width)
             self.window.refresh()
-            #self.display(str(self.height))
-            if self.window.scrollok:
-                self.display('SCROLL')
-                #self.window.scroll(1)
-            '''
-        self.cursor_y += 1
+            self.window.scroll(1)
+        else:
+            self.cursor_y += 1
+        #self.cursor_y += 1
         self.cursor_x = 2
         self.window.addstr(self.cursor_y, 0, '>', curses.color_pair(3))
         self.window.addstr(self.cursor_y, 1, ' ', curses.color_pair(1))
         self.window.refresh()
         self.window.move(self.cursor_y, self.cursor_x)
 
-        self.command_history.appendleft(self.raw_text)
+        if [item for item in self.raw_text if item != ' '] != []:
+            self.command_history.appendleft(self.raw_text)
         self.raw_text = []
         self.cnt_up_down = 0
         self.cnt_down = 0
