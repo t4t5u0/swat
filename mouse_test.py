@@ -52,12 +52,16 @@ with open_screen() as scr:
     while True:
         c = scr.getch()
         if c == curses.KEY_MOUSE:
+            scr.addstr(0, 0, f'{c:3}')
             mouse_state = curses.getmouse()[4]
+            scr.addstr(0, 5, f'{mouse_state:10}')
             states = '; '.join(state_string for state, state_string
                                in curses_mouse_states.items()
                                if mouse_state & state)
-            scr.addstr(0, 0, states)
+            scr.addstr(1, 0, states)
             scr.clrtoeol()
             scr.refresh()
         elif c == ord('q'):
             break
+        else:
+            scr.addstr(0, 0, f'{c:3}')

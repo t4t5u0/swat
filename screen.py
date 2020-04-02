@@ -74,11 +74,12 @@ class Screen():
         curses.init_pair(3, curses.COLOR_GREEN, curses.COLOR_BLACK)
         curses.init_pair(4, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 
+        curses.mousemask(-1)
         # self.current = curses.color_pair(2)
 
         # self.height, self.width = self.window.getmaxyx()
 
-        self.window.addstr(0, 0, 'こんにちは', curses.color_pair(4))
+        self.window.addstr(0, 0, 'Hello', curses.color_pair(4))
         self.window.hline(1,0,'-', 30)
         self.window.addstr(2, 0, '>', curses.color_pair(3))
         self.window.addstr(2, 1, ' ', curses.color_pair(1))
@@ -144,20 +145,32 @@ class Screen():
                 tmp = ''.join([item.zfill(6) for item in tmp])
                 key = int(tmp,2)
             else:
+                #print(f'{key:3}', end='')
                 #特殊キー
                 pass
 
             # キーの判定など
-            if key == (curses.ascii.ETX):
-            #if key == chr(curses.ascii.ETX):
+            if key == curses.KEY_MOUSE:
+                wheel = curses.getmouse()[4]
+                if wheel == 65536:
+                    #self.window.addstr(0, 20, 'wheel_up  ')
+                    self.scroll(self.UP)
+                elif wheel == 2097152:
+                    #self.window.addstr(0, 20, 'wheel_down')
+                    self.scroll(self.DOWN)
+            elif key == (curses.ascii.ETX):
                 exit(0)
             elif key in (curses.ascii.CR, curses.ascii.LF):
-            #elif key in map(chr,(curses.ascii.CR, curses.ascii.LF)):
                 self.linefeed()
-            #elif key in map(chr,(curses.ascii.STX, curses.ascii.BS, curses.KEY_BACKSPACE, curses.ascii.DEL)):
             elif key in (curses.ascii.STX, curses.ascii.BS, curses.KEY_BACKSPACE, curses.ascii.DEL):
                 #TODO 日本語を消せるようにする
                 if self.cursor_x != 2:
+                    #self.window.addstr(0, 12, ''.join(self.raw_text))
+                    #for _ in range(get_east_asian_count(self.raw_text[self.cursor_x])):
+                    #self.display(f'{self.cursor_x}')
+                    #_ = self.raw_text.pop(self.cursor_x-2)
+                    #self.window.addstr(0, 12, ''.join(self.raw_text)+'     ')
+                    self.window.addstr(0, 12, f'{self.cursor_x}       ')
                     self.window.delch(self.cursor_y, self.cursor_x-1)
                     self.window.refresh()
                 self.cursor_x = max(2, self.cursor_x-1)
@@ -174,12 +187,11 @@ class Screen():
                     self.window.addstr(self.cursor_y, self.cursor_x, f'{"".join(self.raw_text)}')
                     self.window.refresh()
                     self.cnt_up_down = min(self.cnt_up_down + 1, len(self.command_history)-1)
-                    #self.display('KEY_UP')
-                    #消えないのと追加できてないこと
+                    self.cursor_x = len(self.raw_text)+1
+                    self.window.move(self.cursor_y, self.cursor_x)
                 continue
-
             elif key == curses.KEY_DOWN:
-                self.display('KEY_DOWN')
+                #self.display('KEY_DOWN')
                 if len(self.command_history) != 0:
                     self.cursor_x = 2
                     self.window.move(self.cursor_y, self.cursor_x)
@@ -190,32 +202,42 @@ class Screen():
                     self.window.addstr(self.cursor_y, self.cursor_x, f'{"".join(self.raw_text)}')
                     self.window.refresh()
                     self.cnt_up_down = max(self.cnt_up_down - 1, 0)
-                continue
+                if self.cnt_up_down == 0:
+                    self.cursor_x = 2
+                    self.window.move(self.cursor_y, self.cursor_x)
+                    self.window.clrtoeol()
+                    self.window.refresh()
             elif key == curses.KEY_RIGHT:
-                self.cursor_x += 1
+                self.cursor_x = min(self.cursor_x + 1, len(self.raw_text)+2)
+                self.window.addstr(0, 12, f'{self.cursor_x:3}   ')
+                self.window.refresh()
                 #TODO 文字列が折り返していたら、次の段にいく。そうでなければ文字列長まで
                 self.window.move(self.cursor_y, self.cursor_x)
-                continue
             elif key == curses.KEY_LEFT:
                 self.cursor_x = max(2, self.cursor_x-1)
+                self.window.addstr(0, 12, f'{self.cursor_x:3}   ')
                 self.window.move(self.cursor_y, self.cursor_x)
-                continue
-
             elif key == curses.KEY_RESIZE:
-                #self.display('RESIZE')
-                #map(self.display, 'RESIZE')
                 self.height, self.width = self.window.getmaxyx()
                 self.window.resize(self.height, self.width)
                 self.window.refresh()
             else:
                 self.raw_text.append(chr(key))
                 self.display(key)
-                #self.display(key)
+                self.window.addstr(0, 12, f'{self.cursor_x:3}')
+                self.window.move(self.cursor_y, self.cursor_x)
 
 
     def scroll(self, direction):
         '''マウスホイールを動かしたときにWindowをスクロールする関数'''
-        pass
+        # TODO 画面外にいくと消えるからそれの対策しなきゃいけない。
+        # もしかしたら結構構成変えなきゃいけないかも
+        if direction == self.UP:
+            if self.cursor_y > 0:
+                self.window.scroll(-1)
+        elif direction == self.DOWN:
+            if self.height-1 < self.cursor_y:
+                self.window.scroll(1)
 
     def linefeed(self):
         '''改行したときの処理'''
@@ -257,6 +279,7 @@ class Screen():
             self.cursor_y += 1
         else:
             self.cursor_x += get_east_asian_count(f'{arg}')
+        #self.window.addstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
 
         # 表示を更新する
         self.window.refresh()
