@@ -1,11 +1,10 @@
 import curses
 import curses.ascii
 import locale
-from curses import wrapper
-from curses import textpad
-from itertools import count
 from collections import deque
 from copy import deepcopy
+from curses import textpad, wrapper
+from itertools import count
 
 from swtool.subcommands import get_east_asian_count
 
@@ -29,6 +28,8 @@ except ImportError:
 class Screen():
     UP = -1
     DOWN = 1
+    WHEEL_UP = 65536
+    WHEEL_DOWN = 2097152
 
     def __init__(self):
         '''初期化関数'''
@@ -60,7 +61,8 @@ class Screen():
         '''cursesを初期化する関数'''
         self.window = curses.initscr()
         self.height, self.width = self.window.getmaxyx()
-        self.window.setscrreg(0, self.height-1)
+        self.top, self.bottom = 0, self.height-1
+        self.window.setscrreg(self.top, self.bottom)
         self.window.keypad(True)
         self.window.idlok(True)
         self.window.scrollok(True)
@@ -75,9 +77,6 @@ class Screen():
         curses.init_pair(4, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 
         curses.mousemask(-1)
-        # self.current = curses.color_pair(2)
-
-        # self.height, self.width = self.window.getmaxyx()
 
         self.window.addstr(0, 0, 'Hello', curses.color_pair(4))
         self.window.hline(1,0,'-', 30)
@@ -152,10 +151,10 @@ class Screen():
             # キーの判定など
             if key == curses.KEY_MOUSE:
                 wheel = curses.getmouse()[4]
-                if wheel == 65536:
+                if wheel == self.WHEEL_UP:
                     #self.window.addstr(0, 20, 'wheel_up  ')
                     self.scroll(self.UP)
-                elif wheel == 2097152:
+                elif wheel == self.WHEEL_DOWN:
                     #self.window.addstr(0, 20, 'wheel_down')
                     self.scroll(self.DOWN)
             elif key == (curses.ascii.ETX):
@@ -168,11 +167,15 @@ class Screen():
                     #self.window.addstr(0, 12, ''.join(self.raw_text))
                     #for _ in range(get_east_asian_count(self.raw_text[self.cursor_x])):
                     #self.display(f'{self.cursor_x}')
-                    #_ = self.raw_text.pop(self.cursor_x-2)
+                    self.raw_text.pop(self.cursor_x-3)
                     #self.window.addstr(0, 12, ''.join(self.raw_text)+'     ')
-                    self.window.addstr(0, 12, f'{self.cursor_x}       ')
+
+                    #self.window.addstr(0, 12, f'{self.cursor_x}')
+                    #TODO ここおかしい
+
                     self.window.delch(self.cursor_y, self.cursor_x-1)
                     self.window.refresh()
+                    self.window.addstr(0, 12, f'{self.cursor_x:3}')
                 self.cursor_x = max(2, self.cursor_x-1)
             # 十字キーの処理
             elif key == curses.KEY_UP:
@@ -188,6 +191,7 @@ class Screen():
                     self.window.refresh()
                     self.cnt_up_down = min(self.cnt_up_down + 1, len(self.command_history)-1)
                     self.cursor_x = len(self.raw_text)+1
+                    self.window.addstr(0, 12, f'{self.cursor_x:3}')
                     self.window.move(self.cursor_y, self.cursor_x)
                 continue
             elif key == curses.KEY_DOWN:
@@ -209,13 +213,13 @@ class Screen():
                     self.window.refresh()
             elif key == curses.KEY_RIGHT:
                 self.cursor_x = min(self.cursor_x + 1, len(self.raw_text)+2)
-                self.window.addstr(0, 12, f'{self.cursor_x:3}   ')
+                self.window.addstr(0, 12, f'{self.cursor_x:3}')
                 self.window.refresh()
                 #TODO 文字列が折り返していたら、次の段にいく。そうでなければ文字列長まで
                 self.window.move(self.cursor_y, self.cursor_x)
             elif key == curses.KEY_LEFT:
                 self.cursor_x = max(2, self.cursor_x-1)
-                self.window.addstr(0, 12, f'{self.cursor_x:3}   ')
+                self.window.addstr(0, 12, f'{self.cursor_x:3}')
                 self.window.move(self.cursor_y, self.cursor_x)
             elif key == curses.KEY_RESIZE:
                 self.height, self.width = self.window.getmaxyx()
@@ -232,9 +236,11 @@ class Screen():
         '''マウスホイールを動かしたときにWindowをスクロールする関数'''
         # TODO 画面外にいくと消えるからそれの対策しなきゃいけない。
         # もしかしたら結構構成変えなきゃいけないかも
+        # 上に行くときは最初にプリントしたやつよりは上にいっちゃだめ
         if direction == self.UP:
             if self.cursor_y > 0:
                 self.window.scroll(-1)
+        # 下に行くときは一番下より下にいっちゃだめ
         elif direction == self.DOWN:
             if self.height-1 < self.cursor_y:
                 self.window.scroll(1)
@@ -245,13 +251,16 @@ class Screen():
         #self.display(self.height)
         #self.cursor_y += 1
         if self.cursor_y >= self.height-1:
-            self.window.resize(self.height+1, self.width)
+            self.height += 1
+            self.window.resize(self.height, self.width)
+            #self.window.setscrreg(self.top, self.height-1)
             self.window.refresh()
             self.window.scroll(1)
         else:
             self.cursor_y += 1
         #self.cursor_y += 1
         self.cursor_x = 2
+        self.window.addstr(0, 12, f'{self.cursor_x:3}')
         self.window.addstr(self.cursor_y, 0, '>', curses.color_pair(3))
         self.window.addstr(self.cursor_y, 1, ' ', curses.color_pair(1))
         self.window.refresh()
@@ -268,7 +277,7 @@ class Screen():
         if type(arg) is int:
             arg = chr(arg)
         # Windowの幅と高さを更新する
-        self.height, self.width = self.window.getmaxyx()
+        #self.height, self.width = self.window.getmaxyx()
 
         # 処理
         self.window.addstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
