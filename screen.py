@@ -158,7 +158,7 @@ class Screen():
                     #self.window.addstr(0, 20, 'wheel_down')
                     self.scroll(self.DOWN)
             elif key == (curses.ascii.ETX):
-                exit(0)
+                break
             elif key in (curses.ascii.CR, curses.ascii.LF):
                 self.linefeed()
             elif key in (curses.ascii.STX, curses.ascii.BS, curses.KEY_BACKSPACE, curses.ascii.DEL):
@@ -179,7 +179,6 @@ class Screen():
                 self.cursor_x = max(2, self.cursor_x-1)
             # 十字キーの処理
             elif key == curses.KEY_UP:
-                #一行消すコマンド
                 if len(self.command_history) != 0:
                     self.cursor_x = 2
                     self.window.move(self.cursor_y, self.cursor_x)
@@ -226,7 +225,7 @@ class Screen():
                 self.window.resize(self.height, self.width)
                 self.window.refresh()
             else:
-                self.raw_text.append(chr(key))
+                #self.raw_text.append(chr(key))
                 self.display(key)
                 self.window.addstr(0, 12, f'{self.cursor_x:3}')
                 self.window.move(self.cursor_y, self.cursor_x)
@@ -280,7 +279,14 @@ class Screen():
         #self.height, self.width = self.window.getmaxyx()
 
         # 処理
-        self.window.addstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
+        # 文末でなければ、addstr ではなく insstr する
+        # 折り返しの処理の関係上、self.raw_textをこの中で扱ったほうが良さそう
+        if len(self.raw_text) == self.cursor_x-2:
+            self.window.addstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
+            self.raw_text.append(arg)
+        else:
+            self.window.insstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
+            self.raw_text.insert(self.cursor_x-2, arg)
         #self.cursor_x += get_east_asian_count(chr(arg))
         # カーソルの折り返し処理
         if self.cursor_x + get_east_asian_count(f'{arg}') +1 >= self.width:
