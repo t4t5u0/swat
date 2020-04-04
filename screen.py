@@ -177,8 +177,6 @@ class Screen():
                     self.window.refresh()
                 self.cursor_x = max(2, self.cursor_x-1)
                 self.window.addstr(0, 12, f'{self.cursor_x:3}')
-                self.window.move(self.cursor_y, self.cursor_x)
-            # 十字キーの処理
             elif key == curses.KEY_UP:
                 if len(self.command_history) != 0:
                     self.cursor_x = 2
