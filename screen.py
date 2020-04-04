@@ -198,6 +198,7 @@ class Screen():
                 #self.display('KEY_DOWN')
                 if len(self.command_history) != 0:
                     self.cursor_x = 2
+                    self.window.addstr(0, 12, f'{self.cursor_x:3}')
                     self.window.move(self.cursor_y, self.cursor_x)
                     self.window.clrtoeol()
                     self.window.refresh()
@@ -208,6 +209,7 @@ class Screen():
                     self.cnt_up_down = max(self.cnt_up_down - 1, 0)
                 if self.cnt_up_down == 0:
                     self.cursor_x = 2
+                    self.window.addstr(0, 12, f'{self.cursor_x:3}')
                     self.window.move(self.cursor_y, self.cursor_x)
                     self.window.clrtoeol()
                     self.window.refresh()
@@ -225,6 +227,10 @@ class Screen():
                 self.height, self.width = self.window.getmaxyx()
                 self.window.resize(self.height, self.width)
                 self.window.refresh()
+            elif key == 1:
+                self.cursor_y, self.cursor_x = 2, 2
+                self.display('^a')
+                self.window.move(self.cursor_y, self.cursor_x)
             else:
                 #self.raw_text.append(chr(key))
                 self.display(key)
@@ -251,7 +257,7 @@ class Screen():
         #self.display(self.cursor_y)
         #self.display(self.height)
         #self.cursor_y += 1
-        if self.cursor_y >= self.height-1:
+        if self.cursor_y == self.height-1:
             self.height += 1
             self.window.resize(self.height, self.width)
             #self.window.setscrreg(self.top, self.height-1)
@@ -261,17 +267,18 @@ class Screen():
             self.cursor_y += 1
         #self.cursor_y += 1
         self.cursor_x = 2
+        self.window.move(self.cursor_y, self.cursor_x)
+        self.window.addstr(self.cursor_y, self.cursor_x, f'self.cursor_y:{self.cursor_y}, self.cursor_x:{self.cursor_x}')
         self.window.addstr(0, 12, f'{self.cursor_x:3}')
         self.window.addstr(self.cursor_y, 0, '>', curses.color_pair(3))
         self.window.addstr(self.cursor_y, 1, ' ', curses.color_pair(1))
         self.window.refresh()
-        self.window.move(self.cursor_y, self.cursor_x)
+        #self.window.move(self.cursor_y, self.cursor_x)
 
         if [item for item in self.raw_text if item != ' '] != []:
             self.command_history.appendleft(self.raw_text)
         self.raw_text = []
         self.cnt_up_down = 0
-        self.cnt_down = 0
 
     def display(self, arg):
         '''表示用関数'''
