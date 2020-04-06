@@ -6,7 +6,8 @@ from copy import deepcopy
 from curses import textpad, wrapper
 from itertools import count
 
-from swtool.subcommands import get_east_asian_count
+
+from subcommands import get_east_asian_count
 
 try:
     from msvcrt import getch
@@ -61,21 +62,26 @@ class Screen():
         '''cursesを初期化する関数'''
         self.window = curses.initscr()
         self.height, self.width = self.window.getmaxyx()
+        self.window.resize(100, 100)
+        #self.window = curses.newpad(self.height, self.width)
         self.top, self.bottom = 0, self.height-1
-        self.window.setscrreg(self.top, self.bottom)
+        #self.window.setscrreg(self.top, self.bottom)
         self.window.keypad(True)
         self.window.idlok(True)
         self.window.scrollok(True)
 
+
         curses.noecho()
         curses.cbreak()
-        #curses.nonl()
+        curses.nonl()
 
         curses.start_color()
         curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
         curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_CYAN)
         curses.init_pair(3, curses.COLOR_GREEN, curses.COLOR_BLACK)
         curses.init_pair(4, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
+
+        self.window.bkgd(0)
 
         curses.mousemask(-1)
 
@@ -159,11 +165,11 @@ class Screen():
                     #self.window.addstr(0, 20, 'wheel_down')
                     self.scroll(self.DOWN)
             elif key == (curses.ascii.ETX):
-                break
+                exit()
             elif key in (curses.ascii.CR, curses.ascii.LF):
                 self.linefeed()
             elif key in (curses.ascii.STX, curses.ascii.BS, curses.KEY_BACKSPACE, curses.ascii.DEL):
-                #TODO 日本語を消せるようにする
+                #TODO 日本語を消せるようにする-> 日本語だったらカーソルを2つ詰めたい
                 if self.cursor_x != 2:
                     #self.window.addstr(0, 12, ''.join(self.raw_text))
                     #for _ in range(get_east_asian_count(self.raw_text[self.cursor_x])):
@@ -172,7 +178,6 @@ class Screen():
                     #self.window.addstr(0, 12, ''.join(self.raw_text)+'     ')
 
                     #self.window.addstr(0, 12, f'{self.cursor_x}')
-                    #TODO ここおかしい
 
                     self.window.delch(self.cursor_y, self.cursor_x-1)
                     self.window.refresh()
@@ -239,9 +244,9 @@ class Screen():
 
 
     def scroll(self, direction):
-        '''マウスホイールを動かしたときにWindowをスクロールする関数'''
+        '''マウスホイールを動かしたときにpadをスクロールする関数'''
         # TODO 画面外にいくと消えるからそれの対策しなきゃいけない。
-        # もしかしたら結構構成変えなきゃいけないかも
+        # もしかしたら結構構成変えなきゃいけないかも(padの話)
         # 上に行くときは最初にプリントしたやつよりは上にいっちゃだめ
         if direction == self.UP:
             if self.cursor_y > 0:
@@ -253,25 +258,46 @@ class Screen():
 
     def linefeed(self):
         '''改行したときの処理'''
-        #self.display(self.cursor_y)
-        #self.display(self.height)
+        # 今の所、表示がおかしい原因と思われるもの
+        # 物理スクリーンの左上を(0, 0)としたときに、
+        # 物理スクリーンに対しての絶対座標に文字列が出力される。
+        # これをscroll()でずらして可視化している。みたいな感じ
+        # scroll() の副作用で空行が挿入されている。(空行で上書きではない)
         #self.cursor_y += 1
         if self.cursor_y == self.height-1:
             self.height += 1
+            #self.window.bkgdset(0)
             self.window.resize(self.height, self.width)
+            self.cursor_x = 2
+            #self.cursor_y += 1
+            #self.display(' test0')
             #self.window.setscrreg(self.top, self.height-1)
+            #self.window.refresh()
+            #self.display(' test1')
+            a, b = self.window.getyx()
+            self.window.scroll()
             self.window.refresh()
-            self.window.scroll(1)
-        else:
-            self.cursor_y += 1
-        #self.cursor_y += 1
+            ####self.window.deleteln()
+            c, d = self.window.getyx()
+            #self.cursor_x = 2
+            #self.display(' test2')
+            #self.window.refresh()
+            #self.display(' test3')
+            hoge = ''
+
+        self.cursor_y += 1
         self.cursor_x = 2
         self.window.move(self.cursor_y, self.cursor_x)
+        #self.window.move(self.cursor_y, self.cursor_x)
         #self.window.addstr(self.cursor_y, self.cursor_x, f'self.cursor_y:{self.cursor_y}, self.cursor_x:{self.cursor_x}')
         self.window.addstr(0, 12, f'{self.cursor_x:3}')
         self.window.addstr(self.cursor_y, 0, '>', curses.color_pair(3))
         self.window.addstr(self.cursor_y, 1, ' ', curses.color_pair(1))
         self.window.refresh()
+        curses.doupdate()
+        self.display(f'self.cursor_y:{self.cursor_y:2}, self.cursor_x:{self.cursor_x:2}')
+        #map(lambda x: self.display(x), f'self.cursor_y:{self.cursor_y:2}, self.cursor_x:{self.cursor_x:2}')
+        #self.window.refresh()
         #self.window.move(self.cursor_y, self.cursor_x)
 
         if [item for item in self.raw_text if item != ' '] != []:
@@ -283,12 +309,13 @@ class Screen():
         '''表示用関数'''
         if type(arg) is int:
             arg = chr(arg)
-        # Windowの幅と高さを更新する
+        # padの幅と高さを更新する
         #self.height, self.width = self.window.getmaxyx()
 
         # 処理
         # 文末でなければ、addstr ではなく insstr する
         # 折り返しの処理の関係上、self.raw_textをこの中で扱ったほうが良さそう
+        #kaisen warui kokomite
         if len(self.raw_text) == self.cursor_x-2:
             self.window.addstr(self.cursor_y, self.cursor_x, f'{arg}', curses.color_pair(1))
             self.raw_text.append(arg)
