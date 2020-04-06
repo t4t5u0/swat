@@ -9,6 +9,7 @@ from itertools import count
 
 from subcommands import get_east_asian_count
 
+'''
 try:
     from msvcrt import getch
 except ImportError:
@@ -23,7 +24,7 @@ except ImportError:
                 return sys.stdin.read(1)
             finally:
                 termios.tcsetattr(fd, termios.TCSADRAIN, old)
-
+'''
 
 
 class Screen():
