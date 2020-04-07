@@ -2,6 +2,7 @@ import curses
 import curses.ascii
 from curses import wrapper
 import locale
+import time
 
 class Screen():
     def __init__(self):
@@ -10,7 +11,7 @@ class Screen():
         curses.cbreak()
         self.stdscr.keypad(True)
         self.width, self.height = self.stdscr.getmaxyx()
-        self.pad = curses.newpad(self.width, self.height*3)
+        self.pad = curses.newpad(self.width, self.height*5)
         self.stdscr.scrollok(True)
         self.stdscr.idlok(True)
         self.pad.scrollok(True)
@@ -25,26 +26,26 @@ class Screen():
     def scroll(self):
         pass
     def main(self, arg):
-        while True:
-            key = self.pad.getch()
-            if key == curses.ascii.ETX:
-                exit()
-            elif  key == curses.KEY_DOWN:
-                self.position += 1
-                self.pad.refresh(self.position, 0, 0, 0, 20, 75)
-            elif key == curses.KEY_UP:
-                self.position -= 1
-                self.pad.refresh(self.position, 0, 0, 0, 20, 75)
-            self.pad.addstr(chr(key))
-            #self.pad.refresh(self.y, self.x, self.sminrow, self.smincol, self.smaxrow, self.smaxcol)
+        time.sleep(5)
+        self.pad.addstr('start')
+        for i in range(15):
+            self.pad.addstr(i+1, 0, f'{i}')
             self.pad.refresh(self.position, 0, 0, 0, 20, 75)
-            self.y += 1
+            time.sleep(0.3)
+        for _ in range(10):
+            self.position += 1
+            self.pad.refresh(self.position, 0, 0, 0, 20, 75)
+            time.sleep(0.3)
+            continue
+        for _ in range(10):
+            self.position -= 1
+            self.pad.refresh(self.position, 0, 0, 0, 20, 75)
+            time.sleep(0.3)
+            continue
+        #self.pad.refresh(self.y, self.x, self.sminrow, self.smincol, self.smaxrow, self.smaxcol)
+        #self.pad.refresh(self.position, 0, 0, 0, 20, 75)
+        #self.y += 1
 
-            '''
-            self.pad.move(self.y, self.x)
-            if self.y > self.height:
-                self.pad.scroll()
-            '''
 
 
 

@@ -146,7 +146,7 @@ class Screen():
                 # 4B 見たことないけどバグ取り
                 for _ in range(3):
                     text_pool.append(self.window.getch())
-                a, b, c ,d = text_pool
+                a, b, c, d = text_pool
                 # 11110xxx 10xxyyyy 10yyyyzz 10zzzzzz
                 tmp = map(lambda x: bin(x)[2:], [0b00000111 & a, 0b00111111 & b, 0b00111111 & c, 0b00111111 & d])
                 tmp = ''.join([item.zfill(6) for item in tmp])
