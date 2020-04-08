@@ -116,4 +116,5 @@ class Command(Cmd):
     def help_help(self):
         print('help cmd で cmd の説明を表示します')
 
-Command().cmdloop()
+if __name__ == '__main__':
+    Command().cmdloop()
