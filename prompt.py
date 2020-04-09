@@ -21,20 +21,28 @@ class Command(Cmd):
         f'{"─"*100}'
     )
 
-
+    current_character = ''
     turn = 0
 
-    # def __init__(self):
-    #     self.turn = 0
-
     def do_append(self, inp):
-        '''append キャラクタ1 キャラクタ2 キャラクタ3 ...
-        
-        '''
-        '''append [chractor] ex: append ギルバード セシル カイン・・・・'''
+        '''append [chracters] ex: append ギルバート ルッキオラ モーラ ...'''
         char = inp.split()
-        for item in char:
-            print(f'add "{item}"')
+        if char == []:
+            print('引数にキャラクタ名を指定してください')
+        else:
+            if len(char) == 1:
+                self.current_character = char[0]
+            conn = sqlite3.connect('./db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            c.execute(
+            '''CREATE TABLE IF NOT EXISTS character_list(
+                id     integer primary key,
+                name   text);
+            ''')
+            for item in char:
+                c.execute('INSERT INTO character_list (name) VALUES (?)', (item,))
+                print(f'append "{item}"')
+            conn.commit()
 
     def do_change(self, inp):
         self.current_character = inp
