@@ -47,8 +47,15 @@ class Command(Cmd):
             conn.commit()
 
     def do_change(self, inp):
-        self.current_character = inp
-        print(f'{self.current_character} を追跡しています')
+        '''効果対象にするキャラクタを変更するコマンド\nchange [character] ex: change ギルバート'''
+        char = inp.split()
+        if len(char) == 0:
+            print('引数が少なすぎます。changeは引数を１つ取ります。詳細は help change で確認してください。')
+        elif len(char) >= 2:
+            print('引数が多すぎます。changeは引数を１つ取ります。詳細は help change で確認してください。')
+        else:
+            self.current_character = char[0]
+            print(f'{self.current_character} を効果の対象にします')
 
     def do_ls(self, inp):
         pass
