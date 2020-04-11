@@ -88,12 +88,27 @@ class Command(Cmd):
     def do_end(self):
         pass
 
-    def do_add(self, arg):
-        if self.current_character == '':
-            print('対象にするキャラクタを設定してください')
+    def do_add(self, inp):
+        '''キャラクタのステータスを変化を記録します。キャラクタを設定していない場合は change コマンドでキャラクタを設定してください。
+        add [propaties]
+        ex: add マッスル・ベア ガゼル・フット'''
+        arg = inp.split('引数が少なすぎます。check は1つ以上の引数をとります。詳細は help add で確認してください。')
+        if len(arg) == 0:
+            print()
         else:
-            for item in arg:
-                print(f'{item} to {self.current_character}')
+            if self.current_character == '':
+                print('対象にするキャラクタを設定してください')
+            else:
+                # スキルが存在しているかを確認しなきゃいけない
+                # skill_list.db を線形探索しにいく
+                # タイポがあったらレーヴェンシュタイン距離を見て、2以下のものを表示したみはある
+                # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
+                for item in arg:
+                    # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
+                    # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
+                    # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
+                    # 
+                    print(f'{item} to {self.current_character}')
 
     def do_remove(self):
         pass
