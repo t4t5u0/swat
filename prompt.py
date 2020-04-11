@@ -139,14 +139,19 @@ class Command(Cmd):
 {'exit':<10}| アプリケーションを終了させる{' '*(40-subcommands.get_east_asian_count('アプリケーションを終了させる'))}| 引数なし{' '*(50-subcommands.get_east_asian_count('引数なし'))}
 {'─'*100}''')
 
-    def do_exit(self, arg):
-        x = input('終了しますか？ [Y/n] ')
-        if x == 'Y' or x == 'y':
-            exit(0)
-        elif x == 'N' or x == 'n':
-            pass
+    def do_exit(self, inp):
+        '''終了用のコマンド'''        
+        arg = inp.split()
+        if len(arg) == 0:
+            x = input('終了しますか？ [Y/n] ')
+            if x == 'Y' or x == 'y':
+                exit(0)
+            elif x == 'N' or x == 'n':
+                pass
+            else:
+                print('中断しました')
         else:
-            print('中断しました')
+            print('引数が多すぎます。exit は引数を取りません。')
 
     def help_help(self):
         print('help cmd で cmd の説明を表示します')
