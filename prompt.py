@@ -35,11 +35,11 @@ class Command(Cmd):
             conn = sqlite3.connect(
                 './db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
-            c.execute(
-                '''CREATE TABLE IF NOT EXISTS character_list(
-                id     integer primary key,
-                name   text);
-            ''')
+            # c.execute(
+            #     '''CREATE TABLE IF NOT EXISTS character_list(
+            #     id     integer primary key,
+            #     name   text);
+            # ''')
             for item in char:
                 c.execute(
                     'INSERT INTO character_list (name) VALUES (?)', (item,))
