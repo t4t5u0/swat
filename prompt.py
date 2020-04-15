@@ -92,9 +92,9 @@ class Command(Cmd):
         '''キャラクタのステータスを変化を記録します。キャラクタを設定していない場合は change コマンドでキャラクタを設定してください。
         add [propaties]
         ex: add マッスル・ベア ガゼル・フット'''
-        arg = inp.split('引数が少なすぎます。check は1つ以上の引数をとります。詳細は help add で確認してください。')
+        arg = inp.split()
         if len(arg) == 0:
-            print()
+            print('引数が少なすぎます。check は1つ以上の引数をとります。詳細は help add で確認してください。')
         else:
             if self.current_character == '':
                 print('対象にするキャラクタを設定してください')
@@ -102,13 +102,18 @@ class Command(Cmd):
                 # スキルが存在しているかを確認しなきゃいけない
                 # skill_list.db を線形探索しにいく
                 # タイポがあったらレーヴェンシュタイン距離を見て、2以下のものを表示したみはある
+                # -> タイポがあった箇所
                 # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
                 for item in arg:
+                    # 数字が入ってきたときはラウンドの上書きなので無視する
+                    if type(item) is int:
+                        pass
                     # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
                     # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
                     # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
-                    # 
-                    print(f'{item} to {self.current_character}')
+                    #
+                    else:
+                        print(f'{item} to {self.current_character}')
 
     def do_remove(self):
         pass
