@@ -77,7 +77,7 @@ class Command(Cmd):
             # ''')
             # conn.commit()
             print(char)
-            for row in c.execute('SELECT skill_name, skill_effect, round FROM　status_list WHERE chara_name == ?;', (char,)):
+            for row in c.execute('SELECT skill_name, skill_effect, round FROM　status_list WHERE chara_name = ?;', (char,)):
                 print(
                     f'skill name:{row[0]:10} skill effect:{row[1]:10} round:{row[2]:10}')
             conn.close()
@@ -104,15 +104,19 @@ class Command(Cmd):
                 # タイポがあったらレーヴェンシュタイン距離を見て、2以下のものを表示したみはある
                 # -> タイポがあった箇所
                 # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
+                # むしろ【】をつけてあげて、部分一致を見ればいいのでは
                 for item in arg:
                     # 数字が入ってきたときはラウンドの上書きなので無視する
-                    if type(item) is int:
+                    # if type(item) is int:
+                    if item in [str(i) for i in range(10)]:
                         pass
                     # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
                     # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
                     # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
                     #
                     else:
+                        # 
+                        item = '【' + item + '】'
                         print(f'{item} to {self.current_character}')
 
     def do_remove(self):
