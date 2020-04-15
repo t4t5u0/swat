@@ -1,7 +1,8 @@
+# coding: UTF-8
+
 import sys
 
-from swtool  import database_commands
-
+from swtool import database_commands
 
 def main():
     arg = sys.argv
