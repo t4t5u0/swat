@@ -1,6 +1,5 @@
 import json
 import sqlite3
-import sys
 from glob import glob
 
 # ユーザ定義型 その1
