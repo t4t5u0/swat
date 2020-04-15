@@ -1,4 +1,8 @@
-from swtool.database_commands import *
+# coding: UTF-8
+
+import sys
+
+from swtool import database_commands
 
 def main():
     arg = sys.argv
@@ -20,37 +24,37 @@ def main():
             exit(0)
         if arg in '--all':
             # 全部消す
-            delete_character_list()
-            delete_status_list()
-            delete_skill_list()
+            database_commands.delete_character_list()
+            database_commands.delete_status_list()
+            database_commands.delete_skill_list()
             exit(0)
         if '--character_list' in arg:
             # キャラクタ一覧が入ってる
-            delete_character_list()
+            database_commands.delete_character_list()
         if '--status_list' in arg:
             # キャラクタ毎のステータスが入ってる
-            delete_status_list()
+            database_commands.delete_status_list()
         if '--skill_list' in arg:
             # ステータス変動がある技能一覧や効果の一覧が入ってる
-            delete_skill_list()
+            database_commands.delete_skill_list()
 
     # ファイル生成系
     else:
         if '--all' in arg:
             # 全部更新する
-            create_character_list()
-            create_status_list()
-            create_skill_list()
+            database_commands.create_character_list()
+            database_commands.create_status_list()
+            database_commands.create_skill_list()
             exit(0)
         if '--character_list' in arg:
             # キャラクタ一覧が入ってる
-            create_character_list()
+            database_commands.create_character_list()
         if '--status_list' in arg:
             # キャラクタ毎のステータスが入ってる
-            create_status_list()
+            database_commands.create_status_list()
         if '--skill_list' in arg:
             # ステータス変動がある技能一覧や効果の一覧が入ってる
-            create_skill_list()
+            database_commands.create_skill_list()
 
 
 if __name__ == '__main__':

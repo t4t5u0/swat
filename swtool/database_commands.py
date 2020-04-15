@@ -1,14 +1,12 @@
 import json
 import sqlite3
-import sys
 from glob import glob
 
 # ユーザ定義型 その1
 List = list
 # (lambda l: list(l) if type(l) != list else l)]))
 sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
-sqlite3.register_converter('IntList', lambda s: [
-                           str(i) for i in s.split(bytes(b';'))])
+sqlite3.register_converter('IntList', lambda s: [str(i) for i in s.split(bytes(b';'))])
 
 # ユーザ定義型 その2
 Bool = bool
@@ -18,29 +16,33 @@ sqlite3.register_converter('Bool', lambda l: bool(eval(l)))
 
 def create_character_list():
     conn = sqlite3.connect(
-        '../db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        './db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
     c = conn.cursor()
     c.execute(
         '''CREATE TABLE IF NOT EXISTS character_list(
         id     integer primary key,
         name   text);
-    ''')
+        ''')
     conn.commit()
     conn.close()
 
 
 def create_status_list():
     conn = sqlite3.connect(
-        '../db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        './db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
     c = conn.cursor()
     c.execute(
         '''CREATE TABLE IF NOT EXISTS status_list(
-        id     integer primary key,
+        id              integer primary key,
         chara_name      text,
         skill_name      text,
         skill_effect    text,
-        round           integer);
-        );
+        round           integer
+        use_2d6         Bool,
+        use_1d6         Bool,
+        count           Bool,
+        choice          Bool,
+        ef_table        integer);
         ''')
     conn.commit()
     conn.close()
@@ -48,7 +50,7 @@ def create_status_list():
 
 def create_skill_list():
     conn = sqlite3.connect(
-        '../db/skill_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        './db/skill_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
     c = conn.cursor()
     c.execute(
         '''CREATE TABLE IF NOT EXISTS skill_list(
@@ -70,7 +72,7 @@ def create_skill_list():
     # 初期化のためにレコードを削除する
     c.execute('DELETE FROM skill_list;')
 
-    file_list = glob('../json_data/*.json')
+    file_list = glob('./json_data/*.json')
     for file_ in file_list:
         with open(file_) as f:
             df = json.load(f)
@@ -83,7 +85,7 @@ def create_skill_list():
 
 
 def delete_character_list():
-    conn = sqlite3.connect('../db/character_list.db',
+    conn = sqlite3.connect('./db/character_list.db',
                            detect_types=sqlite3.PARSE_COLNAMES)
     c = conn.cursor()
     c.execute('DELETE FROM character_list;')
@@ -92,7 +94,7 @@ def delete_character_list():
 
 
 def delete_skill_list():
-    conn = sqlite3.connect('../db/skill_list.db',
+    conn = sqlite3.connect('./db/skill_list.db',
                            detect_types=sqlite3.PARSE_COLNAMES)
     c = conn.cursor()
     c.execute('DELETE FROM skill_list;')
@@ -101,7 +103,7 @@ def delete_skill_list():
 
 
 def delete_status_list():
-    conn = sqlite3.connect('../db/status_list.db',
+    conn = sqlite3.connect('./db/status_list.db',
                            detect_types=sqlite3.PARSE_COLNAMES)
     c = conn.cursor()
     c.execute('DELETE FROM status_list;')
