@@ -33,7 +33,8 @@ class Command(Cmd):
             if len(char) == 1:
                 self.current_character = char[0]
             conn = sqlite3.connect(
-                './db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                #'./db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             # c.execute(
             #     '''CREATE TABLE IF NOT EXISTS character_list(
@@ -72,19 +73,12 @@ class Command(Cmd):
             print('引数が多すぎます。check は引数を1つとります。詳細は help check で確認してください。')
         else:
             char = char[0]
-            conn = sqlite3.connect('./db/status_list.db',
-                                   detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                #'./db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
-            # c.execute('''CREATE TABLE IF NOT EXISTS status_list(
-            #     id              integer primary key,
-            #     chara_name      text,
-            #     skill_name      text,
-            #     skill_effect    text,
-            #     round           integer);
-            # ''')
-            # conn.commit()
             print(char)
-            for row in c.execute('SELECT skill_name, skill_effect, round FROM　status_list WHERE chara_name = ?;', (char,)):
+            for row in c.execute('SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;', (char,)):
                 print(
                     f'skill name:{row[0]:10} skill effect:{row[1]:10} round:{row[2]:10}')
             conn.close()
@@ -126,10 +120,8 @@ class Command(Cmd):
                         # LIKE句を使って検索が必要
                         # IIがあるやつの処理がめんどくさい。
                         # プレイヤーは宣言特技か魔法かその他の効果なのか区別しないで使いたい
-                        conn_status = sqlite3.connect('./db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
-                        conn_skill = sqlite3.connect('./db/skill.list.db', detect_types=sqlite3.PARSE_DECLTYPES)
-                        c_1 = conn_status.cursor()
-                        c_2 = conn_skill.cursor()
+                        conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                        c = conn.cursor()
 
                         print(f'{item} to {self.current_character}')
 
