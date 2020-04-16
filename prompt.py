@@ -112,6 +112,7 @@ class Command(Cmd):
                 # -> タイポがあった箇所
                 # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
                 # むしろ【】をつけてあげて、部分一致を見ればいいのでは
+                #   -> これは間違いで、魔法が【】、宣言特技が〈〈〉〉
                 for item in arg:
                     # 数字が入ってきたときはラウンドの上書きなので無視する
                     # if type(item) is int:
@@ -122,8 +123,14 @@ class Command(Cmd):
                     # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
                     #
                     else:
-                        # 
-                        item = '【' + item + '】'
+                        # LIKE句を使って検索が必要
+                        # IIがあるやつの処理がめんどくさい。
+                        # プレイヤーは宣言特技か魔法かその他の効果なのか区別しないで使いたい
+                        conn_status = sqlite3.connect('./db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                        conn_skill = sqlite3.connect('./db/skill.list.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                        c_1 = conn_status.cursor()
+                        c_2 = conn_skill.cursor()
+
                         print(f'{item} to {self.current_character}')
 
     def do_remove(self):
