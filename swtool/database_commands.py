@@ -95,8 +95,7 @@ def delete_character_list():
     c.execute('DELETE FROM character_list;')
     conn.commit()
     conn.close()
-
-
+    
 def delete_skill_list():
     conn = sqlite3.connect(
         './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
