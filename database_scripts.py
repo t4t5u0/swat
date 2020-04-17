@@ -22,7 +22,7 @@ def main():
             print('引数が少なすぎます。作成するデータベースファイルを選んでください')
             print('$ python database_scripts.py --help')
             exit(0)
-        if arg in '--all':
+        if '--all' in arg:
             # 全部消す
             database_commands.delete_character_list()
             database_commands.delete_status_list()

@@ -39,7 +39,7 @@ def create_status_list():
         chara_name      text,
         skill_name      text,
         skill_effect    text,
-        round           integer
+        round           integer,
         use_2d6         Bool,
         use_1d6         Bool,
         count           Bool,
@@ -62,8 +62,8 @@ def create_skill_list():
         effect List,
         type   text,
         round  integer,
-        use_2d6  Bool default 'false',
-        use_1d6  Bool default 'false',
+        use_2d6 Bool default 'false',
+        use_1d6 Bool default 'false',
         count  Bool default 'false',
         choice Bool default 'false',
         ef_table  integer default '-1'
