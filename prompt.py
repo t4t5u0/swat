@@ -127,10 +127,10 @@ class Command(Cmd):
                         INSERT INTO status_list (
                             chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
                         )
-                        SELECT '?', name, effect, round, use_2d6, use_1d6, count, choice, ef_table
+                        SELECT ?, name, effect, round, use_2d6, use_1d6, count, choice, ef_table
                         FROM skill_list
-                        WHERE name LIKE '%?%'     
-                        ''', (self.current_character, item))
+                        WHERE name LIKE ?     
+                        ''', ('%'+self.current_character+'%', item))
                         print(f'{item} to {self.current_character}')
                         conn.commit()
     def do_remove(self):
