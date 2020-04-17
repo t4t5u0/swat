@@ -107,7 +107,7 @@ class Command(Cmd):
                 # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
                 # むしろ【】をつけてあげて、部分一致を見ればいいのでは
                 #   -> これは間違いで、魔法が【】、宣言特技が〈〈〉〉
-                for i, item in enumerate(arg):
+                for _, item in enumerate(arg):
                     # 数字が入ってきたときはラウンドの上書きなので無視する
                     # if type(item) is int:
                     if item in [str(i) for i in range(10)]:
