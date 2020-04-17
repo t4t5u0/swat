@@ -39,7 +39,7 @@ def create_status_list():
         chara_name      text,
         skill_name      text,
         skill_effect    text,
-        round           integer
+        round           integer,
         use_2d6         Bool,
         use_1d6         Bool,
         count           Bool,
