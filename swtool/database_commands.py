@@ -62,8 +62,8 @@ def create_skill_list():
         effect List,
         type   text,
         round  integer,
-        use_2d6  Bool default 'false',
-        use_1d6  Bool default 'false',
+        use_2d6 Bool default 'false',
+        use_1d6 Bool default 'false',
         count  Bool default 'false',
         choice Bool default 'false',
         ef_table  integer default '-1'
