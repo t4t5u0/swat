@@ -70,7 +70,22 @@ class Command(Cmd):
                 print(i+1, item[0])
 
     def do_kill(self, inp):
-        pass
+        '''キャラクタ削除用のコマンド。 引数は1以上、--all を指定した場合はすべて消す'''
+        char = inp.split()
+        if len(char) == 0:
+            print('引数を1つ以上とります。')
+        elif '--all' in char:
+            conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            c.execute('DELETE * FROM character_list')
+            conn.commit()
+        else:
+            conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            for item in char:
+                c.execute('DELETE * FROM character_list WHERE name = ?', (item,))
+            conn.commit()
+
 
     def do_check(self, inp):
         '''ステータス確認用のコマンド\ncheck [character] ex: check ギルバート'''
