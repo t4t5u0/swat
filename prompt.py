@@ -83,7 +83,7 @@ class Command(Cmd):
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for item in char:
-                c.execute('DELETE * FROM character_list WHERE name = ?', (item,))
+                c.execute('DELETE FROM character_list WHERE name = ?', (item,))
             conn.commit()
 
 
