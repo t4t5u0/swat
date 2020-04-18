@@ -59,7 +59,15 @@ class Command(Cmd):
             print(f'{self.current_character} を効果の対象にします')
 
     def do_ls(self, inp):
-        pass
+        '''キャラクタ一覧を確認する'''
+        char = inp.split()
+        if len(char) != 0:
+            print('ls は引数なしです。詳しくは help ls')
+        else:
+            conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            for i, item in enumerate(c.execute('SELECT name FROM character_list')):
+                print(i+1, item[0])
 
     def do_kill(self, inp):
         '''キャラクタ削除用のコマンド。 引数は1以上、--all を指定した場合はすべて消す'''
@@ -75,7 +83,7 @@ class Command(Cmd):
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for item in char:
-                c.execute('DELETE * FROM character_list WHERE name = ?', (item,))
+                c.execute('DELETE FROM character_list WHERE name = ?', (item,))
             conn.commit()
 
 
