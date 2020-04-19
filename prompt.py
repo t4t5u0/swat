@@ -83,8 +83,18 @@ class Command(Cmd):
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for item in char:
-                c.execute('DELETE FROM character_list WHERE name = ?', (item,))
+                c.execute('SELECT COUNT (*) FROM character_list WHERE name = ?', (item,))
+                n = c.fetchone()[0]
+                #print(n)
+                if n == 1:
+                    c.execute('DELETE FROM character_list WHERE name = ?', (item,))
+                    print(f'{item} を削除しました。')
+                else:
+                    print(f'{item} というキャラは存在しません。')
             conn.commit()
+        # 消去するキャラがcurrent_characterならcurrent_chara を初期化 
+        if self.current_character in char:
+            self.current_character = ''
 
 
     def do_check(self, inp):
