@@ -163,7 +163,7 @@ class Command(Cmd):
                         SELECT ?, name, effect, round, use_2d6, use_1d6, count, choice, ef_table
                         FROM skill_list
                         WHERE name LIKE ?     
-                        ''', ('%'+self.current_character+'%', item))
+                        ''', (self.current_character, f'%{item}%'))
                         print(f'{item} to {self.current_character}')
                         conn.commit()
     def do_remove(self):
