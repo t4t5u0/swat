@@ -156,6 +156,8 @@ class Command(Cmd):
                         # プレイヤーは宣言特技か魔法かその他の効果なのか区別しないで使いたい
                         conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
                         c = conn.cursor()
+                        # INSERT する前に技能の検索を行うほうがよさそう
+                        # 
                         c.execute('''
                         INSERT INTO status_list (
                             chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
@@ -166,6 +168,7 @@ class Command(Cmd):
                         ''', (self.current_character, f'%{item}%'))
                         print(f'{item} to {self.current_character}')
                         conn.commit()
+                        
     def do_remove(self):
         pass
 
