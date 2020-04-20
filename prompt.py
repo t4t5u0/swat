@@ -139,7 +139,7 @@ class Command(Cmd):
                 # -> タイポがあった箇所
                 # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
                 # むしろ【】をつけてあげて、部分一致を見ればいいのでは
-                #   -> これは間違いで、魔法が【】、宣言特技が〈〈〉〉
+                #   -> これは間違いで、魔法が【】、宣言特技が<<>>
                 for _, item in enumerate(arg):
                     # 数字が入ってきたときはラウンドの上書きなので無視する
                     # if type(item) is int:
@@ -148,7 +148,7 @@ class Command(Cmd):
                     # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
                     # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
                     # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
-                    #
+                    # 
                     else:
                         #t = arg[i+1] if arg[i+1] in [str(i) for i in range(10)] else False
                         # LIKE句を使って検索が必要
@@ -158,17 +158,25 @@ class Command(Cmd):
                         c = conn.cursor()
                         # INSERT する前に技能の検索を行うほうがよさそう
                         # 
-                        c.execute('''
-                        INSERT INTO status_list (
-                            chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
-                        )
-                        SELECT ?, name, effect, round, use_2d6, use_1d6, count, choice, ef_table
-                        FROM skill_list
-                        WHERE name LIKE ?     
-                        ''', (self.current_character, f'%{item}%'))
+                        c.execute('SELECT name FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
+                        tmp = c.fetchone()
+                        print(tmp)
+                        c.execute('SELECT effect FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
+                        effects = c.fetchone()[0].split(';')
+                        print(tmp)
+                        # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
+                        for effect in effects:
+                            c.execute('''
+                            INSERT INTO status_list (
+                                chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
+                            )
+                            SELECT ?, name, ?, round, use_2d6, use_1d6, count, choice, ef_table
+                            FROM skill_list
+                            WHERE name LIKE ?
+                            ''', (self.current_character, effect, f'%{item}%'))
+                            conn.commit()
                         print(f'{item} to {self.current_character}')
-                        conn.commit()
-                        
+
     def do_remove(self):
         pass
 
