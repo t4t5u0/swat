@@ -159,8 +159,24 @@ class Command(Cmd):
                         # INSERT する前に技能の検索を行うほうがよさそう
                         # 
                         c.execute('SELECT name FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
-                        tmp = c.fetchone()
-                        print(tmp)
+                        # fetchall するとタプルのリストで返ってくる
+                        skill_names = c.fetchall()
+                        print(skill_names)
+                        if len(skill_names) > 1:
+                            # 検索して複数見つかった場合の処理
+                            for i, skill_name in enumerate(skill_names):
+                                skill_name = skill_name[0]
+                                print(i, skill_name)
+                            else:
+                                try:
+                                    index = int(input('追加したい技能の番号を入力してください:'))
+                                    item = skill_names[0][index]
+                                    print(item)
+                                except:
+                                    pass
+                                #     print('数字を入力してください')
+                                #     break
+
                         c.execute('SELECT effect FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
                         effects = c.fetchone()[0].split(';')
                         print(effects)
