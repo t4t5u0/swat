@@ -74,7 +74,7 @@ def create_skill_list():
 
     # 初期化のためにレコードを削除する
     c.execute('DELETE FROM skill_list;')
-
+    print('ok')
     file_list = glob('./json_data/*.json')
     for file_ in file_list:
         with open(file_) as f:
