@@ -157,8 +157,7 @@ class Command(Cmd):
                         # プレイヤーは宣言特技か魔法かその他の効果なのか区別しないで使いたい
                         conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
                         c = conn.cursor()
-                        # INSERT する前に技能の検索を行うほうがよさそう
-                        # 
+                        # INSERT する前に技能の検索を行う
                         c.execute('SELECT name FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
                         # fetchall するとタプルのリストで返ってくる
                         skill_names = c.fetchall()
@@ -166,36 +165,40 @@ class Command(Cmd):
                         if len(skill_names) > 1:
                             # 検索して複数見つかった場合の処理
                             for i, skill_name in enumerate(skill_names):
-                                skill_name = skill_name[0]
-                                print(i, skill_name)
+                                #skill_name = skill_name[0]
+                                print(i, skill_name[0])
                             else:
                                 try:
                                     index = int(input('追加したい技能の番号を入力してください:'))
-                                    item = skill_names[index][0]
+                                    skill_name = skill_names[index][0]
                                 except:
                                     print('有効な数字を入力してください')
                                     break
+                                print(skill_name)
                         elif len(skill_names) == 1:
                             skill_name = skill_names[0][0]
+                            print(skill_name)
                         else:
                             print('技能が存在しません。')
-                        
+                            break
+
                         # 技能の効果をばらしている
-                        c.execute('SELECT effect FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
+                        c.execute('SELECT effect FROM skill_list WHERE name = ?',(skill_name,))
                         effects = c.fetchone()[0].split(';')
                         print(effects)
-                        c.execute('SELECT choice FROM skill_list WHERE name = ?',(item,))
-                        
-                        # choice のフラグを見る。
+
+                        # choice フラグを見る
+                        c.execute('SELECT choice FROM skill_list WHERE name = ?',(skill_name,))
                         choice_flag = c.fetchone()
-                        print(choice_flag)
-                        if choice_flag:
+                        print(f'{choice_flag[0]}')
+                        if eval(f'{choice_flag[0]}'):
                             for i, effect in enumerate(effects):
                                 print(i, effect)
                             else:
                                 try:
                                     index = int(input('追加したい効果の番号を入力してください:'))
-                                    effect = effects[index]
+                                    effects = [effects[index]]
+                                    #print(effect)
                                 except:
                                     print('有効な数字を入力してください')
                                     break
@@ -210,10 +213,10 @@ class Command(Cmd):
                             )
                             SELECT ?, name, ?, round, use_2d6, use_1d6, count, choice, ef_table
                             FROM skill_list
-                            WHERE name LIKE ?
-                            ''', (self.current_character, effect, f'%{item}%'))
+                            WHERE name = ?
+                            ''', (self.current_character, effect, skill_name))
                             conn.commit()
-                        print(f'{item} to {self.current_character}')
+                        print(f'{skill_name} to {self.current_character}')
 
     def do_remove(self):
         pass
