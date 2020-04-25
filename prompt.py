@@ -77,7 +77,7 @@ class Command(Cmd):
         elif '--all' in char:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
-            c.execute('DELETE * FROM character_list')
+            c.execute('DELETE FROM character_list')
             conn.commit()
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
@@ -126,6 +126,7 @@ class Command(Cmd):
         '''キャラクタのステータスを変化を記録します。キャラクタを設定していない場合は change コマンドでキャラクタを設定してください。
         add [propaties]
         ex: add マッスル・ベア ガゼル・フット'''
+        # TODO:choise フラグを見る(ウェポン・マスターなど)
         arg = inp.split()
         if len(arg) == 0:
             print('引数が少なすぎます。check は1つ以上の引数をとります。詳細は help add で確認してください。')
@@ -174,11 +175,34 @@ class Command(Cmd):
                                 except:
                                     print('有効な数字を入力してください')
                                     break
-
+                        elif len(skill_names) == 1:
+                            skill_name = skill_names[0][0]
+                        else:
+                            print('技能が存在しません。')
+                        
+                        # 技能の効果をばらしている
                         c.execute('SELECT effect FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
                         effects = c.fetchone()[0].split(';')
                         print(effects)
+                        c.execute('SELECT choice FROM skill_list WHERE name = ?',(item,))
+                        
+                        # choice のフラグを見る。
+                        choice_flag = c.fetchone()
+                        print(choice_flag)
+                        if choice_flag:
+                            for i, effect in enumerate(effects):
+                                print(i, effect)
+                            else:
+                                try:
+                                    index = int(input('追加したい効果の番号を入力してください:'))
+                                    effect = effects[index]
+                                except:
+                                    print('有効な数字を入力してください')
+                                    break
+
+                        # 挿入部分
                         # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
+                        # ここのLIKE句消せるから消す
                         for effect in effects:
                             c.execute('''
                             INSERT INTO status_list (
