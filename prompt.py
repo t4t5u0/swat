@@ -163,7 +163,7 @@ class Command(Cmd):
                         print(tmp)
                         c.execute('SELECT effect FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
                         effects = c.fetchone()[0].split(';')
-                        print(tmp)
+                        print(effects)
                         # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
                         for effect in effects:
                             c.execute('''
