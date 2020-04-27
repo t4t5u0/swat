@@ -36,6 +36,7 @@ class Command(Cmd):
             # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
             if len(char) == 1:
                 self.current_character = char[0]
+                print(f'{self.current_character} を効果の対象にします')
             for item in char:
                 c.execute('SELECT COUNT (name) FROM character_list WHERE name = ?', (item,))
                 if c.fetchone()[0]:
@@ -102,7 +103,10 @@ class Command(Cmd):
         char = inp.split()
         if len(char) == 0:
             if self.current_character == '':
-                print('引数が少なすぎます。check は引数を1つとります。詳細は help check で確認してください。')
+                print('引数が少なすぎます。check は引数を1つとります。',end='')
+                print('デフォルトでは、現在追従中のキャラクタが設定されています。',end='')
+                print('詳細は help check で確認してください。')
+                return
             else:
                 # 下の行でスライスするからリストにキャスト
                 char = [self.current_character]
