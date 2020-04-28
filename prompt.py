@@ -80,6 +80,7 @@ class Command(Cmd):
             c = conn.cursor()
             c.execute('DELETE FROM character_list')
             c.execute('DELETE FROM status_list')
+            self.current_character = ''
             conn.commit()
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
