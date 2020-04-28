@@ -128,8 +128,38 @@ class Command(Cmd):
                 f'skill name:{row[0]:10} skill effect:{row[1]:10} round:{row[2]:10}')
         conn.close()
 
-    def do_start(self):
-        pass
+    def do_start(self, inp):
+        '''手番開始時の処理。start [character] '''
+        # デフォルトではself.current_character を渡す。
+        chara_name = inp.split()
+        if len(chara_name) == 0:
+            if self.current_character == '':
+                print('キャラクタを選択してください。 help start')
+                return
+            else:
+                chara_name = [self.current_character]
+        elif len(chara_name) > 1:
+            print('引数が多すぎます。 help start')
+            return
+        chara_name = chara_name[0]
+        conn = sqlite3.connect('./db/data.db')
+        c = conn.cursor()
+        c.execute('SELECT round FROM status_list WHERE chara_name = ?', (chara_name,))
+        round_list = c.fetchall()
+        print(round_list)
+        # あるキャラクタの技能のラウンドをすべて1減少
+        round_list = [i[0] for i in round_list]
+        round_list = list(map(lambda x: x-1 if x>0 else x, round_list))
+        print(round_list)
+        round_and_character = [(item, self.current_character) for item in round_list]
+        print(f'round_and_character:{round_and_character}')
+        # (round, chara_name) のタプルにしたい
+        # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
+        c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', ((item, self.current_character) for item in round_list))
+        # c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', round_and_character)
+        c.execute('DELETE FROM status_list WHERE round = 0 AND chara_name = ?', (chara_name,))
+        conn.commit()
+
 
     def do_end(self):
         pass
