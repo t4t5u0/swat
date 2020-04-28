@@ -228,41 +228,26 @@ class Command(Cmd):
 
     def do_rm(self, inp):
         '''追従しているキャラの技能を削除するコマンド, 一度に複数消去可'''
+        arg = inp.split()
         if self.current_character == '':
             print('対象にするキャラクタを設定してください')
+        elif len(arg) == 0:
+            print('rm は引数を1つ以上取ります。 help rm')
         else:
-            arg = inp.split()
             conn = sqlite3.connect('./db/data.db')
             c = conn.cursor()
             for item in arg:
                 # skill_list の skill_name をLIKE検索する
                 # 同名で複数効果を持っているものがあるから、それに対応する(ヘイストなど)
+                # 効果単位ではなく技能単位で消去したい
                 c.execute('SELECT skill_name FROM status_list WHERE chara_name = ? AND skill_name LIKE ?',(self.current_character, f'%{item}%'))
                 # fetchall するとタプルのリストで返ってくる
-                skill_names = c.fetchall()
+                # 技能の重複を削除
+                skill_names = list(set(c.fetchall()[0]))
                 print(skill_names)
-                if len(skill_names) > 1:
-                    # 検索して複数見つかった場合の処理
-                    for i, skill_name in enumerate(skill_names):
-                        #skill_name = skill_name[0]
-                        print(i, skill_name[0])
-                    else:
-                        try:
-                            index = int(input('削除したい技能の番号を入力してください:'))
-                            skill_name = skill_names[index][0]
-                        except:
-                            print('有効な数字を入力してください')
-                            break
-                        print(skill_name)
-                elif len(skill_names) == 1:
-                    skill_name = skill_names[0][0]
-                    print(skill_name)
-                else:
-                    print('技能が存在しません。')
-                    break
-                # skill_name に消したいものが入ってる
-                c.execute('DELETE FROM status_list WHERE skill_name = ? AND chara_name = ?', (skill_name, self.current_character))
-                #n = c.fetchone()
+                for _, skill_name in enumerate(skill_names):
+                    c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',(self.current_character, skill_name))
+                
                 conn.commit()
 
     def do_neko(self, inp):
