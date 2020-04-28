@@ -226,8 +226,29 @@ class Command(Cmd):
                             conn.commit()
                         print(f'{skill_name} to {self.current_character}')
 
-    def do_remove(self):
-        pass
+    def do_rm(self, inp):
+        '''追従しているキャラの技能を削除するコマンド, 一度に複数消去可'''
+        arg = inp.split()
+        if self.current_character == '':
+            print('対象にするキャラクタを設定してください')
+        elif len(arg) == 0:
+            print('rm は引数を1つ以上取ります。 help rm')
+        else:
+            conn = sqlite3.connect('./db/data.db')
+            c = conn.cursor()
+            for item in arg:
+                # skill_list の skill_name をLIKE検索する
+                # 同名で複数効果を持っているものがあるから、それに対応する(ヘイストなど)
+                # 効果単位ではなく技能単位で消去したい
+                c.execute('SELECT skill_name FROM status_list WHERE chara_name = ? AND skill_name LIKE ?',(self.current_character, f'%{item}%'))
+                # fetchall するとタプルのリストで返ってくる
+                # 技能の重複を削除
+                skill_names = list(set(c.fetchall()[0]))
+                print(skill_names)
+                for _, skill_name in enumerate(skill_names):
+                    c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',(self.current_character, skill_name))
+                
+                conn.commit()
 
     def do_neko(self, inp):
         '''にゃーん'''
