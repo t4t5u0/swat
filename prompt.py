@@ -79,6 +79,7 @@ class Command(Cmd):
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('DELETE FROM character_list')
+            c.execute('DELETE FROM status_list')
             conn.commit()
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
@@ -88,11 +89,13 @@ class Command(Cmd):
                 n = c.fetchone()[0]
                 #print(n)
                 if n == 1:
+                    c.execute('DELETE FROM status_list WHERE name = ?', (item,))
                     c.execute('DELETE FROM character_list WHERE name = ?', (item,))
                     print(f'{item} を削除しました。')
                 else:
                     print(f'{item} というキャラは存在しません。')
             conn.commit()
+        conn.close()
         # 消去するキャラがcurrent_characterならcurrent_chara を初期化 
         if self.current_character in char:
             self.current_character = ''
