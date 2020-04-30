@@ -9,6 +9,7 @@ from cmd import Cmd
 
 from swtool import subcommands
 from swtool.color import Color
+from boto.dynamodb import item
 
 
 class Command(Cmd):
@@ -150,16 +151,22 @@ class Command(Cmd):
         print(round_list)
         # あるキャラクタの技能のラウンドをすべて1減少
         # タプルからリストに変形
-        round_list = [[*item] for item in round_list]
+        round_list = list(map(list, round_list))
         # round_list[i][2] をデクリメントする
-        round_list = list(map(lambda x: x-1 if x>0 else x, round_list))
+        # round_list =[list(map(lambda x: x[2]-1 if x[2]>0 else x[2], item)) for item in round_list]
+        for i, _ in enumerate(round_list):
+            if round_list[i][2] > 0:
+                round_list[i][2] -= 1
         print(round_list)
-        round_and_character = [(item, self.current_character) for item in round_list]
-        print(f'round_and_character:{round_and_character}')
-        # (round, chara_name) のタプルにしたい
+        #round_and_character = [(item, self.current_character) for item in round_list]
+        print(f'round_list:{round_list}')
+        # (chara_name, skill_name, round) のタプルで入ってくるがクエリに合わせるために軸を入れ替える
+        # (round, chara_name, skill_name) の形にしたい
+        round_list = [(item[2], item[0], item[1]) for item in round_list]
+        print(round_list)
         # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
         # 技能名を指定していないから、末尾の要素ですべて上書きする
-        c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', ((item, self.current_character) for item in round_list))
+        c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?', round_list)
         # c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', round_and_character)
         c.execute('DELETE FROM status_list WHERE round = 0 AND chara_name = ?', (chara_name,))
         conn.commit()
@@ -323,7 +330,7 @@ class Command(Cmd):
 {'─'*100}''')
 
     def do_exit(self, inp):
-        '''終了用のコマンド'''        
+        '''終了用のコマンド'''
         arg = inp.split()
         if len(arg) == 0:
             x = input('終了しますか？ [Y/n] ')
