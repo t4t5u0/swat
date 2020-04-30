@@ -144,17 +144,21 @@ class Command(Cmd):
         chara_name = chara_name[0]
         conn = sqlite3.connect('./db/data.db')
         c = conn.cursor()
-        c.execute('SELECT round FROM status_list WHERE chara_name = ?', (chara_name,))
+        # c.execute('SELECT round FROM status_list WHERE chara_name = ?', (chara_name,))
+        c.execute('SELECT chara_name, skill_name, round FROM status_list WHERE chara_name = ?', (chara_name,))
         round_list = c.fetchall()
         print(round_list)
         # あるキャラクタの技能のラウンドをすべて1減少
-        round_list = [i[0] for i in round_list]
+        # タプルからリストに変形
+        round_list = [[*item] for item in round_list]
+        # round_list[i][2] をデクリメントする
         round_list = list(map(lambda x: x-1 if x>0 else x, round_list))
         print(round_list)
         round_and_character = [(item, self.current_character) for item in round_list]
         print(f'round_and_character:{round_and_character}')
         # (round, chara_name) のタプルにしたい
         # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
+        # 技能名を指定していないから、末尾の要素ですべて上書きする
         c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', ((item, self.current_character) for item in round_list))
         # c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', round_and_character)
         c.execute('DELETE FROM status_list WHERE round = 0 AND chara_name = ?', (chara_name,))
