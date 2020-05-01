@@ -86,3 +86,5 @@ skill name:【ウェポン・マスター】 skill effect:{'戦闘特技付与':
 > exit
 終了しますか？ [Y/n] y
 ```
+
+TODO:コマンド1つ1つの仕様を記載する
