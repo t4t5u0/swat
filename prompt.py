@@ -117,7 +117,7 @@ class Command(Cmd):
                 char = [self.current_character]
         elif len(char) >= 2:
             print('引数が多すぎます。check は引数を1つとります。詳細は help check で確認してください。')
-        
+
         char = char[0]
         conn = sqlite3.connect(
             './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
@@ -153,7 +153,7 @@ class Command(Cmd):
         # タプルからリストに変形
         round_list = list(map(list, round_list))
         # round_list[i][2] をデクリメントする
-        # round_list =[list(map(lambda x: x[2]-1 if x[2]>0 else x[2], item)) for item in round_list]
+        # round_list = [list(map(lambda x: x[2]-1 if x[2]>0 else x[2], item)) for item in round_list]
         for i, _ in enumerate(round_list):
             if round_list[i][2] > 0:
                 round_list[i][2] -= 1
@@ -204,10 +204,7 @@ class Command(Cmd):
                     # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
                     # 
                     else:
-                        #t = arg[i+1] if arg[i+1] in [str(i) for i in range(10)] else False
-                        # LIKE句を使って検索が必要
-                        # IIがあるやつの処理がめんどくさい。
-                        # プレイヤーは宣言特技か魔法かその他の効果なのか区別しないで使いたい
+                        # 技能名に対してLIKE検索を行う
                         conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
                         c = conn.cursor()
                         # INSERT する前に技能の検索を行う
@@ -258,18 +255,31 @@ class Command(Cmd):
 
                         # 挿入部分
                         # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
-                        # ここのLIKE句消せるから消す
-                        for effect in effects:
-                            c.execute('''
-                            INSERT INTO status_list (
-                                chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
-                            )
-                            SELECT ?, name, ?, round, use_2d6, use_1d6, count, choice, ef_table
-                            FROM skill_list
-                            WHERE name = ?
-                            ''', (self.current_character, effect, skill_name))
-                            conn.commit()
-                        print(f'{skill_name} to {self.current_character}')
+                        # ここのLIKE句消せるから消す(消した)
+                        # status_list にアクセスして、技能が存在しているかを確かめる
+                        # 存在していなかったら、INSERT句を実行する
+                        # 存在しているときは、UPDATE句を実行する
+                        # CASE のところをPyでかく。SQLでどうやるかわかんないので
+                        c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',(self.current_character, skill_name))
+                        if c.fetchone()[0] >= 1:
+                            # 同名技能がすでに存在していたら残りラウンド数を上書きする
+                            c.execute('SELECT round FROM skill_list WHERE name = ?',(skill_name,))
+                            rounds = c.fetchone()[0]
+                            c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
+                                (rounds ,self.current_character, skill_name))
+                        else:
+                            # そうでなければ新しく挿入する
+                            for effect in effects:
+                                c.execute('''
+                                INSERT INTO status_list (
+                                    chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
+                                )
+                                SELECT ?, name, ?, round, use_2d6, use_1d6, count, choice, ef_table
+                                FROM skill_list
+                                WHERE name = ?
+                                ''', (self.current_character, effect, skill_name))
+                                conn.commit()
+                            print(f'{skill_name} to {self.current_character}')
 
     def do_rm(self, inp):
         '''追従しているキャラの技能を削除するコマンド, 一度に複数消去可'''
