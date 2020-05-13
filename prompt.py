@@ -37,15 +37,15 @@ class Command(Cmd):
             # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
             if len(char) == 1:
                 self.current_character = char[0]
-                print(f'{self.current_character} を効果の対象にします')
+                print(f'<{self.current_character}> を効果の対象にします')
             for item in char:
                 c.execute('SELECT COUNT (name) FROM character_list WHERE name = ?', (item,))
                 if c.fetchone()[0]:
-                    print(f'{item}はすでに存在しています')
+                    print(f'<{item}> はすでに存在しています')
                     continue
                 c.execute(
                     'INSERT INTO character_list (name) VALUES (?)', (item,))
-                print(f'{item} をキャラクタリストに追加しました')
+                print(f'<{item}> をキャラクタリストに追加しました')
             conn.commit()
             conn.close()
 
@@ -58,7 +58,7 @@ class Command(Cmd):
             print('引数が多すぎます。changeは引数を１つ取ります。詳細は help change で確認してください。')
         else:
             self.current_character = char[0]
-            print(f'{self.current_character} を効果の対象にします')
+            print(f'<{self.current_character}> を効果の対象にします')
 
     def do_ls(self, inp):
         '''キャラクタ一覧を確認する'''
@@ -83,6 +83,7 @@ class Command(Cmd):
             c.execute('DELETE FROM status_list')
             self.current_character = ''
             conn.commit()
+            print('すべてのキャラクタを削除しました')
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
@@ -93,9 +94,9 @@ class Command(Cmd):
                 if n == 1:
                     c.execute('DELETE FROM status_list WHERE name = ?', (item,))
                     c.execute('DELETE FROM character_list WHERE name = ?', (item,))
-                    print(f'{item} を削除しました。')
+                    print(f'<{item}> を削除しました。')
                 else:
-                    print(f'{item} というキャラは存在しません。')
+                    print(f'<{item}> というキャラは存在しません。')
             conn.commit()
         conn.close()
         # 消去するキャラがcurrent_characterならcurrent_chara を初期化 
@@ -124,9 +125,10 @@ class Command(Cmd):
             #'./db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
         print(char)
+        print('-'*100)
         for row in c.execute('SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;', (char,)):
             print(
-                f'skill name:{row[0]:10} skill effect:{row[1]:10} round:{row[2]:10}')
+                f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
         conn.close()
 
     def do_start(self, inp):
