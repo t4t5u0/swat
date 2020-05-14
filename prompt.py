@@ -72,7 +72,7 @@ class Command(Cmd):
                 print(i+1, item[0])
 
     def do_kill(self, inp):
-        '''キャラクタ削除用のコマンド。 引数は1以上、--all を指定した場合はすべて消す'''
+        '''キャラクタ削除用のコマンド。 引数は1つ以上、--all を指定した場合はすべて消す'''
         char = inp.split()
         if len(char) == 0:
             print('引数を1つ以上とります。')
@@ -92,7 +92,7 @@ class Command(Cmd):
                 n = c.fetchone()[0]
                 #print(n)
                 if n == 1:
-                    c.execute('DELETE FROM status_list WHERE name = ?', (item,))
+                    c.execute('DELETE FROM status_list WHERE chara_name = ?', (item,))
                     c.execute('DELETE FROM character_list WHERE name = ?', (item,))
                     print(f'<{item}> を削除しました。')
                 else:
