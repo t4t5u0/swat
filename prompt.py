@@ -9,7 +9,7 @@ from cmd import Cmd
 
 from swtool import subcommands
 from swtool.color import Color
-from boto.dynamodb import item
+# from boto.dynamodb import item
 
 
 class Command(Cmd):
