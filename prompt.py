@@ -174,7 +174,7 @@ class Command(Cmd):
         conn.commit()
 
 
-    def do_end(self):
+    def do_end(self, inp):
         pass
 
     def do_add(self, inp):
