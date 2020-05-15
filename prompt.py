@@ -307,6 +307,18 @@ class Command(Cmd):
                 
                 conn.commit()
 
+    def do_reset(self, inp):
+        '''戦闘終了時の処理。状態を初期化する'''
+        arg = inp.split()
+        if len(arg) !=  0:
+            print('reset は引数を取りません')
+            return
+        conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        c = conn.cursor()
+        c.execute('DELETE FROM status_list WHERE round > 0')
+        conn.commit()
+        print('戦闘終了')
+
     def do_neko(self, inp):
         '''にゃーん'''
         l = inp.split()
