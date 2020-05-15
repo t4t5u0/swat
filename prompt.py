@@ -367,6 +367,5 @@ class Command(Cmd):
     do_ap = do_append
     do_ck = do_check
 
-
 if __name__ == '__main__':
     Command().cmdloop()
