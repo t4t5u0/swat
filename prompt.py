@@ -7,7 +7,7 @@ import sqlite3
 import sys
 from cmd import Cmd
 
-from swtool import subcommands
+from swtool.subcommands import *
 from swtool.color import Color
 # from boto.dynamodb import item
 
@@ -116,20 +116,28 @@ class Command(Cmd):
             else:
                 # 下の行でスライスするからリストにキャスト
                 char = [self.current_character]
-        elif len(char) >= 2:
-            print('引数が多すぎます。check は引数を1つとります。詳細は help check で確認してください。')
+        # 複数キャラを見たいという要望があった
+        # elif len(char) >= 2:
+        #     print('引数が多すぎます。check は引数を1つとります。詳細は help check で確認してください。')
+        print(f'{"名前":^{15-count_east_asian_character("名前")}}|\
+{"スキル名":^{30-count_east_asian_character("スキル名")}}\
+{"残りラウンド":^{15-count_east_asian_character("残りラウンド")}}\
+{"効果":^{20-count_east_asian_character("効果")}}')
+        print('─'*100)
+        for ch in char:
+            conn = sqlite3.connect(
+                './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
+            for i, row in enumerate(c.execute(quely, (ch,))):
+                print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|\
+{row[0]:^{30-count_east_asian_character(row[0])}}\
+{row[2]:^{15-count_east_asian_character(str(row[2]))}}\
+{row[1]:^{20-count_east_asian_character(row[1])}}")
+                # print(f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
+            conn.close()
+            print('─'*100)
 
-        char = char[0]
-        conn = sqlite3.connect(
-            './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-            #'./db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
-        c = conn.cursor()
-        print(char)
-        print('-'*100)
-        for row in c.execute('SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;', (char,)):
-            print(
-                f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
-        conn.close()
 
     def do_start(self, inp):
         '''手番開始時の処理。start [character] '''
@@ -303,8 +311,7 @@ class Command(Cmd):
                 skill_names = list(set(c.fetchall()[0]))
                 print(skill_names)
                 for _, skill_name in enumerate(skill_names):
-                    c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',(self.current_character, skill_name))
-                
+                    c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',(self.current_character, skill_name)) 
                 conn.commit()
 
     def do_reset(self, inp):
@@ -338,18 +345,18 @@ class Command(Cmd):
         print(f"{'─'*100}")
         print(f"{'name':^10}| {'explanation':^40}| {'arguments':^50}")
         print(f"{'─'*100}")
-        print(f"{'append':<10}| キャラクタを追加{' '*(40-subcommands.get_east_asian_count('キャラクタを追加'))}| キャラクタ1 キャラクタ2 キャラクタ3 ...{' '*(50-subcommands.get_east_asian_count('キャラクタ1 キャラクタ2 キャラクタ3 ...'))}")
-        print(f"{'change':<10}| 状態を変更したいキャラクタを変更{' '*(40-subcommands.get_east_asian_count('状態を変更したいキャラクタを変更'))}| キャラクタ/キャラクタID{' '*(50-subcommands.get_east_asian_count('キャラクタ/キャラクタID'))}")
-        print(f"{'ls':<10}| キャラクタ一覧を表示{' '*(40-subcommands.get_east_asian_count('キャラクタ一覧を表示'))}| 引数なし{' '*(50-subcommands.get_east_asian_count('引数なし'))}")
-        print(f"{'kill':<10}| キャラクタを消去{' '*(40-subcommands.get_east_asian_count('キャラクタを消去'))}| キャラクタ/キャラクタID{' '*(50-subcommands.get_east_asian_count('キャラクタ/キャラクタID'))}")
-        print(f"{'add':<10}| 技能・呪文などを付与{' '*(40-subcommands.get_east_asian_count('技能・呪文などを付与'))}| 技能・呪文など 効果ラウンド上書き(オプショナル){' '*(50-subcommands.get_east_asian_count('技能・呪文など 効果ラウンド上書き(オプショナル)'))}")
-        print(f"{'remove':<10}| 技能・呪文などを消去{' '*(40-subcommands.get_east_asian_count('技能・呪文などを消去'))}| 技能・呪文など/状態ID{' '*(50-subcommands.get_east_asian_count('技能・呪文など/状態ID'))}")
-        print(f"{'check':<10}| 技能・呪文などの一覧を表示{' '*(40-subcommands.get_east_asian_count('技能・呪文などの一覧を表示'))}| 引数なし/キャラクタ/キャラクタID{' '*(50-subcommands.get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
-        print(f"{'start':<10}| 手番を開始{' '*(40-subcommands.get_east_asian_count('手番を開始'))}| 引数なし{' '*(50-subcommands.get_east_asian_count('引数なし'))}")
-        print(f"{'end':<10}| 手番を終了{' '*(40-subcommands.get_east_asian_count('手番を終了'))}| 引数なし{' '*(50-subcommands.get_east_asian_count('引数なし'))}")
-        print(f"{'neko':<10}| にゃーん{' '*(40-subcommands.get_east_asian_count('にゃーん'))}| 引数なし{' '*(50-subcommands.get_east_asian_count('引数なし'))}")
-        print(f"{'helps':<10}| これ{' '*(40-subcommands.get_east_asian_count('これ'))}| 引数なし{' '*(50-subcommands.get_east_asian_count('引数なし'))}")
-        print(f"{'exit':<10}| アプリケーションを終了させる{' '*(40-subcommands.get_east_asian_count('アプリケーションを終了させる'))}| 引数なし{' '*(50-subcommands.get_east_asian_count('引数なし'))}")
+        print(f"{'append':<10}| キャラクタを追加{' '*(40-get_east_asian_count('キャラクタを追加'))}| キャラクタ1 キャラクタ2 キャラクタ3 ...{' '*(50-get_east_asian_count('キャラクタ1 キャラクタ2 キャラクタ3 ...'))}")
+        print(f"{'change':<10}| 状態を変更したいキャラクタを変更{' '*(40-get_east_asian_count('状態を変更したいキャラクタを変更'))}| キャラクタ/キャラクタID{' '*(50-get_east_asian_count('キャラクタ/キャラクタID'))}")
+        print(f"{'ls':<10}| キャラクタ一覧を表示{' '*(40-get_east_asian_count('キャラクタ一覧を表示'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
+        print(f"{'kill':<10}| キャラクタを消去{' '*(40-get_east_asian_count('キャラクタを消去'))}| キャラクタ/キャラクタID{' '*(50-get_east_asian_count('キャラクタ/キャラクタID'))}")
+        print(f"{'add':<10}| 技能・呪文などを付与{' '*(40-get_east_asian_count('技能・呪文などを付与'))}| 技能・呪文など 効果ラウンド上書き(オプショナル){' '*(50-get_east_asian_count('技能・呪文など 効果ラウンド上書き(オプショナル)'))}")
+        print(f"{'remove':<10}| 技能・呪文などを消去{' '*(40-get_east_asian_count('技能・呪文などを消去'))}| 技能・呪文など/状態ID{' '*(50-get_east_asian_count('技能・呪文など/状態ID'))}")
+        print(f"{'check':<10}| 技能・呪文などの一覧を表示{' '*(40-get_east_asian_count('技能・呪文などの一覧を表示'))}| 引数なし/キャラクタ/キャラクタID{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
+        print(f"{'start':<10}| 手番を開始{' '*(40-get_east_asian_count('手番を開始'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
+        print(f"{'end':<10}| 手番を終了{' '*(40-get_east_asian_count('手番を終了'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
+        print(f"{'neko':<10}| にゃーん{' '*(40-get_east_asian_count('にゃーん'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
+        print(f"{'helps':<10}| これ{' '*(40-get_east_asian_count('これ'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
+        print(f"{'exit':<10}| アプリケーションを終了させる{' '*(40-get_east_asian_count('アプリケーションを終了させる'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
         print(f"{'─'*100}''')")
 
 
