@@ -76,6 +76,7 @@ class Command(Cmd):
         char = inp.split()
         if len(char) == 0:
             print('引数を1つ以上とります。')
+            return
         elif '--all' in char:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
@@ -83,6 +84,7 @@ class Command(Cmd):
             c.execute('DELETE FROM status_list')
             self.current_character = ''
             conn.commit()
+            conn.close()
             print('すべてのキャラクタを削除しました')
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
@@ -98,7 +100,7 @@ class Command(Cmd):
                 else:
                     print(f'<{item}> というキャラは存在しません。')
             conn.commit()
-        conn.close()
+            conn.close()
         # 消去するキャラがcurrent_characterならcurrent_chara を初期化 
         if self.current_character in char:
             self.current_character = ''
