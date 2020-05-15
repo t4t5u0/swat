@@ -370,7 +370,7 @@ class Command(Cmd):
         if len(arg) == 0:
             x = input('終了しますか？ [Y/n] ')
             if x == 'Y' or x == 'y':
-                exit(0)
+                sys.exit()
             elif x == 'N' or x == 'n':
                 pass
             else:
