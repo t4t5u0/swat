@@ -124,9 +124,13 @@ class Command(Cmd):
 {"残りラウンド":^{15-count_east_asian_character("残りラウンド")}}\
 {"効果":^{20-count_east_asian_character("効果")}}')
         print('─'*100)
+        if '--all' in char:
+            conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            c.execute('SELECT name FROM character_list')
+            char = [item[0] for item in c.fetchall()]
         for ch in char:
-            conn = sqlite3.connect(
-                './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
             for i, row in enumerate(c.execute(quely, (ch,))):
