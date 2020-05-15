@@ -358,6 +358,15 @@ class Command(Cmd):
     def help_help(self):
         print('help cmd で cmd の説明を表示します')
 
+    def emptyline(self):
+        pass
+
+    # alias
+    do_ad = do_add
+    do_ch = do_change
+    do_ap = do_append
+    do_ck = do_check
+
 
 if __name__ == '__main__':
     Command().cmdloop()
