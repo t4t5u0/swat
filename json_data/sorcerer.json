@@ -62,19 +62,6 @@
         "table": -1
     },
     {
-        "name": "【バイタリティ】",
-        "effect": [
-            "生命抵抗力判定+2"
-        ],
-        "type": "SOR",
-        "round": 18,
-        "2d6": false,
-        "1d6": false,
-        "count": false,
-        "choice": false,
-        "table": -1
-    },
-    {
         "name": "【ウォール・ウォーキング】",
         "effect": [
             "壁や天井を歩くことができる"
@@ -151,19 +138,6 @@
         ],
         "type": "SOR",
         "round": -1,
-        "2d6": false,
-        "1d6": false,
-        "count": false,
-        "choice": false,
-        "table": -1
-    },
-    {
-        "name": "【ウォール・ウォーキング】",
-        "effect": [
-            "壁や天井を歩くことができる"
-        ],
-        "type": "SOR",
-        "round": 18,
         "2d6": false,
         "1d6": false,
         "count": false,
