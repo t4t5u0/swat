@@ -8,6 +8,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -21,6 +22,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -35,6 +37,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": true,
         "table": -1
@@ -57,6 +60,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": true,
         "table": -1
@@ -70,6 +74,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -83,6 +88,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -101,6 +107,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": true,
         "table": -1
@@ -114,6 +121,7 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -127,6 +135,7 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -140,6 +149,7 @@
         "round": -1,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -154,6 +164,7 @@
         "round": 6,
         "2d6": false,
         "1d6": true,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -167,6 +178,7 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -181,6 +193,7 @@
         "round": 6,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -194,6 +207,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
