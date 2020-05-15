@@ -369,9 +369,9 @@ class Command(Cmd):
         arg = inp.split()
         if len(arg) == 0:
             x = input('終了しますか？ [Y/n] ')
-            if x == 'Y' or x == 'y':
+            if x in ['y', 'Y']:
                 sys.exit()
-            elif x == 'N' or x == 'n':
+            elif x in ['n', 'N']:
                 pass
             else:
                 print('中断しました')
