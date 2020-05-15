@@ -13,8 +13,8 @@
     {
         "name"  : "name",
         "effect": [
-            {"効果を書く。1つの場合も[]が必要": ""},
-            {"[]の中に複数ある場合はコンマ区切り": ""}
+            "効果を書く。1つの場合も[]が必要",
+            "[]の中に複数ある場合はコンマ区切り"
         ],
         "type"  : ["この中から1つ選ぶ。[]はいらない", "該当しない場合は空欄",
             "",
@@ -23,10 +23,10 @@
             "SCO", "RAN", "SAG", "ENH", "BAR", "RID", "ALC", "WAR", "MIS"
         ],
         "round" : 0,
-        "2d6"   : [true, false],
-        "1d6"   : [true, false],
-        "count" : [true, false],
-        "choice": [true, false],
-        "resist": [true, false]
+        "2d6"   : false,
+        "1d6"   : false,
+        "count" : false,
+        "choice": false,
+        "resist": false
     }
 ]
