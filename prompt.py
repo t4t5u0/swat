@@ -38,6 +38,7 @@ class Command(Cmd):
             if len(char) == 1:
                 self.current_character = char[0]
                 print(f'<{self.current_character}> を効果の対象にします')
+                self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
             for item in char:
                 c.execute('SELECT COUNT (name) FROM character_list WHERE name = ?', (item,))
                 if c.fetchone()[0]:
@@ -59,6 +60,7 @@ class Command(Cmd):
         else:
             self.current_character = char[0]
             print(f'<{self.current_character}> を効果の対象にします')
+            self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
 
     def do_ls(self, inp):
         '''キャラクタ一覧を確認する'''
@@ -86,6 +88,7 @@ class Command(Cmd):
             conn.commit()
             conn.close()
             print('すべてのキャラクタを削除しました')
+            self.prompt = f'{Color.GREEN}> {Color.RESET}'
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
@@ -104,6 +107,7 @@ class Command(Cmd):
         # 消去するキャラがcurrent_characterならcurrent_chara を初期化 
         if self.current_character in char:
             self.current_character = ''
+            self.prompt = f'{Color.GREEN}> {Color.RESET}'
 
 
     def do_check(self, inp):
@@ -211,7 +215,7 @@ class Command(Cmd):
             return
 
 
-            
+
 
     def do_add(self, inp):
         '''キャラクタのステータスを変化を記録します。キャラクタを設定していない場合は change コマンドでキャラクタを設定してください。
