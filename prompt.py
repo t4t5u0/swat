@@ -10,7 +10,6 @@ from cmd import Cmd
 from swtool.subcommands import count_east_asian_character
 from swtool.subcommands import get_east_asian_count
 from swtool.color import Color
-# from boto.dynamodb import item
 
 
 class Command(Cmd):
@@ -162,25 +161,20 @@ class Command(Cmd):
         chara_name = chara_name[0]
         conn = sqlite3.connect('./db/data.db')
         c = conn.cursor()
-        # c.execute('SELECT round FROM status_list WHERE chara_name = ?', (chara_name,))
         c.execute('SELECT chara_name, skill_name, round FROM status_list WHERE chara_name = ?', (chara_name,))
         round_list = c.fetchall()
-        print(round_list)
         # あるキャラクタの技能のラウンドをすべて1減少
         # タプルからリストに変形
         round_list = list(map(list, round_list))
         # round_list[i][2] をデクリメントする
-        # round_list = [list(map(lambda x: x[2]-1 if x[2]>0 else x[2], item)) for item in round_list]
         for i, _ in enumerate(round_list):
             if round_list[i][2] > 0:
                 round_list[i][2] -= 1
-        print(round_list)
         #round_and_character = [(item, self.current_character) for item in round_list]
-        print(f'round_list:{round_list}')
+        # print(f'round_list:{round_list}')
         # (chara_name, skill_name, round) のタプルで入ってくるがクエリに合わせるために軸を入れ替える
         # (round, chara_name, skill_name) の形にしたい
         round_list = [(item[2], item[0], item[1]) for item in round_list]
-        print(round_list)
         # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
         # 技能名を指定していないから、末尾の要素ですべて上書きする
         c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?', round_list)
@@ -255,7 +249,7 @@ class Command(Cmd):
                         c.execute('SELECT name FROM skill_list WHERE name LIKE ?',(f'%{item}%',))
                         # fetchall するとタプルのリストで返ってくる
                         skill_names = c.fetchall()
-                        print(skill_names)
+                        # print(skill_names)
                         if len(skill_names) > 1:
                             # 検索して複数見つかった場合の処理
                             for i, skill_name in enumerate(skill_names):
@@ -279,13 +273,13 @@ class Command(Cmd):
                         # 技能の効果をばらしている
                         c.execute('SELECT effect FROM skill_list WHERE name = ?',(skill_name,))
                         effects = c.fetchone()[0].split(';')
-                        print(effects)
+                        # print(effects)
 
                         # choice フラグを見る
                         c.execute('SELECT choice FROM skill_list WHERE name = ?',(skill_name,))
                         choice_flag = c.fetchone()
-                        print(f'{choice_flag[0]}')
-                        if eval(f'{choice_flag[0]}'):
+                        # print(type(choice_flag[0]))
+                        if eval(choice_flag[0]):
                             for i, effect in enumerate(effects):
                                 print(i, effect)
                             else:
@@ -311,6 +305,7 @@ class Command(Cmd):
                             rounds = c.fetchone()[0]
                             c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
                                 (rounds ,self.current_character, skill_name))
+                            print(f'{skill_name}はすでに存在しているため上書きしました')
                         else:
                             # そうでなければ新しく挿入する
                             for effect in effects:
@@ -323,7 +318,7 @@ class Command(Cmd):
                                 WHERE name = ?
                                 ''', (self.current_character, effect, skill_name))
                                 conn.commit()
-                            print(f'{skill_name} to {self.current_character}')
+                            print(f'{skill_name} を {self.current_character} に付与しました')
 
     def do_rm(self, inp):
         '''追従しているキャラの技能を削除するコマンド, 一度に複数消去可'''
@@ -343,9 +338,10 @@ class Command(Cmd):
                 # fetchall するとタプルのリストで返ってくる
                 # 技能の重複を削除
                 skill_names = list(set(c.fetchall()[0]))
-                print(skill_names)
+                # print(skill_names)
                 for _, skill_name in enumerate(skill_names):
-                    c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',(self.current_character, skill_name)) 
+                    c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',(self.current_character, skill_name))
+                    print(f'{skill_name}を削除しました')
                 conn.commit()
 
     def do_reset(self, inp):
