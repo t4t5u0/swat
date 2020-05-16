@@ -189,7 +189,29 @@ class Command(Cmd):
 
 
     def do_end(self, inp):
-        pass
+        '''手番終了時に効果が発動するものをサジェストする'''
+        # 保守性を上げるため、関数内関数を用いる
+        def process(arg):
+            conn = sqlite3.connect('./db/data.db')
+            c = conn.cursor()
+            for row in c.execute('SELECT chara_name, skill_name, round FROM status_list WHERE use_end = true'):
+                print(row)
+
+        arg = inp.split()
+        char = ''
+        if len(arg) == 0:
+            if self.current_character == '':
+                print('chenge コマンドでキャラクタを指定してください')
+            else:
+                process(self.current_character)
+        elif len(arg) == 1:
+            process(arg[0])
+        else:
+            print('引数が多すぎる')
+            return
+
+
+            
 
     def do_add(self, inp):
         '''キャラクタのステータスを変化を記録します。キャラクタを設定していない場合は change コマンドでキャラクタを設定してください。
