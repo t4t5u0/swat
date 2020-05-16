@@ -8,6 +8,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -21,6 +22,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -35,6 +37,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": true,
         "table": -1
@@ -57,21 +60,9 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": true,
-        "table": -1
-    },
-    {
-        "name": "【バイタリティ】",
-        "effect": [
-            "生命抵抗力判定+2"
-        ],
-        "type": "SOR",
-        "round": 18,
-        "2d6": false,
-        "1d6": false,
-        "count": false,
-        "choice": false,
         "table": -1
     },
     {
@@ -83,6 +74,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -96,6 +88,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -114,6 +107,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": true,
         "table": -1
@@ -127,6 +121,7 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -140,6 +135,7 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "end": true,
         "count": false,
         "choice": false,
         "table": -1
@@ -153,19 +149,7 @@
         "round": -1,
         "2d6": false,
         "1d6": false,
-        "count": false,
-        "choice": false,
-        "table": -1
-    },
-    {
-        "name": "【ウォール・ウォーキング】",
-        "effect": [
-            "壁や天井を歩くことができる"
-        ],
-        "type": "SOR",
-        "round": 18,
-        "2d6": false,
-        "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -180,6 +164,7 @@
         "round": 6,
         "2d6": false,
         "1d6": true,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -193,6 +178,7 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1
@@ -201,12 +187,13 @@
         "name": "【ライトニング・バインド】",
         "effect": [
             "すべての行動判定-2",
-            "ライトニング・バインド"
+            "手番終了時にk20@13+魔力点の雷属性D"
         ],
         "type": "SOR",
         "round": 6,
         "2d6": false,
         "1d6": false,
+        "end": true,
         "count": false,
         "choice": false,
         "table": -1
@@ -214,12 +201,13 @@
     {
         "name": "【マジック・リフレクション】",
         "effect": [
-            "マジック・リフレクション"
+            "一度だけ魔法を反射する"
         ],
         "type": "SOR",
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "end": false,
         "count": false,
         "choice": false,
         "table": -1

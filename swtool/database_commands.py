@@ -42,6 +42,7 @@ def create_status_list():
         round           integer,
         use_2d6         Bool,
         use_1d6         Bool,
+        use_end         Bool,
         count           Bool,
         choice          Bool,
         ef_table        integer);
@@ -64,6 +65,7 @@ def create_skill_list():
         round  integer,
         use_2d6 Bool default 'false',
         use_1d6 Bool default 'false',
+        use_end Bool default 'false',
         count  Bool default 'false',
         choice Bool default 'false',
         ef_table  integer default '-1'
@@ -77,12 +79,12 @@ def create_skill_list():
     print('ok')
     file_list = glob('./json_data/*.json')
     for file_ in file_list:
-        with open(file_) as f:
+        with open(file_, encoding='utf8') as f:
             df = json.load(f)
         for data in df:
             #pprint.pprint(data, width=40)
-            c.execute('INSERT INTO skill_list(name, effect, type, round, use_2d6, use_1d6, count, choice, ef_table) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                      (data['name'], data['effect'], data['type'], data['round'], data['2d6'], data['1d6'], data['count'], data['choice'], data['table']))
+            c.execute('INSERT INTO skill_list(name, effect, type, round, use_2d6, use_1d6, use_end, count, choice, ef_table) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                      (data['name'], data['effect'], data['type'], data['round'], data['2d6'], data['1d6'], data['end'], data['count'], data['choice'], data['table']))
             conn.commit()
     conn.close()
 

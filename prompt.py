@@ -76,6 +76,7 @@ class Command(Cmd):
         char = inp.split()
         if len(char) == 0:
             print('引数を1つ以上とります。')
+            return
         elif '--all' in char:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
@@ -83,6 +84,7 @@ class Command(Cmd):
             c.execute('DELETE FROM status_list')
             self.current_character = ''
             conn.commit()
+            conn.close()
             print('すべてのキャラクタを削除しました')
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
@@ -98,7 +100,7 @@ class Command(Cmd):
                 else:
                     print(f'<{item}> というキャラは存在しません。')
             conn.commit()
-        conn.close()
+            conn.close()
         # 消去するキャラがcurrent_characterならcurrent_chara を初期化 
         if self.current_character in char:
             self.current_character = ''
@@ -187,7 +189,34 @@ class Command(Cmd):
 
 
     def do_end(self, inp):
-        pass
+        '''手番終了時に効果が発動するものをサジェストする'''
+        # 保守性を上げるため、関数内関数を用いる
+        def process(arg):
+            conn = sqlite3.connect('./db/data.db')
+            c = conn.cursor()
+            result = c.execute("SELECT DISTINCT chara_name, skill_name, round , use_end FROM status_list WHERE chara_name = ? AND use_end = 'True'", (arg,))
+            result = list(result)
+            if len(list(result)) == 0:
+                print('手番終了時に行う処理はありません')
+            else:
+                for row in result:
+                    print(f'{row[1]}の処理を行ってください')
+            conn.close()
+
+        arg = inp.split()
+        if len(arg) == 0:
+            if self.current_character == '':
+                print('chenge コマンドでキャラクタを指定してください')
+            else:
+                process(self.current_character)
+        elif len(arg) == 1:
+            process(arg[0])
+        else:
+            print('引数が多すぎます')
+            return
+
+
+            
 
     def do_add(self, inp):
         '''キャラクタのステータスを変化を記録します。キャラクタを設定していない場合は change コマンドでキャラクタを設定してください。
@@ -286,9 +315,9 @@ class Command(Cmd):
                             for effect in effects:
                                 c.execute('''
                                 INSERT INTO status_list (
-                                    chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
+                                    chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, use_end, count, choice, ef_table
                                 )
-                                SELECT ?, name, ?, round, use_2d6, use_1d6, count, choice, ef_table
+                                SELECT ?, name, ?, round, use_2d6, use_1d6, use_end, count, choice, ef_table
                                 FROM skill_list
                                 WHERE name = ?
                                 ''', (self.current_character, effect, skill_name))

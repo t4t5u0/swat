@@ -6,6 +6,7 @@
         "round" : "ラウンドを記載. -1を指定した場合は無制限",
         "2d6"   : "2d6の値を受け取るフラグ True/False",
         "1d6"   : "1d6の値を受け取るフラグ True/False",
+        "end"   : "手番終了時に処理をするフラグ True/False",
         "count" : "試行回数を受け取るフラグ True/False",
         "choice": "複数の効果から1つを選ぶ　True/False",
         "resist": "抵抗短縮有無フラグ True/False"
@@ -25,6 +26,7 @@
         "round" : 0,
         "2d6"   : false,
         "1d6"   : false,
+        "end"   : false,
         "count" : false,
         "choice": false,
         "resist": false
