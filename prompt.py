@@ -194,12 +194,14 @@ class Command(Cmd):
         def process(arg):
             conn = sqlite3.connect('./db/data.db')
             c = conn.cursor()
-            result = c.execute('SELECT chara_name, skill_name, round FROM status_list WHERE use_end = true')
+            result = c.execute("SELECT DISTINCT chara_name, skill_name, round , use_end FROM status_list WHERE chara_name = ? AND use_end = 'True'", (arg,))
+            result = list(result)
             if len(list(result)) == 0:
-                print('処理ないよ')
+                print('手番終了時に行う処理はありません')
             else:
                 for row in result:
-                    print(row)
+                    print(f'{row[1]}の処理を行ってください')
+            conn.close()
 
         arg = inp.split()
         if len(arg) == 0:
@@ -210,7 +212,7 @@ class Command(Cmd):
         elif len(arg) == 1:
             process(arg[0])
         else:
-            print('引数が多すぎる')
+            print('引数が多すぎます')
             return
 
 
@@ -313,9 +315,9 @@ class Command(Cmd):
                             for effect in effects:
                                 c.execute('''
                                 INSERT INTO status_list (
-                                    chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, count, choice, ef_table
+                                    chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, use_end, count, choice, ef_table
                                 )
-                                SELECT ?, name, ?, round, use_2d6, use_1d6, count, choice, ef_table
+                                SELECT ?, name, ?, round, use_2d6, use_1d6, use_end, count, choice, ef_table
                                 FROM skill_list
                                 WHERE name = ?
                                 ''', (self.current_character, effect, skill_name))
