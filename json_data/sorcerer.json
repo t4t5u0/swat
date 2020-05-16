@@ -135,7 +135,7 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
-        "end": false,
+        "end": true,
         "count": false,
         "choice": false,
         "table": -1
@@ -187,13 +187,13 @@
         "name": "【ライトニング・バインド】",
         "effect": [
             "すべての行動判定-2",
-            "ライトニング・バインド"
+            "手番終了時にk20@13+魔力点の雷属性D"
         ],
         "type": "SOR",
         "round": 6,
         "2d6": false,
         "1d6": false,
-        "end": false,
+        "end": true,
         "count": false,
         "choice": false,
         "table": -1
@@ -201,7 +201,7 @@
     {
         "name": "【マジック・リフレクション】",
         "effect": [
-            "マジック・リフレクション"
+            "一度だけ魔法を反射する"
         ],
         "type": "SOR",
         "round": 18,

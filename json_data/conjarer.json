@@ -297,7 +297,7 @@
         "round": 3,
         "2d6": false,
         "1d6": true,
-        "end": false,
+        "end": true,
         "count": false,
         "choice": false,
         "table": -1
@@ -341,7 +341,7 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
-        "end": false,
+        "end": true,
         "count": false,
         "choice": false,
         "table": -1

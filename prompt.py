@@ -194,11 +194,14 @@ class Command(Cmd):
         def process(arg):
             conn = sqlite3.connect('./db/data.db')
             c = conn.cursor()
-            for row in c.execute('SELECT chara_name, skill_name, round FROM status_list WHERE use_end = true'):
-                print(row)
+            result = c.execute('SELECT chara_name, skill_name, round FROM status_list WHERE use_end = true')
+            if len(list(result)) == 0:
+                print('処理ないよ')
+            else:
+                for row in result:
+                    print(row)
 
         arg = inp.split()
-        char = ''
         if len(arg) == 0:
             if self.current_character == '':
                 print('chenge コマンドでキャラクタを指定してください')
