@@ -7,7 +7,8 @@ import sqlite3
 import sys
 from cmd import Cmd
 
-from swtool.subcommands import *
+from swtool.subcommands import count_east_asian_character
+from swtool.subcommands import get_east_asian_count
 from swtool.color import Color
 # from boto.dynamodb import item
 
