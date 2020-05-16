@@ -121,10 +121,10 @@ class Command(Cmd):
         # 複数キャラを見たいという要望があった
         # elif len(char) >= 2:
         #     print('引数が多すぎます。check は引数を1つとります。詳細は help check で確認してください。')
-        print(f'{"名前":^{15-count_east_asian_character("名前")}}|\
-{"スキル名":^{30-count_east_asian_character("スキル名")}}\
-{"残りラウンド":^{15-count_east_asian_character("残りラウンド")}}\
-{"効果":^{20-count_east_asian_character("効果")}}')
+        print(f'{"名前":^{15-count_east_asian_character("名前")}}|'
+                f'{"スキル名":^{30-count_east_asian_character("スキル名")}}'
+                f'{"残りラウンド":^{15-count_east_asian_character("残りラウンド")}}'
+                f'{"効果":^{20-count_east_asian_character("効果")}}')
         print('─'*100)
         if '--all' in char:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
@@ -136,10 +136,10 @@ class Command(Cmd):
             c = conn.cursor()
             quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
             for i, row in enumerate(c.execute(quely, (ch,))):
-                print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|\
-{row[0]:^{30-count_east_asian_character(row[0])}}\
-{row[2]:^{15-count_east_asian_character(str(row[2]))}}\
-{row[1]:^{20-count_east_asian_character(row[1])}}")
+                print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
+                        f" {row[0]:^{30-count_east_asian_character(row[0])}}"
+                        f" {row[2]:^{15-count_east_asian_character(str(row[2]))}}"
+                        f" {row[1]:<{20-count_east_asian_character(row[1])}}")
                 # print(f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
             conn.close()
             print('─'*100)
