@@ -35,7 +35,7 @@ class Command(Cmd):
                 './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for item in char:
-                if re.fullmatch('(ch|en|npc|oth)[0-9]+',item):
+                if re.fullmatch('(ch|en|npc|oth)[0-9]*',item):
                     print(f'<{item}>は名前に使えません')
                 else:
                     c.execute('SELECT COUNT (name) FROM character_list WHERE name = ?', (item,))
@@ -45,12 +45,12 @@ class Command(Cmd):
                     c.execute(
                         'INSERT INTO character_list (name) VALUES (?)', (item,))
                     print(f'<{item}> をキャラクタリストに追加しました')
-                    # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
-                    if len(char) == 1:
-                        self.current_character = char[0]
-                        print(f'<{self.current_character}> を効果の対象にします')
-                        self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
-                    conn.commit()
+                # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
+                if len(char) == 1:
+                    self.current_character = char[0]
+                    print(f'<{self.current_character}> を効果の対象にします')
+                    self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
+                conn.commit()
             conn.close()
 
     def do_nick(self, inp):
@@ -70,7 +70,7 @@ class Command(Cmd):
             exist_chara = c.fetchone()
             exist_chara = int(exist_chara[0])
             if exist_chara:
-                if re.fullmatch('(ch|en|npc|oth)[0-9]+', arg[2]):
+                if re.fullmatch('(ch|en|npc|oth)[0-9]*', arg[2]):
                     c.execute('UPDATE character_list SET nick = ? WHERE name = ?', (arg[2], arg[0]))
                 # 非NULLなら警告出したほうが嬉しい？
                 else:
