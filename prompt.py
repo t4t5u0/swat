@@ -45,11 +45,11 @@ class Command(Cmd):
                     c.execute(
                         'INSERT INTO character_list (name) VALUES (?)', (item,))
                     print(f'<{item}> をキャラクタリストに追加しました')
-                # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
-                if len(char) == 1:
-                    self.current_character = char[0]
-                    print(f'<{self.current_character}> を効果の対象にします')
-                    self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
+                    # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
+                    if len(char) == 1:
+                        self.current_character = char[0]
+                        print(f'<{self.current_character}> を効果の対象にします')
+                        self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
                 conn.commit()
             conn.close()
 
