@@ -102,7 +102,7 @@ class Command(Cmd):
             c = conn.cursor()
             result = c.execute('SELECT name, nick FROM character_list')
             result = c.fetchall()
-            print(result)
+            # print(result)
             if len(result) == 0:
                 return
             print(f'{"name":^15}{"nick":^10}')
