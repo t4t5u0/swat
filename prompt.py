@@ -63,12 +63,12 @@ class Command(Cmd):
         elif arg[1] == 'as' and len(arg) == 3:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
-            c.execute('SELECT name FROM charcter_list WHERE = ?',(arg[0],))
+            c.execute('SELECT COUNT(name) FROM character_list WHERE name = ?',(arg[0],))
             exist_chara = c.fetchone()
             exist_chara = int(exist_chara[0])
             if exist_chara:
                 if re.fullmatch('(ch|en|npc|oth)[0-9]+', arg[2]):
-                    c.execute('UPDATE character_list SET nick = ? WHERE chara_name = ?', (arg[2], arg[0]))
+                    c.execute('UPDATE character_list SET nick = ? WHERE name = ?', (arg[2], arg[0]))
                 # 非NULLなら警告出したほうが嬉しい？
                 else:
                     print('ch, en, npc, oth の末尾に数字をつけた文字列のみを使用できます')
