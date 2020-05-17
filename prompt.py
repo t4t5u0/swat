@@ -289,14 +289,12 @@ class Command(Cmd):
         # むしろ【】をつけてあげて、部分一致を見ればいいのでは
         #   -> これは間違いで、魔法が【】、宣言特技が<<>>
         for _, item in enumerate(arg):
-            # 数字が入ってきたときはラウンドの上書きなので無視する
-            # if type(item) is int:
-            if item in [str(i) for i in range(10)]:
+            # とりあえずこの2つは飛ばす
+            if re.match('[0-9]+', item) or item in ['--r', '-r']:
                 pass
             # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
             # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
             # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
-            #
             else:
                 # 技能名に対してLIKE検索を行う
                 conn = sqlite3.connect(
