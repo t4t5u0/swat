@@ -74,6 +74,7 @@ class Command(Cmd):
                     print('ch, en, npc, oth の末尾に数字をつけた文字列のみを使用できます')
             else:
                 print('キャラクタが存在しません')
+            conn.commit()
 
         else:
             print('ex: nick swift as ch1')
