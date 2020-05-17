@@ -6,7 +6,7 @@ from glob import glob
 List = list
 # (lambda l: list(l) if type(l) != list else l)]))
 sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
-sqlite3.register_converter('IntList', lambda s: [str(i) for i in s.split(bytes(b';'))])
+sqlite3.register_converter('List', lambda s: [str(i) for i in s.split(bytes(b';'))])
 
 # ユーザ定義型 その2
 Bool = bool
@@ -16,13 +16,14 @@ sqlite3.register_converter('Bool', lambda l: bool(eval(l)))
 
 def create_character_list():
     conn = sqlite3.connect(
-        #'./db/character_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
         './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
     c = conn.cursor()
     c.execute(
         '''CREATE TABLE IF NOT EXISTS character_list(
         id     integer primary key,
-        name   text);
+        name   text,
+        nick   text default NULL
+        );
         ''')
     conn.commit()
     conn.close()
@@ -30,7 +31,6 @@ def create_character_list():
 
 def create_status_list():
     conn = sqlite3.connect(
-        #'./db/status_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
         './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
     c = conn.cursor()
     c.execute(
@@ -54,7 +54,6 @@ def create_status_list():
 def create_skill_list():
     conn = sqlite3.connect(
         './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-        #'./db/skill_list.db', detect_types=sqlite3.PARSE_DECLTYPES)
     c = conn.cursor()
     c.execute(
         '''CREATE TABLE IF NOT EXISTS skill_list(
@@ -91,7 +90,6 @@ def create_skill_list():
 
 def delete_character_list():
     conn = sqlite3.connect(
-        #'./db/character_list.db', detect_types=sqlite3.PARSE_COLNAMES)
         './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
     c = conn.cursor()
     c.execute('DELETE FROM character_list;')
@@ -101,7 +99,6 @@ def delete_character_list():
 def delete_skill_list():
     conn = sqlite3.connect(
         './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-        #'./db/skill_list.db', detect_types=sqlite3.PARSE_COLNAMES)
     c = conn.cursor()
     c.execute('DELETE FROM skill_list;')
     conn.commit()
@@ -111,7 +108,6 @@ def delete_skill_list():
 def delete_status_list():
     conn = sqlite3.connect(
         './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-        #'./db/status_list.db', detect_types=sqlite3.PARSE_COLNAMES)
     c = conn.cursor()
     c.execute('DELETE FROM status_list;')
     conn.commit()
