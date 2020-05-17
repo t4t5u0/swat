@@ -17,3 +17,11 @@ def count_east_asian_character(text):
         if unicodedata.east_asian_width(c) in 'FWA':
             count += 1
     return count
+
+# リストから複数の文字列を検索し、それらのインデックスを返す
+def serch_words_index(ls, words):
+    result = []
+    for i, item in enumerate(ls):
+        if item in words:
+            result.append(i)
+    return result
