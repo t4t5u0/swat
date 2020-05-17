@@ -3,13 +3,13 @@ curses から方針を切り替えてcmd モジュールでの開発を行う
 '''
 
 import inspect
+import re
 import sqlite3
 import sys
 from cmd import Cmd
 
-from swtool.subcommands import count_east_asian_character
-from swtool.subcommands import get_east_asian_count
 from swtool.color import Color
+from swtool.subcommands import count_east_asian_character, get_east_asian_count
 
 
 class Command(Cmd):
@@ -49,6 +49,35 @@ class Command(Cmd):
                 print(f'<{item}> をキャラクタリストに追加しました')
             conn.commit()
             conn.close()
+
+    def do_nick(self, inp):
+        '''ch, en, npc, oth を作る'''
+        arg = inp.split()
+        if len(arg) == 0:
+            print('ex: nick swift as ch1')
+        # キャラが存在するか確認
+        # as が含まれてて長さが3か見る
+        # arg[0] -> chara_name
+        # arg[1] -> as
+        # arg[2] -> nick
+        elif arg[1] == 'as' and len(arg) == 3:
+            conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            c.execute('SELECT name FROM charcter_list WHERE = ?',(arg[0],))
+            exist_chara = c.fetchone()
+            exist_chara = int(exist_chara[0])
+            if exist_chara:
+                if re.fullmatch('(ch|en|npc|oth)[0-9]+', arg[2]):
+                    c.execute('UPDATE character_list SET nick = ? WHERE chara_name = ?', (arg[2], arg[0]))
+                # 非NULLなら警告出したほうが嬉しい？
+                else:
+                    print('ch, en, npc, oth の末尾に数字をつけた文字列のみを使用できます')
+            else:
+                print('キャラクタが存在しません')
+
+        else:
+            print('ex: nick swift as ch1')
+
 
     def do_change(self, inp):
         '''効果対象にするキャラクタを変更するコマンド\nchange [character] ex: change ギルバート'''
