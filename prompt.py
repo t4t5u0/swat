@@ -99,8 +99,15 @@ class Command(Cmd):
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
-            for i, item in enumerate(c.execute('SELECT name FROM character_list')):
-                print(i+1, item[0])
+            result = c.execute('SELECT name, nick FROM character_list')
+            result = c.fetchall()
+            print(result)
+            if len(result) == 0:
+                return
+            print(f'{"name":^15}{"nick":^10}')
+            print('──────────────────────────')
+            for item in result:
+                print(f'{item[0]:^{15-count_east_asian_character(item[0])}}{item[1] if item[1] else "":^10}')
 
     def do_kill(self, inp):
         '''キャラクタ削除用のコマンド。 引数は1つ以上、--all を指定した場合はすべて消す'''
