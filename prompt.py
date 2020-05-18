@@ -274,14 +274,63 @@ class Command(Cmd):
         # --round を実装する
         # searchすると2個あるときにバグる。.count して個数分かってれば大丈夫
         arg = inp.split()
-        r_index = serch_words_index(arg, ['--round', '-r'])
+        # print(arg)
+
+        r_position = 0
+        t_position = 0
+        if '--round' in arg or '-r' in arg:
+            if (arg.count('--round') + arg.count('-r')) >= 2:
+                print('パラメータが不正です。-r の数は1つでなければいけません')
+                return
+            else:
+                r_position = serch_words_index(arg, ['--round', '-r'])[0]
+
+        if '--target' in arg or '-t' in arg:
+            if (arg.count('--target') + arg.count('-t')) >= 2:
+                print('パラメータが不正です。-t の数は1つでなければいけません')
+                return
+            else:
+                t_position = serch_words_index(arg, ['--target', '-t'])[0]
 
         if len(arg) == 0:
-            print('引数が少なすぎます。check は1つ以上の引数をとります。詳細は help add で確認してください。')
+            print('引数が少なすぎます。add は1つ以上の引数をとります。詳細は help add で確認してください。')
             return
-        if self.current_character == '':
+        if self.current_character == '' and not t_position:
             print('対象にするキャラクタを設定してください')
             return
+
+        # 引数系の処理を全部上でしてしまおう
+        skills = []
+        characters = []
+        rounds = ''
+        # -r -t がともに存在する時
+        if r_position and t_position:
+            # -t が手前に存在するとき
+            if t_position  < r_position:
+                skills = arg[:t_position]
+                characters = arg[t_position+1:r_position]
+                rounds = arg[r_position+1][0]
+            # -r が手前に存在する時
+            else:
+                skills = arg[:r_position]
+                characters = arg[t_position+1:]
+                rounds = arg[r_position+1][0]
+        # -t のみが存在する時
+        elif t_position:
+            skills = arg[:t_position]
+            characters = arg[t_position+1:]
+        # -r のみが存在する時
+        elif r_position:
+            skills = arg[:r_position]
+            rounds = arg[r_position+1][0]
+        # 技能だけの時
+        else:
+            skills = arg
+            characters.append(self.current_character)
+        # print(t_position, r_position)
+        # print(skills, characters, rounds)
+        return
+
         # スキルが存在しているかを確認しなきゃいけない
         # skill_list.db を線形探索しにいく
         # タイポがあったらレーヴェンシュタイン距離を見て、2以下のものを表示したみはある
@@ -291,7 +340,7 @@ class Command(Cmd):
         #   -> これは間違いで、魔法が【】、宣言特技が<<>>
         for i, item in enumerate(arg):
             # 上で処理したくないから、とりあえずこの2つは飛ばす
-            if re.match('[0-9]+', item) or item in ['--r', '-r']:
+            if re.match('[0-9]+', item) or item in ['--round', '-r']:
                 continue
 
             # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
@@ -349,13 +398,6 @@ class Command(Cmd):
                     print('有効な数字を入力してください')
                     return
 
-            if i+1 in r_index and i in r_index:
-                if len(arg) >= i+2 and isinstance(eval(item[i+2]), int):
-                    pass
-                else:
-                    print('技能 [-r, --round <rounds>] [対象] の順で指定してください')
-                # 次が--rでその次がラウンドのとき
-            
             # 挿入部分
             # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
             # ここのLIKE句消せるから消す(消した)
