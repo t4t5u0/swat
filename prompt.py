@@ -268,13 +268,13 @@ class Command(Cmd):
         ex: add マッスル・ベア ガゼル・フット'''
         # TODO:抵抗短縮の処理
         # TODO:複数キャラに付与できるようにする
-        # TOPO:nickを参照して付与できるようにする
+        # TODO:nickを参照して付与できるようにする
         # TODO:それらの複合できるようにする
         # 複数技能削除する？
         # --round を実装する
         # searchすると2個あるときにバグる。.count して個数分かってれば大丈夫
         arg = inp.split()
-        r_count = arg.count('--round') + arg.count('-r')
+        r_index = serch_words_index(arg, ['--round', '-r'])
 
         if len(arg) == 0:
             print('引数が少なすぎます。check は1つ以上の引数をとります。詳細は help add で確認してください。')
@@ -289,98 +289,96 @@ class Command(Cmd):
         # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
         # むしろ【】をつけてあげて、部分一致を見ればいいのでは
         #   -> これは間違いで、魔法が【】、宣言特技が<<>>
-        for _, item in enumerate(arg):
+        for i, item in enumerate(arg):
             # とりあえずこの2つは飛ばす
             if re.match('[0-9]+', item) or item in ['--r', '-r']:
-                pass
+                continue
             # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
             # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
             # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
-            else:
-                # 技能名に対してLIKE検索を行う
-                conn = sqlite3.connect(
-                    './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-                c = conn.cursor()
-                # INSERT する前に技能の検索を行う
-                c.execute(
-                    'SELECT name FROM skill_list WHERE name LIKE ?', (f'%{item}%',))
-                # fetchall するとタプルのリストで返ってくる
-                skill_names = c.fetchall()
-                # print(skill_names)
-                if len(skill_names) > 1:
-                    # 検索して複数見つかった場合の処理
-                    for i, skill_name in enumerate(skill_names):
-                        #skill_name = skill_name[0]
-                        print(i, skill_name[0])
-                    else:
-                        try:
-                            index = int(input('追加したい技能の番号を入力してください:'))
-                            skill_name = skill_names[index][0]
-                        except:
-                            print('有効な数字を入力してください')
-                            break
-                        print(skill_name)
-                elif len(skill_names) == 1:
-                    skill_name = skill_names[0][0]
+            # 技能名に対してLIKE検索を行う
+            conn = sqlite3.connect(
+                './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            # INSERT する前に技能の検索を行う
+            c.execute(
+                'SELECT name FROM skill_list WHERE name LIKE ?', (f'%{item}%',))
+            # fetchall するとタプルのリストで返ってくる
+            skill_names = c.fetchall()
+            # print(skill_names)
+            if len(skill_names) > 1:
+                # 検索して複数見つかった場合の処理
+                for j, skill_name in enumerate(skill_names):
+                    #skill_name = skill_name[0]
+                    print(j, skill_name[0])
+                else:
+                    try:
+                        index = int(input('追加したい技能の番号を入力してください:'))
+                        skill_name = skill_names[index][0]
+                    except:
+                        print('有効な数字を入力してください')
+                        return
                     print(skill_name)
-                else:
-                    print('技能が存在しません。')
-                    break
+            elif len(skill_names) == 1:
+                skill_name = skill_names[0][0]
+                print(skill_name)
+            else:
+                print('技能が存在しません。')
+                return
 
-                # 技能の効果をばらしている
+            # 技能の効果をばらしている
+            c.execute(
+                'SELECT effect FROM skill_list WHERE name = ?', (skill_name,))
+            effects = c.fetchone()[0].split(';')
+            # print(effects)
+
+            # choice フラグを見る
+            c.execute(
+                'SELECT choice FROM skill_list WHERE name = ?', (skill_name,))
+            choice_flag = c.fetchone()
+            # print(type(choice_flag[0]))
+            if eval(choice_flag[0]):
+                for j, effect in enumerate(effects):
+                    print(j, effect)
+                try:
+                    index = int(input('追加したい効果の番号を入力してください:'))
+                    effects = [effects[index]]
+                    # print(effect)
+                except:
+                    print('有効な数字を入力してください')
+                    return
+
+            # 挿入部分
+            # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
+            # ここのLIKE句消せるから消す(消した)
+            # status_list にアクセスして、技能が存在しているかを確かめる
+            # 存在していなかったら、INSERT句を実行する
+            # 存在しているときは、UPDATE句を実行する
+            # CASE のところをPyでかく。SQLでどうやるかわかんないので
+            c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',
+                        (self.current_character, skill_name))
+            if c.fetchone()[0] >= 1:
+                # 同名技能がすでに存在していたら残りラウンド数を上書きする
                 c.execute(
-                    'SELECT effect FROM skill_list WHERE name = ?', (skill_name,))
-                effects = c.fetchone()[0].split(';')
-                # print(effects)
-
-                # choice フラグを見る
-                c.execute(
-                    'SELECT choice FROM skill_list WHERE name = ?', (skill_name,))
-                choice_flag = c.fetchone()
-                # print(type(choice_flag[0]))
-                if eval(choice_flag[0]):
-                    for i, effect in enumerate(effects):
-                        print(i, effect)
-                    else:
-                        try:
-                            index = int(input('追加したい効果の番号を入力してください:'))
-                            effects = [effects[index]]
-                            # print(effect)
-                        except:
-                            print('有効な数字を入力してください')
-                            break
-
-                # 挿入部分
-                # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
-                # ここのLIKE句消せるから消す(消した)
-                # status_list にアクセスして、技能が存在しているかを確かめる
-                # 存在していなかったら、INSERT句を実行する
-                # 存在しているときは、UPDATE句を実行する
-                # CASE のところをPyでかく。SQLでどうやるかわかんないので
-                c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',
-                            (self.current_character, skill_name))
-                if c.fetchone()[0] >= 1:
-                    # 同名技能がすでに存在していたら残りラウンド数を上書きする
-                    c.execute(
-                        'SELECT round FROM skill_list WHERE name = ?', (skill_name,))
-                    rounds = c.fetchone()[0]
-                    c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
-                                (rounds, self.current_character, skill_name))
-                    print(f'{skill_name}はすでに存在しているため上書きしました')
-                else:
-                    # そうでなければ新しく挿入する
-                    for effect in effects:
-                        c.execute('''
-                        INSERT INTO status_list (
-                            chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, use_end, count, choice, ef_table
-                        )
-                        SELECT ?, name, ?, round, use_2d6, use_1d6, use_end, count, choice, ef_table
-                        FROM skill_list
-                        WHERE name = ?
-                        ''', (self.current_character, effect, skill_name))
-                        conn.commit()
-                    print(
-                        f'{skill_name} を {self.current_character} に付与しました')
+                    'SELECT round FROM skill_list WHERE name = ?', (skill_name,))
+                rounds = c.fetchone()[0]
+                c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
+                            (rounds, self.current_character, skill_name))
+                print(f'{skill_name}はすでに存在しているため上書きしました')
+            else:
+                # そうでなければ新しく挿入する
+                for effect in effects:
+                    c.execute('''
+                    INSERT INTO status_list (
+                        chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, use_end, count, choice, ef_table
+                    )
+                    SELECT ?, name, ?, round, use_2d6, use_1d6, use_end, count, choice, ef_table
+                    FROM skill_list
+                    WHERE name = ?
+                    ''', (self.current_character, effect, skill_name))
+                    conn.commit()
+                print(
+                    f'{skill_name} を {self.current_character} に付与しました')
 
     def do_rm(self, inp):
         '''追従しているキャラの技能を削除するコマンド, 一度に複数消去可'''
