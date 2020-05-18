@@ -290,9 +290,10 @@ class Command(Cmd):
         # むしろ【】をつけてあげて、部分一致を見ればいいのでは
         #   -> これは間違いで、魔法が【】、宣言特技が<<>>
         for i, item in enumerate(arg):
-            # とりあえずこの2つは飛ばす
+            # 上で処理したくないから、とりあえずこの2つは飛ばす
             if re.match('[0-9]+', item) or item in ['--r', '-r']:
                 continue
+
             # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
             # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
             # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
@@ -348,6 +349,13 @@ class Command(Cmd):
                     print('有効な数字を入力してください')
                     return
 
+            if i+1 in r_index and i in r_index:
+                if len(arg) >= i+2 and isinstance(eval(item[i+2]), int):
+                    pass
+                else:
+                    print('技能 [-r, --round <rounds>] [対象] の順で指定してください')
+                # 次が--rでその次がラウンドのとき
+            
             # 挿入部分
             # -> ('【エンチャント・ウェポン】',), ('【スペル・エンハンス】',)
             # ここのLIKE句消せるから消す(消した)
