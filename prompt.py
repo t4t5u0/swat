@@ -21,6 +21,8 @@ class Command(Cmd):
     current_character = ''
     turn = 0
 
+    nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
+
     def do_append(self, inp):
         '''append [chracters] ex: append ギルバート ルッキオラ モーラ ...'''
         char = inp.split()
@@ -333,14 +335,9 @@ class Command(Cmd):
         # 外側のループをキャラクタ。
         # 内側のループを技能でやる
         for char in characters:
-            # スキルが存在しているかを確認しなきゃいけない
-            # skill_list.db を線形探索しにいく
-            # タイポがあったらレーヴェンシュタイン距離を見て、2以下のものを表示したみはある
-            # -> タイポがあった箇所
-            # skill_list.db には 技能が【】つきで格納されているから、それを見ないようにする必要がある
-            # むしろ【】をつけてあげて、部分一致を見ればいいのでは
-            #   -> これは間違いで、魔法が【】、宣言特技が<<>>
+            # ch1 とか ch* とか en2 とかで入ってきたときの処理をする
             for i, skill in enumerate(skills):
+
                 # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
                 # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
                 # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
