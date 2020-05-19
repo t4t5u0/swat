@@ -385,7 +385,7 @@ class Command(Cmd):
         # 外側のループをキャラクタ。
         # 内側のループを技能でやる
         for char in characters:
-            for i, skill in enumerate(skills):
+            for skill in skills:
 
                 # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
                 # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
@@ -402,9 +402,9 @@ class Command(Cmd):
                 # print(skill_names)
                 if len(skill_names) > 1:
                     # 検索して複数見つかった場合の処理
-                    for j, skill_name in enumerate(skill_names):
+                    for i, skill_name in enumerate(skill_names):
                         #skill_name = skill_name[0]
-                        print(j, skill_name[0])
+                        print(i, skill_name[0])
                     else:
                         try:
                             index = int(input('追加したい技能の番号を入力してください:'))
@@ -432,8 +432,8 @@ class Command(Cmd):
                 choice_flag = c.fetchone()
                 # print(type(choice_flag[0]))
                 if eval(choice_flag[0]):
-                    for j, effect in enumerate(effects):
-                        print(j, effect)
+                    for i, effect in enumerate(effects):
+                        print(i, effect)
                     try:
                         index = int(input('追加したい効果の番号を入力してください:'))
                         effects = [effects[index]]
