@@ -332,10 +332,51 @@ class Command(Cmd):
         # print(skills, characters, rounds)
         # return
 
+
+        # ch1 とか ch* とか en2 とかで入ってきたときの処理をする
+        # 全部キャラクタ名に直す
+        conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        c = conn.cursor()
+        tmp = []
+        for char in characters:
+            if re.match(self.nick_pattern, char):
+                if char[-1] == '*':
+                    # char[:-1]% で検索する
+                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
+                    cnt = c.fetchone()[0]
+                    # print(cnt)
+                    # 存在してるかどうか
+                    if cnt:
+                        c.execute('SELECT name FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
+                        tmp += [item[0] for item in (c.fetchall())]
+                        # print(tmp)
+                    else:
+                        print(f'{char}に該当するキャラクタは存在しません')
+                else:
+                    # charで検索する
+                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick = ?', (char,))
+                    cnt = c.fetchone()[0]
+                    # 存在してるかどうか
+                    if cnt:
+                        c.execute('SELECT name FROM character_list WHERE nick = ?', (char,))
+                        tmp += c.fetchone()
+                    else:
+                        print(f'{char}に該当するキャラクタは存在しません')
+            else:
+                # 普通に検索
+                # なかったらメッセージ出して飛ばす
+                c.execute('SELECT COUNT(name) FROM character_list WHERE name = ?', (char,))
+                cnt = c.fetchone()[0]
+                if cnt:
+                    c.execute('SELECT name FROM character_list WHERE name = ?', (char,))
+                    tmp += c.fetchone()
+                else:
+                    print(f'{char}というキャラクタは存在しません')
+        characters = list(set(tmp))
+
         # 外側のループをキャラクタ。
         # 内側のループを技能でやる
         for char in characters:
-            # ch1 とか ch* とか en2 とかで入ってきたときの処理をする
             for i, skill in enumerate(skills):
 
                 # db に追加する処理をする。同じ名前の技能があれば効果ラウンドを上書きする。
@@ -409,9 +450,10 @@ class Command(Cmd):
                         rounds = c.fetchone()[0]
                 c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',
                             (char, skill_name))
-                if c.fetchone()[0] >= 1:
+                cnt = c.fetchone()[0]
+                if cnt >= 1:
                     c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
-                                (rounds, self.current_character, skill_name))
+                                (rounds, char, skill_name))
                     print(f'{skill_name}はすでに存在しているため上書きしました')
                 else:
                     # そうでなければ新しく挿入する
