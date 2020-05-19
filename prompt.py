@@ -31,7 +31,12 @@ class Command(Cmd):
         'ch en npc oth と 数字1つ以上の組み合わせを使用できます')
         
         # 前処理
-        a, b = inp.split('-n')
+        # そのうちリファクタする
+        try:
+            a, b = inp.split('-n')
+        except:
+            a = inp
+            b = ''
         arg = a.split()
         nicks = b.split()
         if len(arg) < len(nicks):
