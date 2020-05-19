@@ -24,8 +24,12 @@ class Command(Cmd):
     nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
 
     def do_append(self, inp):
-        '''append [chracters] -n, -nick [nickname]
-        ex: append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...'''
+        ('キャラクタを追加するコマンド\n'
+        '> append <chracters> [-n <nickname>]\n'
+        'ex: > append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...\n'
+        'Option: -n キャラクタにラベルをつけるときに使用する\n'
+        'ch en npc oth と 数字1つ以上の組み合わせを使用できます')
+        
         # 前処理
         a, b = inp.split('-n')
         arg = a.split()
@@ -61,7 +65,10 @@ class Command(Cmd):
         conn.close()
 
     def do_nick(self, inp):
-        '''ch, en, npc, oth を作る'''
+        ('すでに存在するキャラクタにニックネームをつけ、グループ化するコマンド\n'
+        '> nick <characters> -n <nickname>\n'
+        'ex: > nick hydra -n en1')
+        
         arg = inp.split()
         if len(arg) == 0:
             print('ex: nick swift as ch1')
@@ -92,7 +99,10 @@ class Command(Cmd):
             print('ex: nick swift as ch1')
 
     def do_change(self, inp):
-        '''効果対象にするキャラクタを変更するコマンド\nchange [character] ex: change ギルバート'''
+        ('効果対象にするキャラクタを変更するコマンド\n'
+        '> change [character] \n'
+        'ex: > change ギルバート')
+
         char = inp.split()
         if len(char) == 0:
             print('引数が少なすぎます。changeは引数を１つ取ります。詳細は help change で確認してください。')
@@ -104,7 +114,8 @@ class Command(Cmd):
             self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
 
     def do_ls(self, inp):
-        '''キャラクタ一覧を確認する'''
+        ('キャラクタ一覧を確認するコマンド'
+        '> ls')
         char = inp.split()
         if len(char) != 0:
             print('ls は引数なしです。詳しくは help ls')
@@ -124,7 +135,12 @@ class Command(Cmd):
                     f'{item[0]:^{15-count_east_asian_character(item[0])}}{item[1] if item[1] else "":^10}')
 
     def do_kill(self, inp):
-        '''キャラクタ削除用のコマンド。 引数は1つ以上、--all を指定した場合はすべて消す'''
+        ('キャラクタ削除用のコマンド\n'
+        '> kill <characters or nicknames>\n'
+        'ex: kill swift ch1 \n'
+        '引数は1つ以上、--all を指定した場合はすべて消す\n'
+        '> kill --all'
+        )
         char = inp.split()
         if len(char) == 0:
             print('引数を1つ以上とります。')
@@ -165,7 +181,9 @@ class Command(Cmd):
             self.prompt = f'{Color.GREEN}> {Color.RESET}'
 
     def do_check(self, inp):
-        '''ステータス確認用のコマンド\ncheck [character] ex: check ギルバート'''
+        ('ステータス確認用のコマンド\n'
+        '> check [characters, nicknames, --all] \n'
+        'ex: > check ギルバート')
         char = inp.split()
         if len(char) == 0:
             if self.current_character == '':
@@ -205,7 +223,11 @@ class Command(Cmd):
             print('─'*100)
 
     def do_start(self, inp):
-        '''手番開始時の処理。start [character] '''
+        ('手番開始時のコマンド\n'
+        '安全のため現在追従中のキャラクタのみに適用してください\n'
+        '> start [character]\n'
+        'ex: (cc)> start #追従中のキャラクタを指定するときは引数なし\n'
+        'WIP: スロウとかのフラグを作ってない')
         # デフォルトではself.current_character を渡す。
         chara_name = inp.split()
         if len(chara_name) == 0:
@@ -245,7 +267,8 @@ class Command(Cmd):
         conn.commit()
 
     def do_end(self, inp):
-        '''手番終了時に効果が発動するものをサジェストする'''
+        ('手番終了時の処理をするコマンド\n'
+        '> end [character]')
         # 保守性を上げるため、関数内関数を用いる
         def process(arg):
             conn = sqlite3.connect('./db/data.db')
@@ -273,9 +296,21 @@ class Command(Cmd):
             return
 
     def do_add(self, inp):
-        '''キャラクタのステータスを変化を記録します。キャラクタを設定していない場合は change コマンドでキャラクタを設定してください。
-        add [propaties]
-        ex: add マッスル・ベア ガゼル・フット'''
+        ('キャラクタに技能を付与するコマンド。\n'
+        'キャラクタを設定していない場合は change コマンドでキャラクタを設定してください\n'
+        '> add [propaties]\n'
+        'ex: > add マッスル・ベア ガゼル・フット\n'
+        'Option:\n'
+        '-r, --round <round>\n'
+        '   抵抗短縮などで、効果ラウンドをデフォルトから別のものへ上書きするときに使用する\n'
+        '   直後に上書きラウンド数を指定する\n'
+        'ex: > add ヘイスト -r 1\n'
+        '-t, --target <characters or nicknames>\n'
+        '   対象を指定して効果を付与したいときに使用する\n'
+        '   ch* で ch1, ch2, ... など結構柔軟に行ける\n'
+        'ex: > add ブレス -t ch*\n'
+        '-t -r  は併用可能')
+
         # TODO:抵抗短縮の処理
         # TODO:複数キャラに付与できるようにする
         # TODO:nickを参照して付与できるようにする
@@ -478,7 +513,9 @@ class Command(Cmd):
                     print(f'{char} に {skill_name} を付与しました')
 
     def do_rm(self, inp):
-        '''追従しているキャラの技能を削除するコマンド, 一度に複数消去可'''
+        ('追従しているキャラの技能を削除するコマンド, 一度に複数消去可\n'
+        '(cc) > rm <characters>\n'
+        'WIP: nickname に対応 -t を用いて対象を指定')
         arg = inp.split()
         if self.current_character == '':
             print('対象にするキャラクタを設定してください')
@@ -504,7 +541,7 @@ class Command(Cmd):
                 conn.commit()
 
     def do_reset(self, inp):
-        '''戦闘終了時の処理。状態を初期化する'''
+        '''戦闘終了時の処理コマンド。状態を初期化する'''
         arg = inp.split()
         if len(arg) != 0:
             print('reset は引数を取りません')
