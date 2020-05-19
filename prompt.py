@@ -24,33 +24,41 @@ class Command(Cmd):
     nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
 
     def do_append(self, inp):
-        '''append [chracters] ex: append ギルバート ルッキオラ モーラ ...'''
-        char = inp.split()
-        if char == []:
-            print('引数にキャラクタ名を指定してください')
+        '''append [chracters] -n, -nick [nickname]
+        ex: append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...'''
+        # 前処理
+        a, b = inp.split('-n')
+        arg = a.split()
+        nicks = b.split()
+        if len(arg) < len(nicks):
+            print('nickの方が長い')
+            return
         else:
-            conn = sqlite3.connect(
-                './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-            c = conn.cursor()
-            for item in char:
-                if re.fullmatch('(ch|en|npc|oth)[0-9]*', item):
-                    print(f'<{item}>は名前に使えません')
-                else:
-                    c.execute(
-                        'SELECT COUNT (name) FROM character_list WHERE name = ?', (item,))
-                    if c.fetchone()[0]:
-                        print(f'<{item}> はすでに存在しています')
-                        continue
-                    c.execute(
-                        'INSERT INTO character_list (name) VALUES (?)', (item,))
-                    print(f'<{item}> をキャラクタリストに追加しました')
-                    # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
-                    if len(char) == 1:
-                        self.current_character = char[0]
-                        print(f'<{self.current_character}> を効果の対象にします')
-                        self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
-                conn.commit()
-            conn.close()
+            nicks += ['' for _ in range(len(arg)-len(nicks))]
+
+        if arg == []:
+            print('引数にキャラクタ名を指定してください')
+            return
+        conn = sqlite3.connect(
+            './db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        c = conn.cursor()
+
+        for item, nick in  zip(arg, nicks):
+            c.execute(
+                'SELECT COUNT (name) FROM character_list WHERE name = ?', (item,))
+            if c.fetchone()[0]:
+                print(f'<{item}> はすでに存在しています')
+                continue
+            c.execute(
+                'INSERT INTO character_list (name, nick) VALUES (?, ?)', (item, nick))
+            print(f'<{item}> をキャラクタリストに追加しました')
+            # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
+            if len(arg) == 1:
+                self.current_character = arg[0]
+                print(f'<{self.current_character}> を効果の対象にします')
+                self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
+            conn.commit()
+        conn.close()
 
     def do_nick(self, inp):
         '''ch, en, npc, oth を作る'''
