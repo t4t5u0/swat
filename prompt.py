@@ -74,24 +74,34 @@ class Command(Cmd):
         'ex: > nick hydra -n en1')
         
         arg = inp.split()
+        characters = []
+        nicknames = []
+
+        if '-n' in arg:
+            characters = arg[arg.index('-n')+1:]
+            nicknames = arg[:arg.index('-n')]
+        else:
+            print('> nick <characters> -n <nickname>')
+            return
         if len(arg) == 0:
             print('ex: nick swift as ch1')
+            return
         # キャラが存在するか確認
         # as が含まれてて長さが3か見る
         # arg[0] -> chara_name
         # arg[1] -> as
         # arg[2] -> nick
-        elif arg[1] == 'as' and len(arg) == 3:
+        for chara, nick in zip(characters, nicknames):
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute(
-                'SELECT COUNT(name) FROM character_list WHERE name = ?', (arg[0],))
+                'SELECT COUNT(name) FROM character_list WHERE name = ?', (chara,))
             exist_chara = c.fetchone()
             exist_chara = int(exist_chara[0])
             if exist_chara:
-                if re.fullmatch('(ch|en|npc|oth)[0-9]*', arg[2]):
+                if re.fullmatch('(ch|en|npc|oth)[0-9]+', nick):
                     c.execute(
-                        'UPDATE character_list SET nick = ? WHERE name = ?', (arg[2], arg[0]))
+                        'UPDATE character_list SET nick = ? WHERE name = ?', (nick, chara))
                 # 非NULLなら警告出したほうが嬉しい？
                 else:
                     print('ch, en, npc, oth の末尾に数字をつけた文字列のみを使用できます')
@@ -99,7 +109,7 @@ class Command(Cmd):
                 print('キャラクタが存在しません')
             conn.commit()
         else:
-            print('ex: nick swift as ch1')
+            print('ex: nick swift -n ch1')
 
     def do_change(self, inp):
         ('効果対象にするキャラクタを変更するコマンド\n'
