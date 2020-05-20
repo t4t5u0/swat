@@ -78,22 +78,21 @@ class Command(Cmd):
         nicknames = []
 
         if '-n' in arg:
-            characters = arg[arg.index('-n')+1:]
-            nicknames = arg[:arg.index('-n')]
+            characters = arg[:arg.index('-n')]
+            nicknames = arg[arg.index('-n')+1:]
+            # print(characters)
+            # print(nicknames)
         else:
             print('> nick <characters> -n <nickname>')
             return
         if len(arg) == 0:
-            print('ex: nick swift as ch1')
+            print('ex: nick swift -n ch1')
             return
-        # キャラが存在するか確認
-        # as が含まれてて長さが3か見る
-        # arg[0] -> chara_name
-        # arg[1] -> as
-        # arg[2] -> nick
+        
         for chara, nick in zip(characters, nicknames):
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
+            # キャラが存在するか確認
             c.execute(
                 'SELECT COUNT(name) FROM character_list WHERE name = ?', (chara,))
             exist_chara = c.fetchone()
@@ -102,14 +101,14 @@ class Command(Cmd):
                 if re.fullmatch('(ch|en|npc|oth)[0-9]+', nick):
                     c.execute(
                         'UPDATE character_list SET nick = ? WHERE name = ?', (nick, chara))
+                    print(f'{chara} を {nick} として登録します')
                 # 非NULLなら警告出したほうが嬉しい？
                 else:
                     print('ch, en, npc, oth の末尾に数字をつけた文字列のみを使用できます')
             else:
                 print('キャラクタが存在しません')
-            conn.commit()
-        else:
-            print('ex: nick swift -n ch1')
+        conn.commit()
+        conn.close()
 
     def do_change(self, inp):
         ('効果対象にするキャラクタを変更するコマンド\n'
