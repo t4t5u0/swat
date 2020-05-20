@@ -23,6 +23,48 @@ class Command(Cmd):
 
     nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
 
+    def nick2chara(self, characters):
+        conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        c = conn.cursor()
+        tmp = []
+        for char in characters:
+            if re.match(self.nick_pattern, char):
+                if char[-1] == '*':
+                    # char[:-1]% で検索する
+                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
+                    cnt = c.fetchone()[0]
+                    # print(cnt)
+                    # 存在してるかどうか
+                    if cnt:
+                        c.execute('SELECT name FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
+                        tmp += [skill[0] for skill in (c.fetchall())]
+                        # print(tmp)
+                    else:
+                        print(f'{char}に該当するキャラクタは存在しません')
+                else:
+                    # charで検索する
+                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick = ?', (char,))
+                    cnt = c.fetchone()[0]
+                    # 存在してるかどうか
+                    if cnt:
+                        c.execute('SELECT name FROM character_list WHERE nick = ?', (char,))
+                        tmp += c.fetchone()
+                    else:
+                        print(f'{char}に該当するキャラクタは存在しません')
+            else:
+                # 普通に検索
+                # なかったらメッセージ出して飛ばす
+                c.execute('SELECT COUNT(name) FROM character_list WHERE name = ?', (char,))
+                cnt = c.fetchone()[0]
+                if cnt:
+                    c.execute('SELECT name FROM character_list WHERE name = ?', (char,))
+                    tmp += c.fetchone()
+                else:
+                    print(f'{char}というキャラクタは存在しません')
+        conn.close()
+        characters = list(set(tmp))
+        return characters
+    
     def do_append(self, inp):
         ('キャラクタを追加するコマンド\n'
         '> append <chracters> [-n <nickname>]\n'
@@ -391,47 +433,8 @@ class Command(Cmd):
         # print(skills, characters, rounds)
         # return
 
-
-        # ch1 とか ch* とか en2 とかで入ってきたときの処理をする
-        # 全部キャラクタ名に直す
-        conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-        c = conn.cursor()
-        tmp = []
-        for char in characters:
-            if re.match(self.nick_pattern, char):
-                if char[-1] == '*':
-                    # char[:-1]% で検索する
-                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
-                    cnt = c.fetchone()[0]
-                    # print(cnt)
-                    # 存在してるかどうか
-                    if cnt:
-                        c.execute('SELECT name FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
-                        tmp += [skill[0] for skill in (c.fetchall())]
-                        # print(tmp)
-                    else:
-                        print(f'{char}に該当するキャラクタは存在しません')
-                else:
-                    # charで検索する
-                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick = ?', (char,))
-                    cnt = c.fetchone()[0]
-                    # 存在してるかどうか
-                    if cnt:
-                        c.execute('SELECT name FROM character_list WHERE nick = ?', (char,))
-                        tmp += c.fetchone()
-                    else:
-                        print(f'{char}に該当するキャラクタは存在しません')
-            else:
-                # 普通に検索
-                # なかったらメッセージ出して飛ばす
-                c.execute('SELECT COUNT(name) FROM character_list WHERE name = ?', (char,))
-                cnt = c.fetchone()[0]
-                if cnt:
-                    c.execute('SELECT name FROM character_list WHERE name = ?', (char,))
-                    tmp += c.fetchone()
-                else:
-                    print(f'{char}というキャラクタは存在しません')
-        characters = list(set(tmp))
+        # nick -> chara を関数化した
+        characters = self.nick2chara(characters)
 
         # 外側のループをキャラクタ。
         # 内側のループを技能でやる
