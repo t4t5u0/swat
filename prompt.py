@@ -51,15 +51,15 @@ class Command(Cmd):
         conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
 
-        for item, nick in  zip(arg, nicks):
+        for skill, nick in  zip(arg, nicks):
             c.execute(
-                'SELECT COUNT (name) FROM character_list WHERE name = ?', (item,))
+                'SELECT COUNT (name) FROM character_list WHERE name = ?', (skill,))
             if c.fetchone()[0]:
-                print(f'<{item}> はすでに存在しています')
+                print(f'<{skill}> はすでに存在しています')
                 continue
             c.execute(
-                'INSERT INTO character_list (name, nick) VALUES (?, ?)', (item, nick))
-            print(f'<{item}> をキャラクタリストに追加しました')
+                'INSERT INTO character_list (name, nick) VALUES (?, ?)', (skill, nick))
+            print(f'<{skill}> をキャラクタリストに追加しました')
             # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
             if len(arg) == 1:
                 self.current_character = arg[0]
@@ -132,9 +132,9 @@ class Command(Cmd):
                 return
             print(f'{"name":^15}{"nick":^10}')
             print('──────────────────────────')
-            for item in result:
+            for skill in result:
                 print(
-                    f'{item[0]:^{15-count_east_asian_character(item[0])}}{item[1] if item[1] else "":^10}')
+                    f'{skill[0]:^{15-count_east_asian_character(skill[0])}}{skill[1] if skill[1] else "":^10}')
 
     def do_kill(self, inp):
         ('キャラクタ削除用のコマンド\n'
@@ -160,19 +160,19 @@ class Command(Cmd):
         else:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
-            for item in char:
+            for skill in char:
                 c.execute(
-                    'SELECT COUNT (*) FROM character_list WHERE name = ?', (item,))
+                    'SELECT COUNT (*) FROM character_list WHERE name = ?', (skill,))
                 n = c.fetchone()[0]
                 # print(n)
                 if n == 1:
                     c.execute(
-                        'DELETE FROM status_list WHERE chara_name = ?', (item,))
+                        'DELETE FROM status_list WHERE chara_name = ?', (skill,))
                     c.execute(
-                        'DELETE FROM character_list WHERE name = ?', (item,))
-                    print(f'<{item}> を削除しました。')
+                        'DELETE FROM character_list WHERE name = ?', (skill,))
+                    print(f'<{skill}> を削除しました。')
                 else:
-                    print(f'<{item}> というキャラは存在しません。')
+                    print(f'<{skill}> というキャラは存在しません。')
             conn.commit()
             conn.close()
         # 消去するキャラがcurrent_characterならcurrent_chara を初期化
@@ -206,7 +206,7 @@ class Command(Cmd):
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('SELECT name FROM character_list')
-            char = [item[0] for item in c.fetchall()]
+            char = [skill[0] for skill in c.fetchall()]
         for ch in char:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
@@ -250,11 +250,11 @@ class Command(Cmd):
         for i, _ in enumerate(round_list):
             if round_list[i][2] > 0:
                 round_list[i][2] -= 1
-        #round_and_character = [(item, self.current_character) for item in round_list]
+        #round_and_character = [(skill, self.current_character) for skill in round_list]
         # print(f'round_list:{round_list}')
         # (chara_name, skill_name, round) のタプルで入ってくるがクエリに合わせるために軸を入れ替える
         # (round, chara_name, skill_name) の形にしたい
-        round_list = [(item[2], item[0], item[1]) for item in round_list]
+        round_list = [(skill[2], skill[0], skill[1]) for skill in round_list]
         # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
         # 技能名を指定していないから、末尾の要素ですべて上書きする
         c.executemany(
@@ -397,7 +397,7 @@ class Command(Cmd):
                     # 存在してるかどうか
                     if cnt:
                         c.execute('SELECT name FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
-                        tmp += [item[0] for item in (c.fetchall())]
+                        tmp += [skill[0] for skill in (c.fetchall())]
                         # print(tmp)
                     else:
                         print(f'{char}に該当するキャラクタは存在しません')
@@ -519,31 +519,56 @@ class Command(Cmd):
 
     def do_rm(self, inp):
         ('追従しているキャラの技能を削除するコマンド, 一度に複数消去可\n'
-        '(cc) > rm <characters>\n'
-        'WIP: nickname に対応 -t を用いて対象を指定')
+        '(cc) > rm <skills>\n'
+        'Option: -t ターゲットを指定\n'
+        '> rm <skills> -t <characters>')
+        
         arg = inp.split()
-        if self.current_character == '':
+        
+        skills = arg
+        characters = self.current_character
+        '-t が存在するか'
+        if '-t' in arg:
+            characters = arg[arg.index('-t')+1:]
+            skills = arg[:arg.index('-t')]
+            # print(characters)
+        elif self.current_character == '':
             print('対象にするキャラクタを設定してください')
-        elif len(arg) == 0:
+            return
+
+        if not characters:
+            print('-t の後ろにはキャラクタを1体以上指定してください')
+            return
+            
+        if len(arg) == 0:
             print('rm は引数を1つ以上取ります。 help rm')
-        else:
-            conn = sqlite3.connect('./db/data.db')
-            c = conn.cursor()
-            for item in arg:
+            return
+        
+        conn = sqlite3.connect('./db/data.db')
+        c = conn.cursor()
+        for chara in characters:
+            for item in skills:
                 # skill_list の skill_name をLIKE検索する
                 # 同名で複数効果を持っているものがあるから、それに対応する(ヘイストなど)
                 # 効果単位ではなく技能単位で消去したい
                 c.execute('SELECT skill_name FROM status_list WHERE chara_name = ? AND skill_name LIKE ?',
-                          (self.current_character, f'%{item}%'))
+                            (chara, f'%{item}%'))
                 # fetchall するとタプルのリストで返ってくる
                 # 技能の重複を削除
-                skill_names = list(set(c.fetchall()[0]))
+                skill = c.fetchall()
+                # print(skill)
+                # 見つからなかったら飛ばす
+                if len(skill) == 0:
+                    print(f'{item} に一致する技能は存在しませんでした')
+                    continue
+                skill_names = list(set(skill[0]))
                 # print(skill_names)
                 for _, skill_name in enumerate(skill_names):
                     c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',
-                              (self.current_character, skill_name))
+                                (chara, skill_name))
                     print(f'{skill_name}を削除しました')
                 conn.commit()
+        conn.close()
 
     def do_reset(self, inp):
         '''戦闘終了時の処理コマンド。状態を初期化する'''
