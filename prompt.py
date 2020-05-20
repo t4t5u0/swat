@@ -70,6 +70,7 @@ class Command(Cmd):
 
     def do_nick(self, inp):
         ('すでに存在するキャラクタにニックネームをつけ、グループ化するコマンド\n'
+        '使用できるのは ch, en, npc, oth, に 0-9 を加えたもの\n'
         '> nick <characters> -n <nickname>\n'
         'ex: > nick hydra -n en1')
         
