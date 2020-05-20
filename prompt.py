@@ -519,8 +519,10 @@ class Command(Cmd):
 
     def do_rm(self, inp):
         ('追従しているキャラの技能を削除するコマンド, 一度に複数消去可\n'
-        '(cc) > rm <characters>\n'
-        'WIP: nickname に対応 -t を用いて対象を指定')
+        '(cc) > rm <skills>\n'
+        'Option: -t ターゲットを指定\n'
+        '> rm <skills> -t <characters>')
+        
         arg = inp.split()
         
         skills = arg
