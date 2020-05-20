@@ -279,42 +279,47 @@ class Command(Cmd):
         'ex: (cc)> start #追従中のキャラクタを指定するときは引数なし\n'
         'WIP: スロウとかのフラグを作ってない')
         # デフォルトではself.current_character を渡す。
-        chara_name = inp.split()
-        if len(chara_name) == 0:
+        characters = inp.split()
+        if len(characters) == 0:
             if self.current_character == '':
                 print('キャラクタを選択してください。 help start')
                 return
             else:
-                chara_name = [self.current_character]
-        elif len(chara_name) > 1:
-            print('引数が多すぎます。 help start')
-            return
-        chara_name = chara_name[0]
+                characters = [self.current_character]
+        if '--all' in characters:
+            conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            c = conn.cursor()
+            c.execute('SELECT name FROM character_list')
+            characters = [skill[0] for skill in c.fetchall()]
+        else:
+            # とりあえず全部キャラクタにする
+            characters = self.nick2chara(characters)
         conn = sqlite3.connect('./db/data.db')
         c = conn.cursor()
-        c.execute(
-            'SELECT chara_name, skill_name, round FROM status_list WHERE chara_name = ?', (chara_name,))
-        round_list = c.fetchall()
-        # あるキャラクタの技能のラウンドをすべて1減少
-        # タプルからリストに変形
-        round_list = list(map(list, round_list))
-        # round_list[i][2] をデクリメントする
-        for i, _ in enumerate(round_list):
-            if round_list[i][2] > 0:
-                round_list[i][2] -= 1
-        #round_and_character = [(skill, self.current_character) for skill in round_list]
-        # print(f'round_list:{round_list}')
-        # (chara_name, skill_name, round) のタプルで入ってくるがクエリに合わせるために軸を入れ替える
-        # (round, chara_name, skill_name) の形にしたい
-        round_list = [(skill[2], skill[0], skill[1]) for skill in round_list]
-        # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
-        # 技能名を指定していないから、末尾の要素ですべて上書きする
-        c.executemany(
-            'UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?', round_list)
-        # c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', round_and_character)
-        c.execute(
-            'DELETE FROM status_list WHERE round = 0 AND chara_name = ?', (chara_name,))
-        conn.commit()
+        for chara in characters:
+            c.execute(
+                'SELECT chara_name, skill_name, round FROM status_list WHERE chara_name = ?', (chara,))
+            round_list = c.fetchall()
+            # 指定されたキャラクタの技能のラウンドをすべて1減少
+            # タプルからリストに変形
+            round_list = list(map(list, round_list))
+            # round_list[i][2] をデクリメントする
+            for i, _ in enumerate(round_list):
+                if round_list[i][2] > 0:
+                    round_list[i][2] -= 1
+            #round_and_character = [(skill, self.current_character) for skill in round_list]
+            # print(f'round_list:{round_list}')
+            # (chara_name, skill_name, round) のタプルで入ってくるがクエリに合わせるために軸を入れ替える
+            # (round, chara_name, skill_name) の形にしたい
+            round_list = [(skill[2], skill[0], skill[1]) for skill in round_list]
+            # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
+            # 技能名を指定していないから、末尾の要素ですべて上書きする
+            c.executemany(
+                'UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?', round_list)
+            # c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', round_and_character)
+            c.execute(
+                'DELETE FROM status_list WHERE round = 0 AND chara_name = ?', (chara,))
+            conn.commit()
 
     def do_end(self, inp):
         ('手番終了時の処理をするコマンド\n'
