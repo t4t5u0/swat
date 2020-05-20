@@ -435,52 +435,8 @@ class Command(Cmd):
         # print(charas, characters, rounds)
         # return
 
-<<<<<<< Updated upstream
         # nick -> chara を関数化した
         characters = self.nick2chara(characters)
-=======
-
-        # ch1 とか ch* とか en2 とかで入ってきたときの処理をする
-        # 全部キャラクタ名に直す
-        conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
-        c = conn.cursor()
-        tmp = []
-        for characters in characters:
-            if re.match(self.nick_pattern, characters):
-                if characters[-1] == '*':
-                    # characters[:-1]% で検索する
-                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick LIKE ?', (f'{characters[:-1]}%',))
-                    cnt = c.fetchone()[0]
-                    # print(cnt)
-                    # 存在してるかどうか
-                    if cnt:
-                        c.execute('SELECT name FROM character_list WHERE nick LIKE ?', (f'{characters[:-1]}%',))
-                        tmp += [chara[0] for chara in (c.fetchall())]
-                        # print(tmp)
-                    else:
-                        print(f'{characters}に該当するキャラクタは存在しません')
-                else:
-                    # charで検索する
-                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick = ?', (characters,))
-                    cnt = c.fetchone()[0]
-                    # 存在してるかどうか
-                    if cnt:
-                        c.execute('SELECT name FROM character_list WHERE nick = ?', (characters,))
-                        tmp += c.fetchone()
-                    else:
-                        print(f'{characters}に該当するキャラクタは存在しません')
-            else:
-                # 普通に検索
-                # なかったらメッセージ出して飛ばす
-                c.execute('SELECT COUNT(name) FROM character_list WHERE name = ?', (characters,))
-                cnt = c.fetchone()[0]
-                if cnt:
-                    c.execute('SELECT name FROM character_list WHERE name = ?', (characters,))
-                    tmp += c.fetchone()
-                else:
-                    print(f'{characters}というキャラクタは存在しません')
-        characters = list(set(tmp))
->>>>>>> Stashed changes
 
         # 外側のループをキャラクタ。
         # 内側のループを技能でやる
