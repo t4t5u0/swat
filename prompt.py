@@ -361,10 +361,18 @@ class Command(Cmd):
         elif t_position:
             skills = arg[:t_position]
             characters = arg[t_position+1:]
+            # print('only t')
+            # print(f'{skills}')
+            # print(f'{characters}')
         # -r のみが存在する時
         elif r_position:
             skills = arg[:r_position]
             rounds = arg[r_position+1][0]
+            characters.append(self.current_character)
+            # print('only r')
+            # print(skills)
+            # print(rounds)
+            # print(characters)
         # 技能だけの時
         else:
             skills = arg
