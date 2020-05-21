@@ -1,0 +1,1436 @@
+[
+    {
+        "name": "《ガーディアンⅠ》",
+        "effect": [
+            "かばうを3回まで行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《かいくぐり》",
+        "effect": [
+            "盾を構えて回避を成功するたびに次の攻撃のC値-1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《回避行動Ⅰ》",
+        "effect": [
+            "かばうを3回まで行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《頑強》",
+        "effect": [
+            "最大HP+15"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《双撃》",
+        "effect": [
+            "複数の対象に命中を行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ターゲッティング》",
+        "effect": [
+            "誤射を防ぐ"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《鷹の目》",
+        "effect": [
+            "遮蔽先を視認できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《投げ強化Ⅰ》",
+        "effect": [
+            "<投げ>の威力を+10, 2部位までのキャラクタを対象可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《二刀流》",
+        "effect": [
+            "両手利きのペナルティ修正をなくす"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/ソード》",
+        "effect": [
+            "ソードカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/アックス》",
+        "effect": [
+            "アックスカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/スピア》",
+        "effect": [
+            "スピアカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/メイス》",
+        "effect": [
+            "メイスカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/スタッフ》",
+        "effect": [
+            "スタッフカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/フレイル》",
+        "effect": [
+            "フレイルカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/ウォーハンマー》",
+        "effect": [
+            "ウォーハンマーカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/格闘》",
+        "effect": [
+            "格闘カテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/投擲》",
+        "effect": [
+            "投擲カテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/ボウ》",
+        "effect": [
+            "ボウカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/クロスボウ》",
+        "effect": [
+            "クロスボウカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/ガン》",
+        "effect": [
+            "ガンカテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟A/矢弾》",
+        "effect": [
+            "矢弾カテゴリの武器のダメージ+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/ソード》",
+        "effect": [
+            "ソードカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/アックス》",
+        "effect": [
+            "アックスカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/スピア》",
+        "effect": [
+            "スピアカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/メイス》",
+        "effect": [
+            "メイスカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/スタッフ》",
+        "effect": [
+            "スタッフカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/フレイル》",
+        "effect": [
+            "フレイルカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/ウォーハンマー》",
+        "effect": [
+            "ウォーハンマーカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/格闘》",
+        "effect": [
+            "格闘カテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/投擲》",
+        "effect": [
+            "投擲カテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/ボウ》",
+        "effect": [
+            "ボウカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/クロスボウ》",
+        "effect": [
+            "クロスボウカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/ガン》",
+        "effect": [
+            "ガンカテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器習熟S/矢弾》",
+        "effect": [
+            "矢弾カテゴリの武器のダメージ+1, Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《踏みつけ》",
+        "effect": [
+            "<投げ>成功時<キック>による追加の攻撃ができる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《変幻自在Ⅰ》",
+        "effect": [
+            "1ラウンドに2回宣言特技を宣言できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《防具習熟A/金属鎧》",
+        "effect": [
+            "金属鎧カテゴリの防具の防護点+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《防具習熟S/金属鎧》",
+        "effect": [
+            "金属鎧カテゴリの防具の防護点+2(合計+3), Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《防具習熟A/金属鎧》",
+        "effect": [
+            "金属鎧カテゴリの防具の防護点+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《防具習熟S/非金属鎧》",
+        "effect": [
+            "非金属鎧カテゴリの防具の防護点+2(合計+3), Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《防具習熟A/金属鎧》",
+        "effect": [
+            "金属鎧カテゴリの防具の防護点+1, Aランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《防具習熟S/盾》",
+        "effect": [
+            "盾カテゴリの防具の防護点+2(合計+3), Sランク装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大の達人》",
+        "effect": [
+            "魔法拡大の最適化を行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《両手利き》",
+        "effect": [
+            "片手武器を2本、両腕に装備して扱える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《MP軽減/ソーサラー》",
+        "effect": [
+            "ソーサラー技能の魔法系統のMP消費-1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《MP軽減/プリースト》",
+        "effect": [
+            "プリースト技能の魔法系統のMP消費-1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《MP軽減/コンジャラー》",
+        "effect": [
+            "コンジャラー技能の魔法系統のMP消費-1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《MP軽減/マギテック》",
+        "effect": [
+            "マギテック技能の魔法系統のMP消費-1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ワードブレイク》",
+        "effect": [
+            "達成値を比べ合い、魔法などの効果を1つ除去する"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《追加攻撃》",
+        "effect": [
+            "1H<格闘>での攻撃時、1H<格闘>による攻撃を1回追加"
+        ],
+        "type": "GRA",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《トレジャーハント》",
+        "effect": [
+            "戦利品決定ロールの出目+1"
+        ],
+        "type": "SCO",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《サバイバリビティ》",
+        "effect": [
+            "自然環境で1日に1回, 抵抗力判定を自動成功"
+        ],
+        "type": "RAN",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《鋭い目》",
+        "effect": [
+            "戦利品決定ロールの出目+1"
+        ],
+        "type": "SAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《足さばき》",
+        "effect": [
+            "「制限移動」が10mになる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ガーディアンⅡ》",
+        "effect": [
+            "複数も対象に計5回まで<かばう>を行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《回避行動Ⅱ》",
+        "effect": [
+            "回避力判定+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《射手の体術》",
+        "effect": [
+            "シューター技能で回避力判定を行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《終律増強》",
+        "effect": [
+            "終律の威力を+10する"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《呪歌追加Ⅰ》",
+        "effect": [
+            "呪歌・終律の習得数を+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《呪歌追加Ⅱ》",
+        "effect": [
+            "呪歌・終律の習得数を+1(計+2)"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《スローイングⅠ》",
+        "effect": [
+            "<ポーション>を投擲して使えるようになる",
+            "投擲攻撃の命中力判定に+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《スローイングⅡ》",
+        "effect": [
+            "<ポーション>を投擲して使えるようになる",
+            "投擲攻撃の命中力判定に+1",
+            "射程10mから射程20mに延長"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+        
+    },
+    {
+        "name": "《超頑強》",
+        "effect": [
+            "最大HP+15(計+30)"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《特殊楽器習熟》",
+        "effect": [
+            "特殊楽器を装備・使用できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《飛び蹴り》",
+        "effect": [
+            "10m以上を通常攻撃で移動後、<キック>を行える(主動作を消費しない)"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《投げ強化Ⅱ》",
+        "effect": [
+            "<投げ>の威力を威力を+20",
+            "3部位までのキャラクタを対象にできる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ハーモニー》",
+        "effect": [
+            "ペットと自身の呪歌の効果を同時に適用する"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ブロッキング》",
+        "effect": [
+            "移動妨害や離脱準備で、自身を2倍のキャラクタ数として数える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔晶石の達人》",
+        "effect": [
+            "魔晶石を同時に2つ使用できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《マリオネット》",
+        "effect": [
+            "ゴーレムや妖精などを独立した手番で行動させられる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔力強化Ⅰ》",
+        "effect": [
+            "魔力+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《命中強化Ⅰ》",
+        "effect": [
+            "命中力判定+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《練体の極意》",
+        "effect": [
+            "練技の効果時間3倍"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《タフネス》",
+        "effect": [
+            "最大HP+15"
+        ],
+        "type": "FIG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《カウンター》",
+        "effect": [
+            "近接攻撃時に対し、回避の代わりに攻撃を行う"
+        ],
+        "type": "GRA",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ファストアクション》",
+        "effect": [
+            "先行1ラウンド目に主動作を1回追加"
+        ],
+        "type": "SCO",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《影走り》",
+        "effect": [
+            "移動妨害を受けない",
+            "離脱準備を必要とせずに乱戦離脱が可能"
+        ],
+        "type": "SCO",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《不屈》",
+        "effect": [
+            "HP0でも気絶しない"
+        ],
+        "type": "RAN",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "△《ポーションマスター》",
+        "effect": [
+            "戦闘準備、補助動作でポーションを使用可能になる"
+        ],
+        "type": "RAN",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《弱点看破》",
+        "effect": [
+            "弱点の効果を2倍にする"
+        ],
+        "type": "SAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《マナセーブ》",
+        "effect": [
+            "あらゆるMP消費-1"
+        ],
+        "type": "SAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《キャパシティ》",
+        "effect": [
+            "最大MP+15"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《呪歌追加Ⅲ》",
+        "effect": [
+            "呪歌・終律の習得数を+1(計+3)"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《二刀無双》",
+        "effect": [
+            "《両手利き》の必要筋力制限がなくなる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《武器の達人》",
+        "effect": [
+            "すべての武器をSSランクまで装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《賦術強化Ⅰ》",
+        "effect": [
+            "賦術判定+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《賦術強化Ⅱ》",
+        "effect": [
+            "賦術判定+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《賦術全遠隔化》",
+        "effect": [
+            "巫術の射程を伸ばす"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《変幻自在Ⅱ》",
+        "effect": [
+            "1ラウンドに3回宣言特技を宣言できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《防具の達人》",
+        "effect": [
+            "すべての防具をSSカテゴリまで装備可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔力強化Ⅰ》",
+        "effect": [
+            "魔力+2(計+3)"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《命中強化Ⅱ》",
+        "effect": [
+            "命中力判定+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《連続賦術》",
+        "effect": [
+            "主動作で賦術を行使する場合、連続して2回行える"
+        ],
+        "type": "ARC",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《バトルマスター》",
+        "effect": [
+            "1ラウンドに2回の宣言特技を宣言できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ルーンマスター》",
+        "effect": [
+            "1ラウンドに2回の宣言特技を宣言できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《トレジャーマスター》",
+        "effect": [
+            "戦利品決定ロールの出目+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《匠の技》",
+        "effect": [
+            "スカウト技能による行為判定を常に1回振り直せる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《縮地》",
+        "effect": [
+            "全力移動時に、通常移動で可能な動作を行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ランアンドガン》",
+        "effect": [
+            "通常移動時に、制限移動で可能な動作を行える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《マナ耐性》",
+        "effect": [
+            "魔法ダメージ-5"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《賢人の知恵》",
+        "effect": [
+            "セージ技能による行為判定を常に1回振り直せる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]
