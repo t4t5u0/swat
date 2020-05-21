@@ -279,6 +279,20 @@ class Command(Cmd):
         'ex: (cc)> start #追従中のキャラクタを指定するときは引数なし\n'
         'WIP: スロウとかのフラグを作ってない')
         # デフォルトではself.current_character を渡す。
+
+        def process(c ,arg):
+            # conn = sqlite3.connect('./db/data.db')
+            # c = conn.cursor()
+            result = c.execute(
+                "SELECT DISTINCT chara_name, skill_name, round , use_start FROM status_list WHERE chara_name = ? AND use_start = 'True'", (arg,))
+            result = list(result)
+            if len(list(result)) == 0:
+                print('手番開始時に行う処理はありません')
+            else:
+                for row in result:
+                    print(f'{row[1]}の処理を行ってください')
+            # conn.close()
+
         characters = inp.split()
         if len(characters) == 0:
             if self.current_character == '':
@@ -297,6 +311,7 @@ class Command(Cmd):
         conn = sqlite3.connect('./db/data.db')
         c = conn.cursor()
         for chara in characters:
+            process(c, chara)
             c.execute(
                 'SELECT chara_name, skill_name, round FROM status_list WHERE chara_name = ?', (chara,))
             round_list = c.fetchall()
@@ -325,9 +340,9 @@ class Command(Cmd):
         ('手番終了時の処理をするコマンド\n'
         '> end [character]')
         # 保守性を上げるため、関数内関数を用いる
-        def process(arg):
-            conn = sqlite3.connect('./db/data.db')
-            c = conn.cursor()
+        def process(c, arg):
+            # conn = sqlite3.connect('./db/data.db')
+            # c = conn.cursor()
             result = c.execute(
                 "SELECT DISTINCT chara_name, skill_name, round , use_end FROM status_list WHERE chara_name = ? AND use_end = 'True'", (arg,))
             result = list(result)
@@ -336,14 +351,16 @@ class Command(Cmd):
             else:
                 for row in result:
                     print(f'{row[1]}の処理を行ってください')
-            conn.close()
+            # conn.close()
 
         arg = inp.split()
+        conn = sqlite3.connect('./db/data.db')
+        c = conn.cursor()
         if len(arg) == 0:
             if self.current_character == '':
                 print('chenge コマンドでキャラクタを指定してください')
             else:
-                process(self.current_character)
+                process(c, self.current_character)
         elif len(arg) == 1:
             process(arg[0])
         else:
