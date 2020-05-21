@@ -42,8 +42,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": true,
-        "table": -1
+        "choice": true
     },
     {
         "name": "【ウェポン・マスター】",
@@ -66,8 +65,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": true,
-        "table": -1
+        "choice": true
     },
     {
         "name": "【ウォール・ウォーキング】",
@@ -116,8 +114,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": true,
-        "table": -1
+        "choice": true
     },
     {
         "name": "【イレイス・マジック】",
