@@ -8,10 +8,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ダーク・ミスト】",
@@ -22,10 +22,10 @@
         "round": 1,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【プロテクション】",
@@ -36,10 +36,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【カウンター・マジック】",
@@ -50,10 +50,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ファナティシズム】",
@@ -65,10 +65,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ファイア・ウェポン】",
@@ -80,10 +80,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【レイジング・アース】",
@@ -94,10 +94,10 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
-        "end": false,
+        "start": false,
+        "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【フォビドゥン・マジック】",
@@ -108,10 +108,10 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ポイズン・クラウド】",
@@ -122,10 +122,10 @@
         "round": 6,
         "2d6": false,
         "1d6": false,
-        "end": false,
+        "start": false,
+        "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ダーク・ミスト】",
@@ -136,10 +136,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【アース・シールド】",
@@ -150,10 +150,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【インテンス・コントロール】",
@@ -167,10 +167,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【スペル・エンハンス】",
@@ -181,10 +181,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【スタン・クラウド】",
@@ -195,10 +195,10 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【マナ・アブソーブ】",
@@ -210,10 +210,10 @@
         "round": 3,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【アイシクル・ウェポン】",
@@ -225,10 +225,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【バインド・オペレーション】",
@@ -240,10 +240,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【プロテクションⅡ】",
@@ -254,10 +254,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ダーク・ミスト】",
@@ -268,10 +268,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ペトロ・クラウド】",
@@ -282,10 +282,10 @@
         "round": -1,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ヘイスト】",
@@ -297,10 +297,10 @@
         "round": 3,
         "2d6": false,
         "1d6": true,
+        "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ソニック・ウェポン】",
@@ -313,10 +313,10 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【マナ・シール】",
@@ -327,10 +327,10 @@
         "round": 6,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【レイジング・アースⅡ】",
@@ -341,9 +341,9 @@
         "round": 18,
         "2d6": false,
         "1d6": false,
+        "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     }
 ]
