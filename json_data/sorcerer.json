@@ -11,8 +11,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【バイタリティ】",
@@ -26,8 +25,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【パラライズ】",
@@ -79,8 +77,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "⏩△【ブリンク】",
@@ -94,8 +91,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【マジシャン】",
@@ -128,8 +124,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ブレード・ネット】",
@@ -143,8 +138,7 @@
         "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【レデュース・マジック】",
@@ -158,8 +152,7 @@
         "end": false,
         "start": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【スロウ】",
@@ -174,8 +167,7 @@
         "start": true,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【デス・ルーテリィ】",
@@ -189,8 +181,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ライトニング・バインド】",
@@ -205,8 +196,7 @@
         "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【マジック・リフレクション】",
@@ -220,7 +210,6 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     }
 ]
