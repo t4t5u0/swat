@@ -11,8 +11,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ダーク・ミスト】",
@@ -26,8 +25,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【プロテクション】",
@@ -41,8 +39,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【カウンター・マジック】",
@@ -56,8 +53,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ファナティシズム】",
@@ -72,8 +68,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ファイア・ウェポン】",
@@ -88,8 +83,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【レイジング・アース】",
@@ -103,8 +97,7 @@
         "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【フォビドゥン・マジック】",
@@ -118,8 +111,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ポイズン・クラウド】",
@@ -133,8 +125,7 @@
         "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ダーク・ミスト】",
@@ -148,8 +139,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【アース・シールド】",
@@ -163,8 +153,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【インテンス・コントロール】",
@@ -181,8 +170,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【スペル・エンハンス】",
@@ -196,8 +184,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【スタン・クラウド】",
@@ -211,8 +198,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【マナ・アブソーブ】",
@@ -227,8 +213,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【アイシクル・ウェポン】",
@@ -243,8 +228,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【バインド・オペレーション】",
@@ -259,8 +243,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【プロテクションⅡ】",
@@ -274,8 +257,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ダーク・ミスト】",
@@ -289,8 +271,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ペトロ・クラウド】",
@@ -304,8 +285,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ヘイスト】",
@@ -320,8 +300,7 @@
         "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【ソニック・ウェポン】",
@@ -337,8 +316,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【マナ・シール】",
@@ -352,8 +330,7 @@
         "start": false,
         "end": false,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     },
     {
         "name": "【レイジング・アースⅡ】",
@@ -367,7 +344,6 @@
         "start": false,
         "end": true,
         "count": false,
-        "choice": false,
-        "table": -1
+        "choice": false
     }
 ]

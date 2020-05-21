@@ -9,8 +9,7 @@
         "start" : "手番終了時に処理をするフラグ True/False",
         "end"   : "手番終了時に処理をするフラグ True/False",
         "count" : "試行回数を受け取るフラグ True/False",
-        "choice": "複数の効果から1つを選ぶ　True/False",
-        "table" : "テーブルのフラグ int 現在は使ってないから全部-1"
+        "choice": "複数の効果から1つを選ぶ　True/False"
     },
     {
         "name"  : "name",
@@ -30,7 +29,6 @@
         "start" : false,
         "end"   : false,
         "count" : false,
-        "choice": false,
-        "table" : -1
+        "choice": false
     }
 ]
