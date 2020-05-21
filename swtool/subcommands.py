@@ -25,3 +25,5 @@ def serch_words_index(ls, words):
         if item in words:
             result.append(i)
     return result
+
+
