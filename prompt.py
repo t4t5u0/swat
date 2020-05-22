@@ -265,9 +265,10 @@ class Command(Cmd):
             quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
             for i, row in enumerate(c.execute(quely, (ch,))):
                 print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
-                      f" {row[0]:^{30-count_east_asian_character(row[0])}}"
-                      f" {row[2]:^{15-count_east_asian_character(str(row[2]))}}"
-                      f" {row[1]:<{20-count_east_asian_character(row[1])}}")
+                      f"{row[0]:^{30-count_east_asian_character(row[0])}}"
+                      f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
+                    #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
+                      f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
                 # print(f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
             conn.close()
             print('─'*100)

@@ -150,20 +150,6 @@
         "choice": false
     },
     {
-        "name": "《バイオレントキャストⅠ》",
-        "effect": [
-            "ダメージ魔法の魔法行使判定+2"
-        ],
-        "type": "",
-        "round": 1,
-        "2d6": false,
-        "1d6": false,
-        "start": false,
-        "end": false,
-        "count": false,
-        "choice": false
-    },
-    {
         "name": "《魔法拡大/威力確実化》",
         "effect": [
             "威力決定時の出目が4以下の場合、一度だけ振り直してよい"
@@ -483,34 +469,6 @@
         "choice": false
     },
     {
-        "name": "《バイオレントキャストⅠ》",
-        "effect": [
-            "ダメージ魔法の魔法行使判定+2"
-        ],
-        "type": "",
-        "round": 1,
-        "2d6": false,
-        "1d6": false,
-        "start": false,
-        "end": false,
-        "count": false,
-        "choice": false
-    },
-    {
-        "name": "《バイオレントキャストⅠ》",
-        "effect": [
-            "ダメージ魔法の魔法行使判定+2"
-        ],
-        "type": "",
-        "round": 1,
-        "2d6": false,
-        "1d6": false,
-        "start": false,
-        "end": false,
-        "count": false,
-        "choice": false
-    },
-    {
         "name": "《魔法拡大/威力確実化》",
         "effect": [
             "威力決定時の出目が4以下の場合、一度だけ振り直してよい"
@@ -654,21 +612,6 @@
         "name": "《マルチアクション》",
         "effect": [
             "近接攻撃と魔法行使を同時に行う"
-        ],
-        "type": "",
-        "round": 1,
-        "2d6": false,
-        "1d6": false,
-        "start": false,
-        "end": false,
-        "count": false,
-        "choice": false
-    },
-    {
-        "name": "《鎧貫きⅠ》",
-        "effect": [
-            "攻撃対象の防護点を半分として扱う",
-            "C値-1"
         ],
         "type": "",
         "round": 1,
