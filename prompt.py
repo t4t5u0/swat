@@ -215,6 +215,7 @@ class Command(Cmd):
             print('すべてのキャラクタを削除しました')
             self.prompt = f'{Color.GREEN}> {Color.RESET}'
         else:
+            chara = self.nick2chara(chara)
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for skill in char:
