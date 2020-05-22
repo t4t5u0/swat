@@ -264,17 +264,27 @@ class Command(Cmd):
             c = conn.cursor()
             c.execute('SELECT name FROM character_list')
             char = [skill[0] for skill in c.fetchall()]
+
+        char = self.nick2chara(char)
         for ch in char:
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
-            for i, row in enumerate(c.execute(quely, (ch,))):
-                print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
-                      f"{row[0]:^{30-count_east_asian_character(row[0])}}"
-                      f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
-                    #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
-                      f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
-                # print(f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
+            result = list(c.execute(quely, (ch,)))
+            if len(result) == 0:
+                print(f"{ch:^15}|"
+                        f"{'':^30}"
+                        f"{'':^15}"
+                        #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
+                        f"{'':<20}")
+            else:
+                for i, row in enumerate(result):
+                    print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
+                        f"{row[0]:^{30-count_east_asian_character(row[0])}}"
+                        f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
+                        #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
+                        f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
+                    # print(f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
             conn.close()
             print('─'*100)
 
