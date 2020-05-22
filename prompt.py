@@ -161,12 +161,17 @@ class Command(Cmd):
         char = inp.split()
         if len(char) == 0:
             print('引数が少なすぎます。changeは引数を１つ取ります。詳細は help change で確認してください。')
-        elif len(char) >= 2:
+            return
+        if len(char) >= 2:
             print('引数が多すぎます。changeは引数を１つ取ります。詳細は help change で確認してください。')
-        else:
-            self.current_character = char[0]
-            print(f'<{self.current_character}> を効果の対象にします')
-            self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
+            return
+        char = self.nick2chara(char)
+        # print(char)
+        if len(char) == 0:
+            return
+        self.current_character = char[0]
+        print(f'<{self.current_character}> を効果の対象にします')
+        self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
 
     def do_ls(self, inp):
         ('キャラクタ一覧を確認するコマンド'
@@ -363,7 +368,7 @@ class Command(Cmd):
             else:
                 process(c, self.current_character)
         elif len(arg) == 1:
-            process(arg[0])
+            process(c, arg[0])
         else:
             print('引数が多すぎます')
             return
