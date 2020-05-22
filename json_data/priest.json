@@ -1,0 +1,92 @@
+[
+    {
+        "name": "【バニッシュ】",
+        "effect": [
+            "命中+2,回避-2,理性的行動不可,魔法行使不可",
+            "命中&回避&魔法行使-1",
+            "戦闘離脱,できない場合1R行動不可"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【フィールド・プロテクション】",
+        "effect": [
+            "被ダメ-1,「毒」「病気」「呪い」は不可"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フィールド・レジスト】",
+        "effect": [
+            "土属性被ダメ-3",
+            "水・氷属性被ダメ-3",
+            "炎属性被ダメ-3",
+            "風属性被ダメ-3",
+            "純エネルギー属性被ダメ-3"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【セイクリッド・ウェポン】",
+        "effect": [
+            "蛮族,アンデッドに対し命中+1,物理ダメージ+2"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【セイクリッド・シールド】",
+        "effect": [
+            "蛮族,アンデッドからの物理ダメージ-3"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フェイス・インジケイト】",
+        "effect": [
+            "他神の信徒の特殊神聖魔法の行使不可"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]
