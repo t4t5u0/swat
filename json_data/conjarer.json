@@ -128,20 +128,6 @@
         "choice": false
     },
     {
-        "name": "【ダーク・ミスト】",
-        "effect": [
-            "回避力判定-2"
-        ],
-        "type": "CON",
-        "round": 18,
-        "2d6": false,
-        "1d6": false,
-        "start": false,
-        "end": false,
-        "count": false,
-        "choice": false
-    },
-    {
         "name": "【アース・シールド】",
         "effect": [
             "防護点+2"
