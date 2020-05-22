@@ -1,0 +1,172 @@
+[
+    {
+        "name": "⏩【インスタンスウェポン】",
+        "effect": [
+            "簡易武器を作成 B:威力10",
+            "簡易武器を作成 A:威力20",
+            "簡易武器を作成 S:威力30",
+            "簡易武器を作成 SS:威力50"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【インスタンスウェポン】",
+        "effect": [
+            "B:威力10の簡易武器を作成",
+            "A:威力20の簡易武器を作成",
+            "S:威力30の簡易武器を作成",
+            "SS:威力50の簡易武器を作成"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【クラッシュファング】",
+        "effect": [
+            "B:物理ダメージ-1点",
+            "A:物理ダメージ-2点",
+            "S:物理ダメージ-4点",
+            "SS:物理ダメージ-10点"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ヴォーパルウェポン】",
+        "effect": [
+            "B:物理ダメージ+1点",
+            "A:物理ダメージ+2点",
+            "S:物理ダメージ+3点",
+            "SS:物理ダメージ+6点"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【クリティカルレイ】",
+        "effect": [
+            "B:物理ダメージの威力ロールの出目+1",
+            "A:物理ダメージの威力ロールの出目+2",
+            "S:物理ダメージの威力ロールの出目+3",
+            "SS:物理ダメージの威力ロールの出目+6"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩△【バークメイル】",
+        "effect": [
+            "B:防護点+1",
+            "A:防護点+2",
+            "S:防護点+4",
+            "SS:防護点+8"
+        ],
+        "type": "ALC",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【パラライズミスト】",
+        "effect": [
+            "B:回避力減少なし",
+            "A:回避力-1",
+            "S:回避力-2",
+            "SS:回避力-4"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ポイズンニードル】",
+        "effect": [
+            "B:手番終了時に1点のダメージ",
+            "A:手番終了時に3点のダメージ",
+            "S:手番終了時に5点のダメージ",
+            "SS:手番終了時に10点のダメージ"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": true,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩△【ミラージュデイズ】",
+        "effect": [
+            "B:命中力判定にペナルティなし",
+            "A:命中力判定-1",
+            "S:命中力判定-2",
+            "SS:命中力判定-4"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ヒールスプレー】",
+        "effect": [
+            "B:対象のHPを3点回復",
+            "A:対象のHPを10点回復",
+            "S:対象のHPを20点回復",
+            "SS:対象のHPを50点回復"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    }
+]
