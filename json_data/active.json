@@ -422,22 +422,6 @@
         "choice": false
     },
     {
-        "name": "《ディフェンススタンス》",
-        "effect": [
-            "回避力判定+4, ほとんどの行為判定-4",
-            "生命抵抗力判定+4, ほとんどの行為判定-4",
-            "精神抵抗力判定+4, ほとんどの行為判定-4"
-        ],
-        "type": "",
-        "round": 1,
-        "2d6": false,
-        "1d6": false,
-        "start": false,
-        "end": false,
-        "count": false,
-        "choice": true
-    },
-    {
         "name": "《薙ぎ払いⅠ》",
         "effect": [
             "3体までを攻撃",
