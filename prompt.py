@@ -23,7 +23,7 @@ class Command(Cmd):
 
     nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
 
-    def nick2chara(self, characters):
+    def nick2chara(self, characters : list) -> list:
         conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
         tmp = []
@@ -563,28 +563,34 @@ class Command(Cmd):
         '(cc) > rm <skills>\n'
         'Option: -t ターゲットを指定\n'
         '> rm <skills> -t <characters>')
-        
+
         arg = inp.split()
-        
+
         skills = arg
-        characters = self.current_character
-        '-t が存在するか'
+        characters = [self.current_character]
+        # -t が存在するか
         if '-t' in arg:
+            # print(arg)
             characters = arg[arg.index('-t')+1:]
             skills = arg[:arg.index('-t')]
-            # print(characters)
         elif self.current_character == '':
             print('対象にするキャラクタを設定してください')
             return
 
-        if not characters:
+        if len(characters) == 0:
             print('-t の後ろにはキャラクタを1体以上指定してください')
             return
-            
+
         if len(arg) == 0:
             print('rm は引数を1つ以上取ります。 help rm')
             return
-        
+
+        print(characters)
+        characters = self.nick2chara(characters)
+        if len(characters) == 0:
+            print('')
+            return
+
         conn = sqlite3.connect('./db/data.db')
         c = conn.cursor()
         for chara in characters:
@@ -602,14 +608,33 @@ class Command(Cmd):
                 if len(skill) == 0:
                     print(f'{item} に一致する技能は存在しませんでした')
                     continue
-                skill_names = list(set(skill[0]))
+
+                # 一致した技能全部が入ってる
+                skill_names = list(set([item[0] for item in skill]))
+
                 # print(skill_names)
-                for _, skill_name in enumerate(skill_names):
-                    c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',
-                                (chara, skill_name))
-                    print(f'{skill_name}を削除しました')
+
+                # 複数あったらfor文回す
+                if len(skill_names) == 1:
+                    skill_name = skill_names[0]
+                else:
+                    for i, skill_name in enumerate(skill_names):
+                        print(i, skill_name)
+                    try:
+                        index = int(input('追加したい効果の番号を入力してください:'))
+                        skill_name = skill_names[index]
+                        # print(effect)
+                    except:
+                        print('有効な数字を入力してください')
+                        return
+                print(skill_name)
+                c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',
+                            (chara, skill_name))
+                print(f'{skill_name}を削除しました')
                 conn.commit()
         conn.close()
+
+
 
     def do_reset(self, inp):
         '''戦闘終了時の処理コマンド。状態を初期化する'''
