@@ -2,9 +2,9 @@
     {
         "name": "【バニッシュ】",
         "effect": [
-            "命中+2,回避-2,理性的行動不可,魔法行使不可",
-            "命中&回避&魔法行使-1",
-            "戦闘離脱,できない場合1R行動不可"
+            "2~4:命中+2,回避-2,理性的行動不可,魔法行使不可",
+            "5~8命中&回避&魔法行使-1",
+            "9~12:戦闘離脱,できない場合1R行動不可"
         ],
         "type": "PRI",
         "round": 18,
@@ -82,6 +82,910 @@
         ],
         "type": "PRI",
         "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブレス】",
+        "effect": [
+            "器用度+6",
+            "敏捷度+6",
+            "筋力+6",
+            "生命力+6"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【ホーリークレイドル】",
+        "effect": [
+            "睡眠させる,半分の時間で回復"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【リムーブ・カース】",
+        "effect": [
+            "呪い解除,6Rの間呪いの装備解除可"
+        ],
+        "type": "PRI",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【マインド・センディング】",
+        "effect": [
+            "PC同士の情報伝達可"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サンライト】",
+        "effect": [
+            "半径20m/起点指定 は暗地でのペナルティなし,持ち運び可"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ウィークポイント】",
+        "effect": [
+            "対象に対するダメージ計算のC値-1"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ナイト・ウォーカー】",
+        "effect": [
+            "暗視付与"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブラインドネス】",
+        "effect": [
+            "盲目状態付与"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【リトライ】",
+        "effect": [
+            "所要時間1分以上の技巧判定を振りなおす"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【アプライザル】",
+        "effect": [
+            "宝物鑑定判定+4"
+        ],
+        "type": "PRI",
+        "round": 60,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【カウンター・デーモン】",
+        "effect": [
+            "魔神に対抗する生命・精神抵抗判定+2"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【セイクリッド・オーラ】",
+        "effect": [
+            "【セイクリッド~】系の魔法を魔神にも適用可"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ウィンド・サーキュレイション】",
+        "effect": [
+            "温度や風の影響によるペナルティ1軽減,植物成長速度2倍"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【コールドレイン】",
+        "effect": [
+            "「威力10+魔力」点の魔法ダメージ,抵抗失敗時回避-1"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【クエスト】",
+        "effect": [
+            "指名を1つ課し,反抗時1点確定ダメージ"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【バトルソング】",
+        "effect": [
+            "任意のキャラの命中&ダメージ+2,歌うことをやめると消滅"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フィールド・プロテクションⅡ】",
+        "effect": [
+            "被ダメ-2,「毒」「病気」「呪い」は不可"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【プリザーベイション】",
+        "effect": [
+            "腐敗から護る"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ピース】",
+        "effect": [
+            "戦意を奪う"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【グレイス・オブ・ルミエル】",
+        "effect": [
+            "対象に[剣の加護/運命変転]を与える",
+            "対象に[剣の加護/優しき水]を与える",
+            "対象に[剣の加護/炎身]を与える",
+            "対象に[剣の加護/風の翼]を与える"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【ファイン・ウェザー】",
+        "effect": [
+            "天気を快晴にする"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【デイブレイク】",
+        "effect": [
+            "半径30mを小さな太陽で照らす"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【インスピレーション】",
+        "effect": [
+            "観察判定,知識判定を自動成功させる,一度で消滅,1日1回"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【プレコグ】",
+        "effect": [
+            "行為判定の出目を「4」「4」にする"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【クレセント・シャイン】",
+        "effect": [
+            "ダメージ判定の出目を2d6:3に固定する"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ゴッドハンド】",
+        "effect": [
+            "器用度関連の判定出目が11でも自動成功"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フラッシュ・シールド】",
+        "effect": [
+            "対象の被ダメ-5"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【セイクリッド・ジェイル】",
+        "effect": [
+            "魔神の移動と魔法行使を封じる"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【トレイルガイド】",
+        "effect": [
+            "道が目的地につながっているか判別"
+        ],
+        "type": "PRI",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【リブート】",
+        "effect": [
+            "対象の主動作+1,1日1回"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ストームフレンズ】",
+        "effect": [
+            "「水・氷」「風」属性のダメージ+2被ダメ-2"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【コンフュージョン】",
+        "effect": [
+            "対象が1分以上の判定を行っているとき中止させる"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【チャーム】",
+        "effect": [
+            "対象の警戒を解く,対象に害が及ぼされた場合解除"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【インターナル・ディスコード】",
+        "effect": [
+            "術者を指定された別のキャラと認識する"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ジェラシー】",
+        "effect": [
+            "対象はすべてを妬む(呪い)"
+        ],
+        "type": "PRI",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サイン・トーチ】",
+        "effect": [
+            "対象の回避-2,半径5mを照らす"
+        ],
+        "type": "PRI",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "▷▷△【ヒート・ウェポン】",
+        "effect": [
+            "ダメージ+2,炎属性付与"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【バーニング・ソウル】",
+        "effect": [
+            "術者に0点以上のダメージを与えたキャラに5点火属性魔法ダメージ"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フォレスト・パス】",
+        "effect": [
+            "自然環境にいるとき最大HP+3"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【バインディング・ソーン】",
+        "effect": [
+            "命中&回避-1"
+        ],
+        "type": "PRI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ハイドイン・ネイチャー】",
+        "effect": [
+            "自然環境で隠密判定-4"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "▷▷【ハーベスト・フィールド】",
+        "effect": [
+            "HP回復量2倍"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "▷▷△【リダイレクト・ウーンズ】",
+        "effect": [
+            "対象の受けるダメージを5点まで引きうける,受けたら解除"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "▷▷△【リベンジ・フォース】",
+        "effect": [
+            "術者にダメージを与えた対象に対しての命中&魔法行使+2,1回で解除"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【トリート・ペイン】",
+        "effect": [
+            "毒・病気・呪い属性の被ダメ-5"
+        ],
+        "type": "PRI",
+        "round": 60,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【グリース】",
+        "effect": [
+            "制限移動距離+2"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ドライブ・アウェイ】",
+        "effect": [
+            "(同一ラウンドの回避&精神抵抗)毎ｰ1"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ゴー・ザ・ウェイ】",
+        "effect": [
+            "空中線路"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブレスⅡ】",
+        "effect": [
+            "対象の能力値すべて+6"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ホーリーライト】",
+        "effect": [
+            "アンデッドに威力50+魔力ダメージ,精神抵抗-2"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【セイクリッド・フィールド】",
+        "effect": [
+            "蛮族とアンデッド立入禁止結界"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【レスキュー】",
+        "effect": [
+            "対象のHPを把握し緊急時に呼び寄せる"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【オラクル】",
+        "effect": [
+            "術者と同じ神のプリーストに声を届ける"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ディバイン・ウォー】",
+        "effect": [
+            "対象の戦士系技能Lv.+3"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【コール・ゴッド】",
+        "effect": [
+            "古代神を呼び出す,術者は死亡し蘇生できない",
+            "大神を呼び出す,術者は死亡",
+            "小神を呼び出す,術者のHPを0,七日間最大MP-50"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【プロミスト・サークル】",
+        "effect": [
+            "任意の対象とMPを共用できる"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "▷▷△【コンプレーション】",
+        "effect": [
+            "10Lv.までの任意の真語/操霊/妖精魔法を習得"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【パニック】",
+        "effect": [
+            "乱戦エリア内の対象選択不可"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ウィッシュ・スター】",
+        "effect": [
+            "抵抗判定自動成功"
+        ],
+        "type": "PRI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "▷▷△【ハイパー・アクセラレーション】",
+        "effect": [
+            "器用度&敏捷度+12"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【デーモン・バスター】",
+        "effect": [
+            "魔神に威力70魔法ダメ+ダメージ-5"
+        ],
+        "type": "PRI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ホーリー・ツリー】",
+        "effect": [
+            "聖樹となり行動する"
+        ],
+        "type": "PRI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【スケープゴート】",
+        "effect": [
+            "ダメージをすべて引き受ける"
+        ],
+        "type": "PRI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【コントロール・トレイン】",
+        "effect": [
+            "車輪で動く物体を操る"
+        ],
+        "type": "PRI",
+        "round": -1,
         "2d6": false,
         "1d6": false,
         "start": false,
