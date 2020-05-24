@@ -256,7 +256,7 @@ class Command(Cmd):
         # elif len(char) >= 2:
         #     print('引数が多すぎます。check は引数を1つとります。詳細は help check で確認してください。')
         print(f'{"名前":^{15-count_east_asian_character("名前")}}|'
-              f'{"スキル名":^{30-count_east_asian_character("スキル名")}}'
+              f'{"スキル名":^{40-count_east_asian_character("スキル名")}}'
               f'{"残りラウンド":^{15-count_east_asian_character("残りラウンド")}}'
               f'{"効果":^{20-count_east_asian_character("効果")}}')
         print('─'*100)
@@ -274,14 +274,14 @@ class Command(Cmd):
             result = list(c.execute(quely, (ch,)))
             if len(result) == 0:
                 print(f"{ch:^15}|"
-                        f"{'':^30}"
+                        f"{'':^40}"
                         f"{'':^15}"
                         #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
                         f"{'':<20}")
             else:
                 for i, row in enumerate(result):
                     print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
-                        f"{row[0]:^{30-count_east_asian_character(row[0])}}"
+                        f"{row[0]:^{max(40-count_east_asian_character(row[0]), 0)}}"
                         f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
                         #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
                         f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
