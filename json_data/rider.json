@@ -1,0 +1,16 @@
+[
+    {
+        "name": "⏩【威嚇】",
+        "effect": [
+            "主動作の判定-1"
+        ],
+        "type": "CON",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]
