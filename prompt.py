@@ -3,10 +3,11 @@ import re
 import sqlite3
 import sys
 from cmd import Cmd
+import tkinter as tk
 
 from swtool.color import Color
 from swtool.subcommands import count_east_asian_character, get_east_asian_count, serch_words_index
-
+from swtool.gui_widgets import Application
 
 class Command(Cmd):
     prompt = f'{Color.GREEN}> {Color.RESET}'
@@ -71,7 +72,7 @@ class Command(Cmd):
         'ex: > append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...\n'
         'Option: -n キャラクタにラベルをつけるときに使用する\n'
         'ch en npc oth と 数字1つ以上の組み合わせを使用できます')
-        
+
         # 前処理
         # そのうちリファクタする
         try:
@@ -711,6 +712,11 @@ class Command(Cmd):
 
     def emptyline(self):
         pass
+
+    def do_wigets(self, arg):
+        root = tk.Tk()
+        app = Application(master=root)
+        app.mainloop()
 
     # alias
     do_ad = do_add
