@@ -4,8 +4,8 @@ import sqlite3
 import sys
 from cmd import Cmd
 
-from swtool.color import Color
-from swtool.subcommands import count_east_asian_character, get_east_asian_count, serch_words_index
+from lib.color import Color
+from lib.subcommands import count_east_asian_character, get_east_asian_count, serch_words_index
 
 
 class Command(Cmd):
