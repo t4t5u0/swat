@@ -4,8 +4,8 @@ import sqlite3
 import sys
 from cmd import Cmd
 
-from lib.color import Color
-from lib.subcommands import count_east_asian_character, get_east_asian_count, serch_words_index
+from swlib.color import Color
+from swlib.subcommands import count_east_asian_character, get_east_asian_count, serch_words_index
 
 
 class Command(Cmd):
@@ -215,7 +215,7 @@ class Command(Cmd):
             print('すべてのキャラクタを削除しました')
             self.prompt = f'{Color.GREEN}> {Color.RESET}'
         else:
-            chara = self.nick2chara(chara)
+            char = self.nick2chara(char)
             conn = sqlite3.connect('./db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for skill in char:
@@ -717,7 +717,3 @@ class Command(Cmd):
     do_ch = do_change
     do_ap = do_append
     do_ck = do_check
-
-
-if __name__ == '__main__':
-    Command().cmdloop()
