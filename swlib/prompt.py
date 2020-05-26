@@ -22,13 +22,13 @@ class Command(Cmd):
 
     current_character = ''
     turn = 0
-    current_directry = pathlib.Path(__file__).resolve().parent.parent
-    print(current_directry)
+    current_directory = pathlib.Path(__file__).resolve().parent.parent
+    print(current_directory)
 
     nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
 
     def nick2chara(self, characters : list) -> list:
-        conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
         tmp = []
         for char in characters:
@@ -94,7 +94,7 @@ class Command(Cmd):
         if arg == []:
             print('引数にキャラクタ名を指定してください')
             return
-        conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
 
         for skill, nick in  zip(arg, nicks):
@@ -137,7 +137,7 @@ class Command(Cmd):
             return
         
         for chara, nick in zip(characters, nicknames):
-            conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             # キャラが存在するか確認
             c.execute(
@@ -184,7 +184,7 @@ class Command(Cmd):
         if len(char) != 0:
             print('ls は引数なしです。詳しくは help ls')
         else:
-            conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             result = c.execute('SELECT name, nick FROM character_list')
             result = c.fetchall()
@@ -209,7 +209,7 @@ class Command(Cmd):
             print('引数を1つ以上とります。')
             return
         elif '--all' in char:
-            conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('DELETE FROM character_list')
             c.execute('DELETE FROM status_list')
@@ -220,7 +220,7 @@ class Command(Cmd):
             self.prompt = f'{Color.GREEN}> {Color.RESET}'
         else:
             char = self.nick2chara(char)
-            conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for skill in char:
                 c.execute(
@@ -265,14 +265,14 @@ class Command(Cmd):
               f'{"効果":^{20-count_east_asian_character("効果")}}')
         print('─'*100)
         if '--all' in char:
-            conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('SELECT name FROM character_list')
             char = [skill[0] for skill in c.fetchall()]
 
         char = self.nick2chara(char)
         for ch in char:
-            conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
             result = list(c.execute(quely, (ch,)))
@@ -302,7 +302,7 @@ class Command(Cmd):
         # デフォルトではself.current_character を渡す。
 
         def process(c ,arg):
-            # conn = sqlite3.connect(f'{self.current_directry}/db/data.db')
+            # conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
             # c = conn.cursor()
             result = c.execute(
                 "SELECT DISTINCT chara_name, skill_name, round , use_start FROM status_list WHERE chara_name = ? AND use_start = 'True'", (arg,))
@@ -322,14 +322,14 @@ class Command(Cmd):
             else:
                 characters = [self.current_character]
         if '--all' in characters:
-            conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('SELECT name FROM character_list')
             characters = [skill[0] for skill in c.fetchall()]
         else:
             # とりあえず全部キャラクタにする
             characters = self.nick2chara(characters)
-        conn = sqlite3.connect(f'{self.current_directry}/db/data.db')
+        conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
         c = conn.cursor()
         for chara in characters:
             process(c, chara)
@@ -362,7 +362,7 @@ class Command(Cmd):
         '> end [character]')
         # 保守性を上げるため、関数内関数を用いる
         def process(c, arg):
-            # conn = sqlite3.connect(f'{self.current_directry}/db/data.db')
+            # conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
             # c = conn.cursor()
             result = c.execute(
                 "SELECT DISTINCT chara_name, skill_name, round , use_end FROM status_list WHERE chara_name = ? AND use_end = 'True'", (arg,))
@@ -375,7 +375,7 @@ class Command(Cmd):
             # conn.close()
 
         arg = inp.split()
-        conn = sqlite3.connect(f'{self.current_directry}/db/data.db')
+        conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
         c = conn.cursor()
         if len(arg) == 0:
             if self.current_character == '':
@@ -488,7 +488,7 @@ class Command(Cmd):
                 # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
                 # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
                 # 技能名に対してLIKE検索を行う
-                conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
                 c = conn.cursor()
                 # INSERT する前に技能の検索を行う
                 c.execute(
@@ -606,7 +606,7 @@ class Command(Cmd):
             print('')
             return
 
-        conn = sqlite3.connect(f'{self.current_directry}/db/data.db')
+        conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
         c = conn.cursor()
         for chara in characters:
             for item in skills:
@@ -657,7 +657,7 @@ class Command(Cmd):
         if len(arg) != 0:
             print('reset は引数を取りません')
             return
-        conn = sqlite3.connect(f'{self.current_directry}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
         c.execute('DELETE FROM status_list WHERE round > 0')
         conn.commit()
