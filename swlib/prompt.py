@@ -22,13 +22,13 @@ class Command(Cmd):
 
     current_character = ''
     turn = 0
-    current_directory = pathlib.Path(__file__).resolve().parent.parent
+    current_directory = pathlib.Path(__file__).resolve().parents[1]
     print(current_directory)
 
     nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
 
     def nick2chara(self, characters : list) -> list:
-        conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(self.current_directory/"db"/"data.db", detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
         tmp = []
         for char in characters:
