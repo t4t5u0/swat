@@ -2,9 +2,9 @@
     {
         "name": "【フェアリーウィッシュ】",
         "effect": [
-            "1度だけ戦闘外の行為判定;1"
+            "1度だけ戦闘外の行為判定+1"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -18,7 +18,7 @@
         "effect": [
             "Lv.3の妖精を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -32,7 +32,7 @@
         "effect": [
             "妖精に対して回避&抵抗+2"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -46,7 +46,7 @@
         "effect": [
             "Lv.5の妖精を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -60,7 +60,7 @@
         "effect": [
             "1度だけ任意の行為判定の結果に+2"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -74,7 +74,7 @@
         "effect": [
             "Lv.7の妖精を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -88,7 +88,7 @@
         "effect": [
             "1度だけ戦闘外の行為判定+2"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -102,7 +102,7 @@
         "effect": [
             "Lv.9の妖精を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -116,7 +116,7 @@
         "effect": [
             "「分類：妖精」であるキャラの行為判定＆与ダメ-2"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -130,7 +130,7 @@
         "effect": [
             "Lv.11の妖精を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -144,7 +144,7 @@
         "effect": [
             "対象への物理ダメージが1度だけ-5"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -158,7 +158,7 @@
         "effect": [
             "対象の移動力を0にして回避-2"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -172,7 +172,7 @@
         "effect": [
             "厚さ50cm高さ3m長さ10mを上限とした遮蔽を作る"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -186,7 +186,7 @@
         "effect": [
             "石の橋や階段を作る"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -200,7 +200,7 @@
         "effect": [
             "土や石を穿つ"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -214,7 +214,7 @@
         "effect": [
             "対象への炎属性の魔法ダメージ-3"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -228,7 +228,7 @@
         "effect": [
             "水底での活動可"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -242,7 +242,7 @@
         "effect": [
             "水上歩行可"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -256,7 +256,7 @@
         "effect": [
             "回避-2"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -270,7 +270,7 @@
         "effect": [
             "対象の浮力を失わせる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -284,7 +284,7 @@
         "effect": [
             "厚さ50cm高さ3m長さ10mを上限とした不透過遮蔽をつくる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -298,7 +298,7 @@
         "effect": [
             "対象を半径1m高さ2m大の氷に閉じ込める,対象は気絶する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -312,7 +312,7 @@
         "effect": [
             "対象に盲目付与"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -326,7 +326,7 @@
         "effect": [
             "対象は水・氷属性の悪影響を受けない,被ダメ-5"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -340,7 +340,7 @@
         "effect": [
             "炎の壁をつくる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -354,7 +354,7 @@
         "effect": [
             "対象範囲に音を届ける"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -368,7 +368,7 @@
         "effect": [
             "風属性の魔法ダメージ-3"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -382,7 +382,7 @@
         "effect": [
             "10cm浮く"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -396,7 +396,7 @@
         "effect": [
             "物音を立てずに行動できる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -410,7 +410,7 @@
         "effect": [
             "術者と対象は秘密の会話を行える"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -422,10 +422,10 @@
     {
         "name": "【ミサイル・プロテクション】",
         "effect": [
-            "1d6:1~3 通常どうり回避判定する",
+            "1d6:1~3 通常通り回避判定する",
             "1d6:4~6 遠隔攻撃を回避する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -439,7 +439,7 @@
         "effect": [
             "対象から音と声を隔絶させる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -453,7 +453,7 @@
         "effect": [
             "空中に足場があるように動ける"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -465,9 +465,9 @@
     {
         "name": "【ヒールウォーター】",
         "effect": [
-            "魔力+4点のHPを回復する水を作る,主効果で使用"
+            "魔力+4点のHPを回復する水を作る, 主動作で使用"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -481,7 +481,7 @@
         "effect": [
             "魔力点の最大HP追加"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -495,7 +495,7 @@
         "effect": [
             "毒や病気の進行を抑制"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -509,7 +509,7 @@
         "effect": [
             "対象のHPに受けるダメージ半減切り上げにする"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -523,7 +523,7 @@
         "effect": [
             "対象の精神集中を乱す"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -537,7 +537,7 @@
         "effect": [
             "対象に放心状態付与"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -551,7 +551,7 @@
         "effect": [
             "対象を戦闘から逃亡させる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -565,7 +565,7 @@
         "effect": [
             "対象から術者の存在を認識できなくする,攻撃で解除"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -579,7 +579,7 @@
         "effect": [
             "対象を精神効果属性の効果から守る"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -593,7 +593,7 @@
         "effect": [
             "対象と感覚,意識を共有する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -607,7 +607,7 @@
         "effect": [
             "対象の主効果,補助動作,宣言特技を封じる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 2,
         "2d6": false,
         "1d6": false,
@@ -621,9 +621,9 @@
         "effect": [
             "2d:2~4 3Rの間対象は命中+2,回避-2,理性的行動不可",
             "2d:5~9 18Rの間対象の知力-12",
-            "2d:10~12 3Rの間対象の主動作を封じる"        
+            "2d:10~12 3Rの間対象の主動作を封じる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -637,7 +637,7 @@
         "effect": [
             "対象はすべてのものから認識されなくなる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -651,7 +651,7 @@
         "effect": [
             "Lv.13の妖精を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -665,7 +665,7 @@
         "effect": [
             "土,水・氷,炎,風属性の効果を封じる空間をつくる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -679,7 +679,7 @@
         "effect": [
             "Lv.15の妖精を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 3,
         "2d6": false,
         "1d6": false,
@@ -693,7 +693,7 @@
         "effect": [
             "Lv.17の妖精王を呼び出し使役する"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -707,7 +707,7 @@
         "effect": [
             "1回のみ対象が物理ダメージを受けるとき-5するか選べる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -721,7 +721,7 @@
         "effect": [
             "対象の移動力を0にし,脱出するまで主動作不可"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -735,7 +735,7 @@
         "effect": [
             "水流を時速50kmまでの任意の速度で操る"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -749,7 +749,7 @@
         "effect": [
             "威力40+魔力の魔法攻撃,行為判定-4"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -763,7 +763,7 @@
         "effect": [
             "一直線1m幅の防火帯を発生させる,効果範囲内は延焼しない"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -777,12 +777,12 @@
         "effect": [
             "効果範囲内の対象は手番終了時1d6:1~3で威力20の炎魔法ダメージ"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
         "start": false,
-        "end": false,
+        "end": true,
         "count": false,
         "choice": false
     },
@@ -791,11 +791,11 @@
         "effect": [
             "地面→空中の移動不可,空中時手番開始時に10m高度を下げる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
-        "start": false,
+        "start": true,
         "end": false,
         "count": false,
         "choice": false
@@ -805,7 +805,7 @@
         "effect": [
             "対象を風で運ぶ"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -819,7 +819,7 @@
         "effect": [
             "透明になる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 1,
         "2d6": false,
         "1d6": false,
@@ -833,7 +833,7 @@
         "effect": [
             "対象の最大HPを魔力+6点増加"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -847,7 +847,7 @@
         "effect": [
             "対象に悪夢の呪いを与える,儀式を怠ると解除"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -861,7 +861,7 @@
         "effect": [
             "対象の記憶を失わせる"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": -1,
         "2d6": false,
         "1d6": false,
@@ -875,7 +875,7 @@
         "effect": [
             "対象の知力,精神力を-12"
         ],
-        "type": "FAT",
+        "type": "FAI",
         "round": 18,
         "2d6": false,
         "1d6": false,
@@ -884,6 +884,4 @@
         "count": false,
         "choice": false
     }
-    
-
 ]
