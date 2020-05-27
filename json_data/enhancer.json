@@ -196,7 +196,7 @@
         "end": false,
         "count": false,
         "choice": false
-    },    
+    },
     {
         "name": "⏩△【ジィプロフェシー】",
         "effect": [
@@ -267,7 +267,8 @@
         "end": false,
         "count": false,
         "choice": false
-    },    {
+    },
+    {
         "name": "⏩【バルーンシードショット】",
         "effect": [
             "口で投擲武器を発射できるようになる"
