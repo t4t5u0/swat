@@ -11,21 +11,23 @@ from swlib.subcommands import (count_east_asian_character,
 
 
 class Command(Cmd):
-    prompt = f'{Color.GREEN}> {Color.RESET}'
-    intro = (
-        f'{Color.MAGENTA}Hello{Color.RESET}\n'
-        f'{"─"*100}\n'
-        f'- コマンド一覧は helps で見ることができます\n'
-        f'- help cmd を使用すると cmd の詳細を見ることができます\n'
-        f'{"─"*100}'
-    )
 
-    current_character = ''
-    turn = 0
-    current_directory = pathlib.Path(__file__).resolve().parents[1]
-    print(current_directory)
-
-    nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[\*]|[0-9]+)')
+    def __init__(self, path):
+        super().__init__()
+        self.current_directory = path
+        # tmp = pathlib.Path(__file__).resolve()
+        # print(tmp)
+        self.prompt = f'{Color.GREEN}> {Color.RESET}'
+        self.intro = (
+            f'{Color.MAGENTA}Hello{Color.RESET}\n'
+            f'{"─"*100}\n'
+            f'- コマンド一覧は helps で見ることができます\n'
+            f'- help cmd を使用すると cmd の詳細を見ることができます\n'
+            f'{"─"*100}'
+        )
+        self.current_character = ''
+        self.turn = 0
+        self.nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[*]|[0-9]+)')
 
     def nick2chara(self, characters : list) -> list:
         conn = sqlite3.connect(self.current_directory/"db"/"data.db", detect_types=sqlite3.PARSE_DECLTYPES)
