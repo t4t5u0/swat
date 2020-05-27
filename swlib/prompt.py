@@ -3,11 +3,13 @@ import pathlib
 import re
 import sqlite3
 import sys
+import tkinter as tk
 from cmd import Cmd
 
 from swlib.color import Color
 from swlib.subcommands import (count_east_asian_character,
                                get_east_asian_count, serch_words_index)
+from swlib.widget import Application
 
 
 class Command(Cmd):
@@ -663,6 +665,11 @@ class Command(Cmd):
         conn.commit()
         print('戦闘終了')
 
+    def do_widgets(self, inp):
+        root = tk.Tk()
+        app = Application(master=root)
+        app.mainloop()
+
     def do_neko(self, inp):
         '''にゃーん'''
         l = inp.split()
@@ -714,7 +721,9 @@ class Command(Cmd):
         print('help cmd で cmd の説明を表示します')
 
     def emptyline(self):
-        pass
+        root = tk.Tk()
+        app = Application(master=root)
+        app.mainloop()
 
     # alias
     do_ad = do_add
