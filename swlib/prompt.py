@@ -23,7 +23,7 @@ class Command(Cmd):
             f'- help cmd を使用すると cmd の詳細を見ることができます\n'
             f'{"─"*100}'
         )
-        self.current_character = None
+        self.current_character = ''
         self.turn = None
         self.nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[*]|[0-9]+)')
 
@@ -512,7 +512,6 @@ class Command(Cmd):
                 c.execute(
                     'SELECT choice FROM skill_list WHERE name = ?', (skill_name,))
                 choice_flag = c.fetchone()
-                # print(type(choice_flag[0]))
                 if eval(choice_flag[0]):
                     for i, effect in enumerate(effects):
                         print(i, effect)
@@ -537,7 +536,6 @@ class Command(Cmd):
                     c.execute(
                         'SELECT round FROM skill_list WHERE name = ?', (skill_name,))
                     rounds = c.fetchone()[0]
-                    print(rounds)
                 c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',
                           (char, skill_name))
                 cnt = c.fetchone()[0]
