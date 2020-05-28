@@ -602,10 +602,9 @@ class Command(Cmd):
             print('rm は引数を1つ以上取ります。 help rm')
             return
 
-        print(characters)
+        # print(characters)
         characters = self.nick2chara(characters)
         if len(characters) == 0:
-            print('')
             return
 
         conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
@@ -644,7 +643,7 @@ class Command(Cmd):
                     except:
                         print('有効な数字を入力してください')
                         return
-                print(skill_name)
+                # print(skill_name)
                 c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',
                             (chara, skill_name))
                 print(f'{skill_name}を削除しました')

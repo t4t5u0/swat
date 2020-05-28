@@ -14,7 +14,7 @@ Linux, Mac
 
 # 使い方
 
-Windows 
+Windows
 
 sw_tool_prot直下にあるprompt.exe をWindows ターミナル 上にドラッグ・アンド・ドロップして、Windowsターミナル上で起動してください
 
@@ -34,7 +34,8 @@ template.json の様式を参考にして、`./json_data/` にjsonファイル�
 
 ```bash
 $ cd sw_tool_prot
-$ python database_commands.py -d skill_list
+$ vim hoge.json
+$ python database_commands.py  --skill_list
 ```
 
 と叩いてください
