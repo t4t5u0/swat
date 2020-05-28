@@ -15,8 +15,6 @@ class Command(Cmd):
     def __init__(self, path):
         super().__init__()
         self.current_directory = path
-        # tmp = pathlib.Path(__file__).resolve()
-        # print(tmp)
         self.prompt = f'{Color.GREEN}> {Color.RESET}'
         self.intro = (
             f'{Color.MAGENTA}Hello{Color.RESET}\n'
@@ -39,7 +37,6 @@ class Command(Cmd):
                     # char[:-1]% で検索する
                     c.execute('SELECT COUNT(name) FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
                     cnt = c.fetchone()[0]
-                    # print(cnt)
                     # 存在してるかどうか
                     if cnt:
                         c.execute('SELECT name FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
@@ -70,14 +67,14 @@ class Command(Cmd):
         conn.close()
         characters = list(set(tmp))
         return characters
-    
+
     def do_append(self, inp):
         ('キャラクタを追加するコマンド\n'
         '> append <chracters> [-n <nickname>]\n'
         'ex: > append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...\n'
         'Option: -n キャラクタにラベルをつけるときに使用する\n'
         'ch en npc oth と 数字1つ以上の組み合わせを使用できます')
-        
+
         # 前処理
         # そのうちリファクタする
         try:
@@ -121,7 +118,7 @@ class Command(Cmd):
         '使用できるのは ch, en, npc, oth, に 0-9 を加えたもの\n'
         '> nick <characters> -n <nickname>\n'
         'ex: > nick hydra -n en1')
-        
+
         arg = inp.split()
         characters = []
         nicknames = []
@@ -129,15 +126,13 @@ class Command(Cmd):
         if '-n' in arg:
             characters = arg[:arg.index('-n')]
             nicknames = arg[arg.index('-n')+1:]
-            # print(characters)
-            # print(nicknames)
         else:
             print('> nick <characters> -n <nickname>')
             return
         if len(arg) == 0:
             print('ex: nick swift -n ch1')
             return
-        
+
         for chara, nick in zip(characters, nicknames):
             conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
@@ -172,7 +167,6 @@ class Command(Cmd):
             print('引数が多すぎます。changeは引数を１つ取ります。詳細は help change で確認してください。')
             return
         char = self.nick2chara(char)
-        # print(char)
         if len(char) == 0:
             return
         self.current_character = char[0]
@@ -190,7 +184,6 @@ class Command(Cmd):
             c = conn.cursor()
             result = c.execute('SELECT name, nick FROM character_list')
             result = c.fetchall()
-            # print(result)
             if len(result) == 0:
                 return
             print(f'{"name":^15}{"nick":^10}')
@@ -228,7 +221,6 @@ class Command(Cmd):
                 c.execute(
                     'SELECT COUNT (*) FROM character_list WHERE name = ?', (skill,))
                 n = c.fetchone()[0]
-                # print(n)
                 if n == 1:
                     c.execute(
                         'DELETE FROM status_list WHERE chara_name = ?', (skill,))
@@ -259,8 +251,6 @@ class Command(Cmd):
                 # 下の行でスライスするからリストにキャスト
                 char = [self.current_character]
         # 複数キャラを見たいという要望があった
-        # elif len(char) >= 2:
-        #     print('引数が多すぎます。check は引数を1つとります。詳細は help check で確認してください。')
         print(f'{"名前":^{15-count_east_asian_character("名前")}}|'
               f'{"スキル名":^{40-count_east_asian_character("スキル名")}}'
               f'{"残りラウンド":^{15-count_east_asian_character("残りラウンド")}}'
@@ -291,7 +281,6 @@ class Command(Cmd):
                         f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
                         #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
                         f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
-                    # print(f'skill name:{row[0]:10} skill effect:{row[1]:30} round:{row[2]:5}')
             conn.close()
             print('─'*100)
 
@@ -304,8 +293,6 @@ class Command(Cmd):
         # デフォルトではself.current_character を渡す。
 
         def process(c ,arg):
-            # conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
-            # c = conn.cursor()
             result = c.execute(
                 "SELECT DISTINCT chara_name, skill_name, round , use_start FROM status_list WHERE chara_name = ? AND use_start = 'True'", (arg,))
             result = list(result)
@@ -314,7 +301,6 @@ class Command(Cmd):
             else:
                 for row in result:
                     print(f'{row[1]}の処理を行ってください')
-            # conn.close()
 
         characters = inp.split()
         if len(characters) == 0:
@@ -345,8 +331,6 @@ class Command(Cmd):
             for i, _ in enumerate(round_list):
                 if round_list[i][2] > 0:
                     round_list[i][2] -= 1
-            #round_and_character = [(skill, self.current_character) for skill in round_list]
-            # print(f'round_list:{round_list}')
             # (chara_name, skill_name, round) のタプルで入ってくるがクエリに合わせるために軸を入れ替える
             # (round, chara_name, skill_name) の形にしたい
             round_list = [(skill[2], skill[0], skill[1]) for skill in round_list]
@@ -354,7 +338,6 @@ class Command(Cmd):
             # 技能名を指定していないから、末尾の要素ですべて上書きする
             c.executemany(
                 'UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?', round_list)
-            # c.executemany('UPDATE status_list SET round = ? WHERE chara_name = ?', round_and_character)
             c.execute(
                 'DELETE FROM status_list WHERE round = 0 AND chara_name = ?', (chara,))
             conn.commit()
@@ -364,8 +347,6 @@ class Command(Cmd):
         '> end [character]')
         # 保守性を上げるため、関数内関数を用いる
         def process(c, arg):
-            # conn = sqlite3.connect(f'{self.current_directory}/db/data.db')
-            # c = conn.cursor()
             result = c.execute(
                 "SELECT DISTINCT chara_name, skill_name, round , use_end FROM status_list WHERE chara_name = ? AND use_end = 'True'", (arg,))
             result = list(result)
@@ -406,10 +387,10 @@ class Command(Cmd):
         'ex: > add ブレス -t ch*\n'
         '-t -r  は併用可能')
 
-        # TODO:抵抗短縮の処理
-        # TODO:複数キャラに付与できるようにする
-        # TODO:nickを参照して付与できるようにする
-        # TODO:それらの複合できるようにする
+        # 抵抗短縮の処理
+        # 複数キャラに付与できるようにする
+        # nickを参照して付与できるようにする
+        # それらの複合できるようにする
         # 複数技能削除する？
         # --round を実装する
         # searchすると2個あるときにバグる。.count して個数分かってれば大丈夫
@@ -458,25 +439,15 @@ class Command(Cmd):
         elif t_position:
             skills = arg[:t_position]
             characters = arg[t_position+1:]
-            # print('only t')
-            # print(f'{skills}')
-            # print(f'{characters}')
         # -r のみが存在する時
         elif r_position:
             skills = arg[:r_position]
             rounds = arg[r_position+1][0]
             characters.append(self.current_character)
-            # print('only r')
-            # print(skills)
-            # print(rounds)
-            # print(characters)
         # 技能だけの時
         else:
             skills = arg
             characters.append(self.current_character)
-        # print(t_position, r_position)
-        # print(skills, characters, rounds)
-        # return
 
         # nick -> chara を関数化した
         characters = self.nick2chara(characters)
@@ -497,11 +468,9 @@ class Command(Cmd):
                     'SELECT name FROM skill_list WHERE name LIKE ?', (f'%{skill}%',))
                 # fetchall するとタプルのリストで返ってくる
                 skill_names = c.fetchall()
-                # print(skill_names)
                 if len(skill_names) > 1:
                     # 検索して複数見つかった場合の処理
                     for i, skill_name in enumerate(skill_names):
-                        #skill_name = skill_name[0]
                         print(i, skill_name[0])
                     else:
                         try:
@@ -510,10 +479,8 @@ class Command(Cmd):
                         except:
                             print('有効な数字を入力してください')
                             return
-                        # print(skill_name)
                 elif len(skill_names) == 1:
                     skill_name = skill_names[0][0]
-                    # print(skill_name)
                 else:
                     print('技能が存在しません。')
                     return
@@ -522,7 +489,6 @@ class Command(Cmd):
                 c.execute(
                     'SELECT effect FROM skill_list WHERE name = ?', (skill_name,))
                 effects = c.fetchone()[0].split(';')
-                # print(effects)
 
                 # choice フラグを見る
                 c.execute(
@@ -535,7 +501,6 @@ class Command(Cmd):
                     try:
                         index = int(input('追加したい効果の番号を入力してください:'))
                         effects = [effects[index]]
-                        # print(effect)
                     except:
                         print('有効な数字を入力してください')
                         return
@@ -587,7 +552,6 @@ class Command(Cmd):
         characters = [self.current_character]
         # -t が存在するか
         if '-t' in arg:
-            # print(arg)
             characters = arg[arg.index('-t')+1:]
             skills = arg[:arg.index('-t')]
         elif self.current_character == '':
@@ -602,7 +566,6 @@ class Command(Cmd):
             print('rm は引数を1つ以上取ります。 help rm')
             return
 
-        # print(characters)
         characters = self.nick2chara(characters)
         if len(characters) == 0:
             return
@@ -619,7 +582,6 @@ class Command(Cmd):
                 # fetchall するとタプルのリストで返ってくる
                 # 技能の重複を削除
                 skill = c.fetchall()
-                # print(skill)
                 # 見つからなかったら飛ばす
                 if len(skill) == 0:
                     print(f'{item} に一致する技能は存在しませんでした')
@@ -628,7 +590,6 @@ class Command(Cmd):
                 # 一致した技能全部が入ってる
                 skill_names = list(set([item[0] for item in skill]))
 
-                # print(skill_names)
 
                 # 複数あったらfor文回す
                 if len(skill_names) == 1:
@@ -639,11 +600,9 @@ class Command(Cmd):
                     try:
                         index = int(input('追加したい効果の番号を入力してください:'))
                         skill_name = skill_names[index]
-                        # print(effect)
                     except:
                         print('有効な数字を入力してください')
                         return
-                # print(skill_name)
                 c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',
                             (chara, skill_name))
                 print(f'{skill_name}を削除しました')
@@ -671,12 +630,6 @@ class Command(Cmd):
             print('にゃーん')
         else:
             print('neko は引数なしだよ')
-        # print(type(inp))
-        # print(f'{inp}')
-        # if inp is '':
-        #     print('にゃーん')
-        # else:
-        #     print('neko は引数なしだよ')
 
     def do_helps(self, inp):
         print('コマンド一覧を表示')
@@ -690,12 +643,13 @@ class Command(Cmd):
         print(f"{'add':<10}| 技能・呪文などを付与{' '*(40-get_east_asian_count('技能・呪文などを付与'))}| 技能・呪文など 効果ラウンド上書き(オプショナル){' '*(50-get_east_asian_count('技能・呪文など 効果ラウンド上書き(オプショナル)'))}")
         print(f"{'remove':<10}| 技能・呪文などを消去{' '*(40-get_east_asian_count('技能・呪文などを消去'))}| 技能・呪文など/状態ID{' '*(50-get_east_asian_count('技能・呪文など/状態ID'))}")
         print(f"{'check':<10}| 技能・呪文などの一覧を表示{' '*(40-get_east_asian_count('技能・呪文などの一覧を表示'))}| 引数なし/キャラクタ/キャラクタID{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
-        print(f"{'start':<10}| 手番を開始{' '*(40-get_east_asian_count('手番を開始'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
-        print(f"{'end':<10}| 手番を終了{' '*(40-get_east_asian_count('手番を終了'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
+        print(f"{'start':<10}| 手番を開始{' '*(40-get_east_asian_count('手番を開始'))}| 引数なし{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
+        print(f"{'end':<10}| 手番を終了{' '*(40-get_east_asian_count('手番を終了'))}| 引数なし{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
         print(f"{'neko':<10}| にゃーん{' '*(40-get_east_asian_count('にゃーん'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
-        print(f"{'helps':<10}| これ{' '*(40-get_east_asian_count('これ'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
+        print(f"{'help':<10}| コマンドの詳細を見る{' '*(40-get_east_asian_count('コマンドの詳細を見る'))}| コマンド名{' '*(50-get_east_asian_count('コマンド名'))}")
+        print(f"{'helps':<10}| このコマンド{' '*(40-get_east_asian_count('このコマンド'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
         print(f"{'exit':<10}| アプリケーションを終了させる{' '*(40-get_east_asian_count('アプリケーションを終了させる'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
-        print(f"{'─'*100}''')")
+        print(f"{'─'*100}")
 
     def do_exit(self, inp):
         '''終了用のコマンド'''
