@@ -14,6 +14,9 @@ def get_east_asian_count(text):
 def count_east_asian_character(text):
     count = 0
     for c in text:
+        # ローマ数字の判定おかしいので
+        if c in ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ', 'Ⅷ', 'Ⅸ', 'Ⅹ', '⏩']:
+            count -= 1
         if unicodedata.east_asian_width(c) in 'FWA':
             count += 1
     return count
