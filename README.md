@@ -22,8 +22,8 @@ sw_tool直下にある `main.exe` をWindows ターミナル 上にドラッグ�
 ### Linux, Mac の場合
 
  ```bash
- $ git clone https://github.com/t4t5u0/sw_tool_prot.git
- $ cd sw_tool_prot
+ $ git clone https://github.com/t4t5u0/swat.git
+ $ cd swat
  $ python prompt.py
  ```
 
@@ -34,7 +34,7 @@ sw_tool直下にある `main.exe` をWindows ターミナル 上にドラッグ�
 template.json の様式を参考にして、`./json_data/` にjsonファイルを配置し、
 
 ```bash
-$ cd sw_tool_prot
+$ cd swat
 $ vim hoge.json
 $ python database_commands.py  --skill_list
 ```
