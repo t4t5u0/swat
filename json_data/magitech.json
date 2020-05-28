@@ -1,0 +1,668 @@
+[
+    {
+        "name": "⏩【ソリッド・バレット】",
+        "effect": [
+            "威力20の弾丸を作成する　マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ターゲットサイト】",
+        "effect": [
+            "命中力判定+1 マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フラッシュライト】",
+        "effect": [
+            "前方半径10ｍの空間は暗地のペナルティなし マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【エクスプローラーエイド】",
+        "effect": [
+            "探索&解除判定+2 マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 60,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【クリティカル・バレット】",
+        "effect": [
+            "威力20,C値-1の弾丸を作成する マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ヒーリング・バレット】",
+        "effect": [
+            "威力0の回復弾を作成する マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ノッカー・ボム】",
+        "effect": [
+            "R終了時,鍵や錠前を吹き飛ばす マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【エフェクト・バレット】",
+        "effect": [
+            "威力20+魔力の炎属性弾を作成する マギスフィア小",
+            "威力20+魔力の水・氷属性弾を作成する マギスフィア小",
+            "威力20+魔力の土属性弾を作成する マギスフィア小",
+            "威力20+魔力の風属性弾を作成する マギスフィア小",
+            "威力20+魔力の雷属性弾を作成する マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【エフェクトウェポン】",
+        "effect": [
+            "対象の武器に炎属性を与え与ダメ-1 マギスフィア小",
+            "対象の武器に水・氷属性を与え与ダメ-1 マギスフィア小",
+            "対象の武器に土属性を与え与ダメ-1 マギスフィア小",
+            "対象の武器に風属性を与え与ダメ-1 マギスフィア小",
+            "対象の武器に雷属性を与え与ダメ-1 マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【ジャンプブーツ】",
+        "effect": [
+            "通常の2倍の跳躍能力を得る マギスフィア小",
+            "通常の3倍の跳躍能力を得る マギスフィア中",
+            "通常の5倍の跳躍能力を得る マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【ショック・ボム】",
+        "effect": [
+            "敏捷度ｰ12 マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【オートモビル】",
+        "effect": [
+            "魔導(ミニ)バイクを作製 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【オートモビルⅡ】",
+        "effect": [
+            "高性能魔導バイクを作製 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【スモーク・ボム】",
+        "effect": [
+            "知覚が「五感」のキャラクターは視力を失う マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ショットガン・バレット】",
+        "effect": [
+            "威力20の散弾を作成する マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【グレネード】",
+        "effect": [
+            "威力30の魔法ダメージ マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ワイヤーアンカー】",
+        "effect": [
+            "フック付きワイヤーを放ち絡める マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【バースト・ショット】",
+        "effect": [
+            "3連射することで命中+2,威力30となる弾丸をつくる マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【クリティカルウェポン】",
+        "effect": [
+            "マギスフィアを魔法の近接攻撃武器とする マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ディスガイズセット】",
+        "effect": [
+            "変装し、他人になりすます マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【レジスト・ボム】",
+        "effect": [
+            "炎属性からの被ダメ-4,不利な効果を受けない マギスフィア中",
+            "水・氷属性からの被ダメ-4,不利な効果を受けない マギスフィア中",
+            "土属性からの被ダメ-4,不利な効果を受けない マギスフィア中",
+            "風属性からの被ダメ-4,不利な効果を受けない マギスフィア中",
+            "雷属性からの被ダメ-4,不利な効果を受けない マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【スタンバレット】",
+        "effect": [
+            "威力10+補助動作&宣言特技の宣言不可を与える弾丸をつくる マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【テレスコープ】",
+        "effect": [
+            "遠くを見る　最大距離100m マギスフィア小",
+            "遠くを見る　最大距離300m マギスフィア中",
+            "遠くを見る　最大距離1000m マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【ライフセンサー】",
+        "effect": [
+            "生体を探知する,範囲は半径30m マギスフィア小",
+            "生体を探知する,範囲は半径50m マギスフィア中",
+            "生体を探知する,範囲は半径100m マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【グライダーマント】",
+        "effect": [
+            "滑空するマントを作り空を舞う マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【エアタイトアーマー】",
+        "effect": [
+            "毒属性無効,水中でも行動可能 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フラッシュ・ボム】",
+        "effect": [
+            "対象の知覚が「五感」or「機械」のとき盲目付与 マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【レーザー・バレット】",
+        "effect": [
+            "威力30,C値-1の弾丸をつくる マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マナディクショナリー】",
+        "effect": [
+            "言語を翻訳し、文字や音声で出力する マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 60,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【トリート・バレット】",
+        "effect": [
+            "威力30@13の回復弾をつくる マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ホーミングレーザー】",
+        "effect": [
+            "【レーザー・バレット】の命中+2 マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ホログラフィ】",
+        "effect": [
+            "1時間までの動画を記録再生する マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マインド・ボム】",
+        "effect": [
+            "魔法行使・演奏判定-4 マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【スカイバイク】",
+        "effect": [
+            "スカイバイクを作製 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【スナイパーレンジ】",
+        "effect": [
+            "射程+10m,ただし本来の射程の2倍まで マギスフィア小",
+            "射程+30m,ただし本来の射程の2倍まで マギスフィア中",
+            "射程+50m,ただし本来の射程の2倍まで マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【プリズムエフェクト】",
+        "effect": [
+            "「機械」からの回避を伴う攻撃を1d6:4~6で回避 マギスフィア小"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【キャノン・バレット】",
+        "effect": [
+            "威力40の砲弾を作製 マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【スフィアシェード】",
+        "effect": [
+            "半径1m,高さ2mまでの物品をマギスフィアに収納 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【チャフグレネード】",
+        "effect": [
+            "範囲外から範囲内の対象を形状：起点指定で指定不可 マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ヒーリングシャワー・バレット】",
+        "effect": [
+            "半径6mに命中すると威力30+魔力@13で回復する弾丸を作製 マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【エフェクトプロテクター】",
+        "effect": [
+            "術者に対する「抵抗：必中」の魔法や特殊効果1度無効化 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【リターン】",
+        "effect": [
+            "補助動作で帰還する帰還点作製 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マシンリペア】",
+        "effect": [
+            "人間大の道具や構造物の修復 マギスフィア大",
+            "小屋程度の道具や構造物の修復 マギスフィア大*2",
+            "小さな砦程度の道具や構造物の修復 マギスフィア大*3"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【マナハウス】",
+        "effect": [
+            "穢れ4点以上のキャラを退ける住居を作製 マギスフィア大"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ジェノサイド・バレット】",
+        "effect": [
+            "威力70 マギスフィア中"
+        ],
+        "type": "MAG",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【スカイシップ】",
+        "effect": [
+            "小型の飛空船を作製 マギスフィア大*5"
+        ],
+        "type": "MAG",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]

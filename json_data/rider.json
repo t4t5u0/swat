@@ -1,0 +1,386 @@
+[
+    {
+        "name": "⏩【威嚇】",
+        "effect": [
+            "主動作の判定-1"
+        ],
+        "type": "RID",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【以心伝心】",
+        "effect": [
+            "騎手と騎獣で知覚を相互に活用する"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【遠隔支持】",
+        "effect": [
+            "30m内の騎獣に支持を与える"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【探索指令】",
+        "effect": [
+            "騎獣が感知系の判定を行えるようになる"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【騎獣強化】",
+        "effect": [
+            "騎手の命中力。回避力に+1"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【騎獣の献身】",
+        "effect": [
+            "騎手のHPが0以下になるとき騎獣が身代わりとなる"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【攻撃阻害】",
+        "effect": [
+            "騎手や騎獣の回避力判定+1"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【高所攻撃】",
+        "effect": [
+            "騎手や同乗者の物理ダメージ+1"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【タンデム】",
+        "effect": [
+            "同乗者のペナルティを-1に軽減"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【HP強化】",
+        "effect": [
+            "騎獣の最大HP+5"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【限界駆動】",
+        "effect": [
+            "命中力判定+2",
+            "追加ダメージ+4",
+            "騎手と騎獣の回避力判定-2"
+        ],
+        "type": "RID",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【獅子奮迅】",
+        "effect": [
+            "騎獣の2部位までに主動作を行わせる",
+            "反動：選択した部位の回避力判定-2"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【姿勢堅持】",
+        "effect": [
+            "騎獣は主動作を行えない",
+            "騎手は-4のペナルティで制限移動で可能な動作を行える"
+        ],
+        "type": "RID",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【人馬一体】",
+        "effect": [
+            "騎手が騎乗したまま両手を使用可能"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【超高所攻撃】",
+        "effect": [
+            "騎手や同乗者のダメージをさらに+1(計+2)"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【特殊能力開放】",
+        "effect": [
+            "騎獣の特殊能力を解放する"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【魔法指示回数増加】",
+        "effect": [
+            "【魔法指示】を行える回数が4回になる"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【HP超強化】",
+        "effect": [
+            "騎獣の最大HP+5(計+10)"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【騎獣超強化】",
+        "effect": [
+            "騎手の命中力。回避力をさらに+1(計+2)"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【極高所攻撃】",
+        "effect": [
+            "騎手や同乗者の物理ダメージをさらに+2(計+4)"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【瞬時魔法指示】",
+        "effect": [
+            "【魔法指示】を補助動作や戦闘準備で行えるようになる"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【スーパーチャージ】",
+        "effect": [
+            "全力移動でも【チャージ】可能"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【超過駆動】",
+        "effect": [
+            "【限界駆動】の効果を上昇。命中力判定をさらに+2、物理ダメージをさらに+4",
+            "手番終了時に騎獣と騎手に10点の確定ダメージを与える"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": true,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【超攻撃阻害】",
+        "effect": [
+            "騎手や騎獣の回避力判定をさらに+1(計2)"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【特殊能力完全開放】",
+        "effect": [
+            "騎獣の特殊能力を完全に解放する"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "▶【八面六臂】",
+        "effect": [
+            "騎獣のすべての主動作を行わせる",
+            "主動作を行った部位の回避力判定-2"
+        ],
+        "type": "RID",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "◯【バランス】",
+        "effect": [
+            "【姿勢堅持】使用時に騎獣も主動作が行える"
+        ],
+        "type": "RID",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]

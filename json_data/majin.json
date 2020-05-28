@@ -1,0 +1,19 @@
+[
+    {
+        "name": "《武器の肥大化》",
+        "effect": [
+            "近接攻撃が複数化",
+            "複数対象への命中力判定+1",
+            "ダメージ+2",
+            "隠密判定-2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]

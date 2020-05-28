@@ -1,0 +1,462 @@
+[
+    {
+        "name": "⏩【インスタンスウェポン】",
+        "effect": [
+            "B:威力10の簡易武器を作成",
+            "A:威力20の簡易武器を作成",
+            "S:威力30の簡易武器を作成",
+            "SS:威力50の簡易武器を作成"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【クラッシュファング】",
+        "effect": [
+            "B:物理ダメージ-1点",
+            "A:物理ダメージ-2点",
+            "S:物理ダメージ-4点",
+            "SS:物理ダメージ-10点"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ヴォーパルウェポン】",
+        "effect": [
+            "B:物理ダメージ+1点",
+            "A:物理ダメージ+2点",
+            "S:物理ダメージ+3点",
+            "SS:物理ダメージ+6点"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【クリティカルレイ】",
+        "effect": [
+            "B:物理ダメージの威力ロールの出目+1",
+            "A:物理ダメージの威力ロールの出目+2",
+            "S:物理ダメージの威力ロールの出目+3",
+            "SS:物理ダメージの威力ロールの出目+6"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩△【バークメイル】",
+        "effect": [
+            "B:防護点+1",
+            "A:防護点+2",
+            "S:防護点+4",
+            "SS:防護点+8"
+        ],
+        "type": "ALC",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【パラライズミスト】",
+        "effect": [
+            "B:回避力減少なし",
+            "A:回避力-1",
+            "S:回避力-2",
+            "SS:回避力-4"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ポイズンニードル】",
+        "effect": [
+            "B:手番終了時に1点のダメージ",
+            "A:手番終了時に3点のダメージ",
+            "S:手番終了時に5点のダメージ",
+            "SS:手番終了時に10点のダメージ"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": true,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩△【ミラージュデイズ】",
+        "effect": [
+            "B:命中力判定にペナルティなし",
+            "A:命中力判定-1",
+            "S:命中力判定-2",
+            "SS:命中力判定-4"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ヒールスプレー】",
+        "effect": [
+            "B:対象のHPを3点回復",
+            "A:対象のHPを10点回復",
+            "S:対象のHPを20点回復",
+            "SS:対象のHPを50点回復"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【アーマーラスト】",
+        "effect": [
+            "B:対象の防護点を-1点",
+            "A:対象の防護点を-3点",
+            "S:対象の防護点を-5点",
+            "SS:対象の防護点を-10点"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【アンロックニードル】",
+        "effect": [
+            "B:達成値12で鍵や罠を解除",
+            "A:達成値16で鍵や罠を解除",
+            "S:達成値20で鍵や罠を解除",
+            "SS:達成値で鍵や罠を解除"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "△【イニシアティブブースト】",
+        "effect": [
+            "B:先制判定+1",
+            "A:先制判定+2",
+            "S:先制判定4",
+            "SS:先制判定+8"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩△【エンサイクロペディア】",
+        "effect": [
+            "B:魔物知識判定+1",
+            "A:魔物知識判定+2",
+            "S:魔物知識判定4",
+            "SS:魔物知識判定+8"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ディスペルニードル】",
+        "effect": [
+            "B:なし",
+            "A:補助動作での使用は効果なし。主動作ではそのまま",
+            "S:補助動作での達成値は2。主動作では+2の修正",
+            "SS:補助動作でも賦術で達成値を決定。主動作では+4の修正"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【バインドアビリティ】",
+        "effect": [
+            "B:特殊能力の達成値に-1",
+            "A:特殊能力の達成値に-2",
+            "S:特殊能力の達成値に-3",
+            "SS:特殊能力の達成値に-4"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【ビビッドリキッド】",
+        "effect": [
+            "B:なし",
+            "A:MPを3点回復",
+            "S:MPを10点回復",
+            "SS:MPを20点回復"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【マナスプラウト】",
+        "effect": [
+            "B:対象のMPを+1点。1Rで消える",
+            "A:対象のMPを+3点。1Rで消える",
+            "S:対象のMPを+10点。1Rで消える",
+            "SS:対象のMPを+20点。1Rで消える"
+        ],
+        "type": "ALC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【マナダウン】",
+        "effect": [
+            "B:魔法ダメージ-1点",
+            "A:魔法ダメージ-2点",
+            "S:魔法ダメージ-4点",
+            "SS:魔法ダメージ-8点"
+        ],
+        "type": "ALC",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【リーンフォース】",
+        "effect": [
+            "B:なし",
+            "A:魔法ダメージ+1点",
+            "S:魔法ダメージ+3点",
+            "SS:魔法ダメージ+6点"
+        ],
+        "type": "ALC",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【クレイフィールド】",
+        "effect": [
+            "B:なし",
+            "A:1Rの間、土属性無効。風属性ダメージ+5",
+            "S:3Rの間、土属性無効。風属性ダメージ+5",
+            "SS:18Rの間、土属性無効。風属性ダメージ+5"
+        ],
+        "type": "ALC",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩△【コンバインマテリアル】",
+        "effect": [
+            "B:10枚を束ねて高ランク1枚として使用可能",
+            "A:8枚を束ねて高ランク1枚として使用可能",
+            "S:6枚を束ねて高ランク1枚として使用可能",
+            "SS:4枚を束ねて高ランク1枚として使用可能"
+        ],
+        "type": "ALC",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【スラッシュフィールド】",
+        "effect": [
+            "B:なし",
+            "A:1Rの間、断空属性無効。衝撃属性ダメージ+5",
+            "S:3Rの間、断空属性無効。衝撃属性ダメージ+5",
+            "SS:18Rの間、断空属性無効。衝撃属性ダメージ+5"
+        ],
+        "type": "ALC",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩△【デラックスマテリアル】",
+        "effect": [
+            "B:賦術判定+2",
+            "A:賦術判定+4",
+            "S:賦術判定+6",
+            "SS:賦術判定+10"
+        ],
+        "type": "ALC",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【スラッシュフィールド】",
+        "effect": [
+            "B:なし",
+            "A:1Rの間、断空属性無効。衝撃属性ダメージ+5",
+            "S:3Rの間、断空属性無効。衝撃属性ダメージ+5",
+            "SS:18Rの間、断空属性無効。衝撃属性ダメージ+5"
+        ],
+        "type": "ALC",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【バリアフィールド】",
+        "effect": [
+            "B:なし",
+            "A:1Rの間、範囲外へ離脱ができない",
+            "S:3Rの間、範囲外へ離脱ができない",
+            "SS:18Rの間、範囲外へ離脱ができない"
+        ],
+        "type": "ALC",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【フレイムフィールド】",
+        "effect": [
+            "B:なし",
+            "A:1Rの間、炎属性無効。水・氷属性ダメージ+5",
+            "S:3Rの間、炎属性無効。水・氷属性ダメージ+5",
+            "SS:18Rの間、炎属性無効。水・氷属性ダメージ+5"
+        ],
+        "type": "ALC",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【レストフィールド】",
+        "effect": [
+            "B:なし",
+            "A:1Rの間、回復効果のMP消費+2。回復量+5",
+            "S:3Rの間、回復効果のMP消費+2。回復量+5",
+            "SS:18Rの間、回復効果のMP消費+2。回復量+5"
+        ],
+        "type": "ALC",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    }
+    
+]

@@ -1,0 +1,887 @@
+[
+    {
+        "name": "【フェアリーウィッシュ】",
+        "effect": [
+            "1度だけ戦闘外の行為判定+1"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サモンフェアリー】",
+        "effect": [
+            "Lv.3の妖精を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ハンドルフェアリー】",
+        "effect": [
+            "妖精に対して回避&抵抗+2"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サモンフェアリーⅡ】",
+        "effect": [
+            "Lv.5の妖精を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フェアリーサポート】",
+        "effect": [
+            "1度だけ任意の行為判定の結果に+2"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サモンフェアリーⅢ】",
+        "effect": [
+            "Lv.7の妖精を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フェアリーウィッシュⅡ】",
+        "effect": [
+            "1度だけ戦闘外の行為判定+2"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サモンフェアリーⅣ】",
+        "effect": [
+            "Lv.9の妖精を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ミティゲイトフェアリー】",
+        "effect": [
+            "「分類：妖精」であるキャラの行為判定＆与ダメ-2"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サモンフェアリーⅤ】",
+        "effect": [
+            "Lv.11の妖精を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ストーンガード】",
+        "effect": [
+            "対象への物理ダメージが1度だけ-5"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【エントラップ】",
+        "effect": [
+            "対象の移動力を0にして回避-2"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ストーンウォール】",
+        "effect": [
+            "厚さ50cm高さ3m長さ10mを上限とした遮蔽を作る"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ゴールドブリッジ】",
+        "effect": [
+            "石の橋や階段を作る"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【トンネル】",
+        "effect": [
+            "土や石を穿つ"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ウォータースクリーン】",
+        "effect": [
+            "対象への炎属性の魔法ダメージ-3"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ボトムウォーキング】",
+        "effect": [
+            "水底での活動可"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ハードウォーター】",
+        "effect": [
+            "水上歩行可"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ミストハイド】",
+        "effect": [
+            "回避-2"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【シンク】",
+        "effect": [
+            "対象の浮力を失わせる"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【アイスウォール】",
+        "effect": [
+            "厚さ50cm高さ3m長さ10mを上限とした不透過遮蔽をつくる"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【アイスコフィン】",
+        "effect": [
+            "対象を半径1m高さ2m大の氷に閉じ込める,対象は気絶する"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フレア】",
+        "effect": [
+            "対象に盲目付与"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フレイムコート】",
+        "effect": [
+            "対象は水・氷属性の悪影響を受けない,被ダメ-5"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フィイアウォール】",
+        "effect": [
+            "炎の壁をつくる"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ウィンドボイス】",
+        "effect": [
+            "対象範囲に音を届ける"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ウィンドガード】",
+        "effect": [
+            "風属性の魔法ダメージ-3"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ホバリング】",
+        "effect": [
+            "10cm浮く"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サイレントムーブ】",
+        "effect": [
+            "物音を立てずに行動できる"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【シークレットボイス】",
+        "effect": [
+            "術者と対象は秘密の会話を行える"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ミサイル・プロテクション】",
+        "effect": [
+            "1d6:1~3 通常通り回避判定する",
+            "1d6:4~6 遠隔攻撃を回避する"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【サウンドポケット】",
+        "effect": [
+            "対象から音と声を隔絶させる"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【エアウォーク】",
+        "effect": [
+            "空中に足場があるように動ける"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ヒールウォーター】",
+        "effect": [
+            "魔力+4点のHPを回復する水を作る, 主動作で使用"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ウィスパーヒール】",
+        "effect": [
+            "魔力点の最大HP追加"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ナーシング】",
+        "effect": [
+            "毒や病気の進行を抑制"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ライフサポート】",
+        "effect": [
+            "対象のHPに受けるダメージ半減切り上げにする"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ディストラクション】",
+        "effect": [
+            "対象の精神集中を乱す"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【デイズ】",
+        "effect": [
+            "対象に放心状態付与"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【パニックラン】",
+        "effect": [
+            "対象を戦闘から逃亡させる"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マインドブランク】",
+        "effect": [
+            "対象から術者の存在を認識できなくする,攻撃で解除"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブレイブハート】",
+        "effect": [
+            "対象を精神効果属性の効果から守る"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マインドリンク】",
+        "effect": [
+            "対象と感覚,意識を共有する"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ショッキングウェイブ】",
+        "effect": [
+            "対象の主効果,補助動作,宣言特技を封じる"
+        ],
+        "type": "FAI",
+        "round": 2,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【インサニティ】",
+        "effect": [
+            "2d:2~4 3Rの間対象は命中+2,回避-2,理性的行動不可",
+            "2d:5~9 18Rの間対象の知力-12",
+            "2d:10~12 3Rの間対象の主動作を封じる"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【マスキング】",
+        "effect": [
+            "対象はすべてのものから認識されなくなる"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サモンフェアリーⅥ】",
+        "effect": [
+            "Lv.13の妖精を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ニュートラライズ】",
+        "effect": [
+            "土,水・氷,炎,風属性の効果を封じる空間をつくる"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【サモンフェアリーⅦ】",
+        "effect": [
+            "Lv.15の妖精を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フェアリーロード】",
+        "effect": [
+            "Lv.17の妖精王を呼び出し使役する"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【リングプロテクション】",
+        "effect": [
+            "1回のみ対象が物理ダメージを受けるとき-5するか選べる"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【グレートキャプチャー】",
+        "effect": [
+            "対象の移動力を0にし,脱出するまで主動作不可"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【カレント】",
+        "effect": [
+            "水流を時速50kmまでの任意の速度で操る"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フリーズ】",
+        "effect": [
+            "威力40+魔力の魔法攻撃,行為判定-4"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ファイアブレイク】",
+        "effect": [
+            "一直線1m幅の防火帯を発生させる,効果範囲内は延焼しない"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フレイムガイザー】",
+        "effect": [
+            "効果範囲内の対象は手番終了時1d6:1~3で威力20の炎魔法ダメージ"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": true,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ダウンバースト】",
+        "effect": [
+            "地面→空中の移動不可,空中時手番開始時に10m高度を下げる"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": true,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ワールウインド】",
+        "effect": [
+            "対象を風で運ぶ"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【インビジビリティ】",
+        "effect": [
+            "透明になる"
+        ],
+        "type": "FAI",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【バーチャルタフネスⅡ】",
+        "effect": [
+            "対象の最大HPを魔力+6点増加"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【イビルドリーム】",
+        "effect": [
+            "対象に悪夢の呪いを与える,儀式を怠ると解除"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フォーゲット】",
+        "effect": [
+            "対象の記憶を失わせる"
+        ],
+        "type": "FAI",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マインドクラッシュ】",
+        "effect": [
+            "対象の知力,精神力を-12"
+        ],
+        "type": "FAI",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]

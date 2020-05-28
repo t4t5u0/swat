@@ -1,0 +1,215 @@
+[
+    {
+        "name": "【ブラント・ウェポン】",
+        "effect": [
+            "物理ダメージ-4"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【バイタリティ】",
+        "effect": [
+            "生命抵抗力判定+2"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【パラライズ】",
+        "effect": [
+            "命中力判定-2",
+            "回避力判定-2"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【ウェポン・マスター】",
+        "effect": [
+            "付与<<かいくぐり>>",
+            "付与<<ターゲッティング>>",
+            "付与<<武器習熟A:**>>",
+            "付与<<両手利き>>",
+            "付与<<囮攻撃Ⅰ>>",
+            "付与<<牽制攻撃Ⅰ>>",
+            "付与<<挑発攻撃Ⅰ>>",
+            "付与<<全力攻撃Ⅰ>>",
+            "付与<<必殺攻撃Ⅰ>>",
+            "付与<<鎧抜き>>"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【ウォール・ウォーキング】",
+        "effect": [
+            "壁や天井を歩くことができる"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【ブリンク】",
+        "effect": [
+            "ブリンク"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マジシャン】",
+        "effect": [
+            "付与<<ターゲッティング>>",
+            "付与<<魔法収束>>",
+            "付与<<魔法制御>>",
+            "付与<<鷹の目>>",
+            "付与<<バイオレントキャストⅠ>>",
+            "付与<<MP軽減/**>>"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【イレイス・マジック】",
+        "effect": [
+            "6レベル/ランク以下の魔法行使不可能"
+        ],
+        "type": "SOR",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブレード・ネット】",
+        "effect": [
+            "手番終了時k0+魔力点のダメージ"
+        ],
+        "type": "SOR",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": true,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【レデュース・マジック】",
+        "effect": [
+            "魔法吸収"
+        ],
+        "type": "SOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "end": false,
+        "start": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【スロウ】",
+        "effect": [
+            "移動力半分",
+            "主動作制限(1 or 2)"
+        ],
+        "type": "SOR",
+        "round": 6,
+        "2d6": false,
+        "1d6": true,
+        "start": true,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【デス・ルーテリィ】",
+        "effect": [
+            "魔法行使判定-4"
+        ],
+        "type": "SOR",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ライトニング・バインド】",
+        "effect": [
+            "すべての行動判定-2",
+            "手番終了時にk20@13+魔力点の雷属性D"
+        ],
+        "type": "SOR",
+        "round": 6,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": true,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【マジック・リフレクション】",
+        "effect": [
+            "一度だけ魔法を反射する"
+        ],
+        "type": "SOR",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]

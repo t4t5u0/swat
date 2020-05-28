@@ -1,0 +1,301 @@
+[
+    {
+        "name": "⏩△【アンチボディ】",
+        "effect": [
+            "毒・病気に対し抵抗力判定+4"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【オウルビジョン】",
+        "effect": [
+            "暗視を得る"
+        ],
+        "type": "ENH",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【ガゼルフット】",
+        "effect": [
+            "回避力判定+1"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【キャッツアイ】",
+        "effect": [
+            "命中力判定+1"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【スケイルレギンス】",
+        "effect": [
+            "水中を自在に移動できる"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【ストロングブラッド】",
+        "effect": [
+            "炎、水・氷属性からの被ダメージを−5"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【チックチック】",
+        "effect": [
+            "跳躍判定+5",
+            "落下ダメージ-20"
+        ],
+        "type": "ENH",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ドラゴンテイル】",
+        "effect": [
+            "尻尾を生やし、武器とする"
+        ],
+        "type": "ENH",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【ビートルスキン】",
+        "effect": [
+            "防護点+2"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【マッスルベアー】",
+        "effect": [
+            "筋力ボーナス+2"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【メディテーション】",
+        "effect": [
+            "精神効果属性に対し精神抵抗力判定+4"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ラビットイヤー】",
+        "effect": [
+            "聞き耳・危機感値判定に+2"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【カメレオンカムフラージュ】",
+        "effect": [
+            "隠密判定+4",
+            "10m以上で視認不可"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【クラーケンスタビリティ】",
+        "effect": [
+            "転倒しなくなる"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【ジィプロフェシー】",
+        "effect": [
+            "危険感知判定+2",
+            "1先制判定+2"
+        ],
+        "type": "ENH",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ストライダーウォーク】",
+        "effect": [
+            "木や雲の上を歩ける"
+        ],
+        "type": "ENH",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【スパイダーウェブ】",
+        "effect": [
+            "蜘蛛の糸を射出しする"
+        ],
+        "type": "ENH",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【タイタンフット】",
+        "effect": [
+            "主動作で壁を蹴破れるようになる"
+        ],
+        "type": "ENH",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩△【トロールバイタル】",
+        "effect": [
+            "魔法ダメージ-4"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【バルーンシードショット】",
+        "effect": [
+            "口で投擲武器を発射できるようになる"
+        ],
+        "type": "ENH",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【フェンリルバイト】",
+        "effect": [
+            "口に牙を生やし攻撃できる。",
+            "すでに牙があれば命中力判定+1",
+            "すでに牙があればダメージ+2"
+        ],
+        "type": "ENH",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    }
+]

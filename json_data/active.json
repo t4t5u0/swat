@@ -1,0 +1,956 @@
+[
+    {
+        "name": "《インファイトⅠ》",
+        "effect": [
+            "特定対象のみ攻撃可能",
+            "命中力判定+2",
+            "回避力判定-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《囮攻撃Ⅰ》",
+        "effect": [
+            "命中力判定-2",
+            "ダメージ+2",
+            "回避されるとき敵の回避力判定-1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "△《かばうⅠ》",
+        "effect": [
+            "味方への攻撃をかばって受ける"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《斬り返しⅠ》",
+        "effect": [
+            "攻撃を回避された場合、追加で攻撃を行う"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《牽制攻撃Ⅰ》",
+        "effect": [
+            "命中力判定+Ⅰ",
+            "C値+1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《全力攻撃Ⅰ》",
+        "effect": [
+            "近接攻撃のダメージ+4",
+            "回避力判定-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《挑発攻撃Ⅰ》",
+        "effect": [
+            "攻撃を誘う",
+            "ダメージ-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ディフェンススタンス》",
+        "effect": [
+            "回避力判定+4, ほとんどの行為判定-4",
+            "生命抵抗力判定+4, ほとんどの行為判定-4",
+            "精神抵抗力判定+4, ほとんどの行為判定-4"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "《薙ぎ払いⅠ》",
+        "effect": [
+            "3体までを攻撃",
+            "ダメージ-3"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《バイオレントキャストⅠ》",
+        "effect": [
+            "ダメージ魔法の魔法行使判定+2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/威力確実化》",
+        "effect": [
+            "威力決定時の出目が4以下の場合、一度だけ振り直してよい"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/確実化》",
+        "effect": [
+            "行使判定を2回行い、達成値を選んでよい"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/数》",
+        "effect": [
+            "魔法の対象を増やす"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/距離》",
+        "effect": [
+            "魔法の射程距離を伸ばす"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/時間》",
+        "effect": [
+            "魔法の効果時間を伸ばす"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/範囲》",
+        "effect": [
+            "魔法の効果範囲を広げる"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大すべて》",
+        "effect": [
+            "任意の《魔法拡大/*》を組み合わせて行う"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法収束》",
+        "effect": [
+            "範囲を対象とする魔法を1体のみに行使する"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法制御》",
+        "effect": [
+            "範囲から任意の対象を除外して魔法を行使する"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔力撃》",
+        "effect": [
+            "近接攻撃のダメージに魔力を追加"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《マルチアクション》",
+        "effect": [
+            "近接攻撃と魔法行使を同時に行う"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《鎧貫きⅠ》",
+        "effect": [
+            "攻撃対象の防護点を半分として扱う",
+            "C値-1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《狙撃》",
+        "effect": [
+            "次の射撃攻撃が高達成値で命中したら、最終ダメージを2倍"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《囮攻撃Ⅰ》",
+        "effect": [
+            "命中力判定-2",
+            "ダメージ+2",
+            "回避されるとき敵の回避力判定-1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "△《かばうⅠ》",
+        "effect": [
+            "味方への攻撃をかばって受ける"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《斬り返しⅠ》",
+        "effect": [
+            "攻撃を回避された場合、追加で攻撃を行う"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《牽制攻撃Ⅰ》",
+        "effect": [
+            "命中力判定+Ⅰ",
+            "C値+1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《全力攻撃Ⅰ》",
+        "effect": [
+            "近接攻撃のダメージ+4",
+            "回避力判定-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《挑発攻撃Ⅰ》",
+        "effect": [
+            "攻撃を誘う",
+            "ダメージ-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《薙ぎ払いⅠ》",
+        "effect": [
+            "3体までを攻撃",
+            "ダメージ-3"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/威力確実化》",
+        "effect": [
+            "威力決定時の出目が4以下の場合、一度だけ振り直してよい"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/確実化》",
+        "effect": [
+            "行使判定を2回行い、達成値を選んでよい"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/数》",
+        "effect": [
+            "魔法の対象を増やす"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/距離》",
+        "effect": [
+            "魔法の射程距離を伸ばす"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/時間》",
+        "effect": [
+            "魔法の効果時間を伸ばす"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大/範囲》",
+        "effect": [
+            "魔法の効果範囲を広げる"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法拡大すべて》",
+        "effect": [
+            "任意の《魔法拡大/*》を組み合わせて行う"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法収束》",
+        "effect": [
+            "範囲を対象とする魔法を1体のみに行使する"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《魔法制御》",
+        "effect": [
+            "範囲から任意の対象を除外して魔法を行使する"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《インファイトⅡ》",
+        "effect": [
+            "特定対象のみに攻撃可能",
+            "命中力判定+2",
+            "ダメージ+4",
+            "回避力判定-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《囮攻撃Ⅱ》",
+        "effect": [
+            "命中力判定-2",
+            "ダメージ+8",
+            "回避されるとき、敵の回避力判定-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《楽素転換》",
+        "effect": [
+            "生成されている楽素を1つ変更する"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《影矢》",
+        "effect": [
+            "<投擲>or<ボウ>の攻撃で命中力判定を2回行い、好きな結果を選択できる"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《かばうⅡ》",
+        "effect": [
+            "味方への攻撃をかばって受ける(宣言回数にカウントしない)"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《牙折り》",
+        "effect": [
+            "敵の物理ダメージを-8"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《斬り返しⅡ》",
+        "effect": [
+            "攻撃を回避された場合、追加で攻撃を行う",
+            "Ⅰ回目の命中はダメージ+4"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《クリティカルキャスト》",
+        "effect": [
+            "魔法のC値-1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《牽制攻撃Ⅱ》",
+        "effect": [
+            "命中力判定+2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《シュアパフォーマー》",
+        "effect": [
+            "「抵抗:半減」の終律を「抵抗:必中」「クリティカルなし」で演奏する"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《スキルフルプレイ》",
+        "effect": [
+            "演奏判定を2回行い、好きな結果を選択できる"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《全力攻撃Ⅱ》",
+        "effect": [
+            "近接攻撃のダメージ+12",
+            "回避力判定-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《ダブルキャスト》",
+        "effect": [
+            "魔力-10で魔法を追加で行使できる"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《挑発攻撃Ⅱ》",
+        "effect": [
+            "攻撃を誘う"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《テイルスイングⅠ》",
+        "effect": [
+            "3体までを尻尾で攻撃可能",
+            "命中力判定-1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《テイルスイングⅡ》",
+        "effect": [
+            "5体までを尻尾で攻撃可能"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《薙ぎ払いⅡ》",
+        "effect": [
+            "5体までを攻撃可能"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《必殺攻撃Ⅱ》",
+        "effect": [
+            "近接攻撃時に威力表参照ロールの出目+1",
+            "回避力判定-1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《鎧貫きⅡ》",
+        "effect": [
+            "攻撃対象の防護点を半分、クリティカル時は「0」とする",
+            "C値+1"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《スキルフルプレイ》",
+        "effect": [
+            "演奏判定を2回行い、好きな結果を選択できる"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《カード軽減》",
+        "effect": [
+            "賦術に使うカードが1枚減少する"
+        ],
+        "type": "ARC",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《牽制攻撃Ⅲ》",
+        "effect": [
+            "命中力判定+3"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《クリティカルキャストⅡ》",
+        "effect": [
+            "C値-1",
+            "クリティカル無効能力無効。抵抗半減時でもクリティカルする"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《全力攻撃Ⅲ》",
+        "effect": [
+            "近接攻撃時のダメージ+20"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《バイオレントキャストⅡ》",
+        "effect": [
+            "ダメージ魔法の達成値+3"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《必殺攻撃Ⅲ》",
+        "effect": [
+            "近接攻撃時の威力表参照ロールの出目+1",
+            "クリティカル無効能力無効"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "《鎧貫きⅢ》",
+        "effect": [
+            "攻撃対象の防護点を半分として扱う。クリティカル時は「0」とする",
+            "クリティカル無効能力無効"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]
