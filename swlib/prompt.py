@@ -23,8 +23,8 @@ class Command(Cmd):
             f'- help cmd を使用すると cmd の詳細を見ることができます\n'
             f'{"─"*100}'
         )
-        self.current_character = ''
-        self.turn = 0
+        self.current_character = None
+        self.turn = None
         self.nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[*]|[0-9]+)')
 
     def nick2chara(self, characters: list) -> list:
@@ -413,8 +413,8 @@ class Command(Cmd):
         # searchすると2個あるときにバグる。.count して個数分かってれば大丈夫
         arg = inp.split()
 
-        r_position = 0
-        t_position = 0
+        r_position = None
+        t_position = None
         if '--round' in arg or '-r' in arg:
             if (arg.count('--round') + arg.count('-r')) >= 2:
                 print('パラメータが不正です。-r の数は1つでなければいけません')
@@ -533,10 +533,11 @@ class Command(Cmd):
 
                 # 同名技能がすでに存在していたら残りラウンド数を上書きする
                 # -r が与えられていたら、それをそのまま使う。
-                if not rounds:
+                if r_position is None:
                     c.execute(
                         'SELECT round FROM skill_list WHERE name = ?', (skill_name,))
                     rounds = c.fetchone()[0]
+                    print(rounds)
                 c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',
                           (char, skill_name))
                 cnt = c.fetchone()[0]
