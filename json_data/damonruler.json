@@ -1,0 +1,529 @@
+[
+    {
+        "name": "(x)⏩【デモンズクロウ】",
+        "effect": [
+            "両腕が爪に変化する。k20+召異+筋力B",
+            "防護点+2"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)⏩【デモンズセンス】",
+        "effect": [
+            "暗視を得る",
+            "危険感知判定、聞き耳判定+2"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【コヒーアナザー】",
+        "effect": [
+            "他者の筆跡や声を真似る"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【シャドウバインド】",
+        "effect": [
+            "移動力が0になる",
+            "回避力判定-2"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【バリアドサークル】",
+        "effect": [
+            "範囲内に侵入してきた存在を察知する"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【コマンドキャスト】",
+        "effect": [
+            "魔神に魔法を使わせる"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)⏩【デモンズビュート】",
+        "effect": [
+            "触手が生える。k20+召異+筋力B 絡み"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ライフエクスチェンジ】",
+        "effect": [
+            "最大HP+5 最大MP-5 (累積するけど未実装)"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": true,
+        "choice": false
+    },
+    {
+        "name": "【イビルシルエット】",
+        "effect": [
+            "魔神の幻影を見せる"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【デモニックウェポン】",
+        "effect": [
+            "武器のダメージに魔神のレベルを上乗せ、その後魔神を一時開放",
+            "術者は追加ダメージ分の魔力を消費。足りない場合はHPを消費"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブラッドスハウト】",
+        "effect": [
+            "命中力判定、回避力判定-1",
+            "4回累積すると盲目"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": true,
+        "choice": false
+    },
+    {
+        "name": "⏩【デモニックアーマー】",
+        "effect": [
+            "鎧の防護点に魔神のレベルを上乗せ、その後魔神を一時開放",
+            "術者は追加防護分の魔力を消費。足りない場合は防護点が0になる"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【デモンズファング】",
+        "effect": [
+            "牙を生やす。k10+召異+筋力",
+            "魔力と生命抵抗力で比べ合いを行い、有利だった場合魔力点の毒属性魔法ダメージ"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)【ダークソウル】",
+        "effect": [
+            "気絶している対象を操り、覚醒させる"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)⏩【デモンズイベイジョン】",
+        "effect": [
+            "召異技能で回避力判定が可能になる"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【デモンズタックス】",
+        "effect": [
+            "ダメージを受けた場合、5点の確定魔法ダメージを与える"
+        ],
+        "type": "DAM",
+        "round": 3,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブラッドマーカー】",
+        "effect": [
+            "対象に血の刻印を与え、位置を把握する"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)【アナザーフォーム】",
+        "effect": [
+            "インプ：◯飛行",
+            "スポーン：◯2回攻撃&双撃",
+            "ギルドレック：◯テイルショット",
+            "ザルバード：▶炎の吐息",
+            "アルガギス：□丸まる",
+            "ダルグブーリー：◯影渡り"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【アンチマジックバリア】",
+        "effect": [
+            "魔法ダメージ-5"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)⏩【デモンズシード】",
+        "effect": [
+            "<魔神の種>を作り出す"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【アトロフィー】",
+        "effect": [
+            "先制判定-2"
+        ],
+        "type": "DAM",
+        "round": 0,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)⏩【デモンズウィング】",
+        "effect": [
+            "翼を生やして飛行できる。命中力・回避力判定+1"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【デモンズオーラ】",
+        "effect": [
+            "命中力判定+2",
+            "回避力判定+2",
+            "行使判定+2"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【ディフィシェンシー】",
+        "effect": [
+            "毒・病気・呪い属性ダメージ+3点の弱点を持つ。+6点まで累積する"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": true,
+        "choice": false
+    },
+    {
+        "name": "⏩【シャドウリープ】",
+        "effect": [
+            "影に潜んで移動できる"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【デモンズブレード】",
+        "effect": [
+            "両手剣を作成する。k50+召異+筋力B",
+            "HPまたは、MPを減少させることができる"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【シールドサークル】",
+        "effect": [
+            "対象を封じる。対象のHPが0になる"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ハイドアナザー】",
+        "effect": [
+            "影の中に潜ませる"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)【コントラクトアナザー】",
+        "effect": [
+            "魔神との契約を貸与する"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)⏩【デモンズスフレッド】(1つ目)",
+        "effect": [
+            "炎属性ダメージ半減",
+            "水・氷属性ダメージ半減",
+            "風属性ダメージ半減",
+            "土属性ダメージ半減",
+            "雷属性ダメージ半減",
+            "衝撃属性ダメージ半減",
+            "断空属性ダメージ半減",
+            "純エネルギー属性ダメージ半減",
+            "毒属性ダメージ半減",
+            "病気属性ダメージ半減",
+            "呪い属性ダメージ半減",
+            "精神効果属性ダメージ半減"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "(x)⏩【デモンズスフレッド】(2つ目)",
+        "effect": [
+            "炎属性ダメージ半減",
+            "水・氷属性ダメージ半減",
+            "風属性ダメージ半減",
+            "土属性ダメージ半減",
+            "雷属性ダメージ半減",
+            "衝撃属性ダメージ半減",
+            "断空属性ダメージ半減",
+            "純エネルギー属性ダメージ半減",
+            "毒属性ダメージ半減",
+            "病気属性ダメージ半減",
+            "呪い属性ダメージ半減",
+            "精神効果属性ダメージ半減"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "(x)【フェイクメモリー】",
+        "effect": [
+            "偽りの記憶を植えつける"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ワースレスマジック】",
+        "effect": [
+            "魔法名を2つ指定し、使えなくする"
+        ],
+        "type": "DAM",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【リーサルディメンジョン】",
+        "effect": [
+            "k30ダメージの空間を作り出す。手番のはじめに抵抗判定を行える"
+        ],
+        "type": "DAM",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": true,
+        "end": true,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "(x)【ソウルサクリファイス】",
+        "effect": [
+            "ドッペルゲンガーになる"
+        ],
+        "type": "DAM",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]
