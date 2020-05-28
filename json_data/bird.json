@@ -4,8 +4,279 @@
         "effect": [
             "命中力判定-1"
         ],
-        "type": "CON",
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ノイズ】",
+        "effect": [
+            "魔法行使判定-1"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【バラード】",
+        "effect": [
+            "回避力判定-1"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【モラル】",
+        "effect": [
+            "命中力判定+1"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【レクイエム】",
+        "effect": [
+            "アンデッドのすべての行為判定-2"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【レジスタンス】",
+        "effect": [
+            "抵抗力判定+1"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【アトリビュート】",
+        "effect": [
+            "炎属性ダメージ-2",
+            "水・氷属性ダメージ-2",
+            "土属性ダメージ-2",
+            "風属性ダメージ-2",
+            "雷属性ダメージ-2"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "【チャーミング】",
+        "effect": [
+            "奏者への不利益な行為を抑止する"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【トランス】",
+        "effect": [
+            "魔法行使判定+1"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ノスタルジィ】",
+        "effect": [
+            "対象にねぐらへ帰りたいという衝動を起こさせる"
+        ],
+        "type": "BIR",
         "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ブレイク】",
+        "effect": [
+            "抵抗力判定-1"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ラブソング】",
+        "effect": [
+            "恋愛感情を芽生えさせる。1時間継続"
+        ],
+        "type": "BIR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ララバイ】",
+        "effect": [
+            "移動、能動的な行動ができない。行動判定-4"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【クラップ】",
+        "effect": [
+            "手拍子をさせる。手を使う行動が行えなくなる"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【コーラス】",
+        "effect": [
+            "奏者とともに歌わせる",
+            "制限移動しか行えず、発生が必要な魔法の行使などができない"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ダル】",
+        "effect": [
+            "宣言特技を封じる"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【ダンス】",
+        "effect": [
+            "踊らせて命中力。回避力判定-2(グラップラーを除く)"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【フォール】",
+        "effect": [
+            "飛行能力を封じる"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【リダクション】",
+        "effect": [
+            "魔法行使のMP-1"
+        ],
+        "type": "BIR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "【レイジィ】",
+        "effect": [
+            "行為判定-1"
+        ],
+        "type": "BIR",
+        "round": 1,
         "2d6": false,
         "1d6": false,
         "start": false,
