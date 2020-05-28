@@ -5,7 +5,238 @@
             "サイコロの目をひっくり返す"
         ],
         "type": "",
-        "round": 1,
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[剣の加護/優しき水]",
+        "effect": [
+            "水中でも地上と同じように活動できる",
+            "毒、病気属性に対する抵抗力判定+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[暗視]",
+        "effect": [
+            "暗闇でも昼間と同じようにものが見える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[剣の加護/炎身]",
+        "effect": [
+            "炎属性の物理・魔法ダメージを受けない"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[第六感]",
+        "effect": [
+            "危険感知判定を冒険者レベルを基準にできる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[HP変換]",
+        "effect": [
+            "HPを消費しMPに変換できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[異貌]",
+        "effect": [
+            "ナイトメアの姿になる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[弱点(ナイトメア)]",
+        "effect": [
+            "人間：銀の武器及び土属性ダメージ+2",
+            "エルフ：銀の武器及び水・氷属性ダメージ+2",
+            "ドワーフ：銀の武器及び炎属性ダメージ+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "[暗視(獣変貌)]",
+        "effect": [
+            "[獣変貌]中に、[暗視]の効果を得る"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[獣変貌]",
+        "effect": [
+            "頭部が獣の姿になり、リカント語以外を話せなくなる",
+            "筋力ボーナス+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[剣の加護/風の翼]",
+        "effect": [
+            "1日に合計1分間飛行が可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[マナ不干渉]",
+        "effect": [
+            "MPを持たない",
+            "精神抵抗に成功すると、半減を消滅として扱う"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[虫や植物との意思疎通]",
+        "effect": [
+            "虫や植物が感じていることをなんとなく理解できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[繁茂する生命]",
+        "effect": [
+            "睡眠不要",
+            "1日の始まりになると、HPが2割回復、MPが全回復する"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[通じ合う意識]",
+        "effect": [
+            "10m以内のキャラクタと意思疎通できる",
+            "動物、幻獣の騎獣に使用している場合、命中力、回避力判定+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[見えざる手]",
+        "effect": [
+            "装備欄に「部位：その他」が2個あるものとして扱う"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[姿なき職人]",
+        "effect": [
+            "MPを5点消費し、主動作で念じることで【コンシール・セルフ】と同様に扱う"
+        ],
+        "type": "",
+        "round": -1,
         "2d6": false,
         "1d6": false,
         "start": false,
@@ -13,5 +244,4 @@
         "count": false,
         "choice": false
     }
-
 ]
