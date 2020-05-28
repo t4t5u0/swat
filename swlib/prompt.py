@@ -27,40 +27,47 @@ class Command(Cmd):
         self.turn = 0
         self.nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[*]|[0-9]+)')
 
-    def nick2chara(self, characters : list) -> list:
-        conn = sqlite3.connect(self.current_directory/"db"/"data.db", detect_types=sqlite3.PARSE_DECLTYPES)
+    def nick2chara(self, characters: list) -> list:
+        conn = sqlite3.connect(
+            self.current_directory/"db"/"data.db", detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
         tmp = []
         for char in characters:
             if re.match(self.nick_pattern, char):
                 if char[-1] == '*':
                     # char[:-1]% で検索する
-                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
+                    c.execute(
+                        'SELECT COUNT(name) FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
                     cnt = c.fetchone()[0]
                     # 存在してるかどうか
                     if cnt:
-                        c.execute('SELECT name FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
+                        c.execute(
+                            'SELECT name FROM character_list WHERE nick LIKE ?', (f'{char[:-1]}%',))
                         tmp += [skill[0] for skill in (c.fetchall())]
                         # print(tmp)
                     else:
                         print(f'{char}に該当するキャラクタは存在しません')
                 else:
                     # charで検索する
-                    c.execute('SELECT COUNT(name) FROM character_list WHERE nick = ?', (char,))
+                    c.execute(
+                        'SELECT COUNT(name) FROM character_list WHERE nick = ?', (char,))
                     cnt = c.fetchone()[0]
                     # 存在してるかどうか
                     if cnt:
-                        c.execute('SELECT name FROM character_list WHERE nick = ?', (char,))
+                        c.execute(
+                            'SELECT name FROM character_list WHERE nick = ?', (char,))
                         tmp += c.fetchone()
                     else:
                         print(f'{char}に該当するキャラクタは存在しません')
             else:
                 # 普通に検索
                 # なかったらメッセージ出して飛ばす
-                c.execute('SELECT COUNT(name) FROM character_list WHERE name = ?', (char,))
+                c.execute(
+                    'SELECT COUNT(name) FROM character_list WHERE name = ?', (char,))
                 cnt = c.fetchone()[0]
                 if cnt:
-                    c.execute('SELECT name FROM character_list WHERE name = ?', (char,))
+                    c.execute(
+                        'SELECT name FROM character_list WHERE name = ?', (char,))
                     tmp += c.fetchone()
                 else:
                     print(f'{char}というキャラクタは存在しません')
@@ -70,10 +77,10 @@ class Command(Cmd):
 
     def do_append(self, inp):
         ('キャラクタを追加するコマンド\n'
-        '> append <chracters> [-n <nickname>]\n'
-        'ex: > append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...\n'
-        'Option: -n キャラクタにラベルをつけるときに使用する\n'
-        'ch en npc oth と 数字1つ以上の組み合わせを使用できます')
+         '> append <chracters> [-n <nickname>]\n'
+         'ex: > append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...\n'
+         'Option: -n キャラクタにラベルをつけるときに使用する\n'
+         'ch en npc oth と 数字1つ以上の組み合わせを使用できます')
 
         # 前処理
         # そのうちリファクタする
@@ -93,10 +100,11 @@ class Command(Cmd):
         if arg == []:
             print('引数にキャラクタ名を指定してください')
             return
-        conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(
+            f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
 
-        for skill, nick in  zip(arg, nicks):
+        for skill, nick in zip(arg, nicks):
             c.execute(
                 'SELECT COUNT (name) FROM character_list WHERE name = ?', (skill,))
             if c.fetchone()[0]:
@@ -115,9 +123,9 @@ class Command(Cmd):
 
     def do_nick(self, inp):
         ('すでに存在するキャラクタにニックネームをつけ、グループ化するコマンド\n'
-        '使用できるのは ch, en, npc, oth, に 0-9 を加えたもの\n'
-        '> nick <characters> -n <nickname>\n'
-        'ex: > nick hydra -n en1')
+         '使用できるのは ch, en, npc, oth, に 0-9 を加えたもの\n'
+         '> nick <characters> -n <nickname>\n'
+         'ex: > nick hydra -n en1')
 
         arg = inp.split()
         characters = []
@@ -134,7 +142,8 @@ class Command(Cmd):
             return
 
         for chara, nick in zip(characters, nicknames):
-            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             # キャラが存在するか確認
             c.execute(
@@ -156,8 +165,8 @@ class Command(Cmd):
 
     def do_change(self, inp):
         ('効果対象にするキャラクタを変更するコマンド\n'
-        '> change [character] \n'
-        'ex: > change ギルバート')
+         '> change [character] \n'
+         'ex: > change ギルバート')
 
         char = inp.split()
         if len(char) == 0:
@@ -175,12 +184,13 @@ class Command(Cmd):
 
     def do_ls(self, inp):
         ('キャラクタ一覧を確認するコマンド'
-        '> ls')
+         '> ls')
         char = inp.split()
         if len(char) != 0:
             print('ls は引数なしです。詳しくは help ls')
         else:
-            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             result = c.execute('SELECT name, nick FROM character_list')
             result = c.fetchall()
@@ -194,17 +204,18 @@ class Command(Cmd):
 
     def do_kill(self, inp):
         ('キャラクタ削除用のコマンド\n'
-        '> kill <characters or nicknames>\n'
-        'ex: kill swift ch1 \n'
-        '引数は1つ以上、--all を指定した場合はすべて消す\n'
-        '> kill --all'
-        )
+         '> kill <characters or nicknames>\n'
+         'ex: kill swift ch1 \n'
+         '引数は1つ以上、--all を指定した場合はすべて消す\n'
+         '> kill --all'
+         )
         char = inp.split()
         if len(char) == 0:
             print('引数を1つ以上とります。')
             return
         elif '--all' in char:
-            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('DELETE FROM character_list')
             c.execute('DELETE FROM status_list')
@@ -215,7 +226,8 @@ class Command(Cmd):
             self.prompt = f'{Color.GREEN}> {Color.RESET}'
         else:
             char = self.nick2chara(char)
-            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             for skill in char:
                 c.execute(
@@ -238,8 +250,8 @@ class Command(Cmd):
 
     def do_check(self, inp):
         ('ステータス確認用のコマンド\n'
-        '> check [characters, nicknames, --all] \n'
-        'ex: > check ギルバート')
+         '> check [characters, nicknames, --all] \n'
+         'ex: > check ギルバート')
         char = inp.split()
         if len(char) == 0:
             if self.current_character == '':
@@ -257,42 +269,44 @@ class Command(Cmd):
               f'{"効果":^{20-count_east_asian_character("効果")}}')
         print('─'*100)
         if '--all' in char:
-            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('SELECT name FROM character_list')
             char = [skill[0] for skill in c.fetchall()]
 
         char = self.nick2chara(char)
         for ch in char:
-            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
             result = list(c.execute(quely, (ch,)))
             if len(result) == 0:
                 print(f"{ch:^15}|"
-                        f"{'':^40}"
-                        f"{'':^15}"
-                        #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
-                        f"{'':<20}")
+                      f"{'':^40}"
+                      f"{'':^15}"
+                      #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
+                      f"{'':<20}")
             else:
                 for i, row in enumerate(result):
                     print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
-                        f"{row[0]:^{max(40-count_east_asian_character(row[0]), 0)}}"
-                        f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
-                        #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
-                        f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
+                          f"{row[0]:^{max(40-count_east_asian_character(row[0]), 0)}}"
+                          f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
+                          #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
+                          f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
             conn.close()
             print('─'*100)
 
     def do_start(self, inp):
         ('手番開始時のコマンド\n'
-        '安全のため現在追従中のキャラクタのみに適用してください\n'
-        '> start [character]\n'
-        'ex: (cc)> start #追従中のキャラクタを指定するときは引数なし\n'
-        'WIP: スロウとかのフラグを作ってない')
+         '安全のため現在追従中のキャラクタのみに適用してください\n'
+         '> start [character]\n'
+         'ex: (cc)> start #追従中のキャラクタを指定するときは引数なし\n'
+         'WIP: スロウとかのフラグを作ってない')
         # デフォルトではself.current_character を渡す。
 
-        def process(c ,arg):
+        def process(c, arg):
             result = c.execute(
                 "SELECT DISTINCT chara_name, skill_name, round , use_start FROM status_list WHERE chara_name = ? AND use_start = 'True'", (arg,))
             result = list(result)
@@ -310,7 +324,8 @@ class Command(Cmd):
             else:
                 characters = [self.current_character]
         if '--all' in characters:
-            conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+            conn = sqlite3.connect(
+                f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
             c = conn.cursor()
             c.execute('SELECT name FROM character_list')
             characters = [skill[0] for skill in c.fetchall()]
@@ -333,7 +348,8 @@ class Command(Cmd):
                     round_list[i][2] -= 1
             # (chara_name, skill_name, round) のタプルで入ってくるがクエリに合わせるために軸を入れ替える
             # (round, chara_name, skill_name) の形にしたい
-            round_list = [(skill[2], skill[0], skill[1]) for skill in round_list]
+            round_list = [(skill[2], skill[0], skill[1])
+                          for skill in round_list]
             # start したときに、round_list の末尾の要素が全ての要素にコピーされてしまう不具合
             # 技能名を指定していないから、末尾の要素ですべて上書きする
             c.executemany(
@@ -344,8 +360,9 @@ class Command(Cmd):
 
     def do_end(self, inp):
         ('手番終了時の処理をするコマンド\n'
-        '> end [character]')
+         '> end [character]')
         # 保守性を上げるため、関数内関数を用いる
+
         def process(c, arg):
             result = c.execute(
                 "SELECT DISTINCT chara_name, skill_name, round , use_end FROM status_list WHERE chara_name = ? AND use_end = 'True'", (arg,))
@@ -373,19 +390,19 @@ class Command(Cmd):
 
     def do_add(self, inp):
         ('キャラクタに技能を付与するコマンド。\n'
-        'キャラクタを設定していない場合は change コマンドでキャラクタを設定してください\n'
-        '> add [propaties]\n'
-        'ex: > add マッスル・ベア ガゼル・フット\n'
-        'Option:\n'
-        '-r, --round <round>\n'
-        '   抵抗短縮などで、効果ラウンドをデフォルトから別のものへ上書きするときに使用する\n'
-        '   直後に上書きラウンド数を指定する\n'
-        'ex: > add ヘイスト -r 1\n'
-        '-t, --target <characters or nicknames>\n'
-        '   対象を指定して効果を付与したいときに使用する\n'
-        '   ch* で ch1, ch2, ... など結構柔軟に行ける\n'
-        'ex: > add ブレス -t ch*\n'
-        '-t -r  は併用可能')
+         'キャラクタを設定していない場合は change コマンドでキャラクタを設定してください\n'
+         '> add [propaties]\n'
+         'ex: > add マッスル・ベア ガゼル・フット\n'
+         'Option:\n'
+         '-r, --round <round>\n'
+         '   抵抗短縮などで、効果ラウンドをデフォルトから別のものへ上書きするときに使用する\n'
+         '   直後に上書きラウンド数を指定する\n'
+         'ex: > add ヘイスト -r 1\n'
+         '-t, --target <characters or nicknames>\n'
+         '   対象を指定して効果を付与したいときに使用する\n'
+         '   ch* で ch1, ch2, ... など結構柔軟に行ける\n'
+         'ex: > add ブレス -t ch*\n'
+         '-t -r  は併用可能')
 
         # 抵抗短縮の処理
         # 複数キャラに付与できるようにする
@@ -426,7 +443,7 @@ class Command(Cmd):
         # -r -t がともに存在する時
         if r_position and t_position:
             # -t が手前に存在するとき
-            if t_position  < r_position:
+            if t_position < r_position:
                 skills = arg[:t_position]
                 characters = arg[t_position+1:r_position]
                 rounds = arg[r_position+1][0]
@@ -461,7 +478,8 @@ class Command(Cmd):
                 # 抵抗短縮の場合、効果ラウンドが変動するから、1つの技能につき引数を2つ取る
                 # この場合、技能名 ラウンド数 としておけば、まだ処理のしようがある。
                 # 技能名に対してLIKE検索を行う
-                conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+                conn = sqlite3.connect(
+                    f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
                 c = conn.cursor()
                 # INSERT する前に技能の検索を行う
                 c.execute(
@@ -516,15 +534,15 @@ class Command(Cmd):
                 # 同名技能がすでに存在していたら残りラウンド数を上書きする
                 # -r が与えられていたら、それをそのまま使う。
                 if not rounds:
-                        c.execute(
-                            'SELECT round FROM skill_list WHERE name = ?', (skill_name,))
-                        rounds = c.fetchone()[0]
+                    c.execute(
+                        'SELECT round FROM skill_list WHERE name = ?', (skill_name,))
+                    rounds = c.fetchone()[0]
                 c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',
-                            (char, skill_name))
+                          (char, skill_name))
                 cnt = c.fetchone()[0]
                 if cnt >= 1:
                     c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
-                                (rounds, char, skill_name))
+                              (rounds, char, skill_name))
                     print(f'{skill_name}はすでに存在しているため上書きしました')
                 else:
                     # そうでなければ新しく挿入する
@@ -542,9 +560,9 @@ class Command(Cmd):
 
     def do_rm(self, inp):
         ('追従しているキャラの技能を削除するコマンド, 一度に複数消去可\n'
-        '(cc) > rm <skills>\n'
-        'Option: -t ターゲットを指定\n'
-        '> rm <skills> -t <characters>')
+         '(cc) > rm <skills>\n'
+         'Option: -t ターゲットを指定\n'
+         '> rm <skills> -t <characters>')
 
         arg = inp.split()
 
@@ -578,7 +596,7 @@ class Command(Cmd):
                 # 同名で複数効果を持っているものがあるから、それに対応する(ヘイストなど)
                 # 効果単位ではなく技能単位で消去したい
                 c.execute('SELECT skill_name FROM status_list WHERE chara_name = ? AND skill_name LIKE ?',
-                            (chara, f'%{item}%'))
+                          (chara, f'%{item}%'))
                 # fetchall するとタプルのリストで返ってくる
                 # 技能の重複を削除
                 skill = c.fetchall()
@@ -589,7 +607,6 @@ class Command(Cmd):
 
                 # 一致した技能全部が入ってる
                 skill_names = list(set([item[0] for item in skill]))
-
 
                 # 複数あったらfor文回す
                 if len(skill_names) == 1:
@@ -604,11 +621,10 @@ class Command(Cmd):
                         print('有効な数字を入力してください')
                         return
                 c.execute('DELETE FROM status_list WHERE chara_name = ? AND skill_name = ?',
-                            (chara, skill_name))
+                          (chara, skill_name))
                 print(f'{skill_name}を削除しました')
                 conn.commit()
         conn.close()
-
 
 
     def do_reset(self, inp):
@@ -617,7 +633,8 @@ class Command(Cmd):
         if len(arg) != 0:
             print('reset は引数を取りません')
             return
-        conn = sqlite3.connect(f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        conn = sqlite3.connect(
+            f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
         c.execute('DELETE FROM status_list WHERE round > 0')
         conn.commit()
