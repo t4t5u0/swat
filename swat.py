@@ -1,4 +1,5 @@
-from swlib.prompt import Command
+
+from swatlib.prompt import Command
 import pathlib
 
 def main():
