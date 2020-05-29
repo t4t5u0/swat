@@ -7,7 +7,8 @@ from cmd import Cmd
 
 from swatlib.color import Color
 from swatlib.subcommands import (count_east_asian_character,
-                               get_east_asian_count, serch_words_index)
+                               get_east_asian_count, serch_words_index,
+                               turn_back_text)
 
 
 class Command(Cmd):
@@ -266,7 +267,7 @@ class Command(Cmd):
         print(f'{"名前":^{15-count_east_asian_character("名前")}}|'
               f'{"スキル名":^{40-count_east_asian_character("スキル名")}}'
               f'{"残りラウンド":^{15-count_east_asian_character("残りラウンド")}}'
-              f'{"効果":^{20-count_east_asian_character("効果")}}')
+              f'{"効果":^{30-count_east_asian_character("効果")}}')
         print('─'*100)
         if '--all' in char:
             conn = sqlite3.connect(
@@ -283,18 +284,19 @@ class Command(Cmd):
             quely = 'SELECT skill_name, skill_effect, round FROM status_list WHERE chara_name = ?;'
             result = list(c.execute(quely, (ch,)))
             if len(result) == 0:
-                print(f"{ch:^15}|"
-                      f"{'':^40}"
-                      f"{'':^15}"
-                      #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
-                      f"{'':<20}")
+                print(f"{ch:^15}|{'':^40}{'':^15}{'':<30}")
             else:
                 for i, row in enumerate(result):
-                    print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
-                          f"{row[0]:^{max(40-count_east_asian_character(row[0]), 0)}}"
-                          f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
-                          #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
-                          f"{row[1]:<{max(20-count_east_asian_character(row[1]), 0)}}")
+                    text = turn_back_text(row[1], 30)
+                    for j, line in enumerate(text):
+                        if j == 0:
+                            print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
+                                f"{row[0]:^{max(40-count_east_asian_character(row[0]), 0)}}"
+                                f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
+                                #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
+                                f"{line:<{max(30-count_east_asian_character(line), 0)}}")
+                        else:
+                            print(f"{' '*15}|{' '*40}{' '*15}{line:<{max(30-count_east_asian_character(line), 0)}}")
             conn.close()
             print('─'*100)
 

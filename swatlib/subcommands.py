@@ -30,3 +30,25 @@ def serch_words_index(ls, words):
     return result
 
 
+# 文字列をn文字ごとに区切って、インデックスのリストを返す関数。もしくは、区切ったあとの文字列を返す関数
+def turn_back_text(text:str, n:int) -> list:
+    result = []
+    count = 0
+    tmp = ''
+    for c in text:
+        tmp += c
+        if c in ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ', 'Ⅷ', 'Ⅸ', 'Ⅹ', '⏩']:
+            count += 2
+        elif unicodedata.east_asian_width(c) in 'FWA':
+            count += 2
+        else:
+            count += 1
+        if count > n-1:
+            count = 0
+            result.append(tmp)
+            tmp = ''
+    else:
+        if tmp != '':
+            result.append(tmp)
+    return result
+
