@@ -1,4 +1,4 @@
-# SWAT (Sord World Assistant Tool)
+# SWAT (Sword World Assistant Tool)
 
 ## 概要
  SWATはSW2.5向けのバフ・デバフ管理ツールです

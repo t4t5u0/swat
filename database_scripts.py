@@ -2,7 +2,7 @@
 
 import sys
 
-from swlib import database_commands
+from swatlib import database_commands
 
 def main():
     arg = sys.argv
