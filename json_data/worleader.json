@@ -1,0 +1,677 @@
+[
+    {
+        "name": "⏩【神速の構え】：ランク1",
+        "effect": [
+            "移動力+5"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【堅陣の構え】：ランク1",
+        "effect": [
+            "制限移動+2m"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅰ】：ランク1",
+        "effect": [
+            "物理ダメージ+2",
+            "回避力-1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅱ・烈火】：ランク2",
+        "effect": [
+            "物理ダメージ+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅱ・旋風】：ランク2",
+        "effect": [
+            "命中力判定+1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅲ・轟炎】：ランク3",
+        "effect": [
+            "物理ダメージ+3"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅲ・旋刃】：ランク3",
+        "effect": [
+            "命中力判定+1",
+            "物理ダメージ+1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅳ・爆焰】：ランク5",
+        "effect": [
+            "物理ダメージ+3",
+            "一度だけ瞬間的に物理ダメージ+3"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅳ・輝斬】：ランク4",
+        "effect": [
+            "命中力判定+1",
+            "物理ダメージ+1",
+            "一度だけ瞬間的に命中力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅴ・獄火】：ランク5",
+        "effect": [
+            "一度だけ瞬間的に物理ダメージ+8"
+        ],
+        "type": "WOR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【怒涛の攻陣Ⅴ・颱風】：ランク5",
+        "effect": [
+            "命中力判定+3",
+            "物理ダメージ+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅰ】：ランク1",
+        "effect": [
+            "回避力判定+1",
+            "物理ダメージ-2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅱ・陽炎】：ランク2",
+        "effect": [
+            "回避力判定+1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅱ・流水】：ランク2",
+        "effect": [
+            "回避力判定+2",
+            "防護点-2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅲ・浮身】：ランク3",
+        "effect": [
+            "回避力判定+1",
+            "被ダメージ-1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅲ・幻惑】：ランク3",
+        "effect": [
+            "回避力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅳ・残影】：ランク4",
+        "effect": [
+            "回避力判定+1",
+            "被ダメージ-1",
+            "【ブリンク】付与"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅳ・幻惑】：ランク4",
+        "effect": [
+            "回避力判定+2",
+            "一度だけ瞬間的に回避力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅴ・水鏡】：ランク5",
+        "effect": [
+            "回避力判定+4",
+            "被ダメージ-2"
+        ],
+        "type": "WOR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【流麗なる俊陣Ⅴ・影駆】：ランク5",
+        "effect": [
+            "回避力判定+2",
+            "《影走り》付与"
+        ],
+        "type": "WOR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅰ】：ランク1",
+        "effect": [
+            "防護点+2",
+            "与える物理ダメージ-2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅱ・鉄鎧】：ランク2",
+        "effect": [
+            "防護点+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅱ・堅体】：ランク2",
+        "effect": [
+            "防護点+1",
+            "被魔法ダメージ-1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅲ・鋼鎧】：ランク3",
+        "effect": [
+            "防護点+3"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅲ・甲盾】：ランク3",
+        "effect": [
+            "防護点+2",
+            "被魔法ダメージ-2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅳ・反攻】：ランク4",
+        "effect": [
+            "防護点+3",
+            "《カウンター》1回付与"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅳ・無敵】：ランク4",
+        "effect": [
+            "防護点+1",
+            "被魔法ダメージ-2",
+            "【ホーリー・ブレッシング】付与"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅴ・鋼城】：ランク5",
+        "effect": [
+            "防護点+6"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【鉄壁の防陣Ⅴ・槍塞】：ランク5",
+        "effect": [
+            "被魔法ダメージ-4",
+            "《カウンター》2回付与"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅰ・抗体】：ランク1",
+        "effect": [
+            "生命抵抗力判定+1",
+            "精神抵抗力判定-1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅰ・抗心】：ランク1",
+        "effect": [
+            "生命抵抗力判定-1",
+            "精神抵抗力判定+1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅱ・強身】：ランク2",
+        "effect": [
+            "生命抵抗力判定+2",
+            "精神抵抗力判定-1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅱ・抗心】：ランク2",
+        "effect": [
+            "生命抵抗力判定+1",
+            "精神抵抗力判定+1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅱ・安精】：ランク2",
+        "effect": [
+            "生命抵抗力判定-1",
+            "精神抵抗力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅲ・剛体】：ランク3",
+        "effect": [
+            "生命抵抗力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅲ・整心】：ランク3",
+        "effect": [
+            "生命抵抗力判定+1",
+            "精神抵抗力判定+1"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅲ・心清】：ランク3",
+        "effect": [
+            "精神抵抗力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅳ・克己】：ランク3",
+        "effect": [
+            "生命抵抗力判定+2",
+            "一度だけ瞬間的に生命抵抗力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅳ・賦活】：ランク4",
+        "effect": [
+            "抵抗力判定+2",
+            "一度だけ瞬間的に抵抗力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅳ・清涼】：ランク4",
+        "effect": [
+            "精神抵抗力判定+2",
+            "一度だけ瞬間的に精神抵抗力判定+2"
+        ],
+        "type": "WOR",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅴ・賦活】：ランク5",
+        "effect": [
+            "【アウェイクン】発動"
+        ],
+        "type": "WOR",
+        "round": 0,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【強靭なる丈陣Ⅴ・魔泉】：ランク5",
+        "effect": [
+            "MP軽減-5"
+        ],
+        "type": "WOR",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【軍師の知略】",
+        "effect": [
+            "先制判定をウォーリーダー技能+知力Bで振ることができる"
+        ],
+        "type": "",
+        "round": 0,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【蘇る秘奥】：ランク4",
+        "effect": [
+            "魔物知識判定を再度行う"
+        ],
+        "type": "",
+        "round": 0,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【勇壮なる軍歌】",
+        "effect": [
+            "呪歌を味方か敵どちらに適用するかを決定できる。対象にした呪歌が終了すると効果が終了する。"
+        ],
+        "type": "",
+        "round": 0,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩【大いなる挑発】",
+        "effect": [
+            "対象：回避力+1, 抵抗力判定+1",
+            "軍師：回避力-4, 抵抗力判定-2"
+        ],
+        "type": "",
+        "round": 0,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]
