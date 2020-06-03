@@ -550,9 +550,9 @@ class Command(Cmd):
                     for effect in effects:
                         c.execute('''
                         INSERT INTO status_list (
-                            chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, use_start, use_end, count, choice
+                            chara_name, skill_name, skill_effect, round, type, use_start, use_end, count, choice
                         )
-                        SELECT ?, name, ?, ?, use_2d6, use_1d6, use_start, use_end, count, choice
+                        SELECT ?, name, ?, ?, type, use_start, use_end, count, choice
                         FROM skill_list
                         WHERE name = ?
                         ''', (char, effect, rounds, skill_name))
