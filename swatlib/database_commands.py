@@ -39,9 +39,8 @@ def create_status_list():
         chara_name      text,
         skill_name      text,
         skill_effect    text,
+        type            text default "",
         round           integer,
-        use_2d6         Bool,
-        use_1d6         Bool,
         use_start       Bool,
         use_end         Bool,
         count           Bool,
@@ -62,8 +61,6 @@ def create_skill_list():
         effect List,
         type   text,
         round  integer,
-        use_2d6 Bool default 'false',
-        use_1d6 Bool default 'false',
         use_start Bool default 'false',
         use_end Bool default 'false',
         count  Bool default 'false',
@@ -82,8 +79,8 @@ def create_skill_list():
             df = json.load(f)
         for data in df:
             #pprint.pprint(data, width=40)
-            c.execute('INSERT INTO skill_list(name, effect, type, round, use_2d6, use_1d6, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                      (data['name'], data['effect'], data['type'], data['round'], data['2d6'], data['1d6'], data['start'], data['end'], data['count'], data['choice']))
+            c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
+                      (data['name'], data['effect'], data['type'], data['round'], data['start'], data['end'], data['count'], data['choice']))
             conn.commit()
     conn.close()
 

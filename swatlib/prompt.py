@@ -541,23 +541,46 @@ class Command(Cmd):
                 c.execute('SELECT COUNT(*) FROM status_list WHERE chara_name = ? AND skill_name = ?;',
                           (char, skill_name))
                 cnt = c.fetchone()[0]
-                if cnt >= 1:
-                    c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
-                              (rounds, char, skill_name))
-                    print(f'{skill_name}はすでに存在しているため上書きしました')
-                else:
-                    # そうでなければ新しく挿入する
+
+                # もしウォーリーダー技能だったら、1つしか存在できないから、必ず上書きする
+                c.execute('SELECT type FROM skill_list WHERE name = ?', (skill_name,))
+                type_ = c.fetchone()[0]
+                print(type_)
+                if type_ == 'WOR':
+                    c.execute('SELECT COUNT(type = "WOR") FROM status_list WHERE chara_name = ? ',(char,))
+                    cnt_wor = c.fetchone()[0]
+                    if cnt_wor > 1:
+                        c.execute('DELETE FROM status_list WHERE type = "WOR" and chara_name = ?', (char,))
+                        print('鼓砲は1つしか存在できないため既にある鼓砲を削除しました')
                     for effect in effects:
                         c.execute('''
                         INSERT INTO status_list (
-                            chara_name, skill_name, skill_effect, round, use_2d6, use_1d6, use_start, use_end, count, choice
+                            chara_name, skill_name, skill_effect, round, type, use_start, use_end, count, choice
                         )
-                        SELECT ?, name, ?, ?, use_2d6, use_1d6, use_start, use_end, count, choice
+                        SELECT ?, name, ?, ?, type, use_start, use_end, count, choice
                         FROM skill_list
                         WHERE name = ?
                         ''', (char, effect, rounds, skill_name))
                         conn.commit()
                     print(f'{char} に {skill_name} を付与しました')
+                else:
+                    if cnt >= 1:
+                        c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
+                                (rounds, char, skill_name))
+                        print(f'{skill_name}はすでに存在しているため上書きしました')
+                    else:
+                        # そうでなければ新しく挿入する
+                        for effect in effects:
+                            c.execute('''
+                            INSERT INTO status_list (
+                                chara_name, skill_name, skill_effect, round, type, use_start, use_end, count, choice
+                            )
+                            SELECT ?, name, ?, ?, type, use_start, use_end, count, choice
+                            FROM skill_list
+                            WHERE name = ?
+                            ''', (char, effect, rounds, skill_name))
+                            conn.commit()
+                        print(f'{char} に {skill_name} を付与しました')
 
     def do_rm(self, inp):
         ('追従しているキャラの技能を削除するコマンド, 一度に複数消去可\n'
