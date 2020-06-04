@@ -545,7 +545,6 @@ class Command(Cmd):
                 # もしウォーリーダー技能だったら、1つしか存在できないから、必ず上書きする
                 c.execute('SELECT type FROM skill_list WHERE name = ?', (skill_name,))
                 type_ = c.fetchone()[0]
-                print(type_)
                 if type_ == 'WOR':
                     c.execute('SELECT COUNT(type = "WOR") FROM status_list WHERE chara_name = ? ',(char,))
                     cnt_wor = c.fetchone()[0]
