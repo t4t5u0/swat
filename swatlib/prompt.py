@@ -22,6 +22,7 @@ class Command(Cmd):
             f'{"─"*100}\n'
             f'- コマンド一覧は helps で見ることができます\n'
             f'- help cmd を使用すると cmd の詳細を見ることができます\n'
+            f'- 詳しいことは https://github.com/t4t5u0/swat/wiki を確認してください\n'
             f'{"─"*100}'
         )
         self.current_character = ''
@@ -77,11 +78,16 @@ class Command(Cmd):
         return characters
 
     def do_append(self, inp):
-        ('キャラクタを追加するコマンド\n'
-         '> append <chracters> [-n <nickname>]\n'
-         'ex: > append ギルバート ルッキオラ モーラ ... -n ch1 ch2 ch3 ...\n'
-         'Option: -n キャラクタにラベルをつけるときに使用する\n'
-         'ch en npc oth と 数字1つ以上の組み合わせを使用できます')
+        ('ap(append) <characters> [-n <nicknames> ]\n'
+         '  キャラクタを追加するコマンド。空白区切りで列挙することで、一度に複数のキャラ\n'
+         '  クタを追加することができます。追加したキャラクタが一体の場合は、自動的に、技\n'
+         '  能を付与する対象として選択されます。\n'
+         'オプション\n'
+         '  -n\n'
+         '    キャラクタにラベルを追加する。使えるのは、ch, en, npc, oth の末尾に数字を付\n'
+         '    け加えたものが使えます。これはlsコマンドで確認でき、キャラクタの名前とし\n'
+         '    て扱えます。また、ch* とすることで、ch から始まるすべてのキャラクタを対象\n'
+         '    にすることができます')
 
         # 前処理
         # そのうちリファクタする
@@ -123,10 +129,14 @@ class Command(Cmd):
         conn.close()
 
     def do_nick(self, inp):
-        ('すでに存在するキャラクタにニックネームをつけ、グループ化するコマンド\n'
-         '使用できるのは ch, en, npc, oth, に 0-9 を加えたもの\n'
-         '> nick <characters> -n <nickname>\n'
-         'ex: > nick hydra -n en1')
+        ('nick <characters> <-n> <nicknames>\n'
+         '  キャラクタにラベルをつけます。append で行ったラベル付けと同等の機能です。\n'
+         'オプション\n'
+         '  -n\n'
+         '    キャラクタにラベルを追加する。使えるのは、ch, en, npc, oth の末尾に数字を付\n'
+         '    け加えたものが使えます。これはlsコマンドで確認でき、キャラクタの名前とし\n'
+         '    て扱えます。また、ch* とすることで、ch から始まるすべてのキャラクタを対象\n'
+         '    にすることができます')
 
         arg = inp.split()
         characters = []
@@ -165,9 +175,8 @@ class Command(Cmd):
         conn.close()
 
     def do_change(self, inp):
-        ('効果対象にするキャラクタを変更するコマンド\n'
-         '> change [character] \n'
-         'ex: > change ギルバート')
+        ('ch(change) <character>\n'
+         '  追従するキャラクタを選択します。引数はキャラクタⅠ体のみです。\n')
 
         char = inp.split()
         if len(char) == 0:
@@ -184,8 +193,8 @@ class Command(Cmd):
         self.prompt = f'({self.current_character}){Color.GREEN}> {Color.RESET}'
 
     def do_ls(self, inp):
-        ('キャラクタ一覧を確認するコマンド'
-         '> ls')
+        ('ls'
+         'キャラクタ一覧を確認するコマンド。ラベルも同時に表示されます')
         char = inp.split()
         if len(char) != 0:
             print('ls は引数なしです。詳しくは help ls')
@@ -204,11 +213,12 @@ class Command(Cmd):
                     f'{skill[0]:^{15-count_east_asian_character(skill[0])}}{skill[1] if skill[1] else "":^10}')
 
     def do_kill(self, inp):
-        ('キャラクタ削除用のコマンド\n'
-         '> kill <characters or nicknames>\n'
-         'ex: kill swift ch1 \n'
-         '引数は1つ以上、--all を指定した場合はすべて消す\n'
-         '> kill --all'
+        ('kill <characters | --all>\n'
+         '  キャラクタを削除するコマンド。紐付けられている効果は全て削除されます。ch1 \n'
+         '  ch2 と列挙したり、ch* や en* とすることで、複数対象を選択することができます。\n'
+         'オプション\n'
+         '  --all\n'
+         '    すべてのキャラクタを対象にします'
          )
         char = inp.split()
         if len(char) == 0:
@@ -250,9 +260,11 @@ class Command(Cmd):
             self.prompt = f'{Color.GREEN}> {Color.RESET}'
 
     def do_check(self, inp):
-        ('ステータス確認用のコマンド\n'
-         '> check [characters, nicknames, --all] \n'
-         'ex: > check ギルバート')
+        ('ck(check) <characters | --all>\n'
+         '  対象の技能を確認するコマンド\n'
+         'オプション\n'
+         '  --all\n'
+         '    すべてのキャラクタの技能を確認します')
         char = inp.split()
         if len(char) == 0:
             if self.current_character == '':
@@ -301,11 +313,12 @@ class Command(Cmd):
             print('─'*100)
 
     def do_start(self, inp):
-        ('手番開始時のコマンド\n'
-         '安全のため現在追従中のキャラクタのみに適用してください\n'
-         '> start [character]\n'
-         'ex: (cc)> start #追従中のキャラクタを指定するときは引数なし\n'
-         'WIP: スロウとかのフラグを作ってない')
+        ('start <-t characters>\n'
+         '  手番の開始を表すコマンド。同時にラウンドも経過します\n'
+         'オプション\n'
+         '  -t\n'
+         '    他のコマンドと同様に、キャラクタ名やラベルを列挙し、複数対象に適用するこ\n'
+         '    とができます')
         # デフォルトではself.current_character を渡す。
 
         def process(c, arg):
@@ -361,8 +374,12 @@ class Command(Cmd):
             conn.commit()
 
     def do_end(self, inp):
-        ('手番終了時の処理をするコマンド\n'
-         '> end [character]')
+        ('end <-t characters>\n'
+         '  手番の開始を表すコマンド。同時にラウンドも経過します\n'
+         'オプション\n'
+         '  -t\n'
+         '    他のコマンドと同様に、キャラクタ名やラベルを列挙し、複数対象に適用するこ'
+         '    とができます')
         # 保守性を上げるため、関数内関数を用いる
 
         def process(c, arg):
@@ -391,20 +408,16 @@ class Command(Cmd):
             return
 
     def do_add(self, inp):
-        ('キャラクタに技能を付与するコマンド。\n'
-         'キャラクタを設定していない場合は change コマンドでキャラクタを設定してください\n'
-         '> add [propaties]\n'
-         'ex: > add マッスル・ベア ガゼル・フット\n'
-         'Option:\n'
-         '-r, --round <round>\n'
-         '   抵抗短縮などで、効果ラウンドをデフォルトから別のものへ上書きするときに使用する\n'
-         '   直後に上書きラウンド数を指定する\n'
-         'ex: > add ヘイスト -r 1\n'
-         '-t, --target <characters or nicknames>\n'
-         '   対象を指定して効果を付与したいときに使用する\n'
-         '   ch* で ch1, ch2, ... など結構柔軟に行ける\n'
-         'ex: > add ブレス -t ch*\n'
-         '-t -r  は併用可能')
+        ('ad(add) <skills> [-t <characters> -r <round>]\n'
+         '  技能を追加します。空白区切りで列挙することで、複数の技能や効果を同時に追加す\n'
+         '  ることができます。技能が複数見つかった場合は、番号を指定し、その番号の技能が\n'
+         '  追加されます。デフォルトでは、現在追従中のキャラクタに対して技能を付与しま\n'
+         'オプション\n'
+         '  -r\n'
+         '    抵抗短縮などで、技能の効果ラウンドを変更したいときに使用します。\n'
+         '  -t\n'
+         '    技能を追加する対象を選択します。他のコマンドと同様に、キャラクタ名やラベ\n'
+         '    ルを列挙することで、複数対象に技能を付与することができます。')
 
         # 抵抗短縮の処理
         # 複数キャラに付与できるようにする
@@ -582,10 +595,12 @@ class Command(Cmd):
                         print(f'{char} に {skill_name} を付与しました')
 
     def do_rm(self, inp):
-        ('追従しているキャラの技能を削除するコマンド, 一度に複数消去可\n'
-         '(cc) > rm <skills>\n'
-         'Option: -t ターゲットを指定\n'
-         '> rm <skills> -t <characters>')
+        ('rm <skills> [-t <characters>\n'
+         '  対象の技能を削除するコマンド\n'
+         'オプション\n'
+         '  -t\n'
+         '    技能を削除する対象を選択します。他のコマンドと同様に、キャラクタ名やラベ\n'
+         '    ルを列挙することで、複数対象の技能を削することができます。 ')
 
         arg = inp.split()
 
@@ -649,9 +664,9 @@ class Command(Cmd):
                 conn.commit()
         conn.close()
 
-
     def do_reset(self, inp):
-        '''戦闘終了時の処理コマンド。状態を初期化する'''
+        ('reset\n'
+        '  先頭を終了を表すコマンド。ラウンド経過で消滅する技能を消去します')
         arg = inp.split()
         if len(arg) != 0:
             print('reset は引数を取りません')
@@ -664,7 +679,8 @@ class Command(Cmd):
         print('戦闘終了')
 
     def do_neko(self, inp):
-        '''にゃーん'''
+        ('neko\n'
+        '  にゃーんと返すコマンド。にゃーんがあると可愛いので')
         l = inp.split()
         if len(l) == 0:
             print('にゃーん')
@@ -672,7 +688,8 @@ class Command(Cmd):
             print('neko は引数なしだよ')
 
     def do_helps(self, inp):
-        print('コマンド一覧を表示')
+        ('helps\n'
+        '  コマンド一覧と簡単な説明を表示するコマンド')
         print(f"{'─'*100}")
         print(f"{'name':^10}| {'explanation':^40}| {'arguments':^50}")
         print(f"{'─'*100}")
@@ -692,7 +709,8 @@ class Command(Cmd):
         print(f"{'─'*100}")
 
     def do_exit(self, inp):
-        '''終了用のコマンド'''
+        ('exit\n'
+        '  プリケーションを終了するコマンド。Yを押すと終了します')
         arg = inp.split()
         if len(arg) == 0:
             x = input('終了しますか？ [Y/n] ')
@@ -706,7 +724,8 @@ class Command(Cmd):
             print('引数が多すぎます。exit は引数を取りません。')
 
     def help_help(self):
-        print('help cmd で cmd の説明を表示します')
+        print('help [cmd]\n'
+        '  他のコマンドのhelpを確認するためのコマンド')
 
     def emptyline(self):
         pass
