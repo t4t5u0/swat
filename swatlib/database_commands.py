@@ -3,22 +3,21 @@ import sqlite3
 from glob import glob
 
 
-
-
 class DBScript():
     def __init__(self, path):
         # ユーザ定義型 その1
         List = list
         # (lambda l: list(l) if type(l) != list else l)]))
         sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
-        sqlite3.register_converter('List', lambda s: [str(i) for i in s.split(bytes(b';'))])
+        sqlite3.register_converter(
+            'List', lambda s: [str(i) for i in s.split(bytes(b';'))])
 
         # ユーザ定義型 その2
         Bool = bool
         sqlite3.register_adapter(Bool, lambda b: str(b))
         sqlite3.register_converter('Bool', lambda l: bool(eval(l)))
-        self.current_directory = path
 
+        self.current_directory = path
 
     def create_character_list(self):
         conn = sqlite3.connect(
@@ -33,7 +32,6 @@ class DBScript():
             ''')
         conn.commit()
         conn.close()
-
 
     def create_status_list(self):
         conn = sqlite3.connect(
@@ -54,7 +52,6 @@ class DBScript():
             ''')
         conn.commit()
         conn.close()
-
 
     def create_skill_list(self):
         conn = sqlite3.connect(
@@ -86,10 +83,9 @@ class DBScript():
             for data in df:
                 #pprint.pprint(data, width=40)
                 c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
-                        (data['name'], data['effect'], data['type'], data['round'], data['start'], data['end'], data['count'], data['choice']))
+                          (data['name'], data['effect'], data['type'], data['round'], data['start'], data['end'], data['count'], data['choice']))
                 conn.commit()
         conn.close()
-
 
     def delete_character_list(self):
         conn = sqlite3.connect(
@@ -106,7 +102,6 @@ class DBScript():
         c.execute('DROP TABLE skill_list;')
         conn.commit()
         conn.close()
-
 
     def delete_status_list(self):
         conn = sqlite3.connect(
