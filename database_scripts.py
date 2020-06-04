@@ -5,7 +5,7 @@ from swatlib.database_commands import DBScript
 
 def main():
     arg = sys.argv
-    path = pathlib.Path(__file__).resolve().parent
+    path = pathlib.Path(sys.argv[0]).parent
     db_command = DBScript(path)
 
     if '--help' in arg:
