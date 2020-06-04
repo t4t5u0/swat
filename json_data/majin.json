@@ -1,6 +1,129 @@
 [
     {
-        "name": "《武器の肥大化》",
+        "name": "固定値上昇表",
+        "effect": [
+            "命中力判定+1, 弱点値+3, 先制値判定+2",
+            "命中力判定+1 抵抗力判定+2",
+            "命中力判定+2",
+            "命中力判定+1, 打撃点+3",
+            "命中力判定+1, 回避力判定+1",
+            "命中力判定+1, 防護点+3"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "[腕が生える]",
+        "effect": [
+            "主動作が1回増加"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[狂気の肉体]",
+        "effect": [
+            "器用度+2",
+            "敏捷度+2",
+            "筋力+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[強靭な皮膚]",
+        "effect": [
+            "すべてのクリティカルが無効",
+            "痛恨撃の打撃点上昇無効"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[生気の吸収]",
+        "effect": [
+            "物理ダメージを与えたとき、適用ダメージを同じだけ回復する。この効果は1日に1度のみ使える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[毒を宿す]",
+        "effect": [
+            "同一乱戦内のキャラクタから1点以上の適用ダメージを受けた場合、即座に、その都度、「1d」点の毒属性ダメージを与える",
+            "魔物レベルが5以上の場合：同一乱戦内のキャラクタから1点以上の適用ダメージを受けた場合、即座に、その都度、「1d+2」点の毒属性ダメージを与える",
+            "魔物レベルが10以上の場合：同一乱戦内のキャラクタから1点以上の適用ダメージを受けた場合、即座に、その都度、「1d+4」点の毒属性ダメージを与える"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "[這いずる触手]",
+        "effect": [
+            "近接攻撃や射程接触の効果でダメージを与えた対象1体に、ダメージ適用後に追加で、「2」点の呪い属性の確定魔法ダメージを与えることができる。1回のダメージに対して、1体にしか適用できない。MPを3消費する"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[羽根が生える]",
+        "effect": [
+            "命中力判定+1",
+            "回避力判定+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[武器の肥大化]",
         "effect": [
             "近接攻撃が複数化",
             "複数対象への命中力判定+1",
@@ -9,6 +132,95 @@
         ],
         "type": "",
         "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[魔神の影]",
+        "effect": [
+            "影の形が魔神のものに見えるようになる。自らの身体を影の中に埋めて行動できるようになる",
+            "逃亡判定+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[魔神の再生]",
+        "effect": [
+            "手番終了時にHPが「冒険者レベル」点だけ回復する。この効果では、HPの最大値の半分までしか回復しない",
+            "非戦闘時は、どれだけHPが減少していても10分後にはHPの最大値の半分まで回復する"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": true,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[魔神の囁き]",
+        "effect": [
+            "常に聞き取れない言語による幻聴が聞こえる",
+            "知力または、精神力を用いた行為判定で2dを振った後、出目を確認してから出目に+2できる。"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩[瘴気の領域]",
+        "effect": [
+            "回避力判定-2"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩[魔神の咆哮]",
+        "effect": [
+            "命中力判定+1",
+            "打撃力+2",
+            "次ラウンド魔神の咆哮使用不可"
+        ],
+        "type": "",
+        "round": 1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩[魔神の眼]",
+        "effect": [
+            "宣言特技の宣言と補助動作を行えない"
+        ],
+        "type": "",
+        "round": 1,
         "2d6": false,
         "1d6": false,
         "start": false,

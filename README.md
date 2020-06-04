@@ -17,7 +17,7 @@ Linux, Mac
 
 ### Windows
 
-sw_tool直下にある `main.exe` をWindows ターミナル 上にドラッグ・アンド・ドロップして、Windowsターミナル上で起動してください
+`/swat`直下にある `main.exe` をWindows ターミナル 上にドラッグ・アンド・ドロップして、Windowsターミナル上で起動してください
 
 ### Linux, Mac の場合
 
@@ -34,7 +34,7 @@ sw_tool直下にある `main.exe` をWindows ターミナル 上にドラッグ�
 template.json の様式を参考にして、`./json_data/` にjsonファイルを配置し、
 
 ```bash
-$ cd swat
+$ cd swat/json_data
 $ vim hoge.json
 $ python database_commands.py  --skill_list
 ```
@@ -46,7 +46,7 @@ $ python database_commands.py  --skill_list
 ### ユーザシナリオの一例
 
 ```console
-$ python main.py 
+$ python main.py
 Hello
 ────────────────────────────────────────────────────────────────────────────────────────────────────
 - コマンド一覧は helps で見ることができます
@@ -122,7 +122,7 @@ gil に 《カウンター》 を付与しました
 ```
 
 ## 開発について
-バグを報告したり、ドキュメントを改善したい場合は、GitHubのIssue、またはTwitterをご利用ください。
+バグを報告したり、ドキュメントを改善したい場合は、[GitHubのIssue](https://github.com/t4t5u0/swat/issues)、または[Twitter](https://www.twitter.com/i4mwh4ti4m)をご利用ください。
 
 ### 報告 
 バグがあった場合は、ログや状況を添えて報告をお願いします
