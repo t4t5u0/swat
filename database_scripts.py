@@ -1,37 +1,35 @@
-# coding: UTF-8
-
 import sys
 import pathlib
 
-from swatlib.database_commands import db_script
+from swatlib.database_commands import DBScript
 
 def main():
     arg = sys.argv
     path = pathlib.Path(__file__).resolve().parent
-    db_command = db_script(path)
+    db_command = DBScript(path)
 
     if '--help' in arg:
         print('データベースの作成や削除を行うことができます')
         print('パラメータにはデータベースの名前を指定することで、そのデータベースを初期化して作成することができます')
         print('パラメータに -d を指定した場合はレコードの削除を行うことができます')
         print('$ python database_scripts.py [--all, --character_list, --skill_list, --status_list] [-d]')
-        exit(0)
+        return
     if len(arg) == 1:
         print('引数が少なすぎます。作成するデータベースファイルを選んでください')
         print('$ python database_scripts.py --help')
-        exit(0)
+        return
     # 削除系
     if '-d' in arg:
         if len(arg) == 2:
             print('引数が少なすぎます。作成するデータベースファイルを選んでください')
             print('$ python database_scripts.py --help')
-            exit(0)
+            return
         if '--all' in arg:
             # 全部消す
             db_command.delete_character_list()
             db_command.delete_status_list()
             db_command.delete_skill_list()
-            exit(0)
+            return
         if '--character_list' in arg:
             # キャラクタ一覧が入ってる
             db_command.delete_character_list()
@@ -49,7 +47,7 @@ def main():
             db_command.create_character_list()
             db_command.create_status_list()
             db_command.create_skill_list()
-            exit(0)
+            return
         if '--character_list' in arg:
             # キャラクタ一覧が入ってる
             db_command.create_character_list()

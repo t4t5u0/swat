@@ -5,7 +5,7 @@ from glob import glob
 
 
 
-class db_script():
+class DBScript():
     def __init__(self, path):
         # ユーザ定義型 その1
         List = list
