@@ -780,34 +780,27 @@ class Command(Cmd):
                 else:
                     print('不正な入力です')
                     return
-        print(skill)
+
+        l = None
         with open(self.current_directory/'json_data'/'user.json', 'r+') as f:
             l = f.readlines()
-            print(l)
+            print(len(l))
             if l == []:
-                l.insert(0, '[\n')
-                l.insert(2, '\n]\n')
-                f.writelines(l)
-            # print((f.readlines()))
-
-        with open(self.current_directory/'json_data'/'user.json', 'r+') as f:
-            l = f.readlines()
-            l.insert(len(l)-1, json.dumps(skill, indent=4, ensure_ascii=False))
+                l.append('[\n')
+            if l[-1] == ']':
+                l[-1] = ','
+            # 2回目にここを見るとき、readlinesは前回の結果がふつうにのこってるからだめ
+            print(f'{l=}')
+            l.insert(len(l), f'{json.dumps(skill, ensure_ascii=False)}')
+            l.insert(len(l), '\n]')
+    
+        with open(self.current_directory/'json_data'/'user.json', 'w') as f:
             f.writelines(l)
-            print(l)
-            print(len(l))
-        
-        with open(self.current_directory/'json_data'/'user.json', 'r+') as f:
-            l = f.readlines()
-            print(len(l))
-        # with open(self.current_directory/'json_data'/'user.json') as f:
-        #     df = json.loads(json.dumps(f))
-        #     print(df)
 
-        # skill['effects'] = ';'.join(skill['effects'])
-        # c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, choice) VALUES(?, ?, ?, ?, ?, ?, ?)',
-        #             (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'],  skill['choice']))
-        # conn.commit()
+        skill['effects'] = ';'.join(skill['effects'])
+        c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, choice) VALUES(?, ?, ?, ?, ?, ?, ?)',
+                    (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'],  skill['choice']))
+        conn.commit()
         c.close()
 
 
