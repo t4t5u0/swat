@@ -1,0 +1,41 @@
+[
+]
+[
+{
+    "name": "hoge",
+    "effects": [
+        "ef1"
+    ],
+    "type": "TEST",
+    "round": 0,
+    "start": false,
+    "end": false,
+    "count": false,
+    "choice": false
+}]
+[
+]
+[
+{
+    "name": "hoge",
+    "effects": [
+        "ef1"
+    ],
+    "type": "TEST",
+    "round": 0,
+    "start": false,
+    "end": false,
+    "count": false,
+    "choice": false
+{
+    "name": "fuga",
+    "effects": [
+        "ef2"
+    ],
+    "type": "TEST",
+    "round": 10,
+    "start": false,
+    "end": false,
+    "count": false,
+    "choice": false
+}}]
