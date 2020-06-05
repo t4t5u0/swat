@@ -30,6 +30,18 @@ class Command(Cmd):
         self.turn = None
         self.nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[*]|[0-9]+)')
 
+        # ユーザ定義型 その1
+        List = list
+        # (lambda l: list(l) if type(l) != list else l)]))
+        sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
+        sqlite3.register_converter(
+            'List', lambda s: [str(i) for i in s.split(bytes(b';'))])
+
+        # ユーザ定義型 その2
+        Bool = bool
+        sqlite3.register_adapter(Bool, lambda b: str(b))
+        sqlite3.register_converter('Bool', lambda l: bool(eval(l)))
+
     def nick2chara(self, characters: list) -> list:
         conn = sqlite3.connect(
             self.current_directory/"db"/"data.db", detect_types=sqlite3.PARSE_DECLTYPES)
@@ -777,6 +789,8 @@ class Command(Cmd):
                     pass
                 elif tmp in ['True', 'true']:
                     skill[f'{key}'] = True
+                elif tmp in ['False', 'false']:
+                    pass
                 else:
                     print('不正な入力です')
                     return
@@ -784,13 +798,13 @@ class Command(Cmd):
         l = None
         with open(self.current_directory/'json_data'/'user.json', 'r+') as f:
             l = f.readlines()
-            print(len(l))
+            # print(len(l))
             if l == []:
                 l.append('[\n')
             if l[-1] == ']':
                 l[-1] = ','
             # 2回目にここを見るとき、readlinesは前回の結果がふつうにのこってるからだめ
-            print(f'{l=}')
+            # print(f'{l=}')
             l.insert(len(l), f'{json.dumps(skill, ensure_ascii=False)}')
             l.insert(len(l), '\n]')
     
@@ -798,8 +812,8 @@ class Command(Cmd):
             f.writelines(l)
 
         skill['effects'] = ';'.join(skill['effects'])
-        c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, choice) VALUES(?, ?, ?, ?, ?, ?, ?)',
-                    (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'],  skill['choice']))
+        c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
+                    (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'], skill['count'], skill['choice']))
         conn.commit()
         c.close()
 

@@ -1,4 +1,9 @@
 [
 {"name": "sk1", "effects": ["ef1", "ef2"], "type": "", "round": -1, "start": false, "end": false, "count": false, "choice": false}
 ,{"name": "ef2", "effects": ["ef2"], "type": "", "round": 1, "start": false, "end": false, "count": false, "choice": false}
+,{"name": "sk3", "effects": ["ef3"], "type": "", "round": -1, "start": true, "end": false, "count": false, "choice": false}
+,{"name": "ef4", "effects": ["ef4"], "type": "TEST", "round": -1, "start": true, "end": true, "count": true, "choice": true}
+,{"name": "sk5", "effects": ["ef5", "ef5_1"], "type": "TEST", "round": -1, "start": true, "end": false, "count": false, "choice": false}
+,{"name": "ef5", "effects": ["ef5", "ef5_1"], "type": "TEST", "round": -1, "start": false, "end": false, "count": true, "choice": false}
+,{"name": "EF5", "effects": ["ef5", "eft_1", "ef5_2"], "type": "TEST", "round": -1, "start": true, "end": false, "count": false, "choice": true}
 ]
