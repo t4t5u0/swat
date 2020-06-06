@@ -1,4 +1,5 @@
 import inspect
+import json
 import pathlib
 import re
 import sqlite3
@@ -7,8 +8,8 @@ from cmd import Cmd
 
 from swatlib.color import Color
 from swatlib.subcommands import (count_east_asian_character,
-                               get_east_asian_count, serch_words_index,
-                               turn_back_text)
+                                 get_east_asian_count, serch_words_index,
+                                 turn_back_text)
 
 
 class Command(Cmd):
@@ -28,6 +29,18 @@ class Command(Cmd):
         self.current_character = ''
         self.turn = None
         self.nick_pattern = re.compile(r'(ch|en|npc|oth)([0-9]*[*]|[0-9]+)')
+
+        # ユーザ定義型 その1
+        List = list
+        # (lambda l: list(l) if type(l) != list else l)]))
+        sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
+        sqlite3.register_converter(
+            'List', lambda s: [str(i) for i in s.split(bytes(b';'))])
+
+        # ユーザ定義型 その2
+        Bool = bool
+        sqlite3.register_adapter(Bool, lambda b: str(b))
+        sqlite3.register_converter('Bool', lambda l: bool(eval(l)))
 
     def nick2chara(self, characters: list) -> list:
         conn = sqlite3.connect(
@@ -303,12 +316,13 @@ class Command(Cmd):
                     for j, line in enumerate(text):
                         if j == 0:
                             print(f"{ch if i == 0 else '':^{15-count_east_asian_character(ch if i == 0 else '')}}|"
-                                f"{row[0]:^{max(40-count_east_asian_character(row[0]), 0)}}"
-                                f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
-                                #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
-                                f"{line:<{max(30-count_east_asian_character(line), 0)}}")
+                                  f"{row[0]:^{max(40-count_east_asian_character(row[0]), 0)}}"
+                                  f"{row[2]:^{15-count_east_asian_character(str(row[2]))}}"
+                                  #   幅寄せの値が-になるとエラーを起こすからmax(,0)を噛ませる
+                                  f"{line:<{max(30-count_east_asian_character(line), 0)}}")
                         else:
-                            print(f"{' '*15}|{' '*40}{' '*15}{line:<{max(30-count_east_asian_character(line), 0)}}")
+                            print(
+                                f"{' '*15}|{' '*40}{' '*15}{line:<{max(30-count_east_asian_character(line), 0)}}")
             conn.close()
             print('─'*100)
 
@@ -411,7 +425,7 @@ class Command(Cmd):
         ('ad(add) <skills> [-t <characters> -r <round>]\n'
          '  技能を追加します。空白区切りで列挙することで、複数の技能や効果を同時に追加す\n'
          '  ることができます。技能が複数見つかった場合は、番号を指定し、その番号の技能が\n'
-         '  追加されます。デフォルトでは、現在追従中のキャラクタに対して技能を付与しま\n'
+         '  追加されます。デフォルトでは、現在追従中のキャラクタに対して技能を付与します\n'
          'オプション\n'
          '  -r\n'
          '    抵抗短縮などで、技能の効果ラウンドを変更したいときに使用します。\n'
@@ -556,13 +570,16 @@ class Command(Cmd):
                 cnt = c.fetchone()[0]
 
                 # もしウォーリーダー技能だったら、1つしか存在できないから、必ず上書きする
-                c.execute('SELECT type FROM skill_list WHERE name = ?', (skill_name,))
+                c.execute(
+                    'SELECT type FROM skill_list WHERE name = ?', (skill_name,))
                 type_ = c.fetchone()[0]
                 if type_ == 'WOR':
-                    c.execute('SELECT COUNT(type = "WOR") FROM status_list WHERE chara_name = ? ',(char,))
+                    c.execute(
+                        'SELECT COUNT(type = "WOR") FROM status_list WHERE chara_name = ? ', (char,))
                     cnt_wor = c.fetchone()[0]
                     if cnt_wor > 1:
-                        c.execute('DELETE FROM status_list WHERE type = "WOR" and chara_name = ?', (char,))
+                        c.execute(
+                            'DELETE FROM status_list WHERE type = "WOR" and chara_name = ?', (char,))
                         print('鼓砲は1つしか存在できないため既にある鼓砲を削除しました')
                     for effect in effects:
                         c.execute('''
@@ -578,7 +595,7 @@ class Command(Cmd):
                 else:
                     if cnt >= 1:
                         c.execute('UPDATE status_list SET round = ? WHERE chara_name = ? AND skill_name = ?',
-                                (rounds, char, skill_name))
+                                  (rounds, char, skill_name))
                         print(f'{skill_name}はすでに存在しているため上書きしました')
                     else:
                         # そうでなければ新しく挿入する
@@ -666,7 +683,7 @@ class Command(Cmd):
 
     def do_reset(self, inp):
         ('reset\n'
-        '  先頭を終了を表すコマンド。ラウンド経過で消滅する技能を消去します')
+         '  先頭を終了を表すコマンド。ラウンド経過で消滅する技能を消去します')
         arg = inp.split()
         if len(arg) != 0:
             print('reset は引数を取りません')
@@ -680,7 +697,7 @@ class Command(Cmd):
 
     def do_neko(self, inp):
         ('neko\n'
-        '  にゃーんと返すコマンド。にゃーんがあると可愛いので')
+         '  にゃーんと返すコマンド。にゃーんがあると可愛いので')
         l = inp.split()
         if len(l) == 0:
             print('にゃーん')
@@ -689,7 +706,8 @@ class Command(Cmd):
 
     def do_helps(self, inp):
         ('helps\n'
-        '  コマンド一覧と簡単な説明を表示するコマンド')
+         '  コマンド一覧と簡単な説明を表示するコマンド')
+        print('詳しいことは https://github.com/t4t5u0/swat/wiki を確認してください')
         print(f"{'─'*100}")
         print(f"{'name':^10}| {'explanation':^40}| {'arguments':^50}")
         print(f"{'─'*100}")
@@ -702,6 +720,7 @@ class Command(Cmd):
         print(f"{'check':<10}| 技能・呪文などの一覧を表示{' '*(40-get_east_asian_count('技能・呪文などの一覧を表示'))}| 引数なし/キャラクタ/キャラクタID{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
         print(f"{'start':<10}| 手番を開始{' '*(40-get_east_asian_count('手番を開始'))}| 引数なし{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
         print(f"{'end':<10}| 手番を終了{' '*(40-get_east_asian_count('手番を終了'))}| 引数なし{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
+        print(f"{'newskill':<10}| 新しい技能を追加{' '*(40-get_east_asian_count('新しい技能を追加'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
         print(f"{'neko':<10}| にゃーん{' '*(40-get_east_asian_count('にゃーん'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
         print(f"{'help':<10}| コマンドの詳細を見る{' '*(40-get_east_asian_count('コマンドの詳細を見る'))}| コマンド名{' '*(50-get_east_asian_count('コマンド名'))}")
         print(f"{'helps':<10}| このコマンド{' '*(40-get_east_asian_count('このコマンド'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
@@ -710,7 +729,7 @@ class Command(Cmd):
 
     def do_exit(self, inp):
         ('exit\n'
-        '  プリケーションを終了するコマンド。Yを押すと終了します')
+         '  プリケーションを終了するコマンド。Yを押すと終了します')
         arg = inp.split()
         if len(arg) == 0:
             x = input('終了しますか？ [Y/n] ')
@@ -723,9 +742,102 @@ class Command(Cmd):
         else:
             print('引数が多すぎます。exit は引数を取りません。')
 
+    def do_newskill(self, inp):
+        ('newskill\n'
+         '  新技能をコマンドラインから追加するコマンド。結果はuser.jsonに吐き出されます\n'
+         'name    : 技能名です。重複は許可されていません。\n'
+         'effects : 技能の効果です。1つの効果は1行に書いてください。空行を入力すると次の項目に移動します\n'
+         'round   : 技能が継続するラウンドです。負整数を入力すると永続となります\n'
+         'type    : 技能の種類です。空白でも構いません\n'
+         'start   : 手番開始時に処理をするフラグです。デフォルトでは False が渡されています。変更したいときは、True または \n'
+         '          true を入力してください。変更する必要がないときは、そのまま空行で構いません\n'
+         'end     : 手番終了時に処理をするフラグです。デフォルトでは False が渡されています。変更したいときは、True または \n'
+         '          true を入力してください。変更する必要がないときは、そのまま空行で構いません\n'
+         'choice  : 技能の効果が複数ある場合にその中から1つを選択するか決定するフラグです。デフォルトでは False が渡されて\n'
+         '          います。変更したいときは、True または true を入力してください。変更する必要がないときは、そのまま空行\n'
+         '          で構いません\n'
+         )
+        arg = inp.split()
+
+        conn = sqlite3.connect(
+            f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        c = conn.cursor()
+
+        if len(arg) != 0:
+            print('newskill は引数なしです')
+            return
+        skill = {'name': '', 'effects': [], 'type': '', 'round': '',
+                 'start': False, 'end': False, 'count': False, 'choice': False}
+        # 入力を受け取るところ
+        for key, value in skill.items():
+            tmp = input(f'{key:8}: ')
+            if tmp == 'q':
+                return
+            elif key == 'name':
+                if tmp == '':
+                    print('技能名を入力してください')
+                    return
+                c.execute(
+                    'SELECT COUNT(name) FROM skill_list WHERE name = ?', (tmp,))
+                if c.fetchone()[0] == 0:
+                    skill['name'] = tmp
+                else:
+                    print(f'{tmp}という技能はすでに存在しています')
+                    return
+            elif key == 'effects':
+                while tmp != '':
+                    skill['effects'].append(tmp)
+                    tmp = input(f'{"effects":8}: ')
+                if len(skill['effects']) == 0:
+                    print('効果を1つ以上入力してください')
+                    return
+            elif key == 'type':
+                skill['type'] = tmp
+            elif key == 'round':
+                try:
+                    tmp = int(tmp)
+                except ValueError:
+                    print('整数を入力してください')
+                    return
+                skill['round'] = tmp
+            elif key in ['start', 'end', 'choice', 'count']:
+                if key == 'count':
+                    skill['count'] = False
+                    continue
+                if tmp == '':
+                    pass
+                elif tmp in ['True', 'true']:
+                    skill[f'{key}'] = True
+                elif tmp in ['False', 'false']:
+                    pass
+                else:
+                    print('不正な入力です')
+                    return
+
+        ls = None
+        with open(self.current_directory/'json_data'/'user.json', 'r+') as f:
+            ls = f.readlines()
+            # print(len(ls))
+            if ls == []:
+                l.append('[\n')
+            if ls[-1] == ']':
+                ls[-1] = ','
+            # print(f'{ls=}')
+            ls.insert(len(ls), f'{json.dumps(skill, ensure_ascii=False)}')
+            ls.insert(len(ls), '\n]')
+
+        with open(self.current_directory/'json_data'/'user.json', 'w') as f:
+            f.writelines(ls)
+
+        skill['effects'] = ';'.join(skill['effects'])
+        c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
+                  (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'], skill['count'], skill['choice']))
+        conn.commit()
+        c.close()
+
     def help_help(self):
         print('help [cmd]\n'
-        '  他のコマンドのhelpを確認するためのコマンド')
+              '  他のコマンドのhelpを確認するためのコマンド')
 
     def emptyline(self):
         pass
@@ -735,3 +847,4 @@ class Command(Cmd):
     do_ch = do_change
     do_ap = do_append
     do_ck = do_check
+    dp_ns = do_newskill
