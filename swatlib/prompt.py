@@ -125,6 +125,9 @@ class Command(Cmd):
         c = conn.cursor()
 
         for chara, nick in zip(arg, nicks):
+            if re.fullmatch(self.nick_pattern, chara):
+                print(f'{chara}という名前は使用できません')
+                continue
             c.execute(
                 'SELECT COUNT (name) FROM character_list WHERE name = ?', (chara,))
             if c.fetchone()[0]:
