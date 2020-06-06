@@ -425,7 +425,7 @@ class Command(Cmd):
         ('ad(add) <skills> [-t <characters> -r <round>]\n'
          '  技能を追加します。空白区切りで列挙することで、複数の技能や効果を同時に追加す\n'
          '  ることができます。技能が複数見つかった場合は、番号を指定し、その番号の技能が\n'
-         '  追加されます。デフォルトでは、現在追従中のキャラクタに対して技能を付与しま\n'
+         '  追加されます。デフォルトでは、現在追従中のキャラクタに対して技能を付与します\n'
          'オプション\n'
          '  -r\n'
          '    抵抗短縮などで、技能の効果ラウンドを変更したいときに使用します。\n'
@@ -707,6 +707,7 @@ class Command(Cmd):
     def do_helps(self, inp):
         ('helps\n'
          '  コマンド一覧と簡単な説明を表示するコマンド')
+        print('詳しいことは https://github.com/t4t5u0/swat/wiki を確認してください')
         print(f"{'─'*100}")
         print(f"{'name':^10}| {'explanation':^40}| {'arguments':^50}")
         print(f"{'─'*100}")
@@ -719,6 +720,7 @@ class Command(Cmd):
         print(f"{'check':<10}| 技能・呪文などの一覧を表示{' '*(40-get_east_asian_count('技能・呪文などの一覧を表示'))}| 引数なし/キャラクタ/キャラクタID{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
         print(f"{'start':<10}| 手番を開始{' '*(40-get_east_asian_count('手番を開始'))}| 引数なし{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
         print(f"{'end':<10}| 手番を終了{' '*(40-get_east_asian_count('手番を終了'))}| 引数なし{' '*(50-get_east_asian_count('引数なし/キャラクタ/キャラクタID'))}")
+        print(f"{'newskill':<10}| 新しい技能を追加{' '*(40-get_east_asian_count('新しい技能を追加'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
         print(f"{'neko':<10}| にゃーん{' '*(40-get_east_asian_count('にゃーん'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
         print(f"{'help':<10}| コマンドの詳細を見る{' '*(40-get_east_asian_count('コマンドの詳細を見る'))}| コマンド名{' '*(50-get_east_asian_count('コマンド名'))}")
         print(f"{'helps':<10}| このコマンド{' '*(40-get_east_asian_count('このコマンド'))}| 引数なし{' '*(50-get_east_asian_count('引数なし'))}")
@@ -742,7 +744,19 @@ class Command(Cmd):
 
     def do_newskill(self, inp):
         ('newskill\n'
-         '')
+         '  新技能をコマンドラインから追加するコマンド。結果はuser.jsonに吐き出されます\n'
+         'name    : 技能名です。重複は許可されていません。\n'
+         'effects : 技能の効果です。1つの効果は1行に書いてください。空行を入力すると次の項目に移動します\n'
+         'round   : 技能が継続するラウンドです。負整数を入力すると永続となります\n'
+         'type    : 技能の種類です。空白でも構いません\n'
+         'start   : 手番開始時に処理をするフラグです。デフォルトでは False が渡されています。変更したいときは、True または \n'
+         '          true を入力してください。変更する必要がないときは、そのまま空行で構いません\n'
+         'end     : 手番終了時に処理をするフラグです。デフォルトでは False が渡されています。変更したいときは、True または \n'
+         '          true を入力してください。変更する必要がないときは、そのまま空行で構いません\n'
+         'choice  : 技能の効果が複数ある場合にその中から1つを選択するか決定するフラグです。デフォルトでは False が渡されて\n'
+         '          います。変更したいときは、True または true を入力してください。変更する必要がないときは、そのまま空行\n'
+         '          で構いません\n'
+         )
         arg = inp.split()
 
         conn = sqlite3.connect(
@@ -754,6 +768,7 @@ class Command(Cmd):
             return
         skill = {'name': '', 'effects': [], 'type': '', 'round': '',
                  'start': False, 'end': False, 'count': False, 'choice': False}
+        # 入力を受け取るところ
         for key, value in skill.items():
             tmp = input(f'{key:8}: ')
             if tmp == 'q':
@@ -762,7 +777,8 @@ class Command(Cmd):
                 if tmp == '':
                     print('技能名を入力してください')
                     return
-                c.execute('SELECT COUNT(name) FROM skill_list WHERE name = ?', (tmp,))
+                c.execute(
+                    'SELECT COUNT(name) FROM skill_list WHERE name = ?', (tmp,))
                 if c.fetchone()[0] == 0:
                     skill['name'] = tmp
                 else:
@@ -785,6 +801,9 @@ class Command(Cmd):
                     return
                 skill['round'] = tmp
             elif key in ['start', 'end', 'choice', 'count']:
+                if key == 'count':
+                    skill['count'] = False
+                    continue
                 if tmp == '':
                     pass
                 elif tmp in ['True', 'true']:
@@ -795,28 +814,26 @@ class Command(Cmd):
                     print('不正な入力です')
                     return
 
-        l = None
+        ls = None
         with open(self.current_directory/'json_data'/'user.json', 'r+') as f:
-            l = f.readlines()
-            # print(len(l))
-            if l == []:
+            ls = f.readlines()
+            # print(len(ls))
+            if ls == []:
                 l.append('[\n')
-            if l[-1] == ']':
-                l[-1] = ','
-            # 2回目にここを見るとき、readlinesは前回の結果がふつうにのこってるからだめ
-            # print(f'{l=}')
-            l.insert(len(l), f'{json.dumps(skill, ensure_ascii=False)}')
-            l.insert(len(l), '\n]')
-    
+            if ls[-1] == ']':
+                ls[-1] = ','
+            # print(f'{ls=}')
+            ls.insert(len(ls), f'{json.dumps(skill, ensure_ascii=False)}')
+            ls.insert(len(ls), '\n]')
+
         with open(self.current_directory/'json_data'/'user.json', 'w') as f:
-            f.writelines(l)
+            f.writelines(ls)
 
         skill['effects'] = ';'.join(skill['effects'])
         c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
-                    (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'], skill['count'], skill['choice']))
+                  (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'], skill['count'], skill['choice']))
         conn.commit()
         c.close()
-
 
     def help_help(self):
         print('help [cmd]\n'
@@ -830,3 +847,4 @@ class Command(Cmd):
     do_ch = do_change
     do_ap = do_append
     do_ck = do_check
+    dp_ns = do_newskill
