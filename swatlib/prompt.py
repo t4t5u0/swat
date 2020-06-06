@@ -124,15 +124,15 @@ class Command(Cmd):
             f'{self.current_directory}/db/data.db', detect_types=sqlite3.PARSE_DECLTYPES)
         c = conn.cursor()
 
-        for skill, nick in zip(arg, nicks):
+        for chara, nick in zip(arg, nicks):
             c.execute(
-                'SELECT COUNT (name) FROM character_list WHERE name = ?', (skill,))
+                'SELECT COUNT (name) FROM character_list WHERE name = ?', (chara,))
             if c.fetchone()[0]:
-                print(f'<{skill}> はすでに存在しています')
+                print(f'<{chara}> はすでに存在しています')
                 continue
             c.execute(
-                'INSERT INTO character_list (name, nick) VALUES (?, ?)', (skill, nick))
-            print(f'<{skill}> をキャラクタリストに追加しました')
+                'INSERT INTO character_list (name, nick) VALUES (?, ?)', (chara, nick))
+            print(f'<{chara}> をキャラクタリストに追加しました')
             # 入力されたキャラクタが1つのときは、自動的にcurrent_characterに設定する
             if len(arg) == 1:
                 self.current_character = arg[0]
