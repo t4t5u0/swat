@@ -10,7 +10,8 @@ class DBScript():
         # (lambda l: list(l) if type(l) != list else l)]))
         sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
         sqlite3.register_converter(
-            'List', lambda s: [str(i) for i in s.split(bytes(b';'))])
+            'List', lambda s: [item.decode('utf-8') for item in s.split(bytes(b';'))])
+
 
         # ユーザ定義型 その2
         Bool = bool
