@@ -10,7 +10,8 @@ class DBScript():
         # (lambda l: list(l) if type(l) != list else l)]))
         sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
         sqlite3.register_converter(
-            'List', lambda s: [str(i) for i in s.split(bytes(b';'))])
+            'List', lambda s: [item.decode('utf-8') for item in s.split(bytes(b';'))])
+
 
         # ユーザ定義型 その2
         Bool = bool
@@ -78,10 +79,15 @@ class DBScript():
         print('ok')
         file_list = glob(f'{self.current_directory}/json_data/*.json')
         for file_ in file_list:
-            with open(file_, encoding='utf8') as f:
-                df = json.load(f)
+            with open(file_, encoding='utf-8') as f:
+                try:
+                    df = json.load(f)
+                except Exception:
+                    # 空行だったら読み飛ばす
+                    continue
             for data in df:
-                #pprint.pprint(data, width=40)
+                print(data)
+                # pprint.pprint(data, width=40)
                 c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
                           (data['name'], data['effect'], data['type'], data['round'], data['start'], data['end'], data['count'], data['choice']))
                 conn.commit()
