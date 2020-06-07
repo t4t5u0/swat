@@ -832,9 +832,9 @@ class Command(Cmd):
         with open(self.current_directory/'json_data'/'user.json', 'w') as f:
             f.writelines(ls)
 
-        skill['effects'] = ';'.join(skill['effects'])
+        skill['effect'] = ';'.join(skill['effects'])
         c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
-                  (skill['name'], skill['effects'], skill['type'], skill['round'], skill['start'], skill['end'], skill['count'], skill['choice']))
+                  (skill['name'], skill['effect'], skill['type'], skill['round'], skill['start'], skill['end'], skill['count'], skill['choice']))
         conn.commit()
         c.close()
 
