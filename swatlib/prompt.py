@@ -35,7 +35,7 @@ class Command(Cmd):
         # (lambda l: list(l) if type(l) != list else l)]))
         sqlite3.register_adapter(List, lambda l: ';'.join([str(i) for i in l]))
         sqlite3.register_converter(
-            'List', lambda s: [str(i) for i in s.split(bytes(b';'))])
+            'List', lambda s: [item.decode('utf-8') for item in s.split(bytes(b';'))])
 
         # ユーザ定義型 その2
         Bool = bool
@@ -538,13 +538,15 @@ class Command(Cmd):
                 # 技能の効果をばらしている
                 c.execute(
                     'SELECT effect FROM skill_list WHERE name = ?', (skill_name,))
-                effects = c.fetchone()[0].split(';')
+                # effects = c.fetchone()[0].split(';')
+                effects = c.fetchone()[0]
 
                 # choice フラグを見る
                 c.execute(
                     'SELECT choice FROM skill_list WHERE name = ?', (skill_name,))
-                choice_flag = c.fetchone()
-                if eval(choice_flag[0]):
+                choice_flag = c.fetchone()[0]
+                # print(type(choice_flag[0]))
+                if choice_flag:
                     for i, effect in enumerate(effects):
                         print(i, effect)
                     try:
@@ -822,7 +824,7 @@ class Command(Cmd):
             ls = f.readlines()
             # print(len(ls))
             if ls == []:
-                l.append('[\n')
+                ls.append('[\n')
             if ls[-1] == ']':
                 ls[-1] = ','
             # print(f'{ls=}')
