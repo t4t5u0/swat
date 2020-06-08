@@ -33,6 +33,7 @@ class DBScript():
             ''')
         conn.commit()
         conn.close()
+        print('ok')
 
     def create_status_list(self):
         conn = sqlite3.connect(
@@ -53,6 +54,7 @@ class DBScript():
             ''')
         conn.commit()
         conn.close()
+        print('ok')
 
     def create_skill_list(self):
         conn = sqlite3.connect(
@@ -76,7 +78,6 @@ class DBScript():
 
         # 初期化のためにレコードを削除する
         c.execute('DELETE FROM skill_list;')
-        print('ok')
         file_list = glob(f'{self.current_directory}/json_data/*.json')
         for file_ in file_list:
             with open(file_, encoding='utf-8') as f:
@@ -86,12 +87,13 @@ class DBScript():
                     # 空行だったら読み飛ばす
                     continue
             for data in df:
-                print(data)
+                # print(data)
                 # pprint.pprint(data, width=40)
                 c.execute('INSERT INTO skill_list(name, effect, type, round, use_start, use_end, count, choice) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
                           (data['name'], data['effect'], data['type'], data['round'], data['start'], data['end'], data['count'], data['choice']))
                 conn.commit()
         conn.close()
+        print('ok')
 
     def delete_character_list(self):
         conn = sqlite3.connect(
