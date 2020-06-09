@@ -243,5 +243,266 @@
         "end": false,
         "count": false,
         "choice": false
+    },
+    {
+        "name": "[月光の守り",
+        "effect": [
+            "精神抵抗力判定+4"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[戦乙女の光羽]",
+        "effect": [
+            "落下ダメージ無効",
+            "転倒無効",
+            "200kg程度のものを自由に運ぶことができる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[戦乙女の祝福]",
+        "effect": [
+            "同座標のキャラクタまたは、騎獣一体に祝福を与える。この効果は１日に１度しか使用できない"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "⏩[戦乙女の祝福]",
+        "effect": [
+            "抵抗力判定+2"
+        ],
+        "type": "",
+        "round": 18,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[デジャブ]",
+        "effect": [
+            "魔法行使判定以外の知力ボーナスを基準とする判定を行う時、事前に宣言することで、判定に+2の修正を得る。この効果は1日に1度しか使用できない"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[魔法の申し子]",
+        "effect": [
+            "魔力+1",
+            "行使判定で自動成功した場合、MP消費無しで魔法を行使できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[妖精の加護]",
+        "effect": [
+            "補助動作で「土」「水・氷」「炎」「風」から属性を1つ選び、宣言する。そのラウンドは宣言した属性でダメージを与える場合、ダメージが2点上昇する。また、選んだ属性から受けるダメージを2点減少する。この効果は1日に1分(6ラウンド)のみ使用可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[戦乙女の祝福]",
+        "effect": [
+            "同座標のキャラクタまたは、騎獣一体に祝福を与える。この効果は１日に１度しか使用できない"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[浮遊]",
+        "effect": [
+            "足場が悪いことによるペナルティ修正を受けない。また、水上を地上と同じように移動できる。泳ぐことも可能。飛行はできず、重量が50kgを超えるものを抱えた状態で浮遊できない"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[魂の輝き]",
+        "effect": [
+            "本人を中心に、半径10mの空間を明るい光で照らす。点けるのも、消すのも補助動作で行える"
+        ],
+        "type": "フロウライト",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[鉱石の生命]",
+        "effect": [
+            "飲食、呼吸を必要とせず、毒、病気属性の影響を受けない。また、アイテム区分「薬品」「食事」に分類されるアイテムや、経口摂取するアイテムの効果を受けない。魔法を行使する場合は他の種族と同様に発声が必要"
+        ],
+        "type": "フロウライト",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[晶石の身体]",
+        "effect": [
+            "水に浮かない",
+            "防護点+2",
+            "MP最大値+15"
+        ],
+        "type": "フロウライト",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[輝く肉体]",
+        "effect": [
+            "同じ座標のキャラクタ1体の行為判定を-2する。ただし、金属鎧を身に着けている場合は-1の修正"
+        ],
+        "type": "ソレイユ",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[太陽の再生]",
+        "effect": [
+            "10分間日光を浴びることでHPが10点回復する。この効果は10分毎に発揮され、1日に60分まで使用可能"
+        ],
+        "type": "ソレイユ",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[太陽の子]",
+        "effect": [
+            "朝6時から夜6時(直前)まで精神効果属性の抵抗力判定+4",
+            "夜6時から朝6時(直前)まで精神効果属性の抵抗力判定-4"
+        ],
+        "type": "ソレイユ",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[猫変化]",
+        "effect": [
+            "主動作で猫の姿になる。部位：首、耳 以外の装備品および装飾品がすべて外れ、その場に落ちる。猫の姿ではアイテムを使用できないが、会話は可能。"
+        ],
+        "type": "ミアキス",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[獣性の発露]",
+        "effect": [
+            "<爪>を得る。また、受け身判定を「冒険者LV＋敏捷度B」で行うことができる。猫の姿のときに<牙>を得る"
+        ],
+        "type": "ミアキス",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[黒炎の使い手]",
+        "effect": [
+            "補助動作で使用可能。HPを3点消費することで、自信の近接・射撃攻撃によって発生させるダメージを炎属性に変更し、ダメージを3点上昇させる。この効果は最初の攻撃のみに有効。「炎無効」「剣の加護/炎身」を持つ対象にもダメージを与えることができる",
+            "Lv5 : HP消費を5点にし、追加ダメージを5点にすることを選べる",
+            "Lv11: 1ラウンドの間対象の防護点を2点下げる効果が追加される。また、HP消費を7点にし、追加ダメージを7点にすることを選べる",
+            "Lv16: 3ラウンドの間対象の防護点をさらに2点（計4点）下げる。また、HP消費を10点にし、追加ダメージを10点にすることを選べる"
+        ],
+        "type": "ダークドワーフ",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
     }
 ]
