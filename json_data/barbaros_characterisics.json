@@ -1,0 +1,443 @@
+[
+    {
+        "name": "[魔剣の所持]",
+        "effect": [
+            "生まれつき、任意のBランク近接武器を所持している"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[飛行(飛翔)]",
+        "effect": [
+            "空を飛んで移動できる。移動速度は敏捷度と同じになる。",
+            "近接攻撃の命中力判定+1、回避力判定+1",
+            "[竜化]によって竜形態になると名称が[飛翔]に変わり、[部位：翼]が持つ能力になる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[竜化]",
+        "effect": [
+            "竜形態に変身する。1度変身すると、1時間は人間形態に戻れない。変身後は部位数が「3」となる",
+            "HP・MPが最大値まで回復する",
+            "[部位：胴体] は人間形態時の技能や魔法をそのまま使用できる",
+            "[部位：翼] は人間形態時の技能や魔法は使用できず、生来武器での近接攻撃のみを行うことができる",
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[魔剣の所持]",
+        "effect": [
+            "生まれつき、任意のBランク近接武器を所持している"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[邪視と瞳石]",
+        "effect": [
+            "魔法の発動体なしに真語魔法・操霊魔法を講師できる",
+            "「石化の邪眼」のBランクを得る。邪視は補助動作で1ラウンドに1回使用できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[猛毒の血液]",
+        "effect": [
+            "近接攻撃で物理ダメージを受けると、ダメージを与えた対象は自身の手番の終了時に「1d」点の毒属性魔法ダメージを受ける"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[魔物化]",
+        "effect": [
+            "主動作で魔物形態に変身する。変身後は知力が12点減少する（最低1）。また、部位数が「3」となり、「[部位：頭部(コア部位)] [部位：胴体] [部位：邪眼]」を持つキャラクタになる。一度変身すると1時間は人間形態に戻れない。変身するとHP・MP は最大値まで回復する。その他変身前の状況はすべて引き継ぐ。",
+            "[部位：頭部] 人間形態時の技能や魔法を行使できる。[邪視]は行使できない。また、<牙>の生来武器を得る",
+            "[部位：胴体] 人間形態時の技能や魔法を行使することはできない。主動作で<爪>の生来武器によって近接攻撃ができる",
+            "[部位：邪眼] 近接攻撃は行えないが、習得している[邪視]を行使できる"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[尻尾が武器]",
+        "effect": [
+            "<尻尾>を武器として扱えます"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[無呼吸活動]",
+        "effect": [
+            "1時間、呼吸無しで活動できる。",
+            "毒属性、病気属性に対する抵抗力判定+4"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[水中活動]",
+        "effect": [
+            "水中の行動によるペナルティを受けない。水中で呼吸はできず、会話もできない"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[仲間との連携]",
+        "effect": [
+            "同一乱戦エリア内に存在する自身以外の仲間ひとり毎に、命中力判定＋1(最大＋4)"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[敵への憤怒]",
+        "effect": [
+            "自信の手番開始時に、自身と同一乱戦エリアにいる、HP現在値がHP最大値の半分以下となっているキャラクタひとり(1部位)につき、次の手番開始時まで物理ダメージが2点上昇する(最大＋8)"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[半馬半人]",
+        "effect": [
+            "格闘武器<蹄>を持ち、移動力は敏捷度の2倍となる。",
+            "すべての騎獣に騎乗できない（搭載されることは可能）",
+            "装飾品[部位：脚] が消え、[部位：胴/腰] が2つに変更される"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[馬人の武術]",
+        "effect": [
+            "戦闘中、胴体から上は常に騎乗している扱いとなり、騎乗時に効果がある武器やアイテムの効果を受けられる",
+            "ライダー技能によって習得する一部の騎芸を自身に適用できるようになる。ただし、騎芸【遠隔支持】を使用しているときは不可"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[限定竜化]",
+        "effect": [
+            "<剣の結晶>を冒険者Lv個消費し、竜の姿に変わる。主動作で行い、一度変身すると1時間竜の姿から戻れない。解除は、補助動作で行う。また、24時間が経つと自動的に解除される"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[トロールの体躯]",
+        "effect": [
+            "防護点+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[弱体化]",
+        "effect": [
+            "太陽の下にいる限り、命中力判定・回避力判定-2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[限定再生]",
+        "effect": [
+            "1日に1回、主動作でHPを回復できる。回復するHPは冒険者Lv*5点"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[ラミアの身体]",
+        "effect": [
+            "格闘武器<牙><尻尾>が使用可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[ラミアの吸血]",
+        "effect": [
+            "<牙>の攻撃が命中した場合、吸血を行える。吸血する場合、算出ダメージは6点減少し、適用ダメージと同じだけHPが回復する"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[変化]",
+        "effect": [
+            "肉体を人族のものに変化させる。[変化]している間は、命中力判定、回避力判定、抵抗力判定に-1のペナルティ修正を受ける。HP・MPの最大値が-5される。また、<牙><尻尾>での攻撃を行えなくなる。1日18時間まで"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[獣人の力]",
+        "effect": [
+            "満月に、命中力判定・回避力判定+1",
+            "太陽の下で、命中力判定・回避力判定-1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[獣化]",
+        "effect": [
+            "上半身を特定の獣の姿に変える。[獣化]すると格闘武器<牙><爪>が使用可能になる。また、通常の武器に対して防護点が「冒険者Lv」点上昇する",
+            "Lv6 : [獣化]による変身とそれの解除が補助動作で行える",
+            "Lv11: [獣化]で変身しているとき、満月でなくても夜であれば、命中力判定・回避力判定+1"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[種の限界]",
+        "effect": [
+            "あらゆる冒険者技能において、5レベルまでしか成長できない"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[軽視]",
+        "effect": [
+            "攻撃や特殊能力の対象になったとき、他のPCに振り向けるようにGMに要求できる。1戦闘1回"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[小さな匠]",
+        "effect": [
+            "非戦闘時の器用度を基準とする行為判定に+2"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[蛮族の身体]",
+        "effect": [
+            "ガルーダ: 敏捷度+3",
+            "バジリスク: 知力+3",
+            "マーマン: 精神力+3",
+            "ミノタウロス: 筋力+3"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": true
+    },
+    {
+        "name": "[未熟な翼]",
+        "effect": [
+            "落下ダメージを20点減点する"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[切り裂く風]",
+        "effect": [
+            "主動作 MP:4 対象:敵1体 射程:30m 形状:起点指定 冒険者レベル+生命力B 抵抗半減 属性:風 /k10@10+冒険者レベル+生命力B",
+            "6Lv : 主動作 MP:8 対象:敵1体 射程:30m 形状:起点指定 冒険者レベル+生命力B 抵抗半減 属性:風 /k30@10+冒険者レベル+生命力B を選択可能",
+            "11Lv: 主動作 MP:12 対象:敵1体 射程:30m 形状:起点指定 冒険者レベル+生命力B 抵抗半減 属性:風 /k50@10+冒険者レベル+生命力B を選択可能"
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    },
+    {
+        "name": "[石化の視線]",
+        "effect": [
+            ""
+        ],
+        "type": "",
+        "round": -1,
+        "2d6": false,
+        "1d6": false,
+        "start": false,
+        "end": false,
+        "count": false,
+        "choice": false
+    }
+]
