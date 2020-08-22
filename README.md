@@ -1,5 +1,7 @@
 # SWAT (Sword World Assistant Tool)
 
+# WIP Go で書き直し
+
 ## 概要
  SWATはSW2.5向けのバフ・デバフ管理ツールです
  ルールブックⅠ、Ⅱ、Ⅲの範囲＋α をカバーしています
