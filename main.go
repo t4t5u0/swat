@@ -18,9 +18,11 @@ func main() {
 
 	CharacterList := tview.NewList().ShowSecondaryText(false)
 	CharacterList.AddItem("ギルバート", "", 0, nil)
+	// nil->別ウィンドウを開く関数を置きたい。
+	//使い回しになるだろうから、ウィンドウを受け取って、
 	CharacterList.AddItem("ルッキオラ", "", 0, nil)
 	CharacterList.AddItem("モーラ", "", 0, nil)
-	CharacterList.AddItem("New", "Press to exit", 0, func() {
+	CharacterList.AddItem("New", "", 0, func() {
 	})
 
 	CharacterList.SetBorder(true).SetTitle("Character List")
