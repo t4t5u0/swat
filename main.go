@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/gdamore/tcell"
+	"github.com/gdamore/tcell/v2"
 	"github.com/mattn/go-runewidth"
 	"github.com/rivo/tview"
 )
@@ -46,19 +46,21 @@ func main() {
 					AddItem(InputOutput, 5, 1, false), 0, 2, false), 0, 1, false).
 			AddItem(OneLine, 3, 1, false), 0, 1, false)
 
-	app.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
-		switch {
-		case event.Key() == tcell.KeyF1:
-			app.SetFocus(CharacterList)
-		case event.Key() == tcell.KeyF2:
-			app.SetFocus(Status)
-		case event.Key() == tcell.KeyF3:
-			app.SetFocus(MainMenu)
-		case event.Key() == tcell.KeyF4:
-			app.SetFocus(InputOutput)
-		}
-		return event
-	})
+	app.SetInputCapture(
+		func(event *tcell.EventKey) *tcell.EventKey {
+			switch {
+			case event.Key() == tcell.KeyF1:
+				app.SetFocus(CharacterList)
+			case event.Key() == tcell.KeyF2:
+				app.SetFocus(Status)
+			case event.Key() == tcell.KeyF3:
+				app.SetFocus(MainMenu)
+			case event.Key() == tcell.KeyF4:
+				app.SetFocus(InputOutput)
+			}
+			return event
+		},
+	)
 
 	if err := app.SetRoot(flex, true).SetFocus(CharacterList).Run(); err != nil {
 		panic(err)
